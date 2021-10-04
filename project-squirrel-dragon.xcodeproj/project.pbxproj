@@ -13,7 +13,7 @@
 		21044756270ACD1900815441 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21044754270ACD1900815441 /* Main.storyboard */; };
 		21044758270ACD1A00815441 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21044757270ACD1A00815441 /* Assets.xcassets */; };
 		2104475B270ACD1A00815441 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21044759270ACD1A00815441 /* LaunchScreen.storyboard */; };
-		2104476A270B0AE400815441 /* tempTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21044769270B0AE400815441 /* tempTests.swift */; };
+		2104476A270B0AE400815441 /* TempTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21044769270B0AE400815441 /* TempTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +36,7 @@
 		2104475A270ACD1A00815441 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2104475C270ACD1A00815441 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		21044767270B0AE400815441 /* project-squirrel-dragonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "project-squirrel-dragonTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		21044769270B0AE400815441 /* tempTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tempTests.swift; sourceTree = "<group>"; };
+		21044769270B0AE400815441 /* TempTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,7 +92,7 @@
 		21044768270B0AE400815441 /* project-squirrel-dragonTests */ = {
 			isa = PBXGroup;
 			children = (
-				21044769270B0AE400815441 /* tempTests.swift */,
+				21044769270B0AE400815441 /* TempTests.swift */,
 			);
 			path = "project-squirrel-dragonTests";
 			sourceTree = "<group>";
@@ -229,7 +229,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2104476A270B0AE400815441 /* tempTests.swift in Sources */,
+				2104476A270B0AE400815441 /* TempTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
