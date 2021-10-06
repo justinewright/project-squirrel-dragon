@@ -38,6 +38,16 @@
                ReferencedContainer = "container:project-squirrel-dragon.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "2186D06B270DDB23005F1E97"
+               BuildableName = "PokemonCollectionSetsRepositoryTests.xctest"
+               BlueprintName = "PokemonCollectionSetsRepositoryTests"
+               ReferencedContainer = "container:project-squirrel-dragon.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

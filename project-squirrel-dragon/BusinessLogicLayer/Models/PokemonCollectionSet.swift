@@ -12,7 +12,6 @@ struct PokemonCollectionSet: BaseModel {
         { return self }
     }
 
-
     let id: String
     let name: String
     let series: String
@@ -23,5 +22,16 @@ struct PokemonCollectionSet: BaseModel {
     let imageSymbol: String
     let imageLogo: String
 
+    init(pokemonSetsData: SetsData) {
+        id = pokemonSetsData.id
+        name = pokemonSetsData.name
+        series = pokemonSetsData.series
+        printedTotal = pokemonSetsData.printedTotal
+        total = pokemonSetsData.total
+        releaseDate = pokemonSetsData.releaseDate
+        updatedAt = pokemonSetsData.updatedAt
+        imageSymbol = pokemonSetsData.images.symbol
+        imageLogo = pokemonSetsData.images.logo
+    }
     
 }
