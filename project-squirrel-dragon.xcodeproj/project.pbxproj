@@ -14,6 +14,10 @@
 		21044758270ACD1A00815441 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21044757270ACD1A00815441 /* Assets.xcassets */; };
 		2104475B270ACD1A00815441 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21044759270ACD1A00815441 /* LaunchScreen.storyboard */; };
 		2104476A270B0AE400815441 /* TempTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21044769270B0AE400815441 /* TempTests.swift */; };
+		216ADADA270D6FFA00D61E92 /* PokemonSetsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216ADAD9270D6FFA00D61E92 /* PokemonSetsData.swift */; };
+		216ADADF270D72FA00D61E92 /* PokemonTcgAllSetsApiClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216ADADE270D72FA00D61E92 /* PokemonTcgAllSetsApiClientProtocol.swift */; };
+		216ADAE2270D75B100D61E92 /* PokemonTcgAllSetsApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216ADAE1270D75B100D61E92 /* PokemonTcgAllSetsApiClient.swift */; };
+		216ADAF9270DC31300D61E92 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216ADAF8270DC31300D61E92 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,9 +38,13 @@
 		21044755270ACD1900815441 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		21044757270ACD1A00815441 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2104475A270ACD1A00815441 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		2104475C270ACD1A00815441 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2104475C270ACD1A00815441 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "project-squirrel-dragon/SupportingFiles/Info.plist"; sourceTree = SOURCE_ROOT; };
 		21044767270B0AE400815441 /* project-squirrel-dragonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "project-squirrel-dragonTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		21044769270B0AE400815441 /* TempTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempTests.swift; sourceTree = "<group>"; };
+		216ADAD9270D6FFA00D61E92 /* PokemonSetsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonSetsData.swift; sourceTree = "<group>"; };
+		216ADADE270D72FA00D61E92 /* PokemonTcgAllSetsApiClientProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonTcgAllSetsApiClientProtocol.swift; sourceTree = "<group>"; };
+		216ADAE1270D75B100D61E92 /* PokemonTcgAllSetsApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonTcgAllSetsApiClient.swift; sourceTree = "<group>"; };
+		216ADAF8270DC31300D61E92 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,13 +86,11 @@
 		2104474D270ACD1900815441 /* project-squirrel-dragon */ = {
 			isa = PBXGroup;
 			children = (
-				2104474E270ACD1900815441 /* AppDelegate.swift */,
-				21044750270ACD1900815441 /* SceneDelegate.swift */,
-				21044752270ACD1900815441 /* ViewController.swift */,
-				21044754270ACD1900815441 /* Main.storyboard */,
-				21044757270ACD1A00815441 /* Assets.xcassets */,
-				21044759270ACD1A00815441 /* LaunchScreen.storyboard */,
-				2104475C270ACD1A00815441 /* Info.plist */,
+				21233787270CC4BD00D96728 /* ApplicationLayer */,
+				21233788270CC4ED00D96728 /* PresentationLayer */,
+				2123378A270CC51E00D96728 /* BusinessLogicLayer */,
+				21233789270CC50300D96728 /* CoreLayer */,
+				2123378B270CC53C00D96728 /* SupportingFiles */,
 			);
 			path = "project-squirrel-dragon";
 			sourceTree = "<group>";
@@ -95,6 +101,68 @@
 				21044769270B0AE400815441 /* TempTests.swift */,
 			);
 			path = "project-squirrel-dragonTests";
+			sourceTree = "<group>";
+		};
+		21233787270CC4BD00D96728 /* ApplicationLayer */ = {
+			isa = PBXGroup;
+			children = (
+				2104474E270ACD1900815441 /* AppDelegate.swift */,
+				21044750270ACD1900815441 /* SceneDelegate.swift */,
+			);
+			path = ApplicationLayer;
+			sourceTree = "<group>";
+		};
+		21233788270CC4ED00D96728 /* PresentationLayer */ = {
+			isa = PBXGroup;
+			children = (
+				216ADAE4270D7A8B00D61E92 /* ReusableViews */,
+				21044752270ACD1900815441 /* ViewController.swift */,
+				21044754270ACD1900815441 /* Main.storyboard */,
+				21044759270ACD1A00815441 /* LaunchScreen.storyboard */,
+			);
+			path = PresentationLayer;
+			sourceTree = "<group>";
+		};
+		21233789270CC50300D96728 /* CoreLayer */ = {
+			isa = PBXGroup;
+			children = (
+				216ADAD8270D6F9800D61E92 /* ClientApis */,
+			);
+			path = CoreLayer;
+			sourceTree = "<group>";
+		};
+		2123378A270CC51E00D96728 /* BusinessLogicLayer */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = BusinessLogicLayer;
+			sourceTree = "<group>";
+		};
+		2123378B270CC53C00D96728 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				2104475C270ACD1A00815441 /* Info.plist */,
+				21044757270ACD1A00815441 /* Assets.xcassets */,
+				216ADAF8270DC31300D61E92 /* Constants.swift */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		216ADAD8270D6F9800D61E92 /* ClientApis */ = {
+			isa = PBXGroup;
+			children = (
+				216ADAD9270D6FFA00D61E92 /* PokemonSetsData.swift */,
+				216ADADE270D72FA00D61E92 /* PokemonTcgAllSetsApiClientProtocol.swift */,
+				216ADAE1270D75B100D61E92 /* PokemonTcgAllSetsApiClient.swift */,
+			);
+			path = ClientApis;
+			sourceTree = "<group>";
+		};
+		216ADAE4270D7A8B00D61E92 /* ReusableViews */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ReusableViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -221,7 +289,11 @@
 			files = (
 				21044753270ACD1900815441 /* ViewController.swift in Sources */,
 				2104474F270ACD1900815441 /* AppDelegate.swift in Sources */,
+				216ADADA270D6FFA00D61E92 /* PokemonSetsData.swift in Sources */,
 				21044751270ACD1900815441 /* SceneDelegate.swift in Sources */,
+				216ADAF9270DC31300D61E92 /* Constants.swift in Sources */,
+				216ADAE2270D75B100D61E92 /* PokemonTcgAllSetsApiClient.swift in Sources */,
+				216ADADF270D72FA00D61E92 /* PokemonTcgAllSetsApiClientProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,6 +386,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "project-squirrel-dragon/SupportingFiles/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -369,6 +442,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "project-squirrel-dragon/SupportingFiles/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -388,7 +462,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = X4RVCKBN8K;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "project-squirrel-dragon/Info.plist";
+				INFOPLIST_FILE = "project-squirrel-dragon/SupportingFiles/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -416,7 +490,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = X4RVCKBN8K;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "project-squirrel-dragon/Info.plist";
+				INFOPLIST_FILE = "project-squirrel-dragon/SupportingFiles/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
