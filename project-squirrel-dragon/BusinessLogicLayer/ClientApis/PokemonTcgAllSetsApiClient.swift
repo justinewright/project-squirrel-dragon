@@ -10,7 +10,7 @@ import Combine
 
 class PokemonTcgAllSetsApiClient: PokemonTcgApiClientProtocol {
     private var cancellables = Set<AnyCancellable>()
-    private let API_KEY = "9429b091-1eb8-4db3-8e72-50c2ca7bfede"
+    private let APIkey = "9429b091-1eb8-4db3-8e72-50c2ca7bfede"
     private let requestHeaderField = "X-Api-Key"
     private let apiSetsUrlString = "https://api.pokemontcg.io/v2/sets"
 
@@ -19,7 +19,7 @@ class PokemonTcgAllSetsApiClient: PokemonTcgApiClientProtocol {
 
         // adding api key to header
         var request = URLRequest(url: url)
-        request.setValue(API_KEY, forHTTPHeaderField: requestHeaderField)
+        request.setValue(APIkey, forHTTPHeaderField: requestHeaderField)
 
         URLSession
             .DataTaskPublisher(request: request,
