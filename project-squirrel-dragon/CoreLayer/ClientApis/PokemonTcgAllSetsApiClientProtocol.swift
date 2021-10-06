@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Combine
 
 enum Result<PokemonSetsData> {
     case success(PokemonSetsData)
