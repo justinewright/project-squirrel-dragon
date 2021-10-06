@@ -20,5 +20,5 @@ protocol RepositoryProtocol {
 }
 
 protocol RepositoryToViewModelProtocol {
-    func fetchedData() -> BaseModel
+    func fetchedData() -> [BaseModel]
 }
