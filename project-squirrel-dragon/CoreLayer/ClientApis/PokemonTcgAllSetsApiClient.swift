@@ -8,16 +8,14 @@
 import Foundation
 
 class PokemonTcgAllSetsApiClient: PokemonTcgApiClientProtocol {
-    private let APIkey = "9429b091-1eb8-4db3-8e72-50c2ca7bfede"
-    private let requestHeaderField = "X-Api-Key"
-    private let apiSetsUrlString = "https://api.pokemontcg.io/v2/sets"
+    private let constants = Constants.PokemonTcgAllSetsApiClientConstants()
 
     func fetch(then handler: @escaping (Result<PokemonSetsData>) -> Void) {
-        guard let url = URL(string: apiSetsUrlString) else { return }
+        guard let url = URL(string: constants.apiSetsUrlString) else { return }
 
         // adding api key to header
         var request = URLRequest(url: url)
-        request.setValue(APIkey, forHTTPHeaderField: requestHeaderField)
+        request.setValue(constants.APIkey, forHTTPHeaderField: constants.requestHeaderField)
         
         let session = URLSession(configuration: .default)
         let task =  session.dataTask(with: request) { data, response, _ in

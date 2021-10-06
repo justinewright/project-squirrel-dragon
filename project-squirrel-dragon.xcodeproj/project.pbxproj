@@ -17,6 +17,7 @@
 		216ADADA270D6FFA00D61E92 /* PokemonSetsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216ADAD9270D6FFA00D61E92 /* PokemonSetsData.swift */; };
 		216ADADF270D72FA00D61E92 /* PokemonTcgApiClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216ADADE270D72FA00D61E92 /* PokemonTcgApiClientProtocol.swift */; };
 		216ADAE2270D75B100D61E92 /* PokemonTcgAllSetsApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216ADAE1270D75B100D61E92 /* PokemonTcgAllSetsApiClient.swift */; };
+		216ADAF9270DC31300D61E92 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216ADAF8270DC31300D61E92 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,7 @@
 		216ADAD9270D6FFA00D61E92 /* PokemonSetsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonSetsData.swift; sourceTree = "<group>"; };
 		216ADADE270D72FA00D61E92 /* PokemonTcgApiClientProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonTcgApiClientProtocol.swift; sourceTree = "<group>"; };
 		216ADAE1270D75B100D61E92 /* PokemonTcgAllSetsApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonTcgAllSetsApiClient.swift; sourceTree = "<group>"; };
+		216ADAF8270DC31300D61E92 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 			children = (
 				2104475C270ACD1A00815441 /* Info.plist */,
 				21044757270ACD1A00815441 /* Assets.xcassets */,
+				216ADAF8270DC31300D61E92 /* Constants.swift */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 				2104474F270ACD1900815441 /* AppDelegate.swift in Sources */,
 				216ADADA270D6FFA00D61E92 /* PokemonSetsData.swift in Sources */,
 				21044751270ACD1900815441 /* SceneDelegate.swift in Sources */,
+				216ADAF9270DC31300D61E92 /* Constants.swift in Sources */,
 				216ADAE2270D75B100D61E92 /* PokemonTcgAllSetsApiClient.swift in Sources */,
 				216ADADF270D72FA00D61E92 /* PokemonTcgApiClientProtocol.swift in Sources */,
 			);
