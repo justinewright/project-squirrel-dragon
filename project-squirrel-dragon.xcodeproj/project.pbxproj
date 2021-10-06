@@ -15,7 +15,7 @@
 		2104475B270ACD1A00815441 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21044759270ACD1A00815441 /* LaunchScreen.storyboard */; };
 		2104476A270B0AE400815441 /* TempTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21044769270B0AE400815441 /* TempTests.swift */; };
 		216ADADA270D6FFA00D61E92 /* PokemonSetsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216ADAD9270D6FFA00D61E92 /* PokemonSetsData.swift */; };
-		216ADADF270D72FA00D61E92 /* PokemonTcgApiClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216ADADE270D72FA00D61E92 /* PokemonTcgApiClientProtocol.swift */; };
+		216ADADF270D72FA00D61E92 /* PokemonTcgAllSetsApiClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216ADADE270D72FA00D61E92 /* PokemonTcgAllSetsApiClientProtocol.swift */; };
 		216ADAE2270D75B100D61E92 /* PokemonTcgAllSetsApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216ADAE1270D75B100D61E92 /* PokemonTcgAllSetsApiClient.swift */; };
 		216ADAE9270DA9F200D61E92 /* PokemonCollectionSetsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216ADAE8270DA9F200D61E92 /* PokemonCollectionSetsRepository.swift */; };
 		216ADAEA270DA9F200D61E92 /* PokemonCollectionSetsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216ADAE8270DA9F200D61E92 /* PokemonCollectionSetsRepository.swift */; };
@@ -27,6 +27,7 @@
 		216ADAF4270DAD9900D61E92 /* PokemonCollectionSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216ADAF2270DAD9900D61E92 /* PokemonCollectionSet.swift */; };
 		216ADAF6270DBA0700D61E92 /* RepositoryContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216ADAF5270DBA0700D61E92 /* RepositoryContracts.swift */; };
 		216ADAF7270DBA0700D61E92 /* RepositoryContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216ADAF5270DBA0700D61E92 /* RepositoryContracts.swift */; };
+		216ADAF9270DC31300D61E92 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216ADAF8270DC31300D61E92 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,13 +52,14 @@
 		21044767270B0AE400815441 /* project-squirrel-dragonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "project-squirrel-dragonTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		21044769270B0AE400815441 /* TempTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempTests.swift; sourceTree = "<group>"; };
 		216ADAD9270D6FFA00D61E92 /* PokemonSetsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonSetsData.swift; sourceTree = "<group>"; };
-		216ADADE270D72FA00D61E92 /* PokemonTcgApiClientProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonTcgApiClientProtocol.swift; sourceTree = "<group>"; };
+		216ADADE270D72FA00D61E92 /* PokemonTcgAllSetsApiClientProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonTcgAllSetsApiClientProtocol.swift; sourceTree = "<group>"; };
 		216ADAE1270D75B100D61E92 /* PokemonTcgAllSetsApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonTcgAllSetsApiClient.swift; sourceTree = "<group>"; };
 		216ADAE8270DA9F200D61E92 /* PokemonCollectionSetsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCollectionSetsRepository.swift; sourceTree = "<group>"; };
 		216ADAEB270DAA1900D61E92 /* PokemonCollectionSetsContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCollectionSetsContracts.swift; sourceTree = "<group>"; };
 		216ADAEF270DAD5D00D61E92 /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
 		216ADAF2270DAD9900D61E92 /* PokemonCollectionSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCollectionSet.swift; sourceTree = "<group>"; };
 		216ADAF5270DBA0700D61E92 /* RepositoryContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryContracts.swift; sourceTree = "<group>"; };
+		216ADAF8270DC31300D61E92 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +160,7 @@
 			children = (
 				2104475C270ACD1A00815441 /* Info.plist */,
 				21044757270ACD1A00815441 /* Assets.xcassets */,
+				216ADAF8270DC31300D61E92 /* Constants.swift */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -166,7 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				216ADAD9270D6FFA00D61E92 /* PokemonSetsData.swift */,
-				216ADADE270D72FA00D61E92 /* PokemonTcgApiClientProtocol.swift */,
+				216ADADE270D72FA00D61E92 /* PokemonTcgAllSetsApiClientProtocol.swift */,
 				216ADAE1270D75B100D61E92 /* PokemonTcgAllSetsApiClient.swift */,
 			);
 			path = ClientApis;
@@ -328,9 +331,11 @@
 				216ADADA270D6FFA00D61E92 /* PokemonSetsData.swift in Sources */,
 				21044751270ACD1900815441 /* SceneDelegate.swift in Sources */,
 				216ADAEC270DAA1900D61E92 /* PokemonCollectionSetsContracts.swift in Sources */,
+				216ADAF9270DC31300D61E92 /* Constants.swift in Sources */,
 				216ADAE2270D75B100D61E92 /* PokemonTcgAllSetsApiClient.swift in Sources */,
 				216ADAE9270DA9F200D61E92 /* PokemonCollectionSetsRepository.swift in Sources */,
 				216ADADF270D72FA00D61E92 /* PokemonTcgApiClientProtocol.swift in Sources */,
+				216ADADF270D72FA00D61E92 /* PokemonTcgAllSetsApiClientProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
