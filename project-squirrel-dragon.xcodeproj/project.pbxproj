@@ -124,6 +124,7 @@
 		21233789270CC50300D96728 /* CoreLayer */ = {
 			isa = PBXGroup;
 			children = (
+				216ADAD8270D6F9800D61E92 /* ClientApis */,
 			);
 			path = CoreLayer;
 			sourceTree = "<group>";
@@ -131,7 +132,6 @@
 		2123378A270CC51E00D96728 /* BusinessLogicLayer */ = {
 			isa = PBXGroup;
 			children = (
-				216ADAD8270D6F9800D61E92 /* ClientApis */,
 			);
 			path = BusinessLogicLayer;
 			sourceTree = "<group>";
