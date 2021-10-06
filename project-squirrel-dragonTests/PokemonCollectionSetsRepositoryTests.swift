@@ -18,13 +18,13 @@ class PokemonCollectionSetsRepositoryTests: XCTestCase {
     }
 
     func testSuccessfulApiCallUpdatesPokemonCollectionSetsRepositoryArray() throws {
-        mockPokemonTcgAllSetsApiClient.apiCallResult = .success(load("PokemonCollectionSetsMockData.json"))
+        mockPokemonTcgAllSetsApiClient.apiCallResult = .success(mockPokemonCollectionSetsData)
         repositoryUnderTest.fetch()
         XCTAssert(!repositoryUnderTest.pokemonCollectionSets.isEmpty)
     }
 
     func testSuccessfulApiCallUpdatesRepositoryStateToSuccess() throws {
-        mockPokemonTcgAllSetsApiClient.apiCallResult = .success(load("PokemonCollectionSetsMockData.json"))
+        mockPokemonTcgAllSetsApiClient.apiCallResult = .success(mockPokemonCollectionSetsData)
         repositoryUnderTest.fetch()
         let expectedStateResult: RepositoryState = .success
         let actualStateResult = repositoryUnderTest.state
