@@ -7,10 +7,10 @@
 
 import Foundation
 
-class PokemonTcgAllSetsApiClient: PokemonTcgApiClientProtocol {
+class PokemonTcgAllSetsApiClient: PokemonTcgAllSetsApiClientProtocol {
     private let constants = Constants.PokemonTcgAllSetsApiClientConstants()
 
-    func fetch(then handler: @escaping (Result<PokemonSetsData>) -> Void) {
+    func fetch(then handler: @escaping PokemonTcgAllSetsApiClientResultBlock) {
         guard let url = URL(string: constants.apiSetsUrlString) else { return }
 
         // adding api key to header

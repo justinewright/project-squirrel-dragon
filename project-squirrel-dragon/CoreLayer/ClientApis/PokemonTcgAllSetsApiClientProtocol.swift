@@ -13,6 +13,8 @@ enum Result<PokemonSetsData> {
     case failure(URLError)
 }
 
-protocol PokemonTcgApiClientProtocol {
-    func fetch(then handler: @escaping (Result<PokemonSetsData>) -> Void)
+typealias PokemonTcgAllSetsApiClientResultBlock = (Result<PokemonSetsData>) -> Void
+
+protocol PokemonTcgAllSetsApiClientProtocol {
+    func fetch(then handler: @escaping PokemonTcgAllSetsApiClientResultBlock)
 }
