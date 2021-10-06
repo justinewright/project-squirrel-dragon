@@ -636,7 +636,7 @@
 				2104475E270ACD1A00815441 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		2104475F270ACD1A00815441 /* Build configuration list for PBXNativeTarget "project-squirrel-dragon" */ = {
 			isa = XCConfigurationList;
@@ -645,7 +645,7 @@
 				21044761270ACD1A00815441 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		2104476D270B0AE400815441 /* Build configuration list for PBXNativeTarget "project-squirrel-dragonTests" */ = {
 			isa = XCConfigurationList;
@@ -654,7 +654,7 @@
 				2104476F270B0AE400815441 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
