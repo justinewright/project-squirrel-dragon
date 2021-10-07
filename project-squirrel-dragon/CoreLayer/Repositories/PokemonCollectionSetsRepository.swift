@@ -12,12 +12,13 @@ class PokemonCollectionSetsRepository: RepositoryProtocol {
     // MARK: - Properties
     var state: RepositoryState = .loading
     var errorMessage = ""
+    var viewModel: PokemonCollectionSetsViewModel?
 
     private var pokemonTcgAllSetsApiClient: PokemonTcgAllSetsApiClientProtocol
     private (set) var pokemonCollectionSets: [PokemonCollectionSet] = []
 
     // MARK: - Initialization
-    init(pokemonTcgAllSetsApiClient: PokemonTcgAllSetsApiClientProtocol) {
+    init(pokemonTcgAllSetsApiClient: PokemonTcgAllSetsApiClientProtocol = PokemonTcgAllSetsApiClient()) {
         self.pokemonTcgAllSetsApiClient = pokemonTcgAllSetsApiClient
     }
 
@@ -28,6 +29,7 @@ class PokemonCollectionSetsRepository: RepositoryProtocol {
             case .success(let collectSetsData):
                 self?.state = .success
                 self?.pokemonCollectionSets = collectSetsData.data.map(PokemonCollectionSet.init)
+                self?.viewModel?.fetchedData(models: self?.pokemonCollectionSets ?? [] )
             case .failure(let error):
                 self?.state = .error
                 self?.errorMessage = error.localizedDescription

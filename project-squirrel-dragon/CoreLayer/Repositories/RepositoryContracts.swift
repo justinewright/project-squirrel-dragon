@@ -15,10 +15,10 @@ enum RepositoryState {
 
 protocol RepositoryProtocol {
     var state: RepositoryState { get }
-    
+    var viewModel: PokemonCollectionSetsViewModel? { get set }
     func fetch()
 }
 
 protocol RepositoryToViewModelProtocol {
-    func fetchedData() -> [BaseModel]
+    func fetchedData(models: [BaseModel]) 
 }
