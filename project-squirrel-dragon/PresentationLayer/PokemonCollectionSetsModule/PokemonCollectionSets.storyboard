@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Pokemon Collection Sets View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="PokemonCollectionSetsViewController" autoresizesArchivedViewToFullSize="NO" id="Y6W-OH-hqX" customClass="PokemonCollectionSetsViewController" customModule="project_squirrel_dragon" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" bounces="NO" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QAA-su-7u6">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="20" id="Ftn-Sc-pip">
+                                    <size key="itemSize" width="300" height="100"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="QAA-su-7u6" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="6zG-d6-6OT"/>
+                            <constraint firstItem="QAA-su-7u6" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="Bv5-Ve-Q7Z"/>
+                            <constraint firstItem="QAA-su-7u6" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="Hv5-Vv-dIG"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="QAA-su-7u6" secondAttribute="trailing" id="OwM-df-1oC"/>
+                            <constraint firstItem="QAA-su-7u6" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="T3U-Ql-FYG"/>
+                            <constraint firstItem="QAA-su-7u6" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="hMe-dm-Xdu"/>
+                            <constraint firstItem="QAA-su-7u6" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="jEv-5l-28g"/>
+                            <constraint firstItem="QAA-su-7u6" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="yrD-po-fq2"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="pokemonCollectionSetsCollectionView" destination="QAA-su-7u6" id="Ufg-30-6Km"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="257.97101449275362" y="40.848214285714285"/>
+        </scene>
+    </scenes>
+</document>
