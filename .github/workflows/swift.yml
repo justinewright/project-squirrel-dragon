@@ -19,5 +19,4 @@ jobs:
     - name: Select Xcode
       run: sudo xcode-select -switch /Applications/Xcode_13.0_beta.app && /usr/bin/xcodebuild -version
     - name: Run unit tests
-      run: xcodebuild test -project project-squirrel-dragon.xcodeproj -scheme project-squirrel-dragon -destination 'platform=iOS Simulator,name=iPhone 11,OS=15.0'
-
+      run: xcodebuild test -project project-squirrel-dragon.xcodeproj -scheme project-squirrel-dragon-test -destination 'platform=iOS Simulator,name=iPhone 11,OS=15.0'

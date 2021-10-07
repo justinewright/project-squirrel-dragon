@@ -18,7 +18,7 @@ struct PokemonCollectionSet: BaseModel {
     let printedTotal: Int
     let total: Int
     let releaseDate: String
-    let updatedAt: String // yyyy/mm//dd hh:mm:ss
+    let updatedAt: String 
     let imageSymbol: String
     let imageLogo: String
 
