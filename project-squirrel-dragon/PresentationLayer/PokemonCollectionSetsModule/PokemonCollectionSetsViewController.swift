@@ -11,14 +11,12 @@ class PokemonCollectionSetsViewController: UIViewController {
 
     // MARK: - Properties
     @IBOutlet weak var pokemonCollectionSetsCollectionView: UICollectionView!
-    private lazy var viewModel = PokemonCollectionSetsViewModel()
+    private lazy var viewModel = PokemonCollectionSetsViewModel(pokemonCollectionViewModelDelegate: self)
     private let cellReuseIdentifier = "PokemonCollectionSetCell"
     private let cellNibName = "PokemonCollectionSetCell"
-    private var sample: [PokemonCollectionSet] = []
 
     // MARK: - Life Cycle Methods
     override func viewDidLoad() {
-        viewModel.delegate = self
         configureCollectionView()
     }
 
@@ -39,10 +37,8 @@ extension PokemonCollectionSetsViewController: PokemonCollectionViewModelDelegat
 
     }
 
-    func didLoadPokemonCollectionSetsViewModel(_ pokemonCollectionSetsViewModel: PokemonCollectionSetsViewModel, pokemonCollectionSets: [PokemonCollectionSet]) {
+    func didLoadPokemonCollectionSetsViewModel(_ pokemonCollectionSetsViewModel: PokemonCollectionSetsViewModel) {
         DispatchQueue.main.async {
-            // TODO: - Load all sets that are being tracked
-            self.sample =  Array(pokemonCollectionSets[0..<10])
             self.pokemonCollectionSetsCollectionView.reloadData()
         }
     }

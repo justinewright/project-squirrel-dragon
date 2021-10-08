@@ -14,15 +14,12 @@ class PokemonCollectionSetCell: UICollectionViewCell {
     private var urlString: String = ""
     private let cornerRadius: CGFloat = 10
     private let borderWidth: CGFloat = 1
-    private let borderColour: CGColor = UIColor(ciColor: .white).cgColor
+    private let borderColour: CGColor = StyleKit.cellBorderColor
 
     // MARK: - Initialization
     override func awakeFromNib() {
         super.awakeFromNib()
         applyStyle()
-        layer.cornerRadius = 10
-        layer.borderWidth = 1
-        layer.borderColor = UIColor(ciColor: .white).cgColor
     }
 
     func configure(with pokemonCollectionSet: PokemonCollectionSet) {
