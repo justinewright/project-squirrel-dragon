@@ -19,45 +19,28 @@ class PokemonCollectionSetsRepositoryTests: XCTestCase {
 
     func testSuccessfulApiCallUpdatesPokemonCollectionSetsRepositoryArray() throws {
         mockPokemonTcgAllSetsApiClient.apiCallResult = .success(mockPokemonCollectionSetsData)
-        repositoryUnderTest.fetch()
+        repositoryUnderTest.fetch { _ in }
         XCTAssert(!repositoryUnderTest.pokemonCollectionSets.isEmpty)
-    }
-
-    func testSuccessfulApiCallUpdatesRepositoryStateToSuccess() throws {
-        mockPokemonTcgAllSetsApiClient.apiCallResult = .success(mockPokemonCollectionSetsData)
-        repositoryUnderTest.fetch()
-        let expectedStateResult: RepositoryState = .success
-        let actualStateResult = repositoryUnderTest.state
-        XCTAssertEqual(expectedStateResult, actualStateResult)
     }
 
     func testFailedApiCallDoesNotUpdatesPokemonCollectionSetsRepositoryArray() throws {
         mockPokemonTcgAllSetsApiClient.apiCallResult = .failure(URLError(.badServerResponse))
-        repositoryUnderTest.fetch()
+        repositoryUnderTest.fetch { _ in }
         XCTAssert(repositoryUnderTest.pokemonCollectionSets.isEmpty)
-    }
-
-    func testWhileWaitingForApiCallResponseRepositoryStateIsLoading() throws {
-        mockPokemonTcgAllSetsApiClient.apiCallResult = .failure(URLError(.badServerResponse))
-        let expectedStateResult: RepositoryState = .loading
-        let actualStateResult = repositoryUnderTest.state
-        XCTAssertEqual(expectedStateResult, actualStateResult)
-    }
-
-    func testFailedApiCallUpdatesRepositoryStateToError() throws {
-        mockPokemonTcgAllSetsApiClient.apiCallResult = .failure(URLError(.badServerResponse))
-        repositoryUnderTest.fetch()
-        let expectedStateResult: RepositoryState = .error
-        let actualStateResult = repositoryUnderTest.state
-        XCTAssertEqual(expectedStateResult, actualStateResult)
     }
 
     func testFailedApiCallUpdatesRepositoryErrorMessage() throws {
         mockPokemonTcgAllSetsApiClient.apiCallResult = .failure(URLError(.badServerResponse))
-        repositoryUnderTest.fetch()
-        let expectedErrorMessage = "The operation couldn’t be completed. (NSURLErrorDomain error -1011.)"
-        let actualErrorMessage = repositoryUnderTest.errorMessage
-        XCTAssertEqual(expectedErrorMessage, actualErrorMessage)
+        repositoryUnderTest.fetch { result in
+            switch result {
+            case .success(_):
+                XCTFail("Received results instead of error")
+            case .failure(let error):
+                let expectedErrorMessage = "The operation couldn’t be completed. (NSURLErrorDomain error -1011.)"
+                let actualErrorMessage = error.localizedDescription
+                XCTAssertEqual(expectedErrorMessage, actualErrorMessage)
+            }
+        }
     }
 
 }

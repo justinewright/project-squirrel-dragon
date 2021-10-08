@@ -17,6 +17,7 @@ class ViewController: UIViewController {
         view.addSubview(child.view)
         child.didMove(toParent: self)
         // Do any additional setup after loading the view.
+//        PokemonCollectionSetsRepository(pokemonTcgAllSetsApiClient: PokemonTcgAllSetsApiClient()).fetch()
     }
 
 }

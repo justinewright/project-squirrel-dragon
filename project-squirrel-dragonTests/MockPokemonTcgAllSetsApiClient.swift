@@ -9,7 +9,7 @@ import Foundation
 
 class MockPokemonTcgAllSetsApiClient: PokemonTcgAllSetsApiClientProtocol {
 
-    var apiCallResult: Result<PokemonSetsData> = .failure(URLError(.badServerResponse))
+    var apiCallResult: Result<PokemonSetsData, URLError> = .failure(URLError(.badServerResponse))
 
     func fetch(then handler: @escaping PokemonTcgAllSetsApiClientResultBlock) {
         handler(apiCallResult)
