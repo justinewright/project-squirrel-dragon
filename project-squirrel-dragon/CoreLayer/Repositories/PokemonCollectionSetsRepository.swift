@@ -10,27 +10,30 @@ import Foundation
 class PokemonCollectionSetsRepository: RepositoryProtocol {
 
     // MARK: - Properties
-    var state: RepositoryState = .loading
-    var errorMessage = ""
+    private var state: RepositoryState = .loading
+    private var error: URLError?
+    private var viewModel: PokemonCollectionSetsViewModel?
 
     private var pokemonTcgAllSetsApiClient: PokemonTcgAllSetsApiClientProtocol
     private (set) var pokemonCollectionSets: [PokemonCollectionSet] = []
 
     // MARK: - Initialization
-    init(pokemonTcgAllSetsApiClient: PokemonTcgAllSetsApiClientProtocol) {
+    init(pokemonTcgAllSetsApiClient: PokemonTcgAllSetsApiClientProtocol = PokemonTcgAllSetsApiClient(), pokemonCollectionSetsViewModel: PokemonCollectionSetsViewModel? = nil) {
         self.pokemonTcgAllSetsApiClient = pokemonTcgAllSetsApiClient
     }
 
     // MARK: - Repository Protocol Implementation
-    func fetch() {
-        pokemonTcgAllSetsApiClient.fetch { [weak self] result in
+    func fetch(then handler: @escaping PokemonCollectionSetResultBlock) {
+        pokemonTcgAllSetsApiClient.fetch  { [weak self] result in
             switch result {
             case .success(let collectSetsData):
                 self?.state = .success
                 self?.pokemonCollectionSets = collectSetsData.data.map(PokemonCollectionSet.init)
+                handler(.success(self?.pokemonCollectionSets ?? []))
             case .failure(let error):
                 self?.state = .error
-                self?.errorMessage = error.localizedDescription
+                self?.error = error
+                handler(.failure(error))
             }
         }
     }

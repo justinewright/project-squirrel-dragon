@@ -17,7 +17,7 @@ Squirrel Dragon is an iOS application. It is developed for pokemon card collecto
 <!-- ROADMAP -->
 ## Roadmap
 
-- [] Feature 1
+- [] Display your pokemon collection sets.
 - [] Feature 2
 - [] Feature 3
     - [] Nested Feature

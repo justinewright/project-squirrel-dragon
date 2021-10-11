@@ -14,11 +14,8 @@ enum RepositoryState {
 }
 
 protocol RepositoryProtocol {
-    var state: RepositoryState { get }
-    
-    func fetch()
+    func fetch(then handler: @escaping PokemonCollectionSetResultBlock)
 }
 
-protocol RepositoryToViewModelProtocol {
-    func fetchedData() -> [BaseModel]
-}
+typealias PokemonCollectionSetResultBlock = (Result<[PokemonCollectionSet], URLError>) -> Void
+

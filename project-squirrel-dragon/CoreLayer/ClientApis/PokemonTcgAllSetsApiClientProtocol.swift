@@ -7,12 +7,7 @@
 
 import Foundation
 
-enum Result<PokemonSetsData> {
-    case success(PokemonSetsData)
-    case failure(URLError)
-}
-
-typealias PokemonTcgAllSetsApiClientResultBlock = (Result<PokemonSetsData>) -> Void
+typealias PokemonTcgAllSetsApiClientResultBlock = (Result<PokemonSetsData, URLError>) -> Void
 
 protocol PokemonTcgAllSetsApiClientProtocol {
     func fetch(then handler: @escaping PokemonTcgAllSetsApiClientResultBlock)
