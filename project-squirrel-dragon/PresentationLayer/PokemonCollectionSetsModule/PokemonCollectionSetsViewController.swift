@@ -11,7 +11,7 @@ class PokemonCollectionSetsViewController: UIViewController {
 
     // MARK: - Properties
     @IBOutlet weak var pokemonCollectionSetsCollectionView: UICollectionView!
-    private lazy var viewModel = PokemonCollectionSetsViewModel(pokemonCollectionViewModelDelegate: self)
+    private lazy var viewModel = PokemonCollectionSetsViewModel(pokemonCollectionViewModelDelegate: self, repository: PokemonCollectionSetsRepository())
     private let cellReuseIdentifier = "PokemonCollectionSetCell"
     private let cellNibName = "PokemonCollectionSetCell"
 

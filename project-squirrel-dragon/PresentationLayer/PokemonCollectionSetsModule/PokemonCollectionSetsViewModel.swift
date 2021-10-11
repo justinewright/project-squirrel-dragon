@@ -17,13 +17,13 @@ class PokemonCollectionSetsViewModel {
 
     // MARK: - Properties
     weak var delegate: PokemonCollectionViewModelDelegate?
-    private lazy var repository = PokemonCollectionSetsRepository()
+    private var repository: PokemonCollectionSetsRepository
     private (set) var pokemonCollectionSets: [PokemonCollectionSet] = []
 
     // MARK: - Initialization
-    init(pokemonCollectionViewModelDelegate: PokemonCollectionViewModelDelegate) {
+    init(pokemonCollectionViewModelDelegate: PokemonCollectionViewModelDelegate, repository: PokemonCollectionSetsRepository) {
         delegate = pokemonCollectionViewModelDelegate
-        repository = PokemonCollectionSetsRepository(pokemonCollectionSetsViewModel: self)
+        self.repository = repository
         updateView()
     }
 
