@@ -16,7 +16,7 @@ protocol PokemonCollectionViewModelDelegate: AnyObject {
 class PokemonCollectionSetsViewModel {
 
     // MARK: - Properties
-    weak var delegate: PokemonCollectionViewModelDelegate?
+    private weak var delegate: PokemonCollectionViewModelDelegate?
     private var repository: PokemonCollectionSetsRepository
     private (set) var pokemonCollectionSets: [PokemonCollectionSet] = []
 
@@ -24,7 +24,6 @@ class PokemonCollectionSetsViewModel {
     init(pokemonCollectionViewModelDelegate: PokemonCollectionViewModelDelegate, repository: PokemonCollectionSetsRepository) {
         delegate = pokemonCollectionViewModelDelegate
         self.repository = repository
-        updateView()
     }
 
     func updateView() {
