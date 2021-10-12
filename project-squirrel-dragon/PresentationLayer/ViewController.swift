@@ -12,10 +12,12 @@ class ViewController: UIViewController {
     var child = UIViewController()
     override func viewDidLoad() {
         super.viewDidLoad()
-        child = PokemonCollectionSetsModuleBuilder.build()
+        child = CustomSearchBarViewController()
+//        child = CustomSearchBarViewController();
+//        child = PokemonCollectionSetsModuleBuilder.build()
         addChild( child)
         view.addSubview(child.view)
-        child.didMove(toParent: self)
+//        child.didMove(toParent: self)
         // Do any additional setup after loading the view.
 //        PokemonCollectionSetsRepository(pokemonTcgAllSetsApiClient: PokemonTcgAllSetsApiClient()).fetch()
     }

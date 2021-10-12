@@ -10,7 +10,6 @@
         <!--Pokemon Collection Sets View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="PokemonCollectionSetsViewController" autoresizesArchivedViewToFullSize="NO" id="Y6W-OH-hqX" customClass="PokemonCollectionSetsViewController" customModule="project_squirrel_dragon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -44,6 +43,7 @@
                         <outlet property="pokemonCollectionSetsCollectionView" destination="QAA-su-7u6" id="Ufg-30-6Km"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="257.97101449275362" y="40.848214285714285"/>
         </scene>
