@@ -11,8 +11,6 @@
 
 @protocol CustomSearchbarViewDelegate <NSObject>
 
-
-
 @end
 
 @interface CustomSearchBarViewModel: NSObject
