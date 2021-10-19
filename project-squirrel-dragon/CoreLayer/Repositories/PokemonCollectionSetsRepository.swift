@@ -25,15 +25,18 @@ class PokemonCollectionSetsRepository: RepositoryProtocol {
     // MARK: - Repository Protocol Implementation
     func fetch(then handler: @escaping PokemonCollectionSetResultBlock) {
         pokemonTcgAllSetsApiClient.fetch  { [weak self] result in
-            switch result {
-            case .success(let collectSetsData):
-                self?.state = .success
-                self?.pokemonCollectionSets = collectSetsData.data.map(PokemonCollectionSet.init)
-                handler(.success(self?.pokemonCollectionSets ?? []))
-            case .failure(let error):
-                self?.state = .error
-                self?.error = error
-                handler(.failure(error))
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let collectSetsData):
+                    self?.state = .success
+
+                    self?.pokemonCollectionSets = collectSetsData.data.map(PokemonCollectionSet.init)
+                    handler(.success(self?.pokemonCollectionSets ?? []))
+                case .failure(let error):
+                    self?.state = .error
+                    self?.error = error
+                    handler(.failure(error))
+                }
             }
         }
     }

@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 class PokemonCollectionSetsViewController: UIViewController {
     // MARK: - Properties
     @IBOutlet weak var pokemonCollectionSetsCollectionView: UICollectionView!
@@ -66,10 +65,8 @@ extension PokemonCollectionSetsViewController: PokemonCollectionViewModelDelegat
     }
 
     func didLoadPokemonCollectionSetsViewModel(_ pokemonCollectionSetsViewModel: PokemonCollectionSetsViewModel) {
-        DispatchQueue.main.async {
-            self.pokemonCollectionSetsCollectionView.reloadData()
-            self.configureSearchView()
-        }
+        self.pokemonCollectionSetsCollectionView.reloadData()
+        self.configureSearchView()
     }
 
     func didFailWithError(message: String) {

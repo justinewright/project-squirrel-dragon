@@ -94,7 +94,6 @@ float keyboardHeight = 300;
 //MARK: Keyboard Methods
 - (void)keyboardWillShow:(NSNotification *)notification
 {
-
     keyboardUp = YES;
     [self.backgroundView setHidden:NO];
     [self.backgroundView setUserInteractionEnabled:YES];
@@ -159,12 +158,8 @@ float keyboardHeight = 300;
     searchFilter = searchText;
     [self.viewModel filter:searchText];
     [self.tableView reloadData];
-    dispatch_async(dispatch_get_main_queue(), ^{
-            //This code will run in the main thread:
-        self.tableViewHeight.constant = MIN(self.tableView.contentSize.height, maxTableHeight);
-        });
+    self.tableViewHeight.constant = MIN(self.tableView.contentSize.height, maxTableHeight);
 }
-
 
 //MARK: Gestures
 
@@ -198,6 +193,5 @@ float keyboardHeight = 300;
 -(void)fadeOut: (UIView*) view {
     [view setHidden:YES];
 }
-
 
 @end
