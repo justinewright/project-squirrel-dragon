@@ -29,7 +29,6 @@
 		21671E6E2715D66200A45571 /* CustomSearchBarModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21671E6D2715D66200A45571 /* CustomSearchBarModuleBuilder.swift */; };
 		21671E792715DDDC00A45571 /* CustomSearchBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21671E772715DDDC00A45571 /* CustomSearchBarViewController.m */; };
 		21671E7A2715DDDC00A45571 /* CustomSearchBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21671E782715DDDC00A45571 /* CustomSearchBarViewController.xib */; };
-		2169EC5727198BE3002A396F /* Comparable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2169EC5627198BE3002A396F /* Comparable+Extension.swift */; };
 		216ADADA270D6FFA00D61E92 /* PokemonSetsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216ADAD9270D6FFA00D61E92 /* PokemonSetsData.swift */; };
 		216ADAE2270D75B100D61E92 /* PokemonTcgAllSetsApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216ADAE1270D75B100D61E92 /* PokemonTcgAllSetsApiClient.swift */; };
 		216ADAE9270DA9F200D61E92 /* PokemonCollectionSetsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216ADAE8270DA9F200D61E92 /* PokemonCollectionSetsRepository.swift */; };
@@ -41,6 +40,11 @@
 		216ADAF6270DBA0700D61E92 /* RepositoryContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216ADAF5270DBA0700D61E92 /* RepositoryContracts.swift */; };
 		216ADAF7270DBA0700D61E92 /* RepositoryContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216ADAF5270DBA0700D61E92 /* RepositoryContracts.swift */; };
 		2171BC6A2710086000EBBA3E /* StyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2171BC692710086000EBBA3E /* StyleKit.swift */; };
+		2183225D271DABF400AD8CB5 /* SearchBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2183225C271DABF400AD8CB5 /* SearchBarTests.swift */; };
+		2183225E271DB16000AD8CB5 /* CustomSearchBarViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 21843376271417D000EC2F5A /* CustomSearchBarViewModel.m */; };
+		2183225F271DB16000AD8CB5 /* SearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 21671E692715CACA00A45571 /* SearchTableViewCell.m */; };
+		21832260271DB16000AD8CB5 /* CustomSearchBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21671E772715DDDC00A45571 /* CustomSearchBarViewController.m */; };
+		21832261271DB16000AD8CB5 /* FilterableDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 218CF2202718A8140012F8E1 /* FilterableDataSource.m */; };
 		21843377271417D000EC2F5A /* CustomSearchBarViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 21843376271417D000EC2F5A /* CustomSearchBarViewModel.m */; };
 		2186D076270DDBA0005F1E97 /* PokemonCollectionSetsRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2186D075270DDBA0005F1E97 /* PokemonCollectionSetsRepositoryTests.swift */; };
 		2186D07A270DDCED005F1E97 /* MockPokemonTcgAllSetsApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2186D079270DDCED005F1E97 /* MockPokemonTcgAllSetsApiClient.swift */; };
@@ -73,9 +77,8 @@
 		21671E6A2715CACA00A45571 /* SearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
 		21671E6D2715D66200A45571 /* CustomSearchBarModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchBarModuleBuilder.swift; sourceTree = "<group>"; };
 		21671E762715DDDC00A45571 /* CustomSearchBarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CustomSearchBarViewController.h; path = "project-squirrel-dragon/PresentationLayer/CustomSearchBarModule/headers/CustomSearchBarViewController.h"; sourceTree = SOURCE_ROOT; };
-		21671E772715DDDC00A45571 /* CustomSearchBarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CustomSearchBarViewController.m; path = "project-squirrel-dragon/PresentationLayer/CustomSearchBarModule/CustomSearchBarViewController.m"; sourceTree = SOURCE_ROOT; };
+		21671E772715DDDC00A45571 /* CustomSearchBarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CustomSearchBarViewController.m; path = "project-squirrel-dragon/PresentationLayer/CustomSearchBarModule/src/CustomSearchBarViewController.m"; sourceTree = SOURCE_ROOT; };
 		21671E782715DDDC00A45571 /* CustomSearchBarViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = CustomSearchBarViewController.xib; path = "project-squirrel-dragon/PresentationLayer/CustomSearchBarModule/CustomSearchBarViewController.xib"; sourceTree = SOURCE_ROOT; };
-		2169EC5627198BE3002A396F /* Comparable+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comparable+Extension.swift"; sourceTree = "<group>"; };
 		216ADAD9270D6FFA00D61E92 /* PokemonSetsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonSetsData.swift; sourceTree = "<group>"; };
 		216ADADE270D72FA00D61E92 /* PokemonTcgAllSetsApiClientProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonTcgAllSetsApiClientProtocol.swift; sourceTree = "<group>"; };
 		216ADAE1270D75B100D61E92 /* PokemonTcgAllSetsApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonTcgAllSetsApiClient.swift; sourceTree = "<group>"; };
@@ -84,7 +87,8 @@
 		216ADAF2270DAD9900D61E92 /* PokemonCollectionSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCollectionSet.swift; sourceTree = "<group>"; };
 		216ADAF5270DBA0700D61E92 /* RepositoryContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryContracts.swift; sourceTree = "<group>"; };
 		2171BC692710086000EBBA3E /* StyleKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleKit.swift; sourceTree = "<group>"; };
-		218433732714176500EC2F5A /* project-squirrel-dragon-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "project-squirrel-dragon-Bridging-Header.h"; sourceTree = "<group>"; };
+		2183225C271DABF400AD8CB5 /* SearchBarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarTests.swift; sourceTree = "<group>"; };
+		218433732714176500EC2F5A /* project-squirrel-dragon-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "project-squirrel-dragon-Bridging-Header.h"; path = "project-squirrel-dragon/SupportingFiles/project-squirrel-dragon-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		21843376271417D000EC2F5A /* CustomSearchBarViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomSearchBarViewModel.m; sourceTree = "<group>"; };
 		21843378271417FD00EC2F5A /* CustomSearchBarViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CustomSearchBarViewModel.h; path = "project-squirrel-dragon/PresentationLayer/CustomSearchBarModule/headers/CustomSearchBarViewModel.h"; sourceTree = SOURCE_ROOT; };
 		2186D075270DDBA0005F1E97 /* PokemonCollectionSetsRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCollectionSetsRepositoryTests.swift; sourceTree = "<group>"; };
@@ -149,6 +153,7 @@
 				21044769270B0AE400815441 /* TempTests.swift */,
 				2186D079270DDCED005F1E97 /* MockPokemonTcgAllSetsApiClient.swift */,
 				2186D082270E035E005F1E97 /* MockPokemonCollectionSetsData.swift */,
+				2183225C271DABF400AD8CB5 /* SearchBarTests.swift */,
 			);
 			path = "project-squirrel-dragonTests";
 			sourceTree = "<group>";
@@ -221,7 +226,6 @@
 			isa = PBXGroup;
 			children = (
 				21667085270F381300B6A874 /* UIImageView+Extension.swift */,
-				2169EC5627198BE3002A396F /* Comparable+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -272,14 +276,22 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		21843370271416E300EC2F5A /* CustomSearchBarModule */ = {
+		2183225B271D86D200AD8CB5 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				2169EC552719844D002A396F /* headers */,
 				21843376271417D000EC2F5A /* CustomSearchBarViewModel.m */,
 				218CF2202718A8140012F8E1 /* FilterableDataSource.m */,
 				21671E692715CACA00A45571 /* SearchTableViewCell.m */,
 				21671E772715DDDC00A45571 /* CustomSearchBarViewController.m */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		21843370271416E300EC2F5A /* CustomSearchBarModule */ = {
+			isa = PBXGroup;
+			children = (
+				2169EC552719844D002A396F /* headers */,
+				2183225B271D86D200AD8CB5 /* src */,
 				21671E6A2715CACA00A45571 /* SearchTableViewCell.xib */,
 				21671E782715DDDC00A45571 /* CustomSearchBarViewController.xib */,
 				21671E6D2715D66200A45571 /* CustomSearchBarModuleBuilder.swift */,
@@ -420,7 +432,6 @@
 				216ADAF3270DAD9900D61E92 /* PokemonCollectionSet.swift in Sources */,
 				216ADAF0270DAD5D00D61E92 /* BaseModel.swift in Sources */,
 				21044753270ACD1900815441 /* ViewController.swift in Sources */,
-				2169EC5727198BE3002A396F /* Comparable+Extension.swift in Sources */,
 				2104474F270ACD1900815441 /* AppDelegate.swift in Sources */,
 				218CF2212718A8140012F8E1 /* FilterableDataSource.m in Sources */,
 				216ADAF6270DBA0700D61E92 /* RepositoryContracts.swift in Sources */,
@@ -443,9 +454,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				2166708C270F656000B6A874 /* PokemonTcgAllSetsApiClient.swift in Sources */,
+				21832261271DB16000AD8CB5 /* FilterableDataSource.m in Sources */,
+				2183225D271DABF400AD8CB5 /* SearchBarTests.swift in Sources */,
 				2166708B270F654300B6A874 /* PokemonCollectionSetsViewModel.swift in Sources */,
 				2186D07E270DE001005F1E97 /* PokemonSetsData.swift in Sources */,
 				2186D07F270DE001005F1E97 /* PokemonTcgAllSetsApiClientProtocol.swift in Sources */,
+				2183225E271DB16000AD8CB5 /* CustomSearchBarViewModel.m in Sources */,
 				2186D076270DDBA0005F1E97 /* PokemonCollectionSetsRepositoryTests.swift in Sources */,
 				2186D07A270DDCED005F1E97 /* MockPokemonTcgAllSetsApiClient.swift in Sources */,
 				216ADAF4270DAD9900D61E92 /* PokemonCollectionSet.swift in Sources */,
@@ -454,6 +468,8 @@
 				2104476A270B0AE400815441 /* TempTests.swift in Sources */,
 				216ADAF1270DAD5D00D61E92 /* BaseModel.swift in Sources */,
 				2186D083270E035E005F1E97 /* MockPokemonCollectionSetsData.swift in Sources */,
+				2183225F271DB16000AD8CB5 /* SearchTableViewCell.m in Sources */,
+				21832260271DB16000AD8CB5 /* CustomSearchBarViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -664,8 +680,10 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = X4RVCKBN8K;
 				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = "CONFIGURATION_TEMP_DIR/project-squirrel-dragon.build/DerivedSources";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -675,6 +693,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.justFoxing.project-squirrel-dragonTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "project-squirrel-dragon-Swift.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/project-squirrel-dragon.app/project-squirrel-dragon";
@@ -687,8 +706,10 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = X4RVCKBN8K;
 				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = "CONFIGURATION_TEMP_DIR/project-squirrel-dragon.build/DerivedSources";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -698,6 +719,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.justFoxing.project-squirrel-dragonTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "project-squirrel-dragon-Swift.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/project-squirrel-dragon.app/project-squirrel-dragon";
