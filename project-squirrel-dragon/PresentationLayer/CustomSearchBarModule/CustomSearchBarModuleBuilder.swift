@@ -10,8 +10,8 @@ import UIKit
 class CustomSearchBarModuleBuilder {
     static func build() -> UIViewController {
         // TODO: - add navigation builder
-        let storyboard = UIStoryboard.init(name: "CustomSearchBarViewController", bundle: nil)
-        let view = storyboard.instantiateViewController(withIdentifier: "CustomSearchBarViewController")
+
+        let view = CustomSearchBarViewController();
         // return factory of the view
         return view
     }

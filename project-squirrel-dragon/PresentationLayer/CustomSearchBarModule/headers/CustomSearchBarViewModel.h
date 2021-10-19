@@ -8,17 +8,22 @@
 #ifndef CustomSearchBarViewModel_h
 #define CustomSearchBarViewModel_h
 #import <Foundation/Foundation.h>
-
+@class CustomSearchBarViewModel;
 @protocol CustomSearchbarViewDelegate <NSObject>
-
+- (void)updateDisplay:(CustomSearchBarViewModel *)sender
+     withSearchFilter: (NSString*)searchFilter;
 @end
 
 @interface CustomSearchBarViewModel: NSObject
 
-- (instancetype)initWithList: (NSArray *) list;
+- (instancetype)initWithList: (NSArray *) list
+                 andDelegate: (id<CustomSearchbarViewDelegate>) delegate;
 @property NSArray *list;
 @property NSMutableArray *filteredList;
 @property BOOL isFiltered;
+
+-(void) filter: (NSString *)searchWord;
+
 @end
 
 #endif /* CustomSearchBarViewModel */

@@ -4,18 +4,18 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomSearchBarViewController">
             <connections>
                 <outlet property="addButton" destination="Io2-DW-HyR" id="cXb-dH-deB"/>
+                <outlet property="containerHeight" destination="qAc-CV-uyr" id="jug-ly-A0i"/>
                 <outlet property="containerViewBottomAnchor" destination="3Fg-H6-Grj" id="1VU-ll-JmN"/>
                 <outlet property="searchBar" destination="eWH-aG-k2h" id="aQY-WC-TrI"/>
                 <outlet property="searchLabel" destination="OOY-oT-HUO" id="6Dt-JA-h5o"/>
                 <outlet property="tableView" destination="cty-fK-DCi" id="9OQ-dd-vWY"/>
-                <outlet property="tableViewHeight" destination="BQI-87-tng" id="fL6-Bj-N5S"/>
+                <outlet property="tableViewHeight" destination="2qp-ga-X0z" id="mHl-wK-u6m"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -28,12 +28,12 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <subviews>
                         <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" bouncesZoom="NO" style="insetGrouped" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="cty-fK-DCi">
-                            <rect key="frame" x="20" y="673" width="374" height="100"/>
+                            <rect key="frame" x="20" y="578" width="374" height="200"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <color key="tintColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
-                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="2qp-ga-X0z"/>
-                                <constraint firstAttribute="height" constant="100" id="BQI-87-tng"/>
+                                <constraint firstAttribute="height" constant="200" id="2qp-ga-X0z"/>
+                                <constraint firstAttribute="width" constant="374" id="sO0-Ha-dPA"/>
                             </constraints>
                             <color key="separatorColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <color key="sectionIndexColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -67,15 +67,21 @@
                                 </label>
                             </subviews>
                             <viewLayoutGuide key="safeArea" id="DtE-Kq-Cmu"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="CEI-jj-XBo"/>
                             </constraints>
                         </stackView>
                     </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <accessibility key="accessibilityConfiguration">
+                        <accessibilityTraits key="traits" notEnabled="YES"/>
+                    </accessibility>
                     <constraints>
-                        <constraint firstItem="11S-NO-YDa" firstAttribute="top" secondItem="cty-fK-DCi" secondAttribute="bottom" constant="5" id="CAq-mg-L5z"/>
                         <constraint firstItem="cty-fK-DCi" firstAttribute="leading" secondItem="qAc-CV-uyr" secondAttribute="leading" constant="20" id="Jh7-P0-xbD"/>
+                        <constraint firstItem="cty-fK-DCi" firstAttribute="centerX" secondItem="qAc-CV-uyr" secondAttribute="centerX" id="LCD-rO-TXc"/>
                         <constraint firstAttribute="trailing" secondItem="11S-NO-YDa" secondAttribute="trailing" constant="20" id="UM9-dr-TKu"/>
+                        <constraint firstItem="11S-NO-YDa" firstAttribute="top" secondItem="cty-fK-DCi" secondAttribute="bottom" id="cfG-tF-AjP"/>
                         <constraint firstAttribute="trailing" secondItem="cty-fK-DCi" secondAttribute="trailing" constant="20" id="dx0-j5-jI0"/>
                         <constraint firstItem="11S-NO-YDa" firstAttribute="leading" secondItem="qAc-CV-uyr" secondAttribute="leading" constant="20" id="e3u-AO-06D"/>
                         <constraint firstAttribute="bottom" secondItem="11S-NO-YDa" secondAttribute="bottom" id="nm6-Zv-7Lq"/>
@@ -83,19 +89,16 @@
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
-            <color key="backgroundColor" systemColor="labelColor"/>
+            <accessibility key="accessibilityConfiguration">
+                <accessibilityTraits key="traits" notEnabled="YES"/>
+            </accessibility>
             <constraints>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="qAc-CV-uyr" secondAttribute="bottom" id="3Fg-H6-Grj"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="qAc-CV-uyr" secondAttribute="trailing" id="9ZV-dK-Oiq"/>
+                <constraint firstItem="qAc-CV-uyr" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="NRI-jO-y2y"/>
                 <constraint firstItem="qAc-CV-uyr" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="XVz-LL-do3"/>
-                <constraint firstItem="qAc-CV-uyr" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="YGD-gd-Z8n"/>
             </constraints>
             <point key="canvasLocation" x="131.8840579710145" y="85.714285714285708"/>
         </view>
     </objects>
-    <resources>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-    </resources>
 </document>

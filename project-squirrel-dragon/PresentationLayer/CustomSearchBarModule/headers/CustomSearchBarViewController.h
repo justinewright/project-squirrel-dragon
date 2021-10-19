@@ -10,23 +10,13 @@
 #import "CustomSearchBarViewModel.h"
 #import "FilterableDataSource.h"
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CustomSearchBarViewController : UIViewController<UITableViewDelegate, UISearchBarDelegate>
 
-@property (nonatomic, strong) FilterableDataSource *dataSource;
+-(void)configure: (CustomSearchBarViewModel*)viewModel;
 
-@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
-@property (weak, nonatomic) IBOutlet UIButton *addButton;
-@property (weak, nonatomic) IBOutlet UILabel *searchLabel;
-@property (weak, nonatomic) UIView *keyboardAccessory;
-- (IBAction)addButtonPressed:(id)sender;
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewHeight;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *containerViewBottomAnchor;
-@property (nonatomic, assign) CGFloat lastContentOffset;
-
-@property CustomSearchBarViewModel *viewModel;
 @end
 
 NS_ASSUME_NONNULL_END

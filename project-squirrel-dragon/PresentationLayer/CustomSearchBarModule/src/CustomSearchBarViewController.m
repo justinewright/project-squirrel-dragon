@@ -6,41 +6,65 @@
 //
 
 #import "CustomSearchBarViewController.h"
-
+@class IgnoreTouchView;
+@class PokemonCollectionSetCell;
+//MARK: - Protected Variables
 @interface CustomSearchBarViewController ()
-
+@property (retain, nonatomic) CustomSearchBarViewModel* viewModel;
+@property (retain, nonatomic) FilterableDataSource* dataSource;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (weak, nonatomic) IBOutlet UIButton *addButton;
+@property (weak, nonatomic) IBOutlet UILabel *searchLabel;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *containerViewBottomAnchor;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *containerHeight;
+- (IBAction)addButtonPressed:(id)sender;
 @end
 
 @implementation CustomSearchBarViewController
-// MARK: - private variables
-NSString* searchText = @"";
-float maxTableHeight = 150.0;
-BOOL keyboardUp = NO;
+// MARK: - Private Variables
 
+NSString* searchFilter = @"";
+float maxTableHeight = 300.0;
+BOOL keyboardUp = NO;
+float keyboardHeight = 300;
+UIView* mainView;
+
+// MARK: - Initialize Method
+- (void)configure: (CustomSearchBarViewModel*)viewModel {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.viewModel = viewModel;
+        self.dataSource = [[FilterableDataSource alloc] initWithViewModel:self.viewModel];
+        self.tableView.dataSource = self.dataSource;
+        self.tableView.delegate = self;
+        [self.tableView reloadData];
+        });
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    NSLog(@"scrolling");
+}
 // MARK: - Life Cycle Methods
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UIPanGestureRecognizer* panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panRecognized:)];
+        [self.view addGestureRecognizer: panGesture];
+
     self.searchBar.delegate = self;
-
-    id objects [] = {@"1", @"2", @"3"};
-    NSUInteger count = sizeof(objects) / sizeof(id);
-    NSArray* list = [NSArray arrayWithObjects:objects count:count];
-    self.viewModel = [[CustomSearchBarViewModel alloc]initWithList:list];
-
-    self.dataSource = [[FilterableDataSource alloc] initWithViewModel:self.viewModel];
-    self.tableView.dataSource = self.dataSource;
-    self.tableView.delegate = self;
     [self.tableView registerNib:[UINib nibWithNibName:@"SearchTableViewCell" bundle:nil] forCellReuseIdentifier:@"SearchTableViewCell"];
     [self.tableView setHidden:YES];
-    UIPanGestureRecognizer* panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panRecognized:)];
-    [self.view addGestureRecognizer: panGesture];
 
+    [self applyStyle];
+
+}
+
+- (void)applyStyle {
     CALayer* borderr = [[CALayer alloc]init];
     borderr.frame = CGRectMake(140, 0, 100, 1);
     borderr.backgroundColor = [[UIColor grayColor] CGColor];
 
     [self.searchLabel.layer addSublayer:borderr];
-
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -52,7 +76,7 @@ BOOL keyboardUp = NO;
 
 - (void)viewWillLayoutSubviews {
     [super updateViewConstraints];
-    self.tableViewHeight.constant = self.tableView.contentSize.height;
+    self.tableViewHeight.constant = MIN(self.tableView.contentSize.height, maxTableHeight);
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -66,7 +90,10 @@ BOOL keyboardUp = NO;
 {
     keyboardUp = YES;
     [self.tableView setHidden:NO];
+    [self.addButton setHidden:YES];
+    self.view.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.5 ];
     CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+    keyboardHeight = keyboardSize.height;
     double keyboardDuration = [[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     self.containerViewBottomAnchor.constant = keyboardSize.height - self.view.safeAreaInsets.bottom;
     [UIView animateWithDuration:keyboardDuration animations:^{
@@ -77,6 +104,8 @@ BOOL keyboardUp = NO;
 -(void)keyboardWillHide:(NSNotification *)notification
 {
     keyboardUp = NO;
+    self.view.backgroundColor = [UIColor clearColor];
+    [self.addButton setHidden:NO];
     [self.tableView setHidden:YES];
     double keyboardDuration = [[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     self.containerViewBottomAnchor.constant = 0;
@@ -94,107 +123,65 @@ BOOL keyboardUp = NO;
     [self.view endEditing:YES];
     [_searchBar resignFirstResponder];
     dispatch_async(dispatch_get_main_queue(), ^{
-        self->_searchBar.text = searchText;
-        self.searchLabel.text = searchText;
+        self->_searchBar.text = searchFilter;
+        self.searchLabel.text = searchFilter;
         });
+    [self.view resignFirstResponder];
+
 }
 
 //MARK: TableViewDelegate Methods
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [self hideSearchBarKeyboard];
-    if (_viewModel.isFiltered){
-        searchText = _viewModel.filteredList[_viewModel.filteredList.count-(indexPath.row+1)] ;
-        return;
+    if (self.viewModel.isFiltered){
+        searchFilter = _viewModel.filteredList[_viewModel.filteredList.count-(indexPath.row+1)] ;
+    } else {
+        searchFilter = _viewModel.list[_viewModel.list.count-(indexPath.row+1)] ;
     }
-    searchText = _viewModel.list[_viewModel.list.count-(indexPath.row+1)] ;
+
+    [_viewModel filter:searchFilter];
 }
 
 //MARK: Search Bar Delegate Methods
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    if (searchText.length == 0) {
-        self.viewModel.isFiltered = NO;
-
-    } else {
-        self.viewModel.isFiltered = YES;
-        self.viewModel.filteredList = [[NSMutableArray alloc]init];
-
-        for (NSString *item in self.viewModel.list) {
-            NSRange range = [item rangeOfString:searchText];
-
-            if (range.location != NSNotFound) {
-                [self.viewModel.filteredList addObject: item];
-            }
-        }
-    }
+    searchFilter = searchText;
+    [self.viewModel filter:searchText];
     [self.tableView reloadData];
     dispatch_async(dispatch_get_main_queue(), ^{
             //This code will run in the main thread:
-        self.tableViewHeight.constant = MIN(self.tableView.contentSize.height, maxTableHeight);;
+        self.tableViewHeight.constant = MIN(self.tableView.contentSize.height, maxTableHeight);
         });
 }
 
-- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
-    self.viewModel.isFiltered = NO;
-}
 
 //MARK: Gestures
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     if(keyboardUp){
         [self hideSearchBarKeyboard];
-        searchText = @"";
     }
-
 }
+
 - (void)panRecognized:(UIPanGestureRecognizer *)rec
 {
     if (keyboardUp)
         return;
     CGPoint vel = [rec velocityInView:self.view];
-
-    if (vel.y > 0 && self.searchBar.isHidden)
-    {
-        [self hideSearchLabel];
-
-        [self showSearchBar];
-        [self showAddButton];
-    }
-    else if (vel.y < 0 && self.searchLabel.isHidden)
-    {
-        [self hideSearchBar];
-        [self hideAddButton];
-
-        [self showSearchLabel];
+    //on scroll up show search bar and scroll down show label
+    if (vel.y > 0 && self.searchBar.isHidden){
+        [self fadeOut:_searchLabel];
+        [self fadeIn:_searchBar];
+        [self fadeIn:_addButton];
+    } else if (vel.y < 0 && self.searchLabel.isHidden){
+        [self fadeOut:_searchBar];
+        [self fadeOut:_addButton];
+        [self fadeIn:_searchLabel];
 
     }
 }
 
--(void)showSearchBar {
-    [self fadeIn:_searchBar];
-}
--(void)hideSearchBar {
-    [self fadeOut:_searchBar];
-}
--(void)showSearchLabel {
-    [self fadeIn:_searchLabel];
-
-}
--(void)hideSearchLabel {
-    [self fadeOut:_searchLabel];
-}
--(void)showAddButton {
-    [self fadeIn:_addButton];
-
-}
--(void)hideAddButton {
-    [self fadeOut:_addButton];
-}
-
-- (void)send:(nonnull NSString *)data {
-    NSLog(data);
-}
-
+//MARK: Animations
 -(void)fadeIn: (UIView*) view {
     view.alpha = 0;
     view.hidden = NO;
@@ -208,8 +195,3 @@ BOOL keyboardUp = NO;
 }
 
 @end
-
-// private variables in implemntation
-//@implementation GLObject(PrivateMethods)
-//- (void)secretFeature;
-//@end
