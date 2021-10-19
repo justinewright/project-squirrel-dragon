@@ -68,6 +68,8 @@ float keyboardHeight = 300;
     [super viewDidLoad];
     [self setupTableView];
     [self setupSearchBar];
+    [self.backgroundView setUserInteractionEnabled:NO];
+    [self.backgroundView setHidden:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -80,8 +82,7 @@ float keyboardHeight = 300;
 - (void)viewWillLayoutSubviews {
     [super updateViewConstraints];
     self.tableViewHeight.constant = MIN(self.tableView.contentSize.height, maxTableHeight);
-    [self.backgroundView setUserInteractionEnabled:NO];
-    [self.backgroundView setHidden:YES];
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -100,7 +101,6 @@ float keyboardHeight = 300;
     [self.tableView setHidden:NO];
     [self.addButton setHidden:YES];
 
-    self.view.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.5 ];
     CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
     keyboardHeight = keyboardSize.height;
     double keyboardDuration = [[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
@@ -115,9 +115,9 @@ float keyboardHeight = 300;
     keyboardUp = NO;
     [self.backgroundView setUserInteractionEnabled:NO];
     [self.backgroundView setHidden:YES];
-
     [self.addButton setHidden:NO];
     [self.tableView setHidden:YES];
+
     double keyboardDuration = [[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     self.containerViewBottomAnchor.constant = 0;
     [UIView animateWithDuration:keyboardDuration animations:^{
