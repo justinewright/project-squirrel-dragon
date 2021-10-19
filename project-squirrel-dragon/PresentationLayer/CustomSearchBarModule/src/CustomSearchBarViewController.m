@@ -6,8 +6,7 @@
 //
 
 #import "CustomSearchBarViewController.h"
-@class IgnoreTouchView;
-@class PokemonCollectionSetCell;
+
 //MARK: - Protected Variables
 @interface CustomSearchBarViewController ()
 @property (retain, nonatomic) CustomSearchBarViewModel* viewModel;
@@ -29,7 +28,6 @@ NSString* searchFilter = @"";
 float maxTableHeight = 300.0;
 BOOL keyboardUp = NO;
 float keyboardHeight = 300;
-UIView* mainView;
 
 // MARK: - Initialize Method
 - (void)configure: (CustomSearchBarViewModel*)viewModel {
@@ -45,18 +43,22 @@ UIView* mainView;
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     NSLog(@"scrolling");
 }
-// MARK: - Life Cycle Methods
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    UIPanGestureRecognizer* panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panRecognized:)];
-        [self.view addGestureRecognizer: panGesture];
 
-    self.searchBar.delegate = self;
+// MARK: - Setup Methods
+
+- (void)setupGestures {
+    UIPanGestureRecognizer* panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panRecognized:)];
+    [self.view addGestureRecognizer: panGesture];
+}
+
+- (void)setupTableView {
     [self.tableView registerNib:[UINib nibWithNibName:@"SearchTableViewCell" bundle:nil] forCellReuseIdentifier:@"SearchTableViewCell"];
     [self.tableView setHidden:YES];
+}
 
+- (void)setupSearchBar {
+    self.searchBar.delegate = self;
     [self applyStyle];
-
 }
 
 - (void)applyStyle {
@@ -65,6 +67,14 @@ UIView* mainView;
     borderr.backgroundColor = [[UIColor grayColor] CGColor];
 
     [self.searchLabel.layer addSublayer:borderr];
+}
+
+// MARK: - Life Cycle Methods
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self setupGestures];
+    [self setupTableView];
+    [self setupSearchBar];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

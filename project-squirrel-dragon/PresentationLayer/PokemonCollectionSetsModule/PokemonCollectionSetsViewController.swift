@@ -21,20 +21,6 @@ class PokemonCollectionSetsViewController: UIViewController {
     override func viewDidLoad() {
         configureCollectionView()
         viewModel.updateView()
-        createPanGestureRecognizer(targetView: searchBarViewController.view)
-    }
-
-    func createPanGestureRecognizer(targetView: UIView) {
-        let panGesture = UIPanGestureRecognizer(target: self, action:(#selector(self.handleGesture(_:))))
-        targetView.addGestureRecognizer(panGesture)
-    }
-    
-    @objc func handleGesture(_ sender: UIPanGestureRecognizer) {
-        print("asdasd")
-        switch sender.state {
-        default:
-            break
-        }
     }
 
     private func configureCollectionView() {
