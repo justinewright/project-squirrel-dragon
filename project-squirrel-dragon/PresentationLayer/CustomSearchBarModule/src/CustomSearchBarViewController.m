@@ -18,6 +18,9 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *containerViewBottomAnchor;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *containerHeight;
+@property (weak, nonatomic) IBOutlet UIView *containerView;
+@property (weak, nonatomic) IBOutlet UIView *backgroundView;
+
 - (IBAction)addButtonPressed:(id)sender;
 @end
 
@@ -46,11 +49,6 @@ float keyboardHeight = 300;
 
 // MARK: - Setup Methods
 
-- (void)setupGestures {
-    UIPanGestureRecognizer* panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panRecognized:)];
-    [self.view addGestureRecognizer: panGesture];
-}
-
 - (void)setupTableView {
     [self.tableView registerNib:[UINib nibWithNibName:@"SearchTableViewCell" bundle:nil] forCellReuseIdentifier:@"SearchTableViewCell"];
     [self.tableView setHidden:YES];
@@ -72,7 +70,6 @@ float keyboardHeight = 300;
 // MARK: - Life Cycle Methods
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setupGestures];
     [self setupTableView];
     [self setupSearchBar];
 }
@@ -87,6 +84,8 @@ float keyboardHeight = 300;
 - (void)viewWillLayoutSubviews {
     [super updateViewConstraints];
     self.tableViewHeight.constant = MIN(self.tableView.contentSize.height, maxTableHeight);
+    [self.backgroundView setUserInteractionEnabled:NO];
+    [self.backgroundView setHidden:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -98,9 +97,13 @@ float keyboardHeight = 300;
 //MARK: Keyboard Methods
 - (void)keyboardWillShow:(NSNotification *)notification
 {
+
     keyboardUp = YES;
+    [self.backgroundView setHidden:NO];
+    [self.backgroundView setUserInteractionEnabled:YES];
     [self.tableView setHidden:NO];
     [self.addButton setHidden:YES];
+
     self.view.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.5 ];
     CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
     keyboardHeight = keyboardSize.height;
@@ -114,7 +117,9 @@ float keyboardHeight = 300;
 -(void)keyboardWillHide:(NSNotification *)notification
 {
     keyboardUp = NO;
-    self.view.backgroundColor = [UIColor clearColor];
+    [self.backgroundView setUserInteractionEnabled:NO];
+    [self.backgroundView setHidden:YES];
+
     [self.addButton setHidden:NO];
     [self.tableView setHidden:YES];
     double keyboardDuration = [[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
@@ -137,7 +142,6 @@ float keyboardHeight = 300;
         self.searchLabel.text = searchFilter;
         });
     [self.view resignFirstResponder];
-
 }
 
 //MARK: TableViewDelegate Methods
@@ -173,6 +177,18 @@ float keyboardHeight = 300;
     }
 }
 
+- (void)handleScroll:( CGPoint *)scrollVelocity {
+    if (scrollVelocity->y > 0 && self.searchBar.isHidden){
+        [self fadeOut:_searchLabel];
+        [self fadeIn:_searchBar];
+        [self fadeIn:_addButton];
+    } else if (scrollVelocity->y < 0 && self.searchLabel.isHidden){
+        [self fadeOut:_searchBar];
+        [self fadeOut:_addButton];
+        [self fadeIn:_searchLabel];
+    }
+}
+
 - (void)panRecognized:(UIPanGestureRecognizer *)rec
 {
     if (keyboardUp)
@@ -203,5 +219,6 @@ float keyboardHeight = 300;
 -(void)fadeOut: (UIView*) view {
     [view setHidden:YES];
 }
+
 
 @end

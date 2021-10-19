@@ -25,6 +25,7 @@ class PokemonCollectionSetsViewController: UIViewController {
 
     private func configureCollectionView() {
         pokemonCollectionSetsCollectionView.dataSource = self
+        pokemonCollectionSetsCollectionView.delegate = self
         pokemonCollectionSetsCollectionView.register(PokemonCollectionSetCell.self,
                                      forCellWithReuseIdentifier: cellReuseIdentifier)
         pokemonCollectionSetsCollectionView.register(UINib(nibName: cellNibName, bundle: nil), forCellWithReuseIdentifier: cellReuseIdentifier)
@@ -48,7 +49,25 @@ class PokemonCollectionSetsViewController: UIViewController {
     }
 
 }
+extension PokemonCollectionSetsViewController: UICollectionViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print("lets scroll")
+        guard let configuredSearchBar = searchBarViewController as? CustomSearchBarViewController else{
+            return
+        }
+        var actualPosition = scrollView.panGestureRecognizer.translation(in: scrollView.superview)
+        configuredSearchBar.handleScroll(&actualPosition)
 
+//        let actualPosition = scrollView.panGestureRecognizer.translation(in: scrollView.superview)
+            if (actualPosition.y > 0){
+                // Dragging down
+                print("scrol down")
+            }else{
+                // Dragging up
+                print("scrol up")
+            }
+    }
+}
 // MARK: - ViewModel Delegate Methods
 extension PokemonCollectionSetsViewController: PokemonCollectionViewModelDelegate {
 
@@ -110,3 +129,14 @@ extension PokemonCollectionSetsViewController:  CustomSearchbarViewDelegate {
     }
 }
 
+@objc
+
+class IgnoreTouchView : UIView {
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        let hitView = super.hitTest(point, with: event)
+        if hitView == self {
+            return nil
+        }
+        return hitView
+    }
+}

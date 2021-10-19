@@ -39,13 +39,14 @@
                             <constraint firstItem="QAA-su-7u6" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="yrD-po-fq2"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="DQB-7q-4Qy"/>
                     <connections>
                         <outlet property="pokemonCollectionSetsCollectionView" destination="QAA-su-7u6" id="Ufg-30-6Km"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="257.97101449275362" y="40.848214285714285"/>
+            <point key="canvasLocation" x="1168.1159420289855" y="40.848214285714285"/>
         </scene>
     </scenes>
 </document>

@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface CustomSearchBarViewController : UIViewController<UITableViewDelegate, UISearchBarDelegate>
 
 -(void)configure: (CustomSearchBarViewModel*)viewModel;
+-(void)handleScroll: ( CGPoint *)scrollVelocity ;
 
 @end
 
