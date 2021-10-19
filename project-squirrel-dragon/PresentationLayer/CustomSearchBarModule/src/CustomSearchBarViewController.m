@@ -43,10 +43,6 @@ float keyboardHeight = 300;
         });
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    NSLog(@"scrolling");
-}
-
 // MARK: - Setup Methods
 
 - (void)setupTableView {

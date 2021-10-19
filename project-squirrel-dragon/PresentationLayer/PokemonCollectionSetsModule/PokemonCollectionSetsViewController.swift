@@ -16,7 +16,7 @@ class PokemonCollectionSetsViewController: UIViewController {
     private let cellNibName = "PokemonCollectionSetCell"
     private var searchBarViewController = UIViewController()
     private var filteredNames: [String] = []
-    
+
     // MARK: - Life Cycle Methods
     override func viewDidLoad() {
         configureCollectionView()
@@ -51,21 +51,11 @@ class PokemonCollectionSetsViewController: UIViewController {
 }
 extension PokemonCollectionSetsViewController: UICollectionViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print("lets scroll")
         guard let configuredSearchBar = searchBarViewController as? CustomSearchBarViewController else{
             return
         }
         var actualPosition = scrollView.panGestureRecognizer.translation(in: scrollView.superview)
         configuredSearchBar.handleScroll(&actualPosition)
-
-//        let actualPosition = scrollView.panGestureRecognizer.translation(in: scrollView.superview)
-            if (actualPosition.y > 0){
-                // Dragging down
-                print("scrol down")
-            }else{
-                // Dragging up
-                print("scrol up")
-            }
     }
 }
 // MARK: - ViewModel Delegate Methods
