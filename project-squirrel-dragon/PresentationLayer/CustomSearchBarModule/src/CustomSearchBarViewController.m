@@ -171,6 +171,7 @@ float keyboardHeight = 300;
 
 
 //MARK: Gestures
+
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     if(keyboardUp){
         [self hideSearchBarKeyboard];
@@ -186,24 +187,6 @@ float keyboardHeight = 300;
         [self fadeOut:_searchBar];
         [self fadeOut:_addButton];
         [self fadeIn:_searchLabel];
-    }
-}
-
-- (void)panRecognized:(UIPanGestureRecognizer *)rec
-{
-    if (keyboardUp)
-        return;
-    CGPoint vel = [rec velocityInView:self.view];
-    //on scroll up show search bar and scroll down show label
-    if (vel.y > 0 && self.searchBar.isHidden){
-        [self fadeOut:_searchLabel];
-        [self fadeIn:_searchBar];
-        [self fadeIn:_addButton];
-    } else if (vel.y < 0 && self.searchLabel.isHidden){
-        [self fadeOut:_searchBar];
-        [self fadeOut:_addButton];
-        [self fadeIn:_searchLabel];
-
     }
 }
 
