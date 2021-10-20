@@ -109,10 +109,8 @@ extension PokemonCollectionSetsViewController: UICollectionViewDataSource {
 
 extension PokemonCollectionSetsViewController:  CustomSearchbarViewDelegate {
     func updateDisplay(_ sender: CustomSearchBarViewModel!, withSearchFilter searchFilter: String!) {
-        DispatchQueue.main.async {
-            self.filteredNames = sender.filteredList as? [String] ?? [String]()
-            self.pokemonCollectionSetsCollectionView.reloadData()
-        }
+        self.filteredNames = sender.filteredList as? [String] ?? [String]()
+        self.pokemonCollectionSetsCollectionView.reloadData()
     }
 }
 
