@@ -37,8 +37,7 @@ class PokemonCollectionSetsViewController: UIViewController {
         guard let configuredSearchBar = searchBarViewController as? CustomSearchBarViewController else{
             return
         }
-
-        if let searchBarViewModel = CustomSearchBarViewModel(list: Array(viewModel.pokemonCollectionSets.keys), andDelegate: self) {
+        if let searchBarViewModel = CustomSearchBarViewModel(list:    viewModel.pokemonCollectionSets.map { $0.value.description}, andDelegate: self) {
             configuredSearchBar.configure(searchBarViewModel)
             addChild( searchBarViewController)
             view.addSubview(searchBarViewController.view)
@@ -110,6 +109,7 @@ extension PokemonCollectionSetsViewController: UICollectionViewDataSource {
 extension PokemonCollectionSetsViewController:  CustomSearchbarViewDelegate {
     func updateDisplay(_ sender: CustomSearchBarViewModel!, withSearchFilter searchFilter: String!) {
         self.filteredNames = sender.filteredList as? [String] ?? [String]()
+        self.filteredNames = self.filteredNames.map { $0.setID }
         self.pokemonCollectionSetsCollectionView.reloadData()
     }
 }

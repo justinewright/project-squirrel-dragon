@@ -11,6 +11,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    self.textLabel.numberOfLines = 2;
     // Initialization code
 }
 

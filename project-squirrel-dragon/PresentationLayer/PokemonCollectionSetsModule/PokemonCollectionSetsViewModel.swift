@@ -31,7 +31,7 @@ class PokemonCollectionSetsViewModel {
         repository.fetch { [weak self] result in
             switch result {
             case .success(let pokemonCollectionSets):
-                self?.pokemonCollectionSets =  Dictionary(uniqueKeysWithValues: pokemonCollectionSets.map { ($0.name + " " + $0.id, $0) })
+                self?.pokemonCollectionSets =  Dictionary(uniqueKeysWithValues: pokemonCollectionSets.map { ($0.id, $0) })
                 self?.delegate?.didLoadPokemonCollectionSetsViewModel(self!)
 
             case .failure(let error):
@@ -40,4 +40,5 @@ class PokemonCollectionSetsViewModel {
             }
         }
     }
+
 }
