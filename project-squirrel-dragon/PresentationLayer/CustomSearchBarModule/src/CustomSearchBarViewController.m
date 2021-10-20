@@ -34,18 +34,17 @@ float keyboardHeight = 300;
 
 // MARK: - Initialize Method
 - (void)configure: (CustomSearchBarViewModel*)viewModel {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        self.viewModel = viewModel;
-        self.dataSource = [[FilterableDataSource alloc] initWithViewModel:self.viewModel];
-        self.tableView.dataSource = self.dataSource;
-        self.tableView.delegate = self;
-        [self.tableView reloadData];
-        });
+
+    self.viewModel = viewModel;
+    self.dataSource = [[FilterableDataSource alloc] initWithViewModel:self.viewModel];
+    [self.tableView reloadData];
 }
 
 // MARK: - Setup Methods
 
 - (void)setupTableView {
+    self.tableView.dataSource = self.dataSource;
+    self.tableView.delegate = self;
     [self.tableView registerNib:[UINib nibWithNibName:@"SearchTableViewCell" bundle:nil] forCellReuseIdentifier:@"SearchTableViewCell"];
     [self.tableView setHidden:YES];
 }
