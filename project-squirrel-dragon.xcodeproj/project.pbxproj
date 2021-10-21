@@ -41,13 +41,14 @@
 		217F20E627216354003F4A5E /* NavigationBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F20E527216354003F4A5E /* NavigationBuilder.swift */; };
 		217F20E727216E20003F4A5E /* CustomSearchBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21671E782715DDDC00A45571 /* CustomSearchBarViewController.xib */; };
 		217F20EE27217498003F4A5E /* TabBarBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F20ED27217498003F4A5E /* TabBarBuilder.swift */; };
+		217F20F027218FF6003F4A5E /* SetDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 217F20EF27218FF6003F4A5E /* SetDetails.storyboard */; };
+		217F20F22721D0D7003F4A5E /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F20F12721D0D7003F4A5E /* DummyData.swift */; };
 		2183225E271DB16000AD8CB5 /* CustomSearchBarViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 21843376271417D000EC2F5A /* CustomSearchBarViewModel.m */; };
 		2183225F271DB16000AD8CB5 /* SearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 21671E692715CACA00A45571 /* SearchTableViewCell.m */; };
 		21832260271DB16000AD8CB5 /* CustomSearchBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21671E772715DDDC00A45571 /* CustomSearchBarViewController.m */; };
 		21832261271DB16000AD8CB5 /* FilterableDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 218CF2202718A8140012F8E1 /* FilterableDataSource.m */; };
 		21843377271417D000EC2F5A /* CustomSearchBarViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 21843376271417D000EC2F5A /* CustomSearchBarViewModel.m */; };
 		2185CEF0271FFB7300499D31 /* SetDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2185CEEE271FFB7300499D31 /* SetDetailsViewController.swift */; };
-		2185CEF1271FFB7300499D31 /* SetDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2185CEEF271FFB7300499D31 /* SetDetailsViewController.xib */; };
 		2185CEF3271FFB9900499D31 /* SetDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2185CEF2271FFB9900499D31 /* SetDetailsViewModel.swift */; };
 		2185CEF52720037300499D31 /* SetDetailsModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2185CEF42720037300499D31 /* SetDetailsModuleBuilder.swift */; };
 		2185CEF7272016EC00499D31 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2185CEF6272016EC00499D31 /* String+Extension.swift */; };
@@ -96,11 +97,12 @@
 		2171BC692710086000EBBA3E /* StyleKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleKit.swift; sourceTree = "<group>"; };
 		217F20E527216354003F4A5E /* NavigationBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBuilder.swift; sourceTree = "<group>"; };
 		217F20ED27217498003F4A5E /* TabBarBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarBuilder.swift; sourceTree = "<group>"; };
+		217F20EF27218FF6003F4A5E /* SetDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SetDetails.storyboard; sourceTree = "<group>"; };
+		217F20F12721D0D7003F4A5E /* DummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyData.swift; sourceTree = "<group>"; };
 		218433732714176500EC2F5A /* project-squirrel-dragon-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "project-squirrel-dragon-Bridging-Header.h"; path = "project-squirrel-dragon/SupportingFiles/project-squirrel-dragon-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		21843376271417D000EC2F5A /* CustomSearchBarViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomSearchBarViewModel.m; sourceTree = "<group>"; };
 		21843378271417FD00EC2F5A /* CustomSearchBarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomSearchBarViewController.h; sourceTree = "<group>"; };
 		2185CEEE271FFB7300499D31 /* SetDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDetailsViewController.swift; sourceTree = "<group>"; };
-		2185CEEF271FFB7300499D31 /* SetDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetDetailsViewController.xib; sourceTree = "<group>"; };
 		2185CEF2271FFB9900499D31 /* SetDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDetailsViewModel.swift; sourceTree = "<group>"; };
 		2185CEF42720037300499D31 /* SetDetailsModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDetailsModuleBuilder.swift; sourceTree = "<group>"; };
 		2185CEF6272016EC00499D31 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 				21044757270ACD1A00815441 /* Assets.xcassets */,
 				2171BC692710086000EBBA3E /* StyleKit.swift */,
 				218433732714176500EC2F5A /* project-squirrel-dragon-Bridging-Header.h */,
+				217F20F12721D0D7003F4A5E /* DummyData.swift */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -348,8 +351,8 @@
 			children = (
 				2185CEEE271FFB7300499D31 /* SetDetailsViewController.swift */,
 				2185CEF2271FFB9900499D31 /* SetDetailsViewModel.swift */,
-				2185CEEF271FFB7300499D31 /* SetDetailsViewController.xib */,
 				2185CEF42720037300499D31 /* SetDetailsModuleBuilder.swift */,
+				217F20EF27218FF6003F4A5E /* SetDetails.storyboard */,
 			);
 			path = SetDetailsModule;
 			sourceTree = "<group>";
@@ -457,10 +460,10 @@
 				217F20E727216E20003F4A5E /* CustomSearchBarViewController.xib in Resources */,
 				2104475B270ACD1A00815441 /* LaunchScreen.storyboard in Resources */,
 				21044758270ACD1A00815441 /* Assets.xcassets in Resources */,
+				217F20F027218FF6003F4A5E /* SetDetails.storyboard in Resources */,
 				2166707A270F0D5B00B6A874 /* PokemonCollectionSets.storyboard in Resources */,
 				21044756270ACD1900815441 /* Main.storyboard in Resources */,
 				21671E6C2715CACA00A45571 /* SearchTableViewCell.xib in Resources */,
-				2185CEF1271FFB7300499D31 /* SetDetailsViewController.xib in Resources */,
 				21667083270F33DB00B6A874 /* PokemonCollectionSetCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -517,6 +520,7 @@
 				21843377271417D000EC2F5A /* CustomSearchBarViewModel.m in Sources */,
 				2185CEF52720037300499D31 /* SetDetailsModuleBuilder.swift in Sources */,
 				2185CEF3271FFB9900499D31 /* SetDetailsViewModel.swift in Sources */,
+				217F20F22721D0D7003F4A5E /* DummyData.swift in Sources */,
 				2185CEF7272016EC00499D31 /* String+Extension.swift in Sources */,
 				21671E6E2715D66200A45571 /* CustomSearchBarModuleBuilder.swift in Sources */,
 				2185CEFF27202C3C00499D31 /* SetDetails.swift in Sources */,

@@ -18,25 +18,25 @@ class SetDetailsViewController: UIViewController {
     @IBOutlet private weak var collectedFractionLabel: UILabel!
     // bottom view
     @IBOutlet private weak var valueLabel: UILabel!
-    // TODO: - add currency selector / convertor
 
-    private weak var viewModel: SetDetailsViewModel!
+    // TODO: - add currency selector / converter and view cards button
+
+    private lazy var viewModel = SetDetailsViewModel (setDetails: DummyData.pokemonSet, delegate: self)
 
     // MARK: - Life Cycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.tabBarController?.tabBar.isHidden = true
+        self.viewModel.updateView()
     }
 
     // MARK: - Initialization
     func configure(withViewModel viewModel: SetDetailsViewModel) {
         self.viewModel = viewModel
-        self.viewModel.updateView()
     }
 
     private func configure() {
-        configureTitle(title: viewModel.setDetails.pokemonCollectionSet.name)
+        configureTitle(title: viewModel.setDetails.pokemonCollectionSet.series)
         configureTopView(withURL: viewModel.setDetails.pokemonCollectionSet.imageLogo,
                          andReleaseDate: viewModel.setDetails.pokemonCollectionSet.releaseDate)
         configureMiddleView(withCollectedFraction: viewModel.setDetails.collectedFraction,
@@ -62,17 +62,9 @@ class SetDetailsViewController: UIViewController {
     private func configureBottomView(withValue value: Float) {
         valueLabel.text = "\(value)"
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
+
 extension SetDetailsViewController: SetsDetailViewModelDelegate {
     func isLoadingSetDetailsViewModel(_ setDetailsViewModel: SetDetailsViewModel) {
         configure()

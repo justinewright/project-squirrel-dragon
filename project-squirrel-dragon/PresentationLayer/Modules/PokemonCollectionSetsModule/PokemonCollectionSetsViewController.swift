@@ -22,6 +22,10 @@ class PokemonCollectionSetsViewController: UIViewController {
         viewModel.updateView()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
+    }
+
     private func configureCollectionView() {
         pokemonCollectionSetsCollectionView.dataSource = self
         pokemonCollectionSetsCollectionView.delegate = self
@@ -54,6 +58,26 @@ extension PokemonCollectionSetsViewController: UICollectionViewDelegate {
         }
         var actualPosition = scrollView.panGestureRecognizer.translation(in: scrollView.superview)
         configuredSearchBar.handleScroll(&actualPosition)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        var pokemonSet: PokemonCollectionSet!
+
+        if filteredNames.isEmpty {
+            let keys = Array(viewModel.pokemonCollectionSets.keys)
+            pokemonSet = viewModel.pokemonCollectionSets[keys[indexPath.row]]
+        } else {
+            pokemonSet = viewModel.pokemonCollectionSets[filteredNames[indexPath.row]]
+        }
+        let destination = SetDetailsModuleBuilder.build(usingNavigationFactory: NavigationBuilder.build, andPokemonSet: pokemonSet)
+        if let destination = destination as? SetDetailsViewController {
+            destination.configure(withViewModel: SetDetailsViewModel(setDetails: SetDetails(id: pokemonSet.id,
+                                                                                            userSet: UserSet(id: pokemonSet.id, cardsCollected: 0),
+                                                                                            pokemonCollectionSet: pokemonSet),
+                                                                     delegate: destination))
+        }
+        self.navigationController?.pushViewController(destination, animated: true)
+//        self.navigationController?.pushViewController(destination, animated: true)
     }
 }
 // MARK: - ViewModel Delegate Methods

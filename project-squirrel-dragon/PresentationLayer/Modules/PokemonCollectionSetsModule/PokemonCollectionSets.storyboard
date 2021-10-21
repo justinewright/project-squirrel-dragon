@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--title-->
+        <!--Pokemon Collection Sets View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController storyboardIdentifier="PokemonCollectionSetsViewController" autoresizesArchivedViewToFullSize="NO" id="Y6W-OH-hqX" customClass="PokemonCollectionSetsViewController" customModule="project_squirrel_dragon" customModuleProvider="target" sceneMemberID="viewController">
@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" bounces="NO" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QAA-su-7u6">
-                                <rect key="frame" x="0.0" y="140" width="414" height="722"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="20" id="Ftn-Sc-pip">
                                     <size key="itemSize" width="300" height="100"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -39,38 +39,14 @@
                             <constraint firstItem="QAA-su-7u6" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="yrD-po-fq2"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="title" id="DQB-7q-4Qy"/>
+                    <navigationItem key="navigationItem" id="DQB-7q-4Qy"/>
                     <connections>
                         <outlet property="pokemonCollectionSetsCollectionView" destination="QAA-su-7u6" id="Ufg-30-6Km"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2026.0869565217392" y="229.6875"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="5NO-ch-3Fq">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ccg-lY-RbF" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="u7v-0a-F1I">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </textAttributes>
-                        <textAttributes key="largeTitleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </textAttributes>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="E6y-Yb-G89"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="h5G-kk-vmR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1115.9420289855072" y="229.6875"/>
+            <point key="canvasLocation" x="1116" y="230"/>
         </scene>
     </scenes>
 </document>

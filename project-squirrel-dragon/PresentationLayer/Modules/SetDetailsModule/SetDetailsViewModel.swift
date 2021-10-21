@@ -28,6 +28,7 @@ class SetDetailsViewModel {
     }
 
     func updateView() {
-        delegate?.isLoadingSetDetailsViewModel(self)
+        self.delegate?.isLoadingSetDetailsViewModel(self)
+
     }
 }
