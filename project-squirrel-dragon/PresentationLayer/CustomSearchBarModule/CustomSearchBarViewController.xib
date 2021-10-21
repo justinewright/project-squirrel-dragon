@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomSearchBarViewController">
+            <connections>
+                <outlet property="addButton" destination="Io2-DW-HyR" id="cXb-dH-deB"/>
+                <outlet property="backgroundView" destination="CMQ-AL-GG3" id="8y1-2i-hX8"/>
+                <outlet property="containerHeight" destination="qAc-CV-uyr" id="jug-ly-A0i"/>
+                <outlet property="containerView" destination="qAc-CV-uyr" id="G29-MD-4Jc"/>
+                <outlet property="containerViewBottomAnchor" destination="3Fg-H6-Grj" id="1VU-ll-JmN"/>
+                <outlet property="searchBar" destination="eWH-aG-k2h" id="aQY-WC-TrI"/>
+                <outlet property="searchLabel" destination="OOY-oT-HUO" id="6Dt-JA-h5o"/>
+                <outlet property="tableView" destination="cty-fK-DCi" id="9OQ-dd-vWY"/>
+                <outlet property="tableViewHeight" destination="2qp-ga-X0z" id="mHl-wK-u6m"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT" userLabel="View" customClass="IgnoreTouchView" customModule="project_squirrel_dragon" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qAc-CV-uyr" userLabel="Container" customClass="IgnoreTouchView" customModule="project_squirrel_dragon" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <subviews>
+                        <view alpha="0.45000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CMQ-AL-GG3" userLabel="background">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="778"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" bouncesZoom="NO" style="insetGrouped" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="cty-fK-DCi">
+                            <rect key="frame" x="20" y="578" width="374" height="200"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="tintColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="200" id="2qp-ga-X0z"/>
+                                <constraint firstAttribute="width" constant="374" id="sO0-Ha-dPA"/>
+                            </constraints>
+                            <color key="separatorColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="sectionIndexColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </tableView>
+                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="11S-NO-YDa" userLabel="hStack">
+                            <rect key="frame" x="20" y="778" width="374" height="40"/>
+                            <subviews>
+                                <searchBar contentMode="redraw" barStyle="black" searchBarStyle="minimal" placeholder="Search for set" translatesAutoresizingMaskIntoConstraints="NO" id="eWH-aG-k2h">
+                                    <rect key="frame" x="0.0" y="0.0" width="330" height="40"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </searchBar>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Io2-DW-HyR">
+                                    <rect key="frame" x="330" y="0.0" width="44" height="40"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" title="+">
+                                        <fontDescription key="titleFontDescription" type="system" pointSize="32"/>
+                                        <color key="baseForegroundColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </buttonConfiguration>
+                                    <connections>
+                                        <action selector="addButtonPressed:" destination="-1" eventType="touchUpInside" id="APJ-oY-Xp9"/>
+                                    </connections>
+                                </button>
+                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OOY-oT-HUO">
+                                    <rect key="frame" x="374" y="0.0" width="0.0" height="40"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="highlightedColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </label>
+                            </subviews>
+                            <viewLayoutGuide key="safeArea" id="DtE-Kq-Cmu"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="CEI-jj-XBo"/>
+                            </constraints>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <accessibility key="accessibilityConfiguration">
+                        <accessibilityTraits key="traits" notEnabled="YES"/>
+                    </accessibility>
+                    <constraints>
+                        <constraint firstItem="cty-fK-DCi" firstAttribute="leading" secondItem="qAc-CV-uyr" secondAttribute="leading" constant="20" id="Jh7-P0-xbD"/>
+                        <constraint firstItem="cty-fK-DCi" firstAttribute="centerX" secondItem="qAc-CV-uyr" secondAttribute="centerX" id="LCD-rO-TXc"/>
+                        <constraint firstItem="CMQ-AL-GG3" firstAttribute="leading" secondItem="qAc-CV-uyr" secondAttribute="leading" id="PbH-ww-gld"/>
+                        <constraint firstItem="CMQ-AL-GG3" firstAttribute="top" secondItem="qAc-CV-uyr" secondAttribute="top" id="RDe-KN-xBH"/>
+                        <constraint firstAttribute="trailing" secondItem="11S-NO-YDa" secondAttribute="trailing" constant="20" id="UM9-dr-TKu"/>
+                        <constraint firstItem="11S-NO-YDa" firstAttribute="top" secondItem="cty-fK-DCi" secondAttribute="bottom" id="cfG-tF-AjP"/>
+                        <constraint firstAttribute="bottom" secondItem="CMQ-AL-GG3" secondAttribute="bottom" constant="40" id="dNC-hf-qlU"/>
+                        <constraint firstAttribute="trailing" secondItem="cty-fK-DCi" secondAttribute="trailing" constant="20" id="dx0-j5-jI0"/>
+                        <constraint firstItem="11S-NO-YDa" firstAttribute="leading" secondItem="qAc-CV-uyr" secondAttribute="leading" constant="20" id="e3u-AO-06D"/>
+                        <constraint firstAttribute="trailing" secondItem="CMQ-AL-GG3" secondAttribute="trailing" id="i0Q-DT-Px1"/>
+                        <constraint firstAttribute="bottom" secondItem="11S-NO-YDa" secondAttribute="bottom" id="nm6-Zv-7Lq"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <accessibility key="accessibilityConfiguration">
+                <accessibilityTraits key="traits" notEnabled="YES"/>
+            </accessibility>
+            <constraints>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="qAc-CV-uyr" secondAttribute="bottom" id="3Fg-H6-Grj"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="qAc-CV-uyr" secondAttribute="trailing" id="9ZV-dK-Oiq"/>
+                <constraint firstItem="qAc-CV-uyr" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="NRI-jO-y2y"/>
+                <constraint firstItem="qAc-CV-uyr" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="XVz-LL-do3"/>
+            </constraints>
+            <point key="canvasLocation" x="131.8840579710145" y="85.714285714285708"/>
+        </view>
+    </objects>
+</document>

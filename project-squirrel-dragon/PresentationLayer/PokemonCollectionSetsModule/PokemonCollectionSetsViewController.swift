@@ -8,12 +8,13 @@
 import UIKit
 
 class PokemonCollectionSetsViewController: UIViewController {
-
     // MARK: - Properties
     @IBOutlet weak var pokemonCollectionSetsCollectionView: UICollectionView!
     private lazy var viewModel = PokemonCollectionSetsViewModel(pokemonCollectionViewModelDelegate: self, repository: PokemonCollectionSetsRepository())
     private let cellReuseIdentifier = "PokemonCollectionSetCell"
     private let cellNibName = "PokemonCollectionSetCell"
+    private var searchBarViewController = UIViewController()
+    private var filteredNames: [String] = []
 
     // MARK: - Life Cycle Methods
     override func viewDidLoad() {
@@ -23,14 +24,39 @@ class PokemonCollectionSetsViewController: UIViewController {
 
     private func configureCollectionView() {
         pokemonCollectionSetsCollectionView.dataSource = self
+        pokemonCollectionSetsCollectionView.delegate = self
         pokemonCollectionSetsCollectionView.register(PokemonCollectionSetCell.self,
                                      forCellWithReuseIdentifier: cellReuseIdentifier)
         pokemonCollectionSetsCollectionView.register(UINib(nibName: cellNibName, bundle: nil), forCellWithReuseIdentifier: cellReuseIdentifier)
         pokemonCollectionSetsCollectionView.backgroundColor = .clear
     }
 
-}
+    private func configureSearchView() {
+        searchBarViewController = CustomSearchBarModuleBuilder.build()
+        addChild(searchBarViewController)
+        guard let configuredSearchBar = searchBarViewController as? CustomSearchBarViewController else{
+            return
+        }
 
+        if let searchBarViewModel = CustomSearchBarViewModel(list: Array(viewModel.pokemonCollectionSets.keys), andDelegate: self) {
+            configuredSearchBar.configure(searchBarViewModel)
+            addChild( searchBarViewController)
+            view.addSubview(searchBarViewController.view)
+            
+        }
+
+    }
+
+}
+extension PokemonCollectionSetsViewController: UICollectionViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard let configuredSearchBar = searchBarViewController as? CustomSearchBarViewController else{
+            return
+        }
+        var actualPosition = scrollView.panGestureRecognizer.translation(in: scrollView.superview)
+        configuredSearchBar.handleScroll(&actualPosition)
+    }
+}
 // MARK: - ViewModel Delegate Methods
 extension PokemonCollectionSetsViewController: PokemonCollectionViewModelDelegate {
 
@@ -39,9 +65,8 @@ extension PokemonCollectionSetsViewController: PokemonCollectionViewModelDelegat
     }
 
     func didLoadPokemonCollectionSetsViewModel(_ pokemonCollectionSetsViewModel: PokemonCollectionSetsViewModel) {
-        DispatchQueue.main.async {
-            self.pokemonCollectionSetsCollectionView.reloadData()
-        }
+        self.pokemonCollectionSetsCollectionView.reloadData()
+        self.configureSearchView()
     }
 
     func didFailWithError(message: String) {
@@ -61,16 +86,42 @@ extension PokemonCollectionSetsViewController: PokemonCollectionViewModelDelegat
 // MARK: - CollectionView DataSource Methods
 extension PokemonCollectionSetsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        viewModel.pokemonCollectionSets.isEmpty ? 0 : 10
+        filteredNames.isEmpty ? viewModel.pokemonCollectionSets.count : filteredNames.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath) as? PokemonCollectionSetCell else {
             return UICollectionViewCell()
         }
-
-        cell.configure(with: viewModel.pokemonCollectionSets[indexPath.row])
+        if filteredNames.isEmpty {
+            let keys = Array(viewModel.pokemonCollectionSets.keys)
+            cell.configure(with: viewModel.pokemonCollectionSets[keys[indexPath.row]]!)
+        } else {
+            cell.configure(with: viewModel.pokemonCollectionSets[filteredNames[indexPath.row]]!)
+        }
         return cell
     }
 
+}
+
+// MARK: - SearchBar Delegate Methods
+
+extension PokemonCollectionSetsViewController:  CustomSearchbarViewDelegate {
+    func updateDisplay(_ sender: CustomSearchBarViewModel!, withSearchFilter searchFilter: String!) {
+        self.filteredNames = sender.filteredList as? [String] ?? [String]()
+        self.pokemonCollectionSetsCollectionView.reloadData()
+    }
+}
+
+@objc
+
+class IgnoreTouchView : UIView {
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        let hitView = super.hitTest(point, with: event)
+        if hitView == self {
+            return nil
+        }
+        return hitView
+    }
 }

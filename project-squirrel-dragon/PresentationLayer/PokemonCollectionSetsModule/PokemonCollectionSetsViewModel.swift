@@ -18,7 +18,7 @@ class PokemonCollectionSetsViewModel {
     // MARK: - Properties
     private weak var delegate: PokemonCollectionViewModelDelegate?
     private var repository: PokemonCollectionSetsRepository
-    private (set) var pokemonCollectionSets: [PokemonCollectionSet] = []
+    private (set) var pokemonCollectionSets: [String: PokemonCollectionSet] = [:]
 
     // MARK: - Initialization
     init(pokemonCollectionViewModelDelegate: PokemonCollectionViewModelDelegate, repository: PokemonCollectionSetsRepository) {
@@ -31,8 +31,9 @@ class PokemonCollectionSetsViewModel {
         repository.fetch { [weak self] result in
             switch result {
             case .success(let pokemonCollectionSets):
-                self?.pokemonCollectionSets = pokemonCollectionSets
+                self?.pokemonCollectionSets =  Dictionary(uniqueKeysWithValues: pokemonCollectionSets.map { ($0.name + " " + $0.id, $0) })
                 self?.delegate?.didLoadPokemonCollectionSetsViewModel(self!)
+
             case .failure(let error):
                 self?.delegate?.didFailWithError(message: error.localizedDescription)
 
