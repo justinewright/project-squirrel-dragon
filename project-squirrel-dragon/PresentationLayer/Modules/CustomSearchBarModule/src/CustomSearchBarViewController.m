@@ -76,6 +76,7 @@ float keyboardHeight = 300;
     [super viewWillAppear:NO];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    self.containerViewBottomAnchor.constant = 220;
 }
 
 - (void)viewWillLayoutSubviews {
@@ -102,7 +103,7 @@ float keyboardHeight = 300;
     CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
     keyboardHeight = keyboardSize.height;
     double keyboardDuration = [[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-    self.containerViewBottomAnchor.constant = keyboardSize.height - self.view.safeAreaInsets.bottom;
+    self.containerViewBottomAnchor.constant = keyboardSize.height + 140;
     [UIView animateWithDuration:keyboardDuration animations:^{
         [self.view layoutIfNeeded];
     }];
@@ -117,7 +118,7 @@ float keyboardHeight = 300;
     [self.tableView setHidden:YES];
 
     double keyboardDuration = [[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-    self.containerViewBottomAnchor.constant = 0;
+    self.containerViewBottomAnchor.constant = 220;
     [UIView animateWithDuration:keyboardDuration animations:^{
         [self.view layoutIfNeeded];
     }];
