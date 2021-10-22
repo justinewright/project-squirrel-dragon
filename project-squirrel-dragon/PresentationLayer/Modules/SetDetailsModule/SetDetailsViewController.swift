@@ -49,7 +49,7 @@ class SetDetailsViewController: UIViewController {
     }
 
     private func configureTopView(withURL urlString: String, andReleaseDate releaseDate: String) {
-        releaseDateLabel.text = "RELEASE DATA: " + releaseDate
+        releaseDateLabel.text = "RELEASE DATE: " + releaseDate
         guard let url = URL(string: urlString) else { return }
         logoImageView.load(url: url)
     }
