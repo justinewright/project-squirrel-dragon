@@ -9,14 +9,11 @@ import UIKit
 
 class SetDetailsViewController: UIViewController {
     // MARK: - Properties
-    // top view
     @IBOutlet private weak var logoImageView: UIImageView!
     @IBOutlet private weak var releaseDateLabel: UILabel!
-    // middle view
     @IBOutlet private weak var cardsImageView: UIImageView!
     @IBOutlet private weak var collectedPercentageLabel: UILabel!
     @IBOutlet private weak var collectedFractionLabel: UILabel!
-    // bottom view
     @IBOutlet private weak var valueLabel: UILabel!
 
     // TODO: - add currency selector / converter and view cards button
