@@ -10,6 +10,7 @@ import UIKit
 class PokemonCollectionSetsViewController: UIViewController {
     // MARK: - Properties
     @IBOutlet weak var pokemonCollectionSetsCollectionView: UICollectionView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     private lazy var viewModel = PokemonCollectionSetsViewModel(pokemonCollectionViewModelDelegate: self, repository: PokemonCollectionSetsRepository())
     private let cellReuseIdentifier = "PokemonCollectionSetCell"
     private let cellNibName = "PokemonCollectionSetCell"
@@ -35,6 +36,17 @@ class PokemonCollectionSetsViewController: UIViewController {
         pokemonCollectionSetsCollectionView.backgroundColor = .clear
     }
 
+    fileprivate func constrainSearchBar() {
+        searchBarViewController.view.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            searchBarViewController.view.topAnchor.constraint(equalTo: view.topAnchor),
+            searchBarViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            searchBarViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            searchBarViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
+    }
+
     private func configureSearchView() {
         searchBarViewController = CustomSearchBarModuleBuilder.build()
         addChild(searchBarViewController)
@@ -45,7 +57,8 @@ class PokemonCollectionSetsViewController: UIViewController {
             configuredSearchBar.configure(searchBarViewModel)
             addChild( searchBarViewController)
             view.addSubview(searchBarViewController.view)
-            
+            searchBarViewController.didMove(toParent: self)
+            constrainSearchBar()
         }
 
     }
@@ -77,25 +90,26 @@ extension PokemonCollectionSetsViewController: UICollectionViewDelegate {
                                                                      delegate: destination))
         }
         self.navigationController?.pushViewController(destination, animated: true)
-//        self.navigationController?.pushViewController(destination, animated: true)
     }
 }
 // MARK: - ViewModel Delegate Methods
 extension PokemonCollectionSetsViewController: PokemonCollectionViewModelDelegate {
 
     func isLoadingPokemonCollectionSetsViewModel(_ pokemonCollectionSetsViewModel: PokemonCollectionSetsViewModel) {
-
+        activityIndicator.startAnimating()
     }
 
     func didLoadPokemonCollectionSetsViewModel(_ pokemonCollectionSetsViewModel: PokemonCollectionSetsViewModel) {
         self.pokemonCollectionSetsCollectionView.reloadData()
         self.configureSearchView()
+        activityIndicator.stopAnimating()
     }
 
     func didFailWithError(message: String) {
         DispatchQueue.main.async {
             self.showErrorAlert(with: message)
         }
+        activityIndicator.stopAnimating()
     }
 
     func showErrorAlert(with message: String) {
