@@ -8,7 +8,6 @@
 import Foundation
 
 protocol PokemonCollectionViewModelDelegate: AnyObject {
-    func isLoadingPokemonCollectionSetsViewModel(_ pokemonCollectionSetsViewModel: PokemonCollectionSetsViewModel)
     func didLoadPokemonCollectionSetsViewModel(_ pokemonCollectionSetsViewModel: PokemonCollectionSetsViewModel)
     func didFailWithError(message: String)
 }
@@ -32,7 +31,6 @@ class PokemonCollectionSetsViewModel {
     }
 
     func updateView() {
-        delegate?.isLoadingPokemonCollectionSetsViewModel(self)
         repository.fetch { [weak self] result in
             switch result {
             case .success(let pokemonCollectionSets):

@@ -20,6 +20,7 @@ class PokemonCollectionSetsViewController: UIViewController {
     override func viewDidLoad() {
         configureCollectionView()
         viewModel.updateView()
+        activityIndicator.startAnimating()
     }
 
     override func viewWillAppear(_ animated: Bool) {

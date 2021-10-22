@@ -8,7 +8,6 @@
 import Foundation
 
 protocol SetsDetailViewModelDelegate: AnyObject {
-    func isLoadingSetDetailsViewModel(_ setDetailsViewModel: SetDetailsViewModel)
     func didLoadSetDetailsViewModel(_ setDetailsViewModel: SetDetailsViewModel)
     func didFailWithError(message: String)
 }
@@ -19,20 +18,17 @@ class SetDetailsViewModel {
     private weak var delegate: SetsDetailViewModelDelegate?
     private (set) var setDetails: SetDetails!
 
-    // TODO: - repo to firebase to get userdetails
-
     // MARK: - Initialization
-    init(setDetails: SetDetails, delegate: SetsDetailViewModelDelegate?) {
+    init(delegate: SetsDetailViewModelDelegate?) {
         self.delegate = delegate
-        self.setDetails = setDetails
     }
 
-    func set(setDetails: SetDetails) {
-        self.setDetails = setDetails
-    }
-
-    func updateView() {
-        self.delegate?.isLoadingSetDetailsViewModel(self)
+    func updateSetDetails(withPokemonSet set: PokemonCollectionSet) {
+        // TODO: - repo to firebase to get userdetails
+        //using dummy data as a placeholder until firebase database is working
+        var temporaryUserSet = DummyData.userSet
+        temporaryUserSet.id = set.id
+        self.setDetails = SetDetails(id: set.id, userSet: temporaryUserSet, pokemonCollectionSet: set)
     }
 
     var collectedFraction: String {

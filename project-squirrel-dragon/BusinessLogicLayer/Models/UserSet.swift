@@ -8,6 +8,6 @@
 import Foundation
 
 struct UserSet {
-    let id: String
+    var id: String
     let cardsCollected: Int
 }

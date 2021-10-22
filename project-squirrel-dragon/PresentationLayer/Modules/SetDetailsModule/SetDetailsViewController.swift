@@ -18,18 +18,18 @@ class SetDetailsViewController: UIViewController {
 
     // TODO: - add currency selector / converter and view cards button
 
-    private lazy var viewModel = SetDetailsViewModel (setDetails: DummyData.pokemonSet, delegate: self)
+    private lazy var viewModel = SetDetailsViewModel(delegate: self)
 
     // MARK: - Life Cycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarController?.tabBar.isHidden = true
-        self.viewModel.updateView()
+        configure()
     }
 
     // MARK: - Initialization
-    func configure(withViewModel viewModel: SetDetailsViewModel) {
-        self.viewModel.set(setDetails: viewModel.setDetails)
+    func configure(withPokemonCollectionSet set: PokemonCollectionSet) {
+        self.viewModel.updateSetDetails(withPokemonSet: set)
     }
 
     private func configure() {
@@ -47,7 +47,7 @@ class SetDetailsViewController: UIViewController {
     }
 
     private func configureTopView(withURL url: URL?, andReleaseDate releaseDate: String) {
-        releaseDateLabel.text = "RELEASE DATE: " + releaseDate
+        releaseDateLabel.text = releaseDate
         guard let url = url else { return }
         logoImageView.load(url: url)
     }
@@ -64,10 +64,6 @@ class SetDetailsViewController: UIViewController {
 }
 
 extension SetDetailsViewController: SetsDetailViewModelDelegate {
-    func isLoadingSetDetailsViewModel(_ setDetailsViewModel: SetDetailsViewModel) {
-        configure()
-    }
-
     func didLoadSetDetailsViewModel(_ setDetailsViewModel: SetDetailsViewModel) {
         configure()
     }

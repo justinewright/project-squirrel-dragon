@@ -15,12 +15,7 @@ class SetDetailsModuleBuilder {
         view.title = set.name
         view.navigationItem.largeTitleDisplayMode = .never
         if let view = view as? SetDetailsViewController {
-            let viewModel = SetDetailsViewModel(setDetails: SetDetails(id: set.id,
-                                                                       userSet: UserSet(id: set.id,
-                                                                                       cardsCollected: 0),
-                                                                       pokemonCollectionSet: set),
-                                                delegate: view)
-            view.configure(withViewModel: viewModel)
+            view.configure(withPokemonCollectionSet: set)
         }
         return view
     }
