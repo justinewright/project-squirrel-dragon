@@ -18,7 +18,12 @@ class PokemonCollectionSetsViewModel {
     // MARK: - Properties
     private weak var delegate: PokemonCollectionViewModelDelegate?
     private var repository: PokemonCollectionSetsRepository
-    private (set) var pokemonCollectionSets: [String: PokemonCollectionSet] = [:]
+    private var pokemonCollectionSets: [String: PokemonCollectionSet] = [:]
+    var filteredList: [String] = []
+    var sets: [String: PokemonCollectionSet] {
+        filteredList.isEmpty ? pokemonCollectionSets :
+        pokemonCollectionSets.filter{ filteredList.description.lastSubString.contains( $0.key) }
+    }
 
     // MARK: - Initialization
     init(pokemonCollectionViewModelDelegate: PokemonCollectionViewModelDelegate, repository: PokemonCollectionSetsRepository) {
@@ -31,7 +36,11 @@ class PokemonCollectionSetsViewModel {
         repository.fetch { [weak self] result in
             switch result {
             case .success(let pokemonCollectionSets):
-                self?.pokemonCollectionSets =  Dictionary(uniqueKeysWithValues: pokemonCollectionSets.map { ($0.id, $0) })
+                guard let pokemonCollectionSets = pokemonCollectionSets as? [PokemonCollectionSet] else {
+                    self?.delegate?.didFailWithError(message: "Some error occured")
+                    return
+                }
+                self?.pokemonCollectionSets = Dictionary(uniqueKeysWithValues: pokemonCollectionSets.map { ($0.id, $0) })
                 self?.delegate?.didLoadPokemonCollectionSetsViewModel(self!)
 
             case .failure(let error):
@@ -39,6 +48,14 @@ class PokemonCollectionSetsViewModel {
 
             }
         }
+    }
+
+    var searchList: [String] {
+        pokemonCollectionSets.map { $0.value.description }
+    }
+
+    var keys: [String] {
+        Array(sets.keys)
     }
 
 }

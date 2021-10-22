@@ -32,15 +32,16 @@ class SetDetailsViewController: UIViewController {
 
     // MARK: - Initialization
     func configure(withViewModel viewModel: SetDetailsViewModel) {
-        self.viewModel = viewModel
+        self.viewModel.set(setDetails: viewModel.setDetails)
     }
 
     private func configure() {
         configureTitle(title: viewModel.setDetails.pokemonCollectionSet.series)
-        configureTopView(withURL: viewModel.setDetails.pokemonCollectionSet.imageLogo,
-                         andReleaseDate: viewModel.setDetails.pokemonCollectionSet.releaseDate)
-        configureMiddleView(withCollectedFraction: viewModel.setDetails.collectedFraction,
-                            withcollectedPercentage: viewModel.setDetails.collectedPercentage)
+        configureTopView(withURL: viewModel.logoURL,
+                         andReleaseDate: viewModel.formatedReleaseDate)
+        configureMiddleView(withCollectedFraction:
+                                viewModel.collectedFraction,
+                            withcollectedPercentage: viewModel.collectedPercentage)
         configureBottomView(withValue: 0.0)
     }
 
@@ -48,9 +49,9 @@ class SetDetailsViewController: UIViewController {
         self.title = title
     }
 
-    private func configureTopView(withURL urlString: String, andReleaseDate releaseDate: String) {
+    private func configureTopView(withURL url: URL?, andReleaseDate releaseDate: String) {
         releaseDateLabel.text = "RELEASE DATE: " + releaseDate
-        guard let url = URL(string: urlString) else { return }
+        guard let url = url else { return }
         logoImageView.load(url: url)
     }
 

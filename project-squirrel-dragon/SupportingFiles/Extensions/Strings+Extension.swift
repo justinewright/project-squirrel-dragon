@@ -1,14 +1,15 @@
 //
-//  String+Extension.swift
+//  Strings+Extension.swift
 //  project-squirrel-dragon
 //
-//  Created by Justine Wright on 2021/10/20.
+//  Created by Justine Wright on 2021/10/22.
 //
 
 import Foundation
 
 extension String {
-    public var setID: String {
+
+    public var lastSubString: String {
         let result = self.split(separator: " ").map { String($0) }
         return result.last?.removeWhitespace ?? ""
     }

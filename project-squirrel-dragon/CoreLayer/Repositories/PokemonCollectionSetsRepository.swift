@@ -23,7 +23,7 @@ class PokemonCollectionSetsRepository: RepositoryProtocol {
     }
 
     // MARK: - Repository Protocol Implementation
-    func fetch(then handler: @escaping PokemonCollectionSetResultBlock) {
+    func fetch(then handler: @escaping AnyResultBlock) {
         pokemonTcgAllSetsApiClient.fetch  { [weak self] result in
             DispatchQueue.main.async {
                 switch result {

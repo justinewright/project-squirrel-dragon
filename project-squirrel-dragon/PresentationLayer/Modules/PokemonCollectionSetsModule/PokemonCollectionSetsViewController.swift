@@ -15,7 +15,6 @@ class PokemonCollectionSetsViewController: UIViewController {
     private let cellReuseIdentifier = "PokemonCollectionSetCell"
     private let cellNibName = "PokemonCollectionSetCell"
     private var searchBarViewController = UIViewController()
-    private var filteredNames: [String] = []
 
     // MARK: - Life Cycle Methods
     override func viewDidLoad() {
@@ -49,21 +48,20 @@ class PokemonCollectionSetsViewController: UIViewController {
 
     private func configureSearchView() {
         searchBarViewController = CustomSearchBarModuleBuilder.build()
-        addChild(searchBarViewController)
-        guard let configuredSearchBar = searchBarViewController as? CustomSearchBarViewController else{
+        guard let configuredSearchBar = searchBarViewController as? CustomSearchBarViewController else {
             return
         }
-        if let searchBarViewModel = CustomSearchBarViewModel(list:    viewModel.pokemonCollectionSets.map { $0.value.description}, andDelegate: self) {
+        if let searchBarViewModel = CustomSearchBarViewModel(list: viewModel.searchList,
+                                                             andDelegate: self) {
             configuredSearchBar.configure(searchBarViewModel)
-            addChild( searchBarViewController)
+            addChild(searchBarViewController)
             view.addSubview(searchBarViewController.view)
             searchBarViewController.didMove(toParent: self)
             constrainSearchBar()
         }
-
     }
-
 }
+
 extension PokemonCollectionSetsViewController: UICollectionViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard let configuredSearchBar = searchBarViewController as? CustomSearchBarViewController else{
@@ -74,21 +72,9 @@ extension PokemonCollectionSetsViewController: UICollectionViewDelegate {
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        var pokemonSet: PokemonCollectionSet!
 
-        if filteredNames.isEmpty {
-            let keys = Array(viewModel.pokemonCollectionSets.keys)
-            pokemonSet = viewModel.pokemonCollectionSets[keys[indexPath.row]]
-        } else {
-            pokemonSet = viewModel.pokemonCollectionSets[filteredNames[indexPath.row]]
-        }
-        let destination = SetDetailsModuleBuilder.build(usingNavigationFactory: NavigationBuilder.build, andPokemonSet: pokemonSet)
-        if let destination = destination as? SetDetailsViewController {
-            destination.configure(withViewModel: SetDetailsViewModel(setDetails: SetDetails(id: pokemonSet.id,
-                                                                                            userSet: UserSet(id: pokemonSet.id, cardsCollected: 0),
-                                                                                            pokemonCollectionSet: pokemonSet),
-                                                                     delegate: destination))
-        }
+        let destination = SetDetailsModuleBuilder.build(usingNavigationFactory: NavigationBuilder.build, andPokemonSet: viewModel.sets[Array(viewModel.sets.keys)[indexPath.row]]!)
+        
         self.navigationController?.pushViewController(destination, animated: true)
     }
 }
@@ -123,7 +109,7 @@ extension PokemonCollectionSetsViewController: PokemonCollectionViewModelDelegat
 // MARK: - CollectionView DataSource Methods
 extension PokemonCollectionSetsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        filteredNames.isEmpty ? viewModel.pokemonCollectionSets.count : filteredNames.count
+        viewModel.sets.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -131,12 +117,8 @@ extension PokemonCollectionSetsViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath) as? PokemonCollectionSetCell else {
             return UICollectionViewCell()
         }
-        if filteredNames.isEmpty {
-            let keys = Array(viewModel.pokemonCollectionSets.keys)
-            cell.configure(with: viewModel.pokemonCollectionSets[keys[indexPath.row]]!)
-        } else {
-            cell.configure(with: viewModel.pokemonCollectionSets[filteredNames[indexPath.row]]!)
-        }
+        cell.configure(with: viewModel.sets[viewModel.keys[indexPath.row]]!)
+
         return cell
     }
 
@@ -146,8 +128,7 @@ extension PokemonCollectionSetsViewController: UICollectionViewDataSource {
 
 extension PokemonCollectionSetsViewController:  CustomSearchbarViewDelegate {
     func updateDisplay(_ sender: CustomSearchBarViewModel!, withSearchFilter searchFilter: String!) {
-        self.filteredNames = sender.filteredList as? [String] ?? [String]()
-        self.filteredNames = self.filteredNames.map { $0.setID }
+        viewModel.filteredList = sender.filteredList as? [String] ?? [String]()
         self.pokemonCollectionSetsCollectionView.reloadData()
     }
 }

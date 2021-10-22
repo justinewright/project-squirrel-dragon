@@ -27,8 +27,27 @@ class SetDetailsViewModel {
         self.setDetails = setDetails
     }
 
+    func set(setDetails: SetDetails) {
+        self.setDetails = setDetails
+    }
+
     func updateView() {
         self.delegate?.isLoadingSetDetailsViewModel(self)
+    }
 
+    var collectedFraction: String {
+        "\(setDetails.userSet.cardsCollected)/\(setDetails.pokemonCollectionSet.total)"
+    }
+
+    var collectedPercentage: String {
+        "\((setDetails.userSet.cardsCollected)/(setDetails.pokemonCollectionSet.total)*100)%"
+    }
+
+    var formatedReleaseDate: String {
+        "RELEASE DATE: " + setDetails.pokemonCollectionSet.releaseDate
+    }
+
+    var logoURL: URL? {
+        URL(string: setDetails.pokemonCollectionSet.imageLogo)
     }
 }

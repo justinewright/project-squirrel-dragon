@@ -13,6 +13,7 @@
 		21044758270ACD1A00815441 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21044757270ACD1A00815441 /* Assets.xcassets */; };
 		2104475B270ACD1A00815441 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21044759270ACD1A00815441 /* LaunchScreen.storyboard */; };
 		2104476A270B0AE400815441 /* TempTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21044769270B0AE400815441 /* TempTests.swift */; };
+		21246CFE2722E93A00CC6DAC /* Strings+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21246CFD2722E93A00CC6DAC /* Strings+Extension.swift */; };
 		2165291F2722AC6B00F5D6D6 /* PokemonCollectionSetsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2165291E2722AC6B00F5D6D6 /* PokemonCollectionSetsViewModelTests.swift */; };
 		216529212722AC7D00F5D6D6 /* SetDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216529202722AC7D00F5D6D6 /* SetDetailViewModelTests.swift */; };
 		21667076270F0C8F00B6A874 /* PokemonCollectionSetsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21667075270F0C8F00B6A874 /* PokemonCollectionSetsViewModel.swift */; };
@@ -53,7 +54,6 @@
 		2185CEF0271FFB7300499D31 /* SetDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2185CEEE271FFB7300499D31 /* SetDetailsViewController.swift */; };
 		2185CEF3271FFB9900499D31 /* SetDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2185CEF2271FFB9900499D31 /* SetDetailsViewModel.swift */; };
 		2185CEF52720037300499D31 /* SetDetailsModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2185CEF42720037300499D31 /* SetDetailsModuleBuilder.swift */; };
-		2185CEF7272016EC00499D31 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2185CEF6272016EC00499D31 /* String+Extension.swift */; };
 		2185CEF92720225900499D31 /* UserSetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2185CEF82720225900499D31 /* UserSetData.swift */; };
 		2185CEFD27202A8600499D31 /* UserSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2185CEFC27202A8600499D31 /* UserSet.swift */; };
 		2185CEFF27202C3C00499D31 /* SetDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2185CEFE27202C3C00499D31 /* SetDetails.swift */; };
@@ -65,6 +65,16 @@
 		218CF2212718A8140012F8E1 /* FilterableDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 218CF2202718A8140012F8E1 /* FilterableDataSource.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		216529222722CA3900F5D6D6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 21044743270ACD1900815441 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2104474A270ACD1900815441;
+			remoteInfo = "project-squirrel-dragon";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		2104474B270ACD1900815441 /* project-squirrel-dragon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "project-squirrel-dragon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2104474E270ACD1900815441 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +85,7 @@
 		2104475C270ACD1A00815441 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "project-squirrel-dragon/SupportingFiles/Info.plist"; sourceTree = SOURCE_ROOT; };
 		21044767270B0AE400815441 /* project-squirrel-dragonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "project-squirrel-dragonTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		21044769270B0AE400815441 /* TempTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempTests.swift; sourceTree = "<group>"; };
+		21246CFD2722E93A00CC6DAC /* Strings+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Strings+Extension.swift"; sourceTree = "<group>"; };
 		2165291E2722AC6B00F5D6D6 /* PokemonCollectionSetsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCollectionSetsViewModelTests.swift; sourceTree = "<group>"; };
 		216529202722AC7D00F5D6D6 /* SetDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDetailViewModelTests.swift; sourceTree = "<group>"; };
 		21667075270F0C8F00B6A874 /* PokemonCollectionSetsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCollectionSetsViewModel.swift; sourceTree = "<group>"; };
@@ -109,7 +120,6 @@
 		2185CEEE271FFB7300499D31 /* SetDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDetailsViewController.swift; sourceTree = "<group>"; };
 		2185CEF2271FFB9900499D31 /* SetDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDetailsViewModel.swift; sourceTree = "<group>"; };
 		2185CEF42720037300499D31 /* SetDetailsModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDetailsModuleBuilder.swift; sourceTree = "<group>"; };
-		2185CEF6272016EC00499D31 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		2185CEF82720225900499D31 /* UserSetData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetData.swift; sourceTree = "<group>"; };
 		2185CEFC27202A8600499D31 /* UserSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSet.swift; sourceTree = "<group>"; };
 		2185CEFE27202C3C00499D31 /* SetDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDetails.swift; sourceTree = "<group>"; };
@@ -249,7 +259,7 @@
 			isa = PBXGroup;
 			children = (
 				21667085270F381300B6A874 /* UIImageView+Extension.swift */,
-				2185CEF6272016EC00499D31 /* String+Extension.swift */,
+				21246CFD2722E93A00CC6DAC /* Strings+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -405,6 +415,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				216529232722CA3900F5D6D6 /* PBXTargetDependency */,
 			);
 			name = "project-squirrel-dragonTests";
 			productName = "project-squirrel-dragonTests";
@@ -519,8 +530,8 @@
 				2185CEF52720037300499D31 /* SetDetailsModuleBuilder.swift in Sources */,
 				2185CEF3271FFB9900499D31 /* SetDetailsViewModel.swift in Sources */,
 				217F20F22721D0D7003F4A5E /* DummyData.swift in Sources */,
-				2185CEF7272016EC00499D31 /* String+Extension.swift in Sources */,
 				21671E6E2715D66200A45571 /* CustomSearchBarModuleBuilder.swift in Sources */,
+				21246CFE2722E93A00CC6DAC /* Strings+Extension.swift in Sources */,
 				2185CEFF27202C3C00499D31 /* SetDetails.swift in Sources */,
 				21044751270ACD1900815441 /* SceneDelegate.swift in Sources */,
 				216ADAE2270D75B100D61E92 /* PokemonTcgAllSetsApiClient.swift in Sources */,
@@ -559,6 +570,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		216529232722CA3900F5D6D6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2104474A270ACD1900815441 /* project-squirrel-dragon */;
+			targetProxy = 216529222722CA3900F5D6D6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		21044754270ACD1900815441 /* Main.storyboard */ = {
