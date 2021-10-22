@@ -33,7 +33,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "21044766270B0AE400815441"
+               BlueprintIdentifier = "21246D062723106C00CC6DAC"
                BuildableName = "project-squirrel-dragonTests.xctest"
                BlueprintName = "project-squirrel-dragonTests"
                ReferencedContainer = "container:project-squirrel-dragon.xcodeproj">

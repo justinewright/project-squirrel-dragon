@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 struct PokemonCollectionSet: BaseModel {
     var model: Any { get
         { return self }
@@ -37,7 +36,7 @@ struct PokemonCollectionSet: BaseModel {
 
     var description: String {
     """
-    name: \(name) 
+    name: \(name)
     series: \(series)
     id: \(id)
     """

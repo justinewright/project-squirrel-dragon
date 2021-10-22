@@ -16,7 +16,7 @@ class PokemonCollectionSetsViewModel {
 
     // MARK: - Properties
     private weak var delegate: PokemonCollectionViewModelDelegate?
-    private var repository: PokemonCollectionSetsRepository
+    private var repository: RepositoryProtocol
     private var pokemonCollectionSets: [String: PokemonCollectionSet] = [:]
     var filteredList: [String] = []
     var sets: [String: PokemonCollectionSet] {
@@ -25,7 +25,7 @@ class PokemonCollectionSetsViewModel {
     }
 
     // MARK: - Initialization
-    init(pokemonCollectionViewModelDelegate: PokemonCollectionViewModelDelegate, repository: PokemonCollectionSetsRepository) {
+    init(pokemonCollectionViewModelDelegate: PokemonCollectionViewModelDelegate, repository: RepositoryProtocol) {
         delegate = pokemonCollectionViewModelDelegate
         self.repository = repository
     }
