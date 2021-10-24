@@ -19,7 +19,7 @@ class PokemonCollectionSetsViewController: UIViewController {
     // MARK: - Life Cycle Methods
     override func viewDidLoad() {
         configureCollectionView()
-        viewModel.updateView()
+        viewModel.fetchViewData()
         activityIndicator.startAnimating()
     }
 
@@ -75,16 +75,12 @@ extension PokemonCollectionSetsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
         let destination = SetDetailsModuleBuilder.build(usingNavigationFactory: NavigationBuilder.build, andPokemonSet: viewModel.sets[Array(viewModel.sets.keys)[indexPath.row]]!)
-        
+
         self.navigationController?.pushViewController(destination, animated: true)
     }
 }
 // MARK: - ViewModel Delegate Methods
 extension PokemonCollectionSetsViewController: PokemonCollectionViewModelDelegate {
-
-    func isLoadingPokemonCollectionSetsViewModel(_ pokemonCollectionSetsViewModel: PokemonCollectionSetsViewModel) {
-        activityIndicator.startAnimating()
-    }
 
     func didLoadPokemonCollectionSetsViewModel(_ pokemonCollectionSetsViewModel: PokemonCollectionSetsViewModel) {
         self.pokemonCollectionSetsCollectionView.reloadData()
@@ -115,10 +111,11 @@ extension PokemonCollectionSetsViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath) as? PokemonCollectionSetCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath) as? PokemonCollectionSetCell,
+              let cellData = viewModel.sets[viewModel.keys[indexPath.row]] else {
             return UICollectionViewCell()
         }
-        cell.configure(with: viewModel.sets[viewModel.keys[indexPath.row]]!)
+        cell.configure(with: cellData )
 
         return cell
     }
