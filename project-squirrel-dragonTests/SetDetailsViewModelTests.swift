@@ -34,7 +34,7 @@ class SetDetailsViewModelTests: XCTestCase {
         mockDelegate = MockDelegate()
         viewModelUnderTesting = SetDetailsViewModel(delegate: mockDelegate)
         mockSetDetails = SetDetails(id: mockPokemonSet.id, userSet: mockUserSet, pokemonCollectionSet: mockPokemonSet)
-        viewModelUnderTesting.updateSetDetails(withPokemonSet: mockPokemonSet)
+        viewModelUnderTesting.updateSetDetailsData(withPokemonSet: mockPokemonSet)
     }
 
     func testCollectedFractionStringIsFormattedCorrectly() throws {

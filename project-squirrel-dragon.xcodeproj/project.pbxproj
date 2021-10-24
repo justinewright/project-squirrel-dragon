@@ -793,6 +793,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.justFoxing.project-squirrel-dragonTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "project-squirrel-dragon/SupportingFiles/project-squirrel-dragon-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/project-squirrel-dragon.app/project-squirrel-dragon";
@@ -816,6 +817,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.justFoxing.project-squirrel-dragonTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "project-squirrel-dragon/SupportingFiles/project-squirrel-dragon-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/project-squirrel-dragon.app/project-squirrel-dragon";

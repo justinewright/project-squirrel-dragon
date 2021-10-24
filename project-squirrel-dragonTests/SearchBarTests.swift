@@ -8,24 +8,73 @@
 import XCTest
 
 class SearchBarTests: XCTestCase {
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
+    class MockSearchViewModelDelegate: NSObject, CustomSearchbarViewModelDelegate {
+        var updateDisplayCalled = false
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+        func updateDisplay(_ sender: CustomSearchBarViewModel!, withSearchFilter searchFilter: String!) {
+            updateDisplayCalled = true
         }
+
+    }
+
+    var viewModelUnderTesting: CustomSearchBarViewModel!
+    var mockDelegate =  MockSearchViewModelDelegate()
+
+    override func setUp() {
+        viewModelUnderTesting = CustomSearchBarViewModel(list: ["a", "ab", "b", "c"], andDelegate: mockDelegate)
+    }
+
+    func testWhenSearchWordIsEmptyThenFilteredListIsEmpty(){
+        let searchWord = ""
+        viewModelUnderTesting.filter(searchWord)
+
+        let expectedResult: [String] = []
+        let actualResult = viewModelUnderTesting.filteredList as? [String] ?? []
+
+        XCTAssertEqual(expectedResult, actualResult)
+    }
+
+    func testWhenSearchWordIsSubstringOfWordInListThenMatchesAreReturned() {
+
+        let searchWord = "a"
+        viewModelUnderTesting.filter(searchWord)
+
+        let expectedResult: [String] = ["a", "ab"]
+        let actualResult = viewModelUnderTesting.filteredList as? [String] ?? []
+
+        XCTAssertEqual(expectedResult, actualResult)
+    }
+
+    func testWhenSearchWordIsExactMatchThenOnlyFilteredListContainsOneElement() {
+
+        let searchWord = "c"
+        viewModelUnderTesting.filter(searchWord)
+
+        let expectedResult: [String] = ["c"]
+        let actualResult = viewModelUnderTesting.filteredList as? [String] ?? []
+
+        XCTAssertEqual(expectedResult, actualResult)
+    }
+
+    func testWhenSearchWordIsEnteredFilteredListIsUpdated() {
+        let searchWord = "c"
+        let countBefore = viewModelUnderTesting.filteredList.count
+        viewModelUnderTesting.filter(searchWord)
+
+        let countAfter = viewModelUnderTesting.filteredList.count
+
+        XCTAssertNotEqual(countBefore, countAfter)
+    }
+
+    func testWhenSearchWordIsEnteredDelegateUpdateDisplayMethodIsCalled() {
+        let searchWord = "c"
+        viewModelUnderTesting.filter(searchWord)
+
+        let expectedResult = true
+        let actualResult = mockDelegate.updateDisplayCalled
+
+        XCTAssertEqual(expectedResult, actualResult)
     }
 
 }

@@ -48,7 +48,7 @@ class PokemonCollectionSetsViewModelTest: XCTestCase {
     }
 
     func testUpdateViewCallsRepositoryFetch() throws {
-        viewModelUnderTesting.updateView()
+        viewModelUnderTesting.fetchViewData()
         let expectedResult = true
         let actualResult = mockRepo.fetchCalled
 
@@ -57,7 +57,7 @@ class PokemonCollectionSetsViewModelTest: XCTestCase {
 
     func testOnSuccessfulRepositoryFetchResultUpdatesPopulatesPokemonCollectionSet() throws {
         mockRepo.repoResult = .success([mockPokemonSet])
-        viewModelUnderTesting.updateView()
+        viewModelUnderTesting.fetchViewData()
         let expectedResult = 1
         let actualResult = viewModelUnderTesting.sets.count
         XCTAssertEqual(expectedResult, actualResult)
@@ -66,21 +66,21 @@ class PokemonCollectionSetsViewModelTest: XCTestCase {
 
     func testOnSuccessfulRepositoryFetchResultDelegateDidLoadIsCalled() throws {
         mockRepo.repoResult = .success([mockPokemonSet])
-        viewModelUnderTesting.updateView()
+        viewModelUnderTesting.fetchViewData()
         let expectedResult = true
         let actualResult = mockDelegate.didLoadCalled
         XCTAssertEqual(expectedResult, actualResult)
    }
 
     func testOnFailedRepositoryFetchResultPokemonCollectionSetIsEmpty() throws {
-        viewModelUnderTesting.updateView()
+        viewModelUnderTesting.fetchViewData()
         let expectedResult = 0
         let actualResult = viewModelUnderTesting.sets.count
         XCTAssertEqual(expectedResult, actualResult)
     }
 
     func testOnFailedRepositoryFetchResultDelegateDidFailIsCalled() throws {
-        viewModelUnderTesting.updateView()
+        viewModelUnderTesting.fetchViewData()
         let expectedResult = true
         let actualResult = mockDelegate.didFailCalled
         XCTAssertEqual(expectedResult, actualResult)
@@ -88,7 +88,7 @@ class PokemonCollectionSetsViewModelTest: XCTestCase {
 
     func testSearchListReturnsCorrectlyFormattedStringForEachElement() throws {
         mockRepo.repoResult = .success([mockPokemonSet])
-        viewModelUnderTesting.updateView()
+        viewModelUnderTesting.fetchViewData()
         let expectedResult =
             """
             name: \(mockPokemonSet.name)
@@ -107,7 +107,7 @@ class PokemonCollectionSetsViewModelTest: XCTestCase {
                         series: \(mockPokemonSet.series)
                         id: "invalid"
                         """]
-        viewModelUnderTesting.updateView()
+        viewModelUnderTesting.fetchViewData()
         let expectedResult = 0
         let actualResult = viewModelUnderTesting.sets.count
         XCTAssertEqual(expectedResult, actualResult)
@@ -116,7 +116,7 @@ class PokemonCollectionSetsViewModelTest: XCTestCase {
     func testWhenNotFilteredFullSetIsReturned() throws {
         mockRepo.repoResult = .success([mockPokemonSet])
         viewModelUnderTesting.filteredList = []
-        viewModelUnderTesting.updateView()
+        viewModelUnderTesting.fetchViewData()
         let expectedResult = 1
         let actualResult = viewModelUnderTesting.sets.count
         XCTAssertEqual(expectedResult, actualResult)
@@ -124,7 +124,7 @@ class PokemonCollectionSetsViewModelTest: XCTestCase {
 
     func testViewModelReturnsArrayOfCurrentSetsKeys() throws {
         mockRepo.repoResult = .success([mockPokemonSet])
-        viewModelUnderTesting.updateView()
+        viewModelUnderTesting.fetchViewData()
         let expectedResult = mockPokemonSet.id
         let actualResult = viewModelUnderTesting.keys.first!
         XCTAssertEqual(expectedResult, actualResult)
