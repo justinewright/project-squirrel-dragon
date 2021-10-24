@@ -73,6 +73,7 @@ extension SetDetailsViewController: SetsDetailViewModelDelegate {
     }
 
     func showErrorAlert(with message: String) {
+
         let alert = UIAlertController(title: "User Details Unavailable!", message: message, preferredStyle: .alert)
         let alertOKAction=UIAlertAction(title: "OK", style: .default, handler: { _ in })
         alert.addAction(alertOKAction)

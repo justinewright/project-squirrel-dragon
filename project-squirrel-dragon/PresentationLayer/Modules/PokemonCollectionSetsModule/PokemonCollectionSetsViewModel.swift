@@ -49,9 +49,16 @@ class PokemonCollectionSetsViewModel {
             }
         }
     }
+    private func description(ofPokemonSet set: PokemonCollectionSet) -> String {
+    """
+    name: \(set.name)
+    series: \(set.series)
+    id: \(set.id)
+    """
+    }
 
     var searchList: [String] {
-        pokemonCollectionSets.map { $0.value.description }
+        pokemonCollectionSets.map { description(ofPokemonSet: $0.value) }
     }
 
     var keys: [String] {

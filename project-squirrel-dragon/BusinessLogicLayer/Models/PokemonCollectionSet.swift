@@ -35,12 +35,4 @@ struct PokemonCollectionSet: BaseModel {
         imageLogo = pokemonSetsData.images.logo
     }
 
-    var description: String {
-    """
-    name: \(name) 
-    series: \(series)
-    id: \(id)
-    """
-    }
-
 }
