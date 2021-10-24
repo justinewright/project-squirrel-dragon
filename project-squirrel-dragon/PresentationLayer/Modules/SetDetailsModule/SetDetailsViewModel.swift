@@ -23,12 +23,15 @@ class SetDetailsViewModel {
         self.delegate = delegate
     }
 
-    func updateSetDetails(withPokemonSet set: PokemonCollectionSet) {
-        // TODO: - repo to firebase to get userdetails
-        //using dummy data as a placeholder until firebase database is working
+    func updateSetDetailsData(withPokemonSet set: PokemonCollectionSet) {
+        // using dummy data as a placeholder until firebase database is working
         var temporaryUserSet = DummyData.userSet
         temporaryUserSet.id = set.id
         self.setDetails = SetDetails(id: set.id, userSet: temporaryUserSet, pokemonCollectionSet: set)
+    }
+
+    func fetchViewData() {
+        // TODO: - repo to firebase to get userdetails
     }
 
     var collectedFraction: String {

@@ -244,8 +244,8 @@
 				21667075270F0C8F00B6A874 /* PokemonCollectionSetsViewModel.swift */,
 				21667077270F0D2E00B6A874 /* PokemonCollectionSetsViewController.swift */,
 				2166707B270F0E1000B6A874 /* PokemonCollectionSetsModuleBuilder.swift */,
-				21667080270F33DB00B6A874 /* PokemonCollectionSetCell.swift */,
 				21667079270F0D5B00B6A874 /* PokemonCollectionSets.storyboard */,
+				21667080270F33DB00B6A874 /* PokemonCollectionSetCell.swift */,
 				21667081270F33DB00B6A874 /* PokemonCollectionSetCell.xib */,
 			);
 			path = PokemonCollectionSetsModule;

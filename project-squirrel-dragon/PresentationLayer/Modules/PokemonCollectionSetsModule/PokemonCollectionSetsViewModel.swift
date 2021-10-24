@@ -17,6 +17,8 @@ class PokemonCollectionSetsViewModel {
     // MARK: - Properties
     private weak var delegate: PokemonCollectionViewModelDelegate?
     private var repository: RepositoryProtocol
+
+    // MARK: - Other Properties
     private var pokemonCollectionSets: [String: PokemonCollectionSet] = [:]
     var filteredList: [String] = []
     var sets: [String: PokemonCollectionSet] {
@@ -30,7 +32,7 @@ class PokemonCollectionSetsViewModel {
         self.repository = repository
     }
 
-    func updateView() {
+    func fetchViewData() {
         repository.fetch { [weak self] result in
             switch result {
             case .success(let pokemonCollectionSets):
