@@ -69,13 +69,11 @@ extension SetDetailsViewController: SetsDetailViewModelDelegate {
     }
 
     func didFailWithError(message: String) {
-        DispatchQueue.main.async {
-            self.showErrorAlert(with: message)
-        }
+        self.showErrorAlert(with: message)
     }
 
     func showErrorAlert(with message: String) {
-        let alert = UIAlertController(title: "Pokemon Sets Unavailable!", message: message, preferredStyle: .alert)
+        let alert = UIAlertController(title: "User Details Unavailable!", message: message, preferredStyle: .alert)
         let alertOKAction=UIAlertAction(title: "OK", style: .default, handler: { _ in })
         alert.addAction(alertOKAction)
         present(alert, animated: true, completion: nil)

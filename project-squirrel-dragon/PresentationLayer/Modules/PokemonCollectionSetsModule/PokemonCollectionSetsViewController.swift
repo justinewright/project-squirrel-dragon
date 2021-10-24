@@ -89,9 +89,7 @@ extension PokemonCollectionSetsViewController: PokemonCollectionViewModelDelegat
     }
 
     func didFailWithError(message: String) {
-        DispatchQueue.main.async {
-            self.showErrorAlert(with: message)
-        }
+        self.showErrorAlert(with: message)
         activityIndicator.stopAnimating()
     }
 
