@@ -16,6 +16,7 @@ class SetDetailsViewController: UIViewController {
     @IBOutlet private weak var collectedFractionLabel: UILabel!
     @IBOutlet private weak var valueLabel: UILabel!
 
+    private let errorTitle = "User Details Unavailable!"
     // TODO: - add currency selector / converter and view cards button
 
     private lazy var viewModel = SetDetailsViewModel(delegate: self)
@@ -69,15 +70,6 @@ extension SetDetailsViewController: SetsDetailViewModelDelegate {
     }
 
     func didFailWithError(message: String) {
-        DispatchQueue.main.async {
-            self.showErrorAlert(with: message)
-        }
-    }
-
-    func showErrorAlert(with message: String) {
-        let alert = UIAlertController(title: "Pokemon Sets Unavailable!", message: message, preferredStyle: .alert)
-        let alertOKAction=UIAlertAction(title: "OK", style: .default, handler: { _ in })
-        alert.addAction(alertOKAction)
-        present(alert, animated: true, completion: nil)
+        self.showErrorAlert(titled: errorTitle, with: message)
     }
 }
