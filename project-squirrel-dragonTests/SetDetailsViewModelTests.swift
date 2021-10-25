@@ -52,6 +52,7 @@ class SetDetailsViewModelTests: XCTestCase {
 
         XCTAssertEqual(expectedResult, actualResult)
     }
+    
     func testReleaseDateStringIsFormattedCorrectly() throws {
         let expectedResult = "RELEASE DATE: " + mockSetDetails.pokemonCollectionSet.releaseDate
         let actualResult = viewModelUnderTesting.formatedReleaseDate
