@@ -50,11 +50,11 @@ class PokemonCollectionSetsViewModel {
         }
     }
     private func description(ofPokemonSet set: PokemonCollectionSet) -> String {
-    """
-    name: \(set.name)
-    series: \(set.series)
-    id: \(set.id)
-    """
+        """
+        name: \(set.name)
+        series: \(set.series)
+        id: \(set.id)
+        """
     }
 
     var searchList: [String] {

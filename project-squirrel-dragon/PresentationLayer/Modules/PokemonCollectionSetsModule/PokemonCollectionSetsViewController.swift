@@ -15,6 +15,7 @@ class PokemonCollectionSetsViewController: UIViewController {
     private let cellReuseIdentifier = "PokemonCollectionSetCell"
     private let cellNibName = "PokemonCollectionSetCell"
     private var searchBarViewController = UIViewController()
+    private let errorTitle = "Pokemon Sets Unavailable!"
 
     // MARK: - Life Cycle Methods
     override func viewDidLoad() {
@@ -89,15 +90,8 @@ extension PokemonCollectionSetsViewController: PokemonCollectionViewModelDelegat
     }
 
     func didFailWithError(message: String) {
-        self.showErrorAlert(with: message)
+        self.showErrorAlert(titled: errorTitle, with: message)
         activityIndicator.stopAnimating()
-    }
-
-    func showErrorAlert(with message: String) {
-        let alert = UIAlertController(title: "Pokemon Sets Unavailable!", message: message, preferredStyle: .alert)
-        let alertOKAction=UIAlertAction(title: "OK", style: .default, handler: { _ in })
-        alert.addAction(alertOKAction)
-        present(alert, animated: true, completion: nil)
     }
 }
 
