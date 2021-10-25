@@ -55,7 +55,7 @@
 		217F20EE27217498003F4A5E /* TabBarBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F20ED27217498003F4A5E /* TabBarBuilder.swift */; };
 		217F20F027218FF6003F4A5E /* SetDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 217F20EF27218FF6003F4A5E /* SetDetails.storyboard */; };
 		217F20F22721D0D7003F4A5E /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F20F12721D0D7003F4A5E /* DummyData.swift */; };
-		2180A41A2726757100E0C0F4 /* UIVIewController_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2180A4192726757100E0C0F4 /* UIVIewController_Extension.swift */; };
+		2180A41A2726757100E0C0F4 /* UIVIewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2180A4192726757100E0C0F4 /* UIVIewController+Extension.swift */; };
 		21843377271417D000EC2F5A /* CustomSearchBarViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 21843376271417D000EC2F5A /* CustomSearchBarViewModel.m */; };
 		2185CEF0271FFB7300499D31 /* SetDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2185CEEE271FFB7300499D31 /* SetDetailsViewController.swift */; };
 		2185CEF3271FFB9900499D31 /* SetDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2185CEF2271FFB9900499D31 /* SetDetailsViewModel.swift */; };
@@ -116,7 +116,7 @@
 		217F20ED27217498003F4A5E /* TabBarBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarBuilder.swift; sourceTree = "<group>"; };
 		217F20EF27218FF6003F4A5E /* SetDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SetDetails.storyboard; sourceTree = "<group>"; };
 		217F20F12721D0D7003F4A5E /* DummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyData.swift; sourceTree = "<group>"; };
-		2180A4192726757100E0C0F4 /* UIVIewController_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIVIewController_Extension.swift; sourceTree = "<group>"; };
+		2180A4192726757100E0C0F4 /* UIVIewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIewController+Extension.swift"; sourceTree = "<group>"; };
 		218433732714176500EC2F5A /* project-squirrel-dragon-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "project-squirrel-dragon-Bridging-Header.h"; path = "project-squirrel-dragon/SupportingFiles/project-squirrel-dragon-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		21843376271417D000EC2F5A /* CustomSearchBarViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomSearchBarViewModel.m; sourceTree = "<group>"; };
 		21843378271417FD00EC2F5A /* CustomSearchBarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomSearchBarViewController.h; sourceTree = "<group>"; };
@@ -258,7 +258,7 @@
 			children = (
 				21667085270F381300B6A874 /* UIImageView+Extension.swift */,
 				21246CFD2722E93A00CC6DAC /* Strings+Extension.swift */,
-				2180A4192726757100E0C0F4 /* UIVIewController_Extension.swift */,
+				2180A4192726757100E0C0F4 /* UIVIewController+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -530,7 +530,7 @@
 				2185CEF3271FFB9900499D31 /* SetDetailsViewModel.swift in Sources */,
 				217F20F22721D0D7003F4A5E /* DummyData.swift in Sources */,
 				21671E6E2715D66200A45571 /* CustomSearchBarModuleBuilder.swift in Sources */,
-				2180A41A2726757100E0C0F4 /* UIVIewController_Extension.swift in Sources */,
+				2180A41A2726757100E0C0F4 /* UIVIewController+Extension.swift in Sources */,
 				21246CFE2722E93A00CC6DAC /* Strings+Extension.swift in Sources */,
 				2185CEFF27202C3C00499D31 /* SetDetails.swift in Sources */,
 				21044751270ACD1900815441 /* SceneDelegate.swift in Sources */,
