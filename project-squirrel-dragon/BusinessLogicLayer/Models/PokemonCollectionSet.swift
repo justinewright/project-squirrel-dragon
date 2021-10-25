@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 struct PokemonCollectionSet: BaseModel {
     var model: Any { get
         { return self }
@@ -33,5 +34,5 @@ struct PokemonCollectionSet: BaseModel {
         imageSymbol = pokemonSetsData.images.symbol
         imageLogo = pokemonSetsData.images.logo
     }
-    
+
 }

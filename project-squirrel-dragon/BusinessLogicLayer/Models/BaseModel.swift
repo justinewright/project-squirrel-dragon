@@ -8,5 +8,5 @@
 import Foundation
 
 protocol BaseModel {
-    var model: Any {get}
+    var model: Any { get }
 }

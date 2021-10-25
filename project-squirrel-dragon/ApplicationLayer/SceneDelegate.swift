@@ -16,8 +16,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
+        let subModules: Submodules = (
+                sets: PokemonCollectionSetsModuleBuilder.build(usingNavigationFactory: NavigationBuilder.build),
+                money: NavigationBuilder.build(rootView: UIViewController())
+            )
+
+        let tab = TabBarBuilder.build(usingSubmodules: subModules)
         window = UIWindow(windowScene: windowScene)
-        window!.rootViewController = PokemonCollectionSetsModuleBuilder.build()
+        window!.rootViewController = tab
         window!.makeKeyAndVisible()
     }
 

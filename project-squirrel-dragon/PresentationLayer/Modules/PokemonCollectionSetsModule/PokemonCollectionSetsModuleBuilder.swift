@@ -8,11 +8,11 @@
 import UIKit
 
 class PokemonCollectionSetsModuleBuilder {
-    static func build() -> UIViewController {
+    static func build(usingNavigationFactory factory: NavigationFactory) -> UINavigationController {
         // TODO: - add navigation builder
         let storyboard = UIStoryboard.init(name: "PokemonCollectionSets", bundle: nil)
         let view = storyboard.instantiateViewController(withIdentifier: "PokemonCollectionSetsViewController")
-        // return factory of the view
-        return view
+        view.title = "Sets"
+        return factory(view)
     }
 }

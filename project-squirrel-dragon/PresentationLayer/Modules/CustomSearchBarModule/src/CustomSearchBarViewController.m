@@ -102,7 +102,7 @@ float keyboardHeight = 300;
     CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
     keyboardHeight = keyboardSize.height;
     double keyboardDuration = [[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-    self.containerViewBottomAnchor.constant = keyboardSize.height - self.view.safeAreaInsets.bottom;
+    self.containerViewBottomAnchor.constant = keyboardSize.height - 85;
     [UIView animateWithDuration:keyboardDuration animations:^{
         [self.view layoutIfNeeded];
     }];
@@ -117,7 +117,7 @@ float keyboardHeight = 300;
     [self.tableView setHidden:YES];
 
     double keyboardDuration = [[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-    self.containerViewBottomAnchor.constant = 0;
+    self.containerViewBottomAnchor.constant = self.view.safeAreaInsets.bottom;
     [UIView animateWithDuration:keyboardDuration animations:^{
         [self.view layoutIfNeeded];
     }];
