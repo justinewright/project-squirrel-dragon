@@ -9,7 +9,7 @@ import Foundation
 
 extension UIViewController {
     func showErrorAlert(titled: String, with message: String) {
-        let alert = UIAlertController(title: "Pokemon Sets Unavailable!", message: message, preferredStyle: .alert)
+        let alert = UIAlertController(title: titled, message: message, preferredStyle: .alert)
         let alertOKAction=UIAlertAction(title: "OK", style: .default, handler: { _ in })
         alert.addAction(alertOKAction)
         present(alert, animated: true, completion: nil)
