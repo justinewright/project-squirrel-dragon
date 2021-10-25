@@ -67,7 +67,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		21246D0B2723106C00CC6DAC /* PBXContainerItemProxy */ = {
+		2180A41B2726CCA700E0C0F4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 21044743270ACD1900815441 /* Project object */;
 			proxyType = 1;
@@ -414,7 +414,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				21246D0C2723106C00CC6DAC /* PBXTargetDependency */,
+				2180A41C2726CCA700E0C0F4 /* PBXTargetDependency */,
 			);
 			name = "project-squirrel-dragonTests";
 			productName = "project-squirrel-dragonTests";
@@ -572,10 +572,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		21246D0C2723106C00CC6DAC /* PBXTargetDependency */ = {
+		2180A41C2726CCA700E0C0F4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2104474A270ACD1900815441 /* project-squirrel-dragon */;
-			targetProxy = 21246D0B2723106C00CC6DAC /* PBXContainerItemProxy */;
+			targetProxy = 2180A41B2726CCA700E0C0F4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
