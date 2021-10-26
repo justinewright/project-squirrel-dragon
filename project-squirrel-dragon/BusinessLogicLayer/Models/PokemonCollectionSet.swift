@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 struct PokemonCollectionSet: BaseModel {
     var model: Any { get
         { return self }

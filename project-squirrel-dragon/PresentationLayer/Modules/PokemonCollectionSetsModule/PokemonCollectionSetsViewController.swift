@@ -116,7 +116,7 @@ extension PokemonCollectionSetsViewController: UICollectionViewDataSource {
 
 // MARK: - SearchBar Delegate Methods
 
-extension PokemonCollectionSetsViewController:  CustomSearchbarViewDelegate {
+extension PokemonCollectionSetsViewController:  CustomSearchbarViewModelDelegate {
     func updateDisplay(_ sender: CustomSearchBarViewModel!, withSearchFilter searchFilter: String!) {
         viewModel.filteredList = sender.filteredList as? [String] ?? [String]()
         self.pokemonCollectionSetsCollectionView.reloadData()

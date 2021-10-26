@@ -29,10 +29,7 @@ class SetDetailsViewModel {
         temporaryUserSet.id = set.id
         self.setDetails = SetDetails(id: set.id, userSet: temporaryUserSet, pokemonCollectionSet: set)
     }
-
-    func fetchViewData() {
-        // TODO: - repo to firebase to get userdetails
-    }
+    // TODO: - repo to firebase to get userdetails
 
     var collectedFraction: String {
         "\(setDetails.userSet.cardsCollected)/\(setDetails.pokemonCollectionSet.total)"

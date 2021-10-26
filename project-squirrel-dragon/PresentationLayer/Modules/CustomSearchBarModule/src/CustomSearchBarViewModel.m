@@ -9,19 +9,20 @@
 #import "CustomSearchBarViewModel.h"
 
 @interface CustomSearchBarViewModel()
-@property (weak, nonatomic) id<CustomSearchbarViewDelegate> delegate;
+@property (weak, nonatomic) id<CustomSearchbarViewModelDelegate> delegate;
 @end
 
 @implementation CustomSearchBarViewModel
 
 
--(instancetype)initWithList: (NSArray *) list andDelegate:(id<CustomSearchbarViewDelegate>)delegate {
+-(instancetype)initWithList: (NSArray *) list andDelegate:(id<CustomSearchbarViewModelDelegate>)delegate {
     self = [super init];
     if (self) {
         _isFiltered = NO;
-        if ([delegate conformsToProtocol: @protocol(CustomSearchbarViewDelegate)]){
+        if ([delegate conformsToProtocol: @protocol(CustomSearchbarViewModelDelegate)]){
             self.delegate = delegate;
             self.list = list;
+            self.filteredList = [[NSMutableArray alloc]init];
         }
     }
     return self;

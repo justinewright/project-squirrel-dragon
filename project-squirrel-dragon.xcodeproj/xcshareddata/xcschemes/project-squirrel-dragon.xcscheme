@@ -29,6 +29,16 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       codeCoverageEnabled = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "21246D062723106C00CC6DAC"
+               BuildableName = "project-squirrel-dragonTests.xctest"
+               BlueprintName = "project-squirrel-dragonTests"
+               ReferencedContainer = "container:project-squirrel-dragon.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
