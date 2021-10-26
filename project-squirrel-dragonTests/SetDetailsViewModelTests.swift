@@ -37,7 +37,7 @@ class SetDetailsViewModelTests: XCTestCase {
         viewModelUnderTesting.updateSetDetailsData(withPokemonSet: mockPokemonSet)
     }
 
-    func testCollectedFractionStringIsFormattedCorrectly() throws {
+    func testCollectedFractionStringIsFormattedCorrectly() {
 
         let expectedResult = "\(mockSetDetails.userSet.cardsCollected)/\(mockSetDetails.pokemonCollectionSet.total)"
         let actualResult = viewModelUnderTesting.collectedFraction
@@ -45,7 +45,7 @@ class SetDetailsViewModelTests: XCTestCase {
         XCTAssertEqual(expectedResult, actualResult)
     }
 
-    func testCollectedPercentageStringIsFormattedCorrectly() throws {
+    func testCollectedPercentageStringIsFormattedCorrectly() {
         //assumation that number of cards to collect is always > 0
         let expectedResult = "0%"
         let actualResult = viewModelUnderTesting.collectedPercentage
@@ -53,7 +53,7 @@ class SetDetailsViewModelTests: XCTestCase {
         XCTAssertEqual(expectedResult, actualResult)
     }
     
-    func testReleaseDateStringIsFormattedCorrectly() throws {
+    func testReleaseDateStringIsFormattedCorrectly() {
         let expectedResult = "RELEASE DATE: " + mockSetDetails.pokemonCollectionSet.releaseDate
         let actualResult = viewModelUnderTesting.formatedReleaseDate
 
