@@ -38,6 +38,10 @@
 		21667082270F33DB00B6A874 /* PokemonCollectionSetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21667080270F33DB00B6A874 /* PokemonCollectionSetCell.swift */; };
 		21667083270F33DB00B6A874 /* PokemonCollectionSetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21667081270F33DB00B6A874 /* PokemonCollectionSetCell.xib */; };
 		21667086270F381300B6A874 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21667085270F381300B6A874 /* UIImageView+Extension.swift */; };
+		2166D82B272C16A500E3ABD1 /* SelectableSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218D7167272AF7870056CB22 /* SelectableSet.swift */; };
+		2166D82D272C185000E3ABD1 /* SelectMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2166D82C272C185000E3ABD1 /* SelectMenuViewModel.swift */; };
+		2166D82E272C186800E3ABD1 /* SelectMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2166D82C272C185000E3ABD1 /* SelectMenuViewModel.swift */; };
+		2166D832272C1A3500E3ABD1 /* SelectMenuViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2166D831272C1A3500E3ABD1 /* SelectMenuViewModelTests.swift */; };
 		21671E6B2715CACA00A45571 /* SearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 21671E692715CACA00A45571 /* SearchTableViewCell.m */; };
 		21671E6C2715CACA00A45571 /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21671E6A2715CACA00A45571 /* SearchTableViewCell.xib */; };
 		21671E6E2715D66200A45571 /* CustomSearchBarModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21671E6D2715D66200A45571 /* CustomSearchBarModuleBuilder.swift */; };
@@ -76,6 +80,13 @@
 		21894FAF272840E20092AAB5 /* HomePageBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21894FAE272840E20092AAB5 /* HomePageBuilder.swift */; };
 		21894FB227284F4F0092AAB5 /* AuthenticatorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21894FB127284F4F0092AAB5 /* AuthenticatorService.swift */; };
 		218CF2212718A8140012F8E1 /* FilterableDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 218CF2202718A8140012F8E1 /* FilterableDataSource.m */; };
+		218D7168272AF7870056CB22 /* SelectableSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218D7167272AF7870056CB22 /* SelectableSet.swift */; };
+		218D716B272AFBCB0056CB22 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218D7169272AFBCB0056CB22 /* CollectionViewCell.swift */; };
+		218D716C272AFBCB0056CB22 /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 218D716A272AFBCB0056CB22 /* CollectionViewCell.xib */; };
+		21A19603272968FB00912A52 /* FirebaseApiClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A19602272968FB00912A52 /* FirebaseApiClientProtocol.swift */; };
+		21A196072729AF8900912A52 /* FirebaseApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A196062729AF8900912A52 /* FirebaseApiClient.swift */; };
+		21B375B0272AD28000CC6758 /* SelectMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21B375AF272AD28000CC6758 /* SelectMenu.storyboard */; };
+		21B375B2272AE03800CC6758 /* SelectMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B375B1272AE03800CC6758 /* SelectMenuViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +119,8 @@
 		21667080270F33DB00B6A874 /* PokemonCollectionSetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCollectionSetCell.swift; sourceTree = "<group>"; };
 		21667081270F33DB00B6A874 /* PokemonCollectionSetCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PokemonCollectionSetCell.xib; sourceTree = "<group>"; };
 		21667085270F381300B6A874 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
+		2166D82C272C185000E3ABD1 /* SelectMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMenuViewModel.swift; sourceTree = "<group>"; };
+		2166D831272C1A3500E3ABD1 /* SelectMenuViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMenuViewModelTests.swift; sourceTree = "<group>"; };
 		21671E682715CACA00A45571 /* SearchTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchTableViewCell.h; sourceTree = "<group>"; };
 		21671E692715CACA00A45571 /* SearchTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchTableViewCell.m; sourceTree = "<group>"; };
 		21671E6A2715CACA00A45571 /* SearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
@@ -149,6 +162,13 @@
 		21894FB127284F4F0092AAB5 /* AuthenticatorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatorService.swift; sourceTree = "<group>"; };
 		218CF21F2718A8140012F8E1 /* FilterableDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterableDataSource.h; sourceTree = "<group>"; };
 		218CF2202718A8140012F8E1 /* FilterableDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilterableDataSource.m; sourceTree = "<group>"; };
+		218D7167272AF7870056CB22 /* SelectableSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableSet.swift; sourceTree = "<group>"; };
+		218D7169272AFBCB0056CB22 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		218D716A272AFBCB0056CB22 /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
+		21A19602272968FB00912A52 /* FirebaseApiClientProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseApiClientProtocol.swift; sourceTree = "<group>"; };
+		21A196062729AF8900912A52 /* FirebaseApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseApiClient.swift; sourceTree = "<group>"; };
+		21B375AF272AD28000CC6758 /* SelectMenu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SelectMenu.storyboard; sourceTree = "<group>"; };
+		21B375B1272AE03800CC6758 /* SelectMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMenuViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -259,6 +279,7 @@
 		21246D082723106C00CC6DAC /* project-squirrel-dragonTests */ = {
 			isa = PBXGroup;
 			children = (
+				2166D831272C1A3500E3ABD1 /* SelectMenuViewModelTests.swift */,
 				21734E8D272569C80060B0F1 /* SearchBarTests.swift */,
 				21246D2B27232BAF00CC6DAC /* SetDetailsViewModelTests.swift */,
 				21246D1C27232B1B00CC6DAC /* PokemonCollectionSetsViewModelTests.swift */,
@@ -334,6 +355,7 @@
 				216ADAF2270DAD9900D61E92 /* PokemonCollectionSet.swift */,
 				2185CEFC27202A8600499D31 /* UserSet.swift */,
 				2185CEFE27202C3C00499D31 /* SetDetails.swift */,
+				218D7167272AF7870056CB22 /* SelectableSet.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -341,6 +363,7 @@
 		217F20E327216333003F4A5E /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				21B375AE272ACAF400CC6758 /* SelectMenuModule */,
 				21894F9D27281FF90092AAB5 /* LoginModule */,
 				21843370271416E300EC2F5A /* CustomSearchBarModule */,
 				2185CEED271FF98500499D31 /* SetDetailsModule */,
@@ -424,11 +447,41 @@
 		21894FB027284F180092AAB5 /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
+				21A1960527296BE100912A52 /* Database */,
+				21A1960427296BD000912A52 /* Authentication */,
 				2185CEF82720225900499D31 /* UserSetData.swift */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		21A1960427296BD000912A52 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
 				21894FA82728275F0092AAB5 /* AnonymousAuthenticator.swift */,
 				21894FB127284F4F0092AAB5 /* AuthenticatorService.swift */,
 			);
-			path = Firebase;
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		21A1960527296BE100912A52 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				21A19602272968FB00912A52 /* FirebaseApiClientProtocol.swift */,
+				21A196062729AF8900912A52 /* FirebaseApiClient.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		21B375AE272ACAF400CC6758 /* SelectMenuModule */ = {
+			isa = PBXGroup;
+			children = (
+				21B375AF272AD28000CC6758 /* SelectMenu.storyboard */,
+				21B375B1272AE03800CC6758 /* SelectMenuViewController.swift */,
+				218D7169272AFBCB0056CB22 /* CollectionViewCell.swift */,
+				218D716A272AFBCB0056CB22 /* CollectionViewCell.xib */,
+				2166D82C272C185000E3ABD1 /* SelectMenuViewModel.swift */,
+			);
+			path = SelectMenuModule;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -524,9 +577,11 @@
 			files = (
 				217F20E727216E20003F4A5E /* CustomSearchBarViewController.xib in Resources */,
 				2104475B270ACD1A00815441 /* LaunchScreen.storyboard in Resources */,
+				218D716C272AFBCB0056CB22 /* CollectionViewCell.xib in Resources */,
 				21044758270ACD1A00815441 /* Assets.xcassets in Resources */,
 				217F20F027218FF6003F4A5E /* SetDetails.storyboard in Resources */,
 				2166707A270F0D5B00B6A874 /* PokemonCollectionSets.storyboard in Resources */,
+				21B375B0272AD28000CC6758 /* SelectMenu.storyboard in Resources */,
 				21894F9927281BD30092AAB5 /* GoogleService-Info.plist in Resources */,
 				21044756270ACD1900815441 /* Main.storyboard in Resources */,
 				21671E6C2715CACA00A45571 /* SearchTableViewCell.xib in Resources */,
@@ -579,10 +634,14 @@
 				21671E792715DDDC00A45571 /* CustomSearchBarViewController.m in Sources */,
 				216ADAF3270DAD9900D61E92 /* PokemonCollectionSet.swift in Sources */,
 				216ADAF0270DAD5D00D61E92 /* BaseModel.swift in Sources */,
+				218D716B272AFBCB0056CB22 /* CollectionViewCell.swift in Sources */,
 				2104474F270ACD1900815441 /* AppDelegate.swift in Sources */,
 				218CF2212718A8140012F8E1 /* FilterableDataSource.m in Sources */,
+				21A196072729AF8900912A52 /* FirebaseApiClient.swift in Sources */,
+				21B375B2272AE03800CC6758 /* SelectMenuViewController.swift in Sources */,
 				216ADAF6270DBA0700D61E92 /* RepositoryContracts.swift in Sources */,
 				216ADADA270D6FFA00D61E92 /* PokemonSetsData.swift in Sources */,
+				2166D82D272C185000E3ABD1 /* SelectMenuViewModel.swift in Sources */,
 				21894FA0272820260092AAB5 /* LoginViewController.swift in Sources */,
 				21894FA92728275F0092AAB5 /* AnonymousAuthenticator.swift in Sources */,
 				2185CEF0271FFB7300499D31 /* SetDetailsViewController.swift in Sources */,
@@ -604,9 +663,11 @@
 				21667082270F33DB00B6A874 /* PokemonCollectionSetCell.swift in Sources */,
 				216ADAE9270DA9F200D61E92 /* PokemonCollectionSetsRepository.swift in Sources */,
 				2166707C270F0E1000B6A874 /* PokemonCollectionSetsModuleBuilder.swift in Sources */,
+				218D7168272AF7870056CB22 /* SelectableSet.swift in Sources */,
 				21667076270F0C8F00B6A874 /* PokemonCollectionSetsViewModel.swift in Sources */,
 				2185CEFD27202A8600499D31 /* UserSet.swift in Sources */,
 				217F20EE27217498003F4A5E /* TabBarBuilder.swift in Sources */,
+				21A19603272968FB00912A52 /* FirebaseApiClientProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -614,6 +675,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2166D82E272C186800E3ABD1 /* SelectMenuViewModel.swift in Sources */,
+				2166D82B272C16A500E3ABD1 /* SelectableSet.swift in Sources */,
 				21246D302723414A00CC6DAC /* SetDetailsViewModel.swift in Sources */,
 				21246D2F272340A000CC6DAC /* DummyData.swift in Sources */,
 				21246D2D2723409700CC6DAC /* UserSet.swift in Sources */,
@@ -627,6 +690,7 @@
 				21246D162723119100CC6DAC /* PokemonCollectionSet.swift in Sources */,
 				21246D152723118700CC6DAC /* BaseModel.swift in Sources */,
 				21246D142723117A00CC6DAC /* UserSetData.swift in Sources */,
+				2166D832272C1A3500E3ABD1 /* SelectMenuViewModelTests.swift in Sources */,
 				21246D132723116300CC6DAC /* RepositoryContracts.swift in Sources */,
 				21246D122723115700CC6DAC /* PokemonCollectionSetsRepository.swift in Sources */,
 				21246D11272310A500CC6DAC /* PokemonCollectionSetsRepositoryTests.swift in Sources */,

@@ -23,7 +23,7 @@ class PokemonCollectionSetsViewModel {
     var filteredList: [String] = []
     var sets: [String: PokemonCollectionSet] {
         filteredList.isEmpty ? pokemonCollectionSets :
-        pokemonCollectionSets.filter{ filteredList.description.lastSubString.contains( $0.key) }
+        pokemonCollectionSets.filter{ filteredList.description.lastSubString.contains($0.key) }
     }
 
     // MARK: - Initialization
@@ -45,10 +45,10 @@ class PokemonCollectionSetsViewModel {
 
             case .failure(let error):
                 self?.delegate?.didFailWithError(message: error.localizedDescription)
-
             }
         }
     }
+    
     private func description(ofPokemonSet set: PokemonCollectionSet) -> String {
         """
         name: \(set.name)

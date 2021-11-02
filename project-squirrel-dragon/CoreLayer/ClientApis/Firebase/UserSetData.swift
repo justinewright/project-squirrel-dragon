@@ -8,7 +8,7 @@
 import Foundation
 
 struct UserSetData: Codable {
-    let id: String
+    var id: String
     let setData: [FirebaseSetsData]
     let cardData: [FirebaseCardsData]
 }
@@ -19,9 +19,7 @@ struct FirebaseSetsData: Codable {
 }
 
 struct FirebaseCardsData: Codable {
-    let setID: String
-    let cardID: String
-    let numberCollected: Int
+    let id: String
     let collectedCardData: [FirebaseCollectedCardData]
 }
 

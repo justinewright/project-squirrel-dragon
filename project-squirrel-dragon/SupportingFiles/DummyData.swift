@@ -23,4 +23,7 @@ struct DummyData {
     static let pokemonSet = SetDetails(id: "base1",
                             userSet: userSet,
                             pokemonCollectionSet: PokemonCollectionSet(pokemonSetsData: pokemonSetData))
+
+    static var userSetData = UserSetData(id: "", setData: [FirebaseSetsData(id: "base1", collectedCards: 55)], cardData: [])
+
 }
