@@ -9,9 +9,13 @@ import UIKit
 
 class PokemonCollectionSetsViewController: UIViewController {
     // MARK: - Properties
-    @IBOutlet weak var pokemonCollectionSetsCollectionView: UICollectionView!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    private lazy var viewModel = PokemonCollectionSetsViewModel(pokemonCollectionViewModelDelegate: self, repository: PokemonCollectionSetsRepository())
+    @IBOutlet private weak var pokemonCollectionSetsCollectionView: UICollectionView!
+    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet private weak var promptLabel: UILabel!
+    private lazy var viewModel = PokemonCollectionSetsViewModel(pokemonCollectionViewModelDelegate: self,
+                                                                pokemonSetsRepository: PokemonCollectionSetsRepository(),
+                                                                userSetsRepository: UserPokemonSetsRepository())
+
     private let cellReuseIdentifier = "PokemonCollectionSetCell"
     private let cellNibName = "PokemonCollectionSetCell"
     private var searchBarViewController = UIViewController()
@@ -22,6 +26,7 @@ class PokemonCollectionSetsViewController: UIViewController {
         configureCollectionView()
         viewModel.fetchViewData()
         activityIndicator.startAnimating()
+        promptLabel.isHidden = true
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -87,6 +92,7 @@ extension PokemonCollectionSetsViewController: PokemonCollectionViewModelDelegat
         self.pokemonCollectionSetsCollectionView.reloadData()
         self.configureSearchView()
         activityIndicator.stopAnimating()
+        promptLabel.isHidden = !viewModel.userPokemonCollectionSets.isEmpty
     }
 
     func didFailWithError(message: String) {
@@ -108,7 +114,6 @@ extension PokemonCollectionSetsViewController: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         cell.configure(with: cellData )
-
         return cell
     }
 
@@ -117,6 +122,26 @@ extension PokemonCollectionSetsViewController: UICollectionViewDataSource {
 // MARK: - SearchBar Delegate Methods
 
 extension PokemonCollectionSetsViewController:  CustomSearchbarViewModelDelegate {
+    func showSelectMenu(_ sender: CustomSearchBarViewModel!) {
+        self.showSelectAlert(titled: "'Squirrel Dragon' would like to update your sets ", with: "", handler: handleSelectMenu)
+    }
+
+    private func handleSelectMenu(action: UIAlertAction! = nil) {
+        let navVC = SelectMenuModuleBuilder.build(usingNavigationFactory: NavigationBuilder.build, andPokemonSet: viewModel.selectableSets)
+        guard let destination = navVC.children.first as? SelectMenuViewController else {
+            return
+        }
+        self.present(navVC, animated: true, completion: nil)
+        destination.callback = { (addedSets, removedSets) -> Void in
+            navVC.dismiss(animated: true)
+            addedSets?.forEach{ self.viewModel.addSet(setID: $0)}
+            removedSets?.forEach{ self.viewModel.removeSet(setID: $0)}
+            self.pokemonCollectionSetsCollectionView.reloadData()
+            self.promptLabel.isHidden = !self.viewModel.userPokemonCollectionSets.isEmpty
+            print("modifying user sets")
+        }
+    }
+
     func updateDisplay(_ sender: CustomSearchBarViewModel!, withSearchFilter searchFilter: String!) {
         viewModel.filteredList = sender.filteredList as? [String] ?? [String]()
         self.pokemonCollectionSetsCollectionView.reloadData()

@@ -12,23 +12,18 @@ class PokemonCollectionSetsRepository: RepositoryProtocol {
     // MARK: - Properties
     private var state: RepositoryState = .loading
     private var error: URLError?
-    private var viewModel: PokemonCollectionSetsViewModel?
 
     private var pokemonTcgAllSetsApiClient: PokemonTcgAllSetsApiClientProtocol
     private (set) var pokemonCollectionSets: [PokemonCollectionSet] = []
-//    private var firebase: FirebaseApiClient!
+    private var firebase: FirebaseApiClientProtocol!
     
     // MARK: - Initialization
-    init(pokemonTcgAllSetsApiClient: PokemonTcgAllSetsApiClientProtocol = PokemonTcgAllSetsApiClient(), pokemonCollectionSetsViewModel: PokemonCollectionSetsViewModel? = nil) {
+    init(pokemonTcgAllSetsApiClient: PokemonTcgAllSetsApiClientProtocol = PokemonTcgAllSetsApiClient()) {
         self.pokemonTcgAllSetsApiClient = pokemonTcgAllSetsApiClient
-//        firebase = FirebaseApiClient()
     }
 
     // MARK: - Repository Protocol Implementation
     func fetch(then handler: @escaping AnyResultBlock) {
-//        firebase.post { _ in
-
-//        }
         pokemonTcgAllSetsApiClient.fetch  { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
@@ -45,5 +40,8 @@ class PokemonCollectionSetsRepository: RepositoryProtocol {
             }
         }
     }
-}
 
+    func post(_ item: Any, then handler: @escaping AnyResultBlock) {}
+
+    func delete(_ item: Any, then handler: @escaping AnyResultBlock) {}
+}

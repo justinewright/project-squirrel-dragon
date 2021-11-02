@@ -7,9 +7,8 @@
 
 import Foundation
 
-typealias FirebaseApiClientResultBlock = (Result<UserSetData, URLError>) -> Void
-
 protocol FirebaseApiClientProtocol {
-    func post(then handler: @escaping FirebaseApiClientResultBlock)
-    func get(then handler: @escaping FirebaseApiClientResultBlock)
+    func post(data: [String: Any], toPath path: String, then handler: @escaping AnyResultBlock)
+    func get(fromPath path: String, then handler: @escaping AnyResultBlock)
+    func delete(fromPath path: String, then handler: @escaping AnyResultBlock)
 }

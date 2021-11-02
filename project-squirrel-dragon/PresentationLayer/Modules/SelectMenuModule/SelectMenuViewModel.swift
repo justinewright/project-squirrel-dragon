@@ -25,7 +25,8 @@ class SelectMenuViewModel {
     var removedChanges: Int {differenceList[.removed]?.count ?? 0}
     var addedChanges: Int {differenceList[.added]?.count ?? 0}
     var totalChanges: Int {removedChanges + addedChanges}
-
+    var addedSets: [String]? { differenceList[.added].map{ $0.map { $0.key}}  }
+    var removedSets: [String]? {differenceList[.removed].map{ $0.map { $0.key}}  }
     // MARK: - Filter Properties
     var filteredList: [String] = []
     var sets: [String: SelectableSet] {
@@ -40,7 +41,6 @@ class SelectMenuViewModel {
 
     func setList(withNewList list: [SelectableSet]) {
         originalList = Dictionary(uniqueKeysWithValues: list.map({($0.id, $0)}))
-        delegate?.refreshView()
     }
 
     func toggleItem(withId itemID: String) {
@@ -53,11 +53,6 @@ class SelectMenuViewModel {
             toggleModifiedItem(itemID)
         }
         originalList[itemID]!.selected = !originalList[itemID]!.selected
-        delegate?.refreshView()
-    }
-
-    var searchList: [String] {
-        originalList.map { $0.value.description }
     }
 
     var keys: [String] {

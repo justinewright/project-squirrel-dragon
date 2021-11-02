@@ -9,18 +9,13 @@ import Foundation
 
 struct UserSetData: Codable {
     var id: String
-    let setData: [FirebaseSetsData]
-    let cardData: [FirebaseCardsData]
+    let setData: FirebaseSetsData
+    let cardData: [FirebaseCollectedCardData]
 }
 
 struct FirebaseSetsData: Codable {
     let id: String
     let collectedCards: Int
-}
-
-struct FirebaseCardsData: Codable {
-    let id: String
-    let collectedCardData: [FirebaseCollectedCardData]
 }
 
 struct FirebaseCollectedCardData: Codable {

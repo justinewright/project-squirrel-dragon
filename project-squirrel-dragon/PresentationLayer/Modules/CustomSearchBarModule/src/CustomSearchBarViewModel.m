@@ -52,4 +52,7 @@
     }
 }
 
+- (void)addSets {
+    [self.delegate showSelectMenu:self];
+}
 @end

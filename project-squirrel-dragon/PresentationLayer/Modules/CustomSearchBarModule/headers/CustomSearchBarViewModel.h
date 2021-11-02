@@ -12,6 +12,7 @@
 @protocol CustomSearchbarViewModelDelegate <NSObject>
 - (void)updateDisplay:(CustomSearchBarViewModel *)sender
      withSearchFilter: (NSString*)searchFilter;
+- (void)showSelectMenu:(CustomSearchBarViewModel *)sender;
 @end
 
 @interface CustomSearchBarViewModel: NSObject
@@ -23,7 +24,7 @@
 @property BOOL isFiltered;
 
 -(void) filter: (NSString *)searchWord;
-
+-(void) addSets;
 @end
 
 #endif /* CustomSearchBarViewModel */

@@ -9,4 +9,5 @@ import UIKit
 
 struct StyleKit {
     static let cellBorderColor = UIColor(ciColor: .white).cgColor
+    static let borderWidth: CGFloat = 1
 }

@@ -7,18 +7,27 @@
 
 import UIKit
 
-class CollectionViewCell: UICollectionViewCell {
+class SelectableSetCell: UICollectionViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var selectedImageView: UIImageView!
 
+    private (set) var selectableSet: SelectableSet?
+
     override func awakeFromNib() {
         super.awakeFromNib()
+        applyStyle()
     }
 
-    func configure(withSelectableSet selectableSet: SelectableSet) {
-        configureNameLabel(withName: selectableSet.name)
+    func applyStyle() {
+        layer.borderWidth = StyleKit.borderWidth
+        layer.borderColor = StyleKit.cellBorderColor
+    }
+
+    func configure(with selectableSet: SelectableSet) {
+        self.selectableSet = selectableSet
+        configureNameLabel(withName: selectableSet.series)
         configureSelectedImageView(setSelected: selectableSet.selected)
         configureLogoImageView(withURLString: selectableSet.url)
     }
@@ -27,7 +36,6 @@ class CollectionViewCell: UICollectionViewCell {
         nameLabel.text = name
 
     }
-
     private func configureLogoImageView(withURLString urlString: String) {
         guard let url = URL(string: urlString) else {return}
         logoImageView.load(url: url)
@@ -37,5 +45,11 @@ class CollectionViewCell: UICollectionViewCell {
         let imageName = setSelected ? "checkmark.circle.fill" : "circle"
         let image = UIImage(systemName: imageName)
         selectedImageView.image = image
+    }
+
+    override var isSelected: Bool {
+        willSet(newValue) {
+            configureSelectedImageView(setSelected: newValue)
+        }
     }
 }

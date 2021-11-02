@@ -11,51 +11,71 @@ import FirebaseDatabaseSwift
 import Firebase
 
 class FirebaseApiClient: FirebaseApiClientProtocol {
-    private var ref: DatabaseReference = Database.database().reference()
+
+    private var databaseRef: DatabaseReference = Database.database().reference()
     private var sets = [UserSetData]()
 
     init() {
-        ref = Database.database().reference()
+        databaseRef = Database.database().reference()
+    }
+
+    func post(data: [String: Any], toPath path: String, then handler: @escaping AnyResultBlock) {
+
         guard let autoId = Auth.auth().currentUser else {
              return
          }
-        ref.child("\(autoId)").observe(DataEventType.value, with: { snapshot in
-
-            if let successfulValue = snapshot.value as? UserSetData {
-                print("yay")
+        // check if path exists already
+        databaseRef.child(autoId.uid).observeSingleEvent(of: .value, with: { snapshot in
+            // update path
+            if snapshot.hasChild(path) {
+                self.databaseRef.updateChildValues([path: data]) {
+                    (error:Error?, ref:DatabaseReference) in
+                     if let error = error {
+                       print("Data could not be saved: \(error).")
+                         handler(.failure(URLError(.cannotCreateFile)))
+                     } else {
+                       print("Data updated successfully!")
+                         handler(.success(""))
+                     }
+                }
+            } else {
+                // create new path
+                let fullPath = "\(autoId.uid)/\(path)"
+                self.databaseRef.child(fullPath).setValue(data) {
+                    (error:Error?, ref:DatabaseReference) in
+                    if let error = error {
+                      print("Data could not be saved: \(error).")
+                        handler(.failure(URLError(.cannotCreateFile)))
+                    } else {
+                      print("Data updated successfully!")
+                        handler(.success(""))
+                    }
+                }
             }
-    })
+        })
+
     }
 
-
-    func post(then handler: @escaping FirebaseApiClientResultBlock) {
+    func get(fromPath path: String, then handler: @escaping AnyResultBlock) {
         guard let autoId = Auth.auth().currentUser else {
              return
          }
-        var userSet =  DummyData.userSetData
-        userSet.id = "\(autoId.uid)"
-
-        do {
-            let jsonData = try JSONEncoder().encode(userSet)
-            let jsonString = String(data: jsonData, encoding: .utf8)!
-            try ref.child("\(userSet.id)").setValue(jsonString)
-
-        } catch let error {
-            print(error.localizedDescription)
-            handler(.failure(URLError(.userAuthenticationRequired)))
-            return
-        }
-
-//        guard let user = Firebase.Auth().currentUser else {
-//            handler(.failure(URLError(.userAuthenticationRequired)))
-//            return
-//        }
-//        ref.child("\(user.uid)/sets").setValue("sets": DummyData.pokemonSetData)
+        databaseRef.child("\(autoId.uid)/\(path)").getData(completion:  { error, snapshot in
+          guard error == nil else {
+              handler(.failure(URLError(.cannotCreateFile)))
+              print(error!.localizedDescription)
+              return
+          }
+            let decodedData = snapshot.value as? NSDictionary ?? [:]
+            handler(.success(decodedData))
+        })
     }
 
-    func get(then handler: @escaping FirebaseApiClientResultBlock) {
-
+    func delete(fromPath path: String, then handler: @escaping AnyResultBlock) {
+        guard let autoId = Auth.auth().currentUser else {
+             return
+         }
+        databaseRef.child("\(autoId.uid)/\(path)").removeValue()
     }
-
 
 }

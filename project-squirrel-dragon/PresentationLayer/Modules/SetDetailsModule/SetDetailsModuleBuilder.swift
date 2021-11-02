@@ -9,7 +9,6 @@ import Foundation
 
 class SetDetailsModuleBuilder {
     static func build(usingNavigationFactory factory: NavigationFactory, andPokemonSet set:PokemonCollectionSet) -> UIViewController {
-        // TODO: - add navigation builder
         let storyboard = UIStoryboard.init(name: "SetDetails", bundle: nil)
         let view = storyboard.instantiateViewController(withIdentifier: "SetDetails")
         view.title = set.name

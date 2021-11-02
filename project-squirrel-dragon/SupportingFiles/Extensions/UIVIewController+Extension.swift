@@ -14,4 +14,14 @@ extension UIViewController {
         alert.addAction(alertOKAction)
         present(alert, animated: true, completion: nil)
     }
+
+    func showSelectAlert(titled: String, with message: String, handler: ((UIAlertAction) -> Void)?) {
+        let alert = UIAlertController(title: titled, message: message, preferredStyle: .alert)
+        let alertOKAction = UIAlertAction(title: "Select More Sets...", style: .default, handler: handler)
+        let alertCancelAction = UIAlertAction(title: "Keep Current Selection", style: .default, handler: { _ in })
+        alert.addAction(alertOKAction)
+        alert.addAction(alertCancelAction)
+        present(alert, animated: true, completion: nil)
+    }
+
 }

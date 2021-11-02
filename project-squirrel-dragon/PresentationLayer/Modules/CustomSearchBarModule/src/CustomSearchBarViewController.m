@@ -125,7 +125,7 @@ float keyboardHeight = 300;
 
 //MARK: Buttons
 - (IBAction)addButtonPressed:(id)sender {
-    NSLog(@"add set");
+    [self.viewModel addSets];
 }
 
 -(void)hideSearchBarKeyboard {
