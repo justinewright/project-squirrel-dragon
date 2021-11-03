@@ -16,25 +16,59 @@ class UserPokemonSetsRepository: RepositoryProtocol {
     private var firebaseApiClient: FirebaseApiClientProtocol
     private (set) var firebaseSetsData: [UserSetData] = []
     private var firebase: FirebaseApiClientProtocol!
-
+    private var searchPath: String = ""
+    private var searchPathID: String = ""
     // MARK: - Initialization
     init(firebaseApiClient: FirebaseApiClientProtocol = FirebaseApiClient()) {
         self.firebaseApiClient = firebaseApiClient
     }
 
-    // MARK: - Repository Protocol Implementation
-    func fetch(then handler: @escaping AnyResultBlock) {
-//        handler
-//        firebaseApiClient.get(then: )
-        handler(.success(""))
+    func setSearchPath(as newPath: String) {
+        searchPath = newPath
     }
 
-    func post(_ item: Any, then handler: @escaping AnyResultBlock) {
-        handler(.success(""))
+    // MARK: - Repository Protocol Implementation
+    func fetch(then handler: @escaping AnyResultBlock) {
+        DispatchQueue.main.async {
+            self.firebaseApiClient.get(fromPath: self.searchPath) { result in
+                switch result {
+                case .success(let items):
+                    handler(.success(items))
+                case .failure(let error):
+                    handler(.failure(error))
+                }
+            }
+        }
+    }
+
+    func post(_ item: Any, withPostId postId: String, then handler: @escaping AnyResultBlock) {
+        DispatchQueue.main.async {
+            self.firebaseApiClient.post(data: [postId:item], toPath: self.searchPath) { result in
+                switch result {
+                case .success(let items):
+                    handler(.success(items))
+                case .failure(let error):
+                    handler(.failure(error))
+                }
+            }
+        }
     }
 
     func delete(_ item: Any, then handler: @escaping AnyResultBlock) {
-
+        DispatchQueue.main.async {
+            guard let item = item as? String else {
+                handler(.failure(URLError(.resourceUnavailable)))
+                return
+            }
+            self.firebaseApiClient.delete(fromPath: "\(self.searchPath)/\(item)") { result in
+                switch result {
+                case .success(let items):
+                    handler(.success(items))
+                case .failure(let error):
+                    handler(.failure(error))
+                }
+            }
+        }
     }
 
 }

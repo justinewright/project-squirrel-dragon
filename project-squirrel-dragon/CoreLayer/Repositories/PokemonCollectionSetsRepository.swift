@@ -9,6 +9,7 @@ import Foundation
 
 class PokemonCollectionSetsRepository: RepositoryProtocol {
 
+
     // MARK: - Properties
     private var state: RepositoryState = .loading
     private var error: URLError?
@@ -41,7 +42,6 @@ class PokemonCollectionSetsRepository: RepositoryProtocol {
         }
     }
 
-    func post(_ item: Any, then handler: @escaping AnyResultBlock) {}
-
+    func post(_ item: Any, withPostId postId: String, then handler: @escaping AnyResultBlock) {}
     func delete(_ item: Any, then handler: @escaping AnyResultBlock) {}
 }

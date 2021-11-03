@@ -56,6 +56,7 @@
 		21734E8E272569C80060B0F1 /* SearchBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21734E8D272569C80060B0F1 /* SearchBarTests.swift */; };
 		217901CB27315AF100A8BCB5 /* SelectMenuModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217901CA27315AF100A8BCB5 /* SelectMenuModuleBuilder.swift */; };
 		217901CD2731980600A8BCB5 /* UserPokemonSetsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217901CC2731980600A8BCB5 /* UserPokemonSetsRepository.swift */; };
+		217E8E322732CFD500A935C2 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217E8E312732CFD500A935C2 /* Animator.swift */; };
 		217F20E627216354003F4A5E /* NavigationBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F20E527216354003F4A5E /* NavigationBuilder.swift */; };
 		217F20E727216E20003F4A5E /* CustomSearchBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21671E782715DDDC00A45571 /* CustomSearchBarViewController.xib */; };
 		217F20EE27217498003F4A5E /* TabBarBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F20ED27217498003F4A5E /* TabBarBuilder.swift */; };
@@ -141,6 +142,7 @@
 		21734E8D272569C80060B0F1 /* SearchBarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarTests.swift; sourceTree = "<group>"; };
 		217901CA27315AF100A8BCB5 /* SelectMenuModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMenuModuleBuilder.swift; sourceTree = "<group>"; };
 		217901CC2731980600A8BCB5 /* UserPokemonSetsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPokemonSetsRepository.swift; sourceTree = "<group>"; };
+		217E8E312732CFD500A935C2 /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
 		217F20E527216354003F4A5E /* NavigationBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBuilder.swift; sourceTree = "<group>"; };
 		217F20ED27217498003F4A5E /* TabBarBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarBuilder.swift; sourceTree = "<group>"; };
 		217F20EF27218FF6003F4A5E /* SetDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SetDetails.storyboard; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 		2123378B270CC53C00D96728 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				217E8E312732CFD500A935C2 /* Animator.swift */,
 				21894F9827281BD30092AAB5 /* GoogleService-Info.plist */,
 				21667084270F37FD00B6A874 /* Extensions */,
 				2104475C270ACD1A00815441 /* Info.plist */,
@@ -640,6 +643,7 @@
 				21671E792715DDDC00A45571 /* CustomSearchBarViewController.m in Sources */,
 				216ADAF3270DAD9900D61E92 /* PokemonCollectionSet.swift in Sources */,
 				216ADAF0270DAD5D00D61E92 /* BaseModel.swift in Sources */,
+				217E8E322732CFD500A935C2 /* Animator.swift in Sources */,
 				218D716B272AFBCB0056CB22 /* SelectableSetCell.swift in Sources */,
 				2104474F270ACD1900815441 /* AppDelegate.swift in Sources */,
 				217901CB27315AF100A8BCB5 /* SelectMenuModuleBuilder.swift in Sources */,

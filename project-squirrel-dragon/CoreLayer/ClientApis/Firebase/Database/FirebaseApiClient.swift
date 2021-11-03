@@ -25,30 +25,33 @@ class FirebaseApiClient: FirebaseApiClientProtocol {
              return
          }
         // check if path exists already
-        databaseRef.child(autoId.uid).observeSingleEvent(of: .value, with: { snapshot in
+        let setid = data.keys.first!
+        self.databaseRef.ref.child(autoId.uid).child(path).observeSingleEvent(of: .value, with: { snapshot in
             // update path
-            if snapshot.hasChild(path) {
-                self.databaseRef.updateChildValues([path: data]) {
+            if snapshot.hasChild(setid) {
+                snapshot.ref.updateChildValues([setid:data.values.first!]) {
                     (error:Error?, ref:DatabaseReference) in
                      if let error = error {
                        print("Data could not be saved: \(error).")
                          handler(.failure(URLError(.cannotCreateFile)))
                      } else {
+
                        print("Data updated successfully!")
-                         handler(.success(""))
+                         handler(.success(ref))
                      }
                 }
             } else {
                 // create new path
-                let fullPath = "\(autoId.uid)/\(path)"
-                self.databaseRef.child(fullPath).setValue(data) {
+
+                self.databaseRef.ref.child(autoId.uid).child(path).child(data.keys.first!).setValue(data.values.first!) {
                     (error:Error?, ref:DatabaseReference) in
                     if let error = error {
                       print("Data could not be saved: \(error).")
                         handler(.failure(URLError(.cannotCreateFile)))
                     } else {
-                      print("Data updated successfully!")
-                        handler(.success(""))
+                        self.get(fromPath: path) { result in
+                            handler(result)
+                        }
                     }
                 }
             }
@@ -66,8 +69,7 @@ class FirebaseApiClient: FirebaseApiClientProtocol {
               print(error!.localizedDescription)
               return
           }
-            let decodedData = snapshot.value as? NSDictionary ?? [:]
-            handler(.success(decodedData))
+            handler(.success(snapshot))
         })
     }
 
@@ -75,7 +77,19 @@ class FirebaseApiClient: FirebaseApiClientProtocol {
         guard let autoId = Auth.auth().currentUser else {
              return
          }
-        databaseRef.child("\(autoId.uid)/\(path)").removeValue()
+        databaseRef.child("\(autoId.uid)/\(path)").removeValue { (error:Error?, ref:DatabaseReference) in
+            if let error = error {
+              print("Data could not be saved: \(error).")
+                handler(.failure(URLError(.cannotCreateFile)))
+            } else {
+              print("Data updated successfully!")
+                let temp_path = path.components(separatedBy: "/")[0]
+                print(temp_path)
+                self.get(fromPath: temp_path) { result in
+                    handler(result)
+                }
+            }
+        }
     }
 
 }
