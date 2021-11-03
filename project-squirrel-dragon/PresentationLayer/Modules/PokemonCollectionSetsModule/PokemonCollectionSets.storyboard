@@ -40,7 +40,7 @@
                                 <color key="color" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" bounces="NO" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QAA-su-7u6">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="768"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="otI-sJ-Phb">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -55,11 +55,10 @@
                         <constraints>
                             <constraint firstItem="Opt-Y6-jrE" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="10" id="1Ow-ew-4Eo"/>
                             <constraint firstItem="QAA-su-7u6" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="6zG-d6-6OT"/>
-                            <constraint firstItem="QAA-su-7u6" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="Bv5-Ve-Q7Z"/>
                             <constraint firstItem="QAA-su-7u6" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="Hv5-Vv-dIG"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="QAA-su-7u6" secondAttribute="trailing" id="OwM-df-1oC"/>
                             <constraint firstItem="Opt-Y6-jrE" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="PkP-Ey-YQC"/>
-                            <constraint firstItem="QAA-su-7u6" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="T3U-Ql-FYG"/>
+                            <constraint firstItem="QAA-su-7u6" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" constant="-50" id="cRp-h8-3L4"/>
                             <constraint firstItem="i74-yB-mhR" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="dsF-Br-dNS"/>
                             <constraint firstItem="Opt-Y6-jrE" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="eWa-mc-pgx"/>
                             <constraint firstItem="QAA-su-7u6" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="hMe-dm-Xdu"/>

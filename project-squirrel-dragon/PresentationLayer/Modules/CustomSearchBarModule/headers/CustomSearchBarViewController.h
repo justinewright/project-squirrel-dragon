@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(void)configure: (CustomSearchBarViewModel*)viewModel;
 -(void)handleScroll: ( CGPoint *)scrollVelocity ;
+-(void)toggleAddButton;
 
 @end
 

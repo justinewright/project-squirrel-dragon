@@ -20,6 +20,7 @@ class SelectMenuViewModel {
     private(set) var differenceList: [Difference: [String : SelectableSet]] = [.added: [:], .removed: [:]]
     private(set) var originalList: [String: SelectableSet] = [:]
     private weak var delegate: SelectMenuViewModelDelegate?
+    private (set) var searchList: [String] = []
 
     // MARK: - Computed Variables
     var removedChanges: Int {differenceList[.removed]?.count ?? 0}
@@ -31,7 +32,7 @@ class SelectMenuViewModel {
     var filteredList: [String] = []
     var sets: [String: SelectableSet] {
         filteredList.isEmpty ? originalList :
-        originalList.filter{ filteredList.description.lastSubString.contains($0.key) }
+        originalList.filter { filteredList.map{ $0.lastSubString }.contains($0.key) }
     }
 
     // MARK: - Initialization
@@ -41,6 +42,10 @@ class SelectMenuViewModel {
 
     func setList(withNewList list: [SelectableSet]) {
         originalList = Dictionary(uniqueKeysWithValues: list.map({($0.id, $0)}))
+    }
+
+    func setSearchList(withSearchList list: [String]) {
+        searchList = list
     }
 
     func toggleItem(withId itemID: String) {

@@ -25,11 +25,11 @@ class PokemonCollectionSetsViewModel {
     private(set) var userPokemonCollectionSets: [String: UserSet] = [:]
     private var setKeys: [String] = []
     var filteredList: [String] = []
+
     var sets: [String: PokemonCollectionSet] {
-        filteredList.isEmpty ? pokemonCollectionSets.filter{
-            Array(userPokemonCollectionSets.keys).contains($0.key) }
-        :
-        pokemonCollectionSets.filter{ filteredList.description.lastSubString.contains($0.key) }
+        let userList = pokemonCollectionSets.filter { Array(userPokemonCollectionSets.keys) .contains($0.key)}
+        return filteredList.isEmpty ? userList :
+        userList.filter{ filteredList.map{ $0.lastSubString }.contains($0.key) }
     }
 
     // MARK: - Initialization
@@ -163,7 +163,7 @@ class PokemonCollectionSetsViewModel {
     }
 
     var keys: [String] {
-        setKeys
+        filteredList.isEmpty ? setKeys : filteredList.map{$0.lastSubString}
     }
 
     var selectableSets: [SelectableSet] {

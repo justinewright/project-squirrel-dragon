@@ -60,7 +60,7 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pUd-N9-Vrw">
-                                <rect key="frame" x="0.0" y="104" width="414" height="792"/>
+                                <rect key="frame" x="0.0" y="104" width="414" height="658"/>
                                 <color key="backgroundColor" systemColor="labelColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="8h4-0s-Uha">
                                     <size key="itemSize" width="128" height="128"/>
@@ -104,8 +104,8 @@
                         <constraints>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="pUd-N9-Vrw" secondAttribute="trailing" id="8sT-SN-c0o"/>
                             <constraint firstItem="05b-fO-wbB" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="Aai-gL-QCv"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="pUd-N9-Vrw" secondAttribute="bottom" constant="100" id="CeJ-19-0fP"/>
                             <constraint firstItem="pUd-N9-Vrw" firstAttribute="top" secondItem="05b-fO-wbB" secondAttribute="bottom" constant="10" id="M9h-1x-OcF"/>
-                            <constraint firstAttribute="bottom" secondItem="pUd-N9-Vrw" secondAttribute="bottom" id="VF9-Rd-eCB"/>
                             <constraint firstItem="05b-fO-wbB" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="ZS1-ml-Qwf"/>
                             <constraint firstItem="pUd-N9-Vrw" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="gnd-Oz-0ob"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="05b-fO-wbB" secondAttribute="trailing" id="y7M-3g-sdf"/>

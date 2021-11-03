@@ -8,28 +8,49 @@
 import UIKit
 
 class SelectMenuViewController: UIViewController {
+
+
+    // MARK: - PROPERTIES
     @IBOutlet private weak var cancelButton: UIButton!
     @IBOutlet private weak var doneButton: UIButton!
     @IBOutlet private weak var collectionView: UICollectionView!
+    private lazy var searchBarViewController = UIViewController()
     private let cellReuseIdentifier = "SelectableSetCell"
     private let cellNibName = "SelectableSetCell"
     private lazy var viewModel = SelectMenuViewModel(withDelegate: self)
     var callback: ((_ newSelectedSets: [String]?, _ deselectedSets: [String]?) -> Void)?
 
-    @IBAction func doneButtonPushed(_ sender: UIButton) {
+    @IBAction func doneButtonPushed(_ sender: UIButton) {        searchBarViewController.willMove(toParent: nil)
+        searchBarViewController.view.removeFromSuperview()
+        searchBarViewController.removeFromParent()
         callback?(viewModel.addedSets, viewModel.removedSets)
+        
     }
 
     @IBAction func cancelButtonPressed(_ sender: UIButton) {
+        if !self.children.isEmpty {
+            let viewControllers:[UIViewController] = self.children
+               for viewContoller in viewControllers{
+                   viewContoller.willMove(toParent: nil)
+                   viewContoller.view.removeFromSuperview()
+                   viewContoller.removeFromParent()
+               }
+           }
         callback?(nil, nil)
-    }
 
+    }
+    // MARK: - LifecycleMethods
     override func viewDidLoad() {
         configureCollectionView()
     }
     
     func setList(withNewList list: [SelectableSet]) {
         viewModel.setList(withNewList: list)
+    }
+
+    func setSearchList(withSearchList list: [String]) {
+        viewModel.setSearchList(withSearchList: list)
+        configureSearchView()
     }
 
     private func configureCollectionView() {
@@ -42,10 +63,44 @@ class SelectMenuViewController: UIViewController {
         collectionView.allowsMultipleSelection = true
     }
 
+    fileprivate func constrainSearchBar() {
+        searchBarViewController.view.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            searchBarViewController.view.topAnchor.constraint(equalTo: view.topAnchor),
+            searchBarViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            searchBarViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            searchBarViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
+    }
+
+    private func configureSearchView() {
+
+        searchBarViewController = CustomSearchBarModuleBuilder.build()
+        guard let configuredSearchBar = searchBarViewController as? CustomSearchBarViewController else {
+            return
+        }
+        if let searchBarViewModel = CustomSearchBarViewModel(list: viewModel.searchList,
+                                                             andDelegate: self) {
+            configuredSearchBar.configure(searchBarViewModel)
+            configuredSearchBar.toggleAddButton()
+            addChild(searchBarViewController)
+            view.addSubview(searchBarViewController.view)
+            searchBarViewController.didMove(toParent: self)
+            constrainSearchBar()
+        }
+    }
+
 }
 
 extension SelectMenuViewController: UISearchBarDelegate {
-
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard let configuredSearchBar = searchBarViewController as? CustomSearchBarViewController else{
+            return
+        }
+        var actualPosition = scrollView.panGestureRecognizer.translation(in: scrollView.superview)
+        configuredSearchBar.handleScroll(&actualPosition)
+    }
 }
 
 extension SelectMenuViewController: UICollectionViewDataSource {
@@ -62,6 +117,9 @@ extension SelectMenuViewController: UICollectionViewDataSource {
               let cellData = viewModel.sets[viewModel.keys[indexPath.row]] else {
             return UICollectionViewCell()
         }
+        let animation = AnimationFactory.makeFadeAnimation(duration: 0.5, delayFactor: 0.05)
+        let animator = Animator(animation: animation)
+        animator.animate(cell: cell, at: indexPath, in: collectionView)
         cell.configure(with: cellData)
         return cell
     }
@@ -80,4 +138,15 @@ extension SelectMenuViewController: SelectMenuViewModelDelegate {
         func refreshView() {
             collectionView.reloadData()
         }
+}
+
+extension SelectMenuViewController: CustomSearchbarViewModelDelegate {
+    func updateDisplay(_ sender: CustomSearchBarViewModel!, withSearchFilter searchFilter: String!) {
+        viewModel.filteredList = sender.filteredList as? [String] ?? [String]()
+        self.collectionView.reloadData()
+    }
+
+    func showSelectMenu(_ sender: CustomSearchBarViewModel!) {
+
+    }
 }

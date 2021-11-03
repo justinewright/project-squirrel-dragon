@@ -54,6 +54,10 @@ class PokemonCollectionSetsViewController: UIViewController {
     }
 
     private func configureSearchView() {
+        searchBarViewController.willMove(toParent: nil)
+        searchBarViewController.view.removeFromSuperview()
+        searchBarViewController.removeFromParent()
+
         searchBarViewController = CustomSearchBarModuleBuilder.build()
         guard let configuredSearchBar = searchBarViewController as? CustomSearchBarViewController else {
             return
@@ -66,6 +70,7 @@ class PokemonCollectionSetsViewController: UIViewController {
             searchBarViewController.didMove(toParent: self)
             constrainSearchBar()
         }
+//        searchBarViewController.becomeFirstResponder()
     }
 }
 // MARK: - Collection Delegate Methods
@@ -109,7 +114,6 @@ extension PokemonCollectionSetsViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath) as? PokemonCollectionSetCell,
               let cellData = viewModel.sets[viewModel.keys[indexPath.row]] else {
             return UICollectionViewCell()
@@ -141,17 +145,24 @@ extension PokemonCollectionSetsViewController:  CustomSearchbarViewModelDelegate
         guard let destination = navVC.children.first as? SelectMenuViewController else {
             return
         }
+        destination.setSearchList(withSearchList: viewModel.searchList)
         self.present(navVC, animated: true, completion: nil)
         destination.callback = { (addedSets, removedSets) -> Void in
             navVC.dismiss(animated: true)
-            if addedSets == nil && removedSets == nil { return }
+            guard let configuredSearchBar = self.searchBarViewController as? CustomSearchBarViewController else{
+                return
+            }
+            configuredSearchBar.toggleAddButton()
+            if (addedSets == nil && removedSets == nil) || (addedSets?.isEmpty ?? true && removedSets?.isEmpty ?? true)  { return }
             navVC.dismiss(animated: true)
-            self.onRefreshView()
+
             if let addedSets = addedSets {
                 self.viewModel.addSet(setIDs: addedSets)
+                self.onRefreshView()
             }
             if let removedSets = removedSets {
                 self.viewModel.removeSet(setIDs: removedSets)
+                self.onRefreshView()
             }
         }
     }

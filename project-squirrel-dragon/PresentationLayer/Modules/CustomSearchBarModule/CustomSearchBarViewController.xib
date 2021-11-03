@@ -32,6 +32,9 @@
                         <view alpha="0.45000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CMQ-AL-GG3" userLabel="background">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="778"/>
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <accessibility key="accessibilityConfiguration">
+                                <accessibilityTraits key="traits" notEnabled="YES"/>
+                            </accessibility>
                         </view>
                         <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" bouncesZoom="NO" style="insetGrouped" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="cty-fK-DCi">
                             <rect key="frame" x="20" y="578" width="374" height="200"/>
@@ -103,7 +106,7 @@
                 <accessibilityTraits key="traits" notEnabled="YES"/>
             </accessibility>
             <constraints>
-                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="qAc-CV-uyr" secondAttribute="bottom" id="3Fg-H6-Grj"/>
+                <constraint firstAttribute="bottom" secondItem="qAc-CV-uyr" secondAttribute="bottom" constant="34" id="3Fg-H6-Grj"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="qAc-CV-uyr" secondAttribute="trailing" id="9ZV-dK-Oiq"/>
                 <constraint firstItem="qAc-CV-uyr" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="NRI-jO-y2y"/>
                 <constraint firstItem="qAc-CV-uyr" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="XVz-LL-do3"/>
