@@ -22,6 +22,7 @@ class PokemonCollectionSetsViewModel {
     // MARK: - Other Properties
     private var pokemonCollectionSets: [String: PokemonCollectionSet] = [:]
     private(set) var userPokemonCollectionSets: [String: UserSet] = [:]
+    private var setKeys: [String] = []
     var filteredList: [String] = []
     var sets: [String: PokemonCollectionSet] {
         filteredList.isEmpty ? pokemonCollectionSets.filter{
@@ -30,18 +31,22 @@ class PokemonCollectionSetsViewModel {
         pokemonCollectionSets.filter{ filteredList.description.lastSubString.contains($0.key) }
     }
 
+
     // MARK: - Initialization
     init(pokemonCollectionViewModelDelegate: PokemonCollectionViewModelDelegate, pokemonSetsRepository: RepositoryProtocol, userSetsRepository: RepositoryProtocol) {
         delegate = pokemonCollectionViewModelDelegate
         self.pokemonSetsRepository = pokemonSetsRepository
         self.userSetsRepository = userSetsRepository
     }
+
     func addSet(setID: String) {
         self.userPokemonCollectionSets[setID] = UserSet(id: setID, cardsCollected: 0)
+        setKeys = Array(sets.keys)
     }
 
     func removeSet(setID: String) {
         self.userPokemonCollectionSets.removeValue(forKey: setID)
+        setKeys = Array(sets.keys)
     }
 
     func fetchViewData() {
@@ -85,8 +90,13 @@ class PokemonCollectionSetsViewModel {
         pokemonCollectionSets.map { description(ofPokemonSet: $0.value) }
     }
 
+    var userSearchList: [String] {
+        pokemonCollectionSets.filter{
+            Array(userPokemonCollectionSets.keys).contains($0.key) }.map{description(ofPokemonSet: $0.value)}
+    }
+
     var keys: [String] {
-        Array(sets.keys)
+        setKeys
     }
 
     var selectableSets: [SelectableSet] {

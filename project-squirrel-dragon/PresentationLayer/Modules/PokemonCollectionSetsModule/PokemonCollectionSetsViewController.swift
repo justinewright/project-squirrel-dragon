@@ -58,7 +58,7 @@ class PokemonCollectionSetsViewController: UIViewController {
         guard let configuredSearchBar = searchBarViewController as? CustomSearchBarViewController else {
             return
         }
-        if let searchBarViewModel = CustomSearchBarViewModel(list: viewModel.searchList,
+        if let searchBarViewModel = CustomSearchBarViewModel(list: viewModel.userSearchList,
                                                              andDelegate: self) {
             configuredSearchBar.configure(searchBarViewModel)
             addChild(searchBarViewController)
@@ -80,7 +80,7 @@ extension PokemonCollectionSetsViewController: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
-        let destination = SetDetailsModuleBuilder.build(usingNavigationFactory: NavigationBuilder.build, andPokemonSet: viewModel.sets[Array(viewModel.sets.keys)[indexPath.row]]!)
+        let destination = SetDetailsModuleBuilder.build(usingNavigationFactory: NavigationBuilder.build, andPokemonSet: viewModel.sets[viewModel.keys[indexPath.row]]!)
 
         self.navigationController?.pushViewController(destination, animated: true)
     }
@@ -113,7 +113,8 @@ extension PokemonCollectionSetsViewController: UICollectionViewDataSource {
               let cellData = viewModel.sets[viewModel.keys[indexPath.row]] else {
             return UICollectionViewCell()
         }
-        cell.configure(with: cellData )
+        print(viewModel.keys)
+        cell.configure(with: cellData)
         return cell
     }
 

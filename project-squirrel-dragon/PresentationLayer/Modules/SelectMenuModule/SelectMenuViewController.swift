@@ -28,7 +28,7 @@ class SelectMenuViewController: UIViewController {
         configureCollectionView()
     }
     
-    func setList(withNewList list: [SelectableSet]){
+    func setList(withNewList list: [SelectableSet]) {
         viewModel.setList(withNewList: list)
     }
 
@@ -65,7 +65,6 @@ extension SelectMenuViewController: UICollectionViewDataSource {
         cell.configure(with: cellData)
         return cell
     }
-
 }
 
 extension SelectMenuViewController: UICollectionViewDelegate {
