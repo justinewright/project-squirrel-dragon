@@ -9,11 +9,20 @@ import XCTest
 
 class PokemonCollectionSetsViewModelTest: XCTestCase {
 
+    let mockUserSet = UserSetData(id: mockData.first!.id, collectedCards: 0, cardData: [])
     let mockPokemonSet = PokemonCollectionSet(pokemonSetsData: mockData.first!)
 
     class MockRepository: RepositoryProtocol {
         var fetchCalled = false
         var repoResult: Result<Any, URLError> = .failure(URLError(.badServerResponse))
+
+        func post(_ item: Any, withPostId postId: String, then handler: @escaping AnyResultBlock) {
+
+        }
+
+        func delete(_ item: Any, then handler: @escaping AnyResultBlock) {
+
+        }
 
         func fetch(then handler: @escaping AnyResultBlock) {
             fetchCalled = true
@@ -39,33 +48,40 @@ class PokemonCollectionSetsViewModelTest: XCTestCase {
 
     var viewModelUnderTesting: PokemonCollectionSetsViewModel!
     var mockDelegate: MockDelegate!
-    var mockRepo: MockRepository!
+    var mocktcgSetRepo: MockRepository!
+    var mockUserSetRepo: MockRepository!
 
     override func setUp() {
-        mockRepo = MockRepository()
+        mocktcgSetRepo = MockRepository()
+        mockUserSetRepo = MockRepository()
         mockDelegate = MockDelegate()
-        viewModelUnderTesting = PokemonCollectionSetsViewModel(pokemonCollectionViewModelDelegate: mockDelegate, repository: mockRepo)
+        viewModelUnderTesting = PokemonCollectionSetsViewModel(pokemonCollectionViewModelDelegate: mockDelegate,
+                                                               pokemonSetsRepository: mocktcgSetRepo,
+                                                               userSetsRepository: mockUserSetRepo)
     }
 
     func testUpdateViewCallsRepositoryFetch() {
         viewModelUnderTesting.fetchViewData()
         let expectedResult = true
-        let actualResult = mockRepo.fetchCalled
+        let actualResult = mocktcgSetRepo.fetchCalled
 
         XCTAssertEqual(expectedResult, actualResult)
     }
 
-    func testOnSuccessfulRepositoryFetchResultUpdatesPopulatesPokemonCollectionSet() {
-        mockRepo.repoResult = .success([mockPokemonSet])
+    func testOnSuccessfulRepositoryFetchesResultUpdatesPopulatesPokemonCollectionSet() {
+        mocktcgSetRepo.repoResult = .success([mockPokemonSet])
+        mockUserSetRepo.repoResult = .success([mockUserSet])
         viewModelUnderTesting.fetchViewData()
         let expectedResult = 1
+        print(viewModelUnderTesting.sets)
         let actualResult = viewModelUnderTesting.sets.count
         XCTAssertEqual(expectedResult, actualResult)
 
     }
 
     func testOnSuccessfulRepositoryFetchResultDelegateDidLoadIsCalled() {
-        mockRepo.repoResult = .success([mockPokemonSet])
+        mocktcgSetRepo.repoResult = .success([mockPokemonSet])
+        mockUserSetRepo.repoResult = .success([mockUserSet])
         viewModelUnderTesting.fetchViewData()
         let expectedResult = true
         let actualResult = mockDelegate.didLoadCalled
@@ -87,7 +103,7 @@ class PokemonCollectionSetsViewModelTest: XCTestCase {
     }
 
     func testSearchListReturnsCorrectlyFormattedStringForEachElement() {
-        mockRepo.repoResult = .success([mockPokemonSet])
+        mocktcgSetRepo.repoResult = .success([mockPokemonSet])
         viewModelUnderTesting.fetchViewData()
         let expectedResult =
             """
@@ -100,7 +116,7 @@ class PokemonCollectionSetsViewModelTest: XCTestCase {
     }
 
     func testWhenFilteredAFilteredSetIsReturned() {
-        mockRepo.repoResult = .success([mockPokemonSet])
+        mocktcgSetRepo.repoResult = .success([mockPokemonSet])
         viewModelUnderTesting.filteredList =
                         ["""
                         name: \(mockPokemonSet.name)
@@ -114,7 +130,8 @@ class PokemonCollectionSetsViewModelTest: XCTestCase {
     }
 
     func testWhenNotFilteredFullSetIsReturned() {
-        mockRepo.repoResult = .success([mockPokemonSet])
+        mocktcgSetRepo.repoResult = .success([mockPokemonSet])
+        mockUserSetRepo.repoResult = .success([mockUserSet])
         viewModelUnderTesting.filteredList = []
         viewModelUnderTesting.fetchViewData()
         let expectedResult = 1
@@ -123,7 +140,8 @@ class PokemonCollectionSetsViewModelTest: XCTestCase {
     }
 
     func testViewModelReturnsArrayOfCurrentSetsKeys() {
-        mockRepo.repoResult = .success([mockPokemonSet])
+        mocktcgSetRepo.repoResult = .success([mockPokemonSet])
+        mockUserSetRepo.repoResult = .success([mockUserSet])
         viewModelUnderTesting.fetchViewData()
         let expectedResult = mockPokemonSet.id
         let actualResult = viewModelUnderTesting.keys.first!

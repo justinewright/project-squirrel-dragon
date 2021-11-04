@@ -64,15 +64,15 @@ class PokemonCollectionSetsViewController: UIViewController {
         }
         if let searchBarViewModel = CustomSearchBarViewModel(list: viewModel.userSearchList,
                                                              andDelegate: self) {
-            configuredSearchBar.configure(searchBarViewModel)
+            configuredSearchBar.configure(searchBarViewModel, withAddButton: true)
             addChild(searchBarViewController)
             view.addSubview(searchBarViewController.view)
             searchBarViewController.didMove(toParent: self)
             constrainSearchBar()
         }
-//        searchBarViewController.becomeFirstResponder()
     }
 }
+
 // MARK: - Collection Delegate Methods
 extension PokemonCollectionSetsViewController: UICollectionViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -140,30 +140,30 @@ extension PokemonCollectionSetsViewController:  CustomSearchbarViewModelDelegate
         self.promptLabel.isHidden = !self.viewModel.userPokemonCollectionSets.isEmpty
     }
 
+    fileprivate func processSetDifferences(_ addedSets: [String]?, _ removedSets: [String]?) {
+        if (addedSets == nil && removedSets == nil) || (addedSets?.isEmpty ?? true && removedSets?.isEmpty ?? true) {
+            return
+        }
+
+        self.onRefreshView()
+        if let addedSets = addedSets {
+            self.viewModel.addSet(setIDs: addedSets)
+        }
+        if let removedSets = removedSets {
+            self.viewModel.removeSet(setIDs: removedSets)
+        }
+    }
+
     private func handleSelectMenu(action: UIAlertAction! = nil) {
-        let navVC = SelectMenuModuleBuilder.build(usingNavigationFactory: NavigationBuilder.build, andPokemonSet: viewModel.selectableSets)
+        let navVC = SelectMenuModuleBuilder.build(usingNavigationFactory: NavigationBuilder.build, andViewModel: viewModel)
         guard let destination = navVC.children.first as? SelectMenuViewController else {
             return
         }
-        destination.setSearchList(withSearchList: viewModel.searchList)
+
         self.present(navVC, animated: true, completion: nil)
         destination.callback = { (addedSets, removedSets) -> Void in
             navVC.dismiss(animated: true)
-            guard let configuredSearchBar = self.searchBarViewController as? CustomSearchBarViewController else{
-                return
-            }
-            configuredSearchBar.toggleAddButton()
-            if (addedSets == nil && removedSets == nil) || (addedSets?.isEmpty ?? true && removedSets?.isEmpty ?? true)  { return }
-            navVC.dismiss(animated: true)
-
-            if let addedSets = addedSets {
-                self.viewModel.addSet(setIDs: addedSets)
-                self.onRefreshView()
-            }
-            if let removedSets = removedSets {
-                self.viewModel.removeSet(setIDs: removedSets)
-                self.onRefreshView()
-            }
+            self.processSetDifferences(addedSets, removedSets)
         }
     }
 

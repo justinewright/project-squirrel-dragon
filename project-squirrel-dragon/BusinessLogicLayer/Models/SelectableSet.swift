@@ -19,4 +19,11 @@ struct SelectableSet {
         self.url = pokemonSet.imageLogo
         self.selected = userSet != nil
     }
+    
+    init (id: String, series: String, url: String, selected: Bool) {
+        self.id = id
+        self.series = series
+        self.url = url
+        self.selected = selected
+    }
 }

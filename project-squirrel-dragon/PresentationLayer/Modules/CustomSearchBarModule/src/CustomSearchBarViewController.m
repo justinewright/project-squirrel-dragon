@@ -33,11 +33,15 @@ BOOL keyboardUp = NO;
 float keyboardHeight = 300;
 BOOL hideAddButton = NO;
 
+double keyboardDownConstraint;
 // MARK: - Initialize Method
-- (void)configure: (CustomSearchBarViewModel*)viewModel {
+- (void)configure: (CustomSearchBarViewModel*)viewModel withAddButton: (BOOL)hasAddButton {
+    keyboardDownConstraint = self.containerViewBottomAnchor.constant;
 
     self.viewModel = viewModel;
     self.dataSource = [[FilterableDataSource alloc] initWithViewModel:self.viewModel];
+    hideAddButton = !hasAddButton;
+    [_addButton setHidden: hideAddButton];
     [self.tableView reloadData];
 }
 
@@ -102,18 +106,12 @@ BOOL hideAddButton = NO;
     CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
     keyboardHeight = keyboardSize.height;
     double keyboardDuration = [[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-    self.containerViewBottomAnchor.constant = keyboardSize.height - (hideAddButton ? 0 : 85);
+    self.containerViewBottomAnchor.constant = keyboardSize.height - (hideAddButton ? 34 : 85);
     [UIView animateWithDuration:keyboardDuration animations:^{
         [self.view layoutIfNeeded];
     }];
 }
 
-- (void)toggleAddButton {
-    hideAddButton = !hideAddButton;
-    [self.addButton setHidden:hideAddButton];
-    self.containerViewBottomAnchor.constant = self.view.safeAreaInsets.bottom + (hideAddButton ? 34 : 0) ;
-    [self.view layoutIfNeeded];
-}
 
 - (void)keyboardWillHide:(NSNotification *)notification
 {
@@ -125,7 +123,7 @@ BOOL hideAddButton = NO;
     [self.tableView setHidden:YES];
 
     double keyboardDuration = [[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-    self.containerViewBottomAnchor.constant = self.view.safeAreaInsets.bottom + (hideAddButton ? 34 : 0) ;
+    self.containerViewBottomAnchor.constant = keyboardDownConstraint;
     [UIView animateWithDuration:keyboardDuration animations:^{
         [self.view layoutIfNeeded];
     }];
@@ -142,7 +140,6 @@ BOOL hideAddButton = NO;
         self->_searchBar.text = searchFilter;
         self.searchLabel.text = searchFilter;
         });
-//    [self resignFirstResponder];
 }
 
 //MARK: TableViewDelegate Methods

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Firebase
 
 struct UserSetData: Codable {
     let id: String
@@ -16,6 +17,18 @@ struct UserSetData: Codable {
         self.id = id
         self.collectedCards = collectedCards
         self.cardData = cardData
+    }
+
+    init?(snapshot: DataSnapshot) {
+        guard let snapshotValue = snapshot.value as? [String: AnyObject],
+              let id = snapshotValue["id"] as? String,
+              let cardsCollected = snapshotValue["collectedCards"] as? Int else {
+                  return nil
+              }
+
+        self.id = id
+        self.collectedCards = cardsCollected
+        self.cardData = []
     }
 
     init(userSet: UserSet){
@@ -30,7 +43,6 @@ struct UserSetData: Codable {
             "collectedCards" : collectedCards,
             "cardData": [cardData]
         ]
-
     }
 }
 
@@ -38,12 +50,6 @@ struct FirebaseCollectedCardData: Codable {
     let rarity: String
     let collectedAmount: Int
 
-    var dictionary: [String: Any] {
-        return [
-            "rarity" : rarity,
-            "collectedAmount" : collectedAmount
-        ]
-    }
     func toAnyObject() -> Any {
             return [
                 "rarity": rarity,

@@ -15,14 +15,9 @@ class SelectMenuViewModelTests: XCTestCase {
         }
     }
     var mockDelegate = MockDelegate()
-    var mockList: [SelectableSet] = [SelectableSet(id: "0",
-                                                   description: "name0 series0 0",
-                                                   url: "",
-                                                   selected: false),
-                                     SelectableSet(id: "1",
-                                                   description: "name1 series1 1",
-                                                   url: "",
-                                                   selected: true)]
+
+    var mockList: [SelectableSet] = [SelectableSet(id: "0", series: "series0", url: "", selected: false),
+                                     SelectableSet(id: "1", series: "series1", url: "", selected: true)]
 
     var viewModelUnderTesting: SelectMenuViewModel!
 
@@ -141,22 +136,6 @@ class SelectMenuViewModelTests: XCTestCase {
         let expectedAddedItemsCount = 0
         let actualAddedItemsCount = viewModelUnderTesting.addedChanges
         XCTAssertEqual(expectedAddedItemsCount, actualAddedItemsCount)
-    }
-
-    func testWhenListSetThenDelegateRefreshViewIsCalled() {
-        viewModelUnderTesting.setList(withNewList: mockList)
-        let expectedResult = true
-        let actualResult = mockDelegate.refreshViewCalled
-        XCTAssertEqual(expectedResult, actualResult)
-    }
-
-    func testWhenToggleIsCalledAndIsSuccesfulThenDelegateRefreshViewIsCalled() {
-        viewModelUnderTesting.setList(withNewList: mockList)
-        mockDelegate.refreshViewCalled = false
-        viewModelUnderTesting.toggleItem(withId: "0")
-        let expectedResult = true
-        let actualResult = mockDelegate.refreshViewCalled
-        XCTAssertEqual(expectedResult, actualResult)
     }
 
     func testWhenToggleIsCalledAndFailsThenDelegateRefreshViewIsNotCalled() {

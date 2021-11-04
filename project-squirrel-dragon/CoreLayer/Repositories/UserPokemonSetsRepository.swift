@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import Firebase
 class UserPokemonSetsRepository: RepositoryProtocol {
 
     // MARK: - Properties
@@ -17,7 +17,7 @@ class UserPokemonSetsRepository: RepositoryProtocol {
     private (set) var firebaseSetsData: [UserSetData] = []
     private var firebase: FirebaseApiClientProtocol!
     private var searchPath: String = ""
-    private var searchPathID: String = ""
+    
     // MARK: - Initialization
     init(firebaseApiClient: FirebaseApiClientProtocol = FirebaseApiClient()) {
         self.firebaseApiClient = firebaseApiClient
@@ -33,7 +33,7 @@ class UserPokemonSetsRepository: RepositoryProtocol {
             self.firebaseApiClient.get(fromPath: self.searchPath) { result in
                 switch result {
                 case .success(let items):
-                    handler(.success(items))
+                    self.updateUserSets(items: items) { handler($0) }
                 case .failure(let error):
                     handler(.failure(error))
                 }
@@ -46,7 +46,7 @@ class UserPokemonSetsRepository: RepositoryProtocol {
             self.firebaseApiClient.post(data: [postId:item], toPath: self.searchPath) { result in
                 switch result {
                 case .success(let items):
-                    handler(.success(items))
+                    self.updateUserSets(items: items) { handler($0) }
                 case .failure(let error):
                     handler(.failure(error))
                 }
@@ -63,12 +63,30 @@ class UserPokemonSetsRepository: RepositoryProtocol {
             self.firebaseApiClient.delete(fromPath: "\(self.searchPath)/\(item)") { result in
                 switch result {
                 case .success(let items):
-                    handler(.success(items))
+                    self.updateUserSets(items: items) { handler($0) }
                 case .failure(let error):
                     handler(.failure(error))
                 }
             }
         }
+    }
+
+    private func updateUserSets(items: Any, then handler: @escaping AnyResultBlock) {
+        guard let datas = items as? DataSnapshot else {
+            handler(.failure(URLError(.cannotDecodeContentData)))
+            return
+        }
+        self.firebaseSetsData.removeAll()
+        datas.children.forEach {
+            guard let data =  $0 as? DataSnapshot else {
+                handler(.failure(URLError(.cannotDecodeContentData)))
+                return
+            }
+            if let newUserSet = UserSetData(snapshot: data) {
+                self.firebaseSetsData.append(newUserSet)
+            }
+        }
+        handler(.success(self.firebaseSetsData))
     }
 
 }

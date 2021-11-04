@@ -20,25 +20,14 @@ class SelectMenuViewController: UIViewController {
     private lazy var viewModel = SelectMenuViewModel(withDelegate: self)
     var callback: ((_ newSelectedSets: [String]?, _ deselectedSets: [String]?) -> Void)?
 
-    @IBAction func doneButtonPushed(_ sender: UIButton) {        searchBarViewController.willMove(toParent: nil)
-        searchBarViewController.view.removeFromSuperview()
-        searchBarViewController.removeFromParent()
+    @IBAction func doneButtonPushed(_ sender: UIButton) {
         callback?(viewModel.addedSets, viewModel.removedSets)
-        
     }
 
     @IBAction func cancelButtonPressed(_ sender: UIButton) {
-        if !self.children.isEmpty {
-            let viewControllers:[UIViewController] = self.children
-               for viewContoller in viewControllers{
-                   viewContoller.willMove(toParent: nil)
-                   viewContoller.view.removeFromSuperview()
-                   viewContoller.removeFromParent()
-               }
-           }
         callback?(nil, nil)
-
     }
+
     // MARK: - LifecycleMethods
     override func viewDidLoad() {
         configureCollectionView()
@@ -68,7 +57,7 @@ class SelectMenuViewController: UIViewController {
 
         NSLayoutConstraint.activate([
             searchBarViewController.view.topAnchor.constraint(equalTo: view.topAnchor),
-            searchBarViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            searchBarViewController.view.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             searchBarViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             searchBarViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
@@ -82,8 +71,7 @@ class SelectMenuViewController: UIViewController {
         }
         if let searchBarViewModel = CustomSearchBarViewModel(list: viewModel.searchList,
                                                              andDelegate: self) {
-            configuredSearchBar.configure(searchBarViewModel)
-            configuredSearchBar.toggleAddButton()
+            configuredSearchBar.configure(searchBarViewModel, withAddButton: false)
             addChild(searchBarViewController)
             view.addSubview(searchBarViewController.view)
             searchBarViewController.didMove(toParent: self)

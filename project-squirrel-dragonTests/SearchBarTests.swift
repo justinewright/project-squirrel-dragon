@@ -11,6 +11,11 @@ class SearchBarTests: XCTestCase {
 
     class MockSearchViewModelDelegate: NSObject, CustomSearchbarViewModelDelegate {
         var updateDisplayCalled = false
+        var showSelectMenuCalled = false
+
+        func showSelectMenu(_ sender: CustomSearchBarViewModel!) {
+            showSelectMenuCalled = true
+        }
 
         func updateDisplay(_ sender: CustomSearchBarViewModel!, withSearchFilter searchFilter: String!) {
             updateDisplayCalled = true

@@ -21,7 +21,6 @@ struct PokemonCollectionSet: BaseModel {
     let updatedAt: String 
     let imageSymbol: String
     let imageLogo: String
-    let description: String
 
     init(pokemonSetsData: SetsData) {
         id = pokemonSetsData.id
@@ -33,12 +32,6 @@ struct PokemonCollectionSet: BaseModel {
         updatedAt = pokemonSetsData.updatedAt
         imageSymbol = pokemonSetsData.images.symbol
         imageLogo = pokemonSetsData.images.logo
-        description = """
-        name: \(name)
-        series: \(series)
-        id: \(id)
-        """
     }
-
 
 }

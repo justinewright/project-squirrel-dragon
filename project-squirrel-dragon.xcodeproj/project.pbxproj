@@ -54,6 +54,9 @@
 		216ADAF6270DBA0700D61E92 /* RepositoryContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216ADAF5270DBA0700D61E92 /* RepositoryContracts.swift */; };
 		2171BC6A2710086000EBBA3E /* StyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2171BC692710086000EBBA3E /* StyleKit.swift */; };
 		21734E8E272569C80060B0F1 /* SearchBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21734E8D272569C80060B0F1 /* SearchBarTests.swift */; };
+		21748B4D2733C81B00D5EFA7 /* FirebaseApiClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A19602272968FB00912A52 /* FirebaseApiClientProtocol.swift */; };
+		21748B4E2733C82400D5EFA7 /* UserPokemonSetsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217901CC2731980600A8BCB5 /* UserPokemonSetsRepository.swift */; };
+		21748B4F2733C85E00D5EFA7 /* FirebaseApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A196062729AF8900912A52 /* FirebaseApiClient.swift */; };
 		217901CB27315AF100A8BCB5 /* SelectMenuModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217901CA27315AF100A8BCB5 /* SelectMenuModuleBuilder.swift */; };
 		217901CD2731980600A8BCB5 /* UserPokemonSetsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217901CC2731980600A8BCB5 /* UserPokemonSetsRepository.swift */; };
 		217E8E322732CFD500A935C2 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217E8E312732CFD500A935C2 /* Animator.swift */; };
@@ -533,6 +536,8 @@
 				2180A41C2726CCA700E0C0F4 /* PBXTargetDependency */,
 			);
 			name = "project-squirrel-dragonTests";
+			packageProductDependencies = (
+			);
 			productName = "project-squirrel-dragonTests";
 			productReference = 21246D072723106C00CC6DAC /* project-squirrel-dragonTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -687,6 +692,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21748B4F2733C85E00D5EFA7 /* FirebaseApiClient.swift in Sources */,
+				21748B4E2733C82400D5EFA7 /* UserPokemonSetsRepository.swift in Sources */,
+				21748B4D2733C81B00D5EFA7 /* FirebaseApiClientProtocol.swift in Sources */,
 				2166D82E272C186800E3ABD1 /* SelectMenuViewModel.swift in Sources */,
 				2166D82B272C16A500E3ABD1 /* SelectableSet.swift in Sources */,
 				21246D302723414A00CC6DAC /* SetDetailsViewModel.swift in Sources */,
