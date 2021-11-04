@@ -41,7 +41,7 @@ double keyboardDownConstraint;
     self.viewModel = viewModel;
     self.dataSource = [[FilterableDataSource alloc] initWithViewModel:self.viewModel];
     hideAddButton = !hasAddButton;
-    [_addButton setHidden: hideAddButton];
+//    [_addButton setHidden: hideAddButton];
     [self.tableView reloadData];
 }
 
@@ -74,6 +74,7 @@ double keyboardDownConstraint;
     [self setupSearchBar];
     [self.backgroundView setUserInteractionEnabled:NO];
     [self.backgroundView setHidden:YES];
+    [_addButton setHidden: hideAddButton];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -179,6 +180,7 @@ double keyboardDownConstraint;
     if (scrollVelocity->y > 0 && self.searchBar.isHidden){
         [self fadeOut:_searchLabel];
         [self fadeIn:_searchBar];
+        if (hideAddButton) return;
         [self fadeIn:_addButton];
     } else if (scrollVelocity->y < 0 && self.searchLabel.isHidden){
         [self fadeOut:_searchBar];
