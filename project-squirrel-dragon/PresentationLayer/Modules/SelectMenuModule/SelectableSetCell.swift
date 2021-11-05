@@ -27,9 +27,9 @@ class SelectableSetCell: UICollectionViewCell {
 
     func configure(with selectableSet: SelectableSet) {
         self.selectableSet = selectableSet
-        configureNameLabel(withName: selectableSet.series)
+        configureNameLabel(withName: selectableSet.labelText)
         configureSelectedImageView(setSelected: selectableSet.selected)
-        configureLogoImageView(withURLString: selectableSet.url)
+        configureLogoImageView(withURLString: selectableSet.imageUrl)
     }
 
     private func configureNameLabel(withName name: String) {

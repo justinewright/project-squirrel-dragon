@@ -9,21 +9,14 @@ import Foundation
 
 struct SelectableSet {
     let id: String
-    let series: String
-    let url: String
+    let labelText: String
+    let imageUrl: String
     var selected: Bool
 
-    init (pokemonSet: PokemonCollectionSet, userSet: UserSet?) {
-        self.id = pokemonSet.id
-        self.series = pokemonSet.series
-        self.url = pokemonSet.imageLogo
-        self.selected = userSet != nil
-    }
-    
     init (id: String, series: String, url: String, selected: Bool) {
         self.id = id
-        self.series = series
-        self.url = url
+        self.labelText = series
+        self.imageUrl = url
         self.selected = selected
     }
 }
