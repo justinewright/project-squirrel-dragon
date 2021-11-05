@@ -23,11 +23,25 @@ class SelectMenuViewModel {
     private (set) var searchList: [String] = []
 
     // MARK: - Computed Variables
-    var removedChanges: Int {differenceList[.removed]?.count ?? 0}
-    var addedChanges: Int {differenceList[.added]?.count ?? 0}
-    var totalChanges: Int {removedChanges + addedChanges}
-    var addedSets: [String]? { differenceList[.added].map{ $0.map { $0.key}}  }
-    var removedSets: [String]? {differenceList[.removed].map{ $0.map { $0.key}}  }
+    var removedChanges: Int {
+        return differenceList[.removed]?.count ?? 0
+    }
+
+    var addedChanges: Int {
+        return differenceList[.added]?.count ?? 0
+    }
+
+    var totalChanges: Int {
+        return removedChanges + addedChanges
+    }
+    var addedSets: [String]? {
+        return differenceList[.added].map{ $0.map { $0.key}}
+    }
+
+    var removedSets: [String]? {
+        return differenceList[.removed].map{ $0.map { $0.key}}
+    }
+
     // MARK: - Filter Properties
     var filteredList: [String] = []
     var sets: [String: SelectableSet] {

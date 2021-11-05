@@ -21,13 +21,14 @@ class FirebaseApiClient: FirebaseApiClientProtocol {
 
     func post(data: [String: Any], toPath path: String, then handler: @escaping AnyResultBlock) {
 
-        guard let autoId = Auth.auth().currentUser else {
+        guard let autoId = Auth.auth().currentUser,
+        let setId = data.keys.first else {
+            handler(.failure(URLError(.cannotCreateFile)))
              return
          }
-        let setid = data.keys.first!
         self.databaseRef.ref.child(autoId.uid).child(path).observeSingleEvent(of: .value, with: { snapshot in
 
-            if snapshot.hasChild(setid) {
+            if snapshot.hasChild(setId) {
                 self.update(data: data, toPath: path, withSnapshot: snapshot) { handler($0) }
             } else {
                 self.create(data: data, toPath: path, then: { handler($0)})
@@ -38,13 +39,14 @@ class FirebaseApiClient: FirebaseApiClientProtocol {
 
     func get(fromPath path: String, then handler: @escaping AnyResultBlock) {
         guard let autoId = Auth.auth().currentUser else {
-             return
-         }
+            handler(.failure(URLError(.userAuthenticationRequired)))
+            return
+        }
         databaseRef.child("\(autoId.uid)/\(path)").getData(completion:  { error, snapshot in
-          guard error == nil else {
-              handler(.failure(URLError(.cannotCreateFile)))
-              return
-          }
+            guard error == nil else {
+                handler(.failure(URLError(.badURL)))
+                return
+            }
             handler(.success(snapshot))
         })
     }
@@ -70,9 +72,12 @@ private extension FirebaseApiClient {
 
     func update(data: [String: Any], toPath path: String, withSnapshot snapshot: DataSnapshot, then handler: @escaping AnyResultBlock) {
 
-        let setid = data.keys.first!
+        guard let setId = data.keys.first,
+        let value = data.values.first else {
+            return handler(.failure(URLError(.cannotCreateFile)))
+        }
 
-        snapshot.ref.updateChildValues([setid:data.values.first!]) { (error:Error?, ref:DatabaseReference) in
+        snapshot.ref.updateChildValues([setId:value]) { (error:Error?, ref:DatabaseReference) in
             guard error == nil else {
                 handler(.failure(URLError(.cannotCreateFile)))
                 return
@@ -83,11 +88,14 @@ private extension FirebaseApiClient {
 
     func create(data: [String: Any], toPath path: String, then handler: @escaping AnyResultBlock) {
 
-        guard let autoId = Auth.auth().currentUser else {
+        guard let autoId = Auth.auth().currentUser,
+        let setId = data.keys.first,
+        let value = data.values.first else {
+            handler(.failure(URLError(.cannotCreateFile)))
             return
         }
 
-        databaseRef.ref.child(autoId.uid).child(path).child(data.keys.first!).setValue(data.values.first!) {
+        databaseRef.ref.child(autoId.uid).child(path).child(setId).setValue(value) {
             (error:Error?, ref:DatabaseReference) in
             guard error == nil else {
                 handler(.failure(URLError(.cannotCreateFile)))

@@ -10,7 +10,6 @@ import Firebase
 class UserPokemonSetsRepository: RepositoryProtocol {
 
     // MARK: - Properties
-    private var state: RepositoryState = .loading
     private var error: URLError?
 
     private var firebaseApiClient: FirebaseApiClientProtocol

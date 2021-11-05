@@ -24,15 +24,12 @@ class LoginViewModel {
     }
 
     func signIn() {
-        guard let delegate = delegate else {
-            return
-        }
-        authService.signIn { result in
+        authService.signIn { [weak self] result in
             switch result {
             case .success(_):
-                delegate.showHomePage()
+                self?.delegate?.showHomePage()
             case .failure(let error):
-                delegate.showError(withMessage: error.localizedDescription)
+                self?.delegate?.showError(withMessage: error.localizedDescription)
             }
         }
     }
