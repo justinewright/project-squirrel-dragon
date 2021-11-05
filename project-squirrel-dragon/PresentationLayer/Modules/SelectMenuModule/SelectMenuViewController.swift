@@ -9,7 +9,6 @@ import UIKit
 
 class SelectMenuViewController: UIViewController {
 
-
     // MARK: - PROPERTIES
     @IBOutlet private weak var cancelButton: UIButton!
     @IBOutlet private weak var doneButton: UIButton!
@@ -17,7 +16,7 @@ class SelectMenuViewController: UIViewController {
     private lazy var searchBarViewController = UIViewController()
     private let cellReuseIdentifier = "SelectableSetCell"
     private let cellNibName = "SelectableSetCell"
-    private lazy var viewModel = SelectMenuViewModel(withDelegate: self)
+    private lazy var viewModel = SelectMenuViewModel()
     var callback: ((_ newSelectedSets: [String]?, _ deselectedSets: [String]?) -> Void)?
 
     @IBAction func doneButtonPushed(_ sender: UIButton) {
@@ -122,11 +121,6 @@ extension SelectMenuViewController: UICollectionViewDelegate {
     }
 }
 
-extension SelectMenuViewController: SelectMenuViewModelDelegate {
-        func refreshView() {
-            collectionView.reloadData()
-        }
-}
 
 extension SelectMenuViewController: CustomSearchbarViewModelDelegate {
     func updateDisplay(_ sender: CustomSearchBarViewModel!, withSearchFilter searchFilter: String!) {

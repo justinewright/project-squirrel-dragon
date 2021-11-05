@@ -7,10 +7,6 @@
 
 import Foundation
 
-protocol SelectMenuViewModelDelegate: AnyObject {
-    func refreshView()
-}
-
 class SelectMenuViewModel {
     enum Difference {
         case added
@@ -19,7 +15,6 @@ class SelectMenuViewModel {
     // MARK: - Properties
     private(set) var differenceList: [Difference: [String : SelectableSet]] = [.added: [:], .removed: [:]]
     private(set) var originalList: [String: SelectableSet] = [:]
-    private weak var delegate: SelectMenuViewModelDelegate?
     private (set) var searchList: [String] = []
 
     // MARK: - Computed Variables
@@ -50,9 +45,6 @@ class SelectMenuViewModel {
     }
 
     // MARK: - Initialization
-    init(withDelegate delegate: SelectMenuViewModelDelegate? = nil) {
-        self.delegate = delegate
-    }
 
     func setList(withNewList list: [SelectableSet]) {
         originalList = Dictionary(uniqueKeysWithValues: list.map({($0.id, $0)}))
