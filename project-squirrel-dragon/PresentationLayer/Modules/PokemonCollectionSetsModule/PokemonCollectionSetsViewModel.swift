@@ -76,14 +76,14 @@ class PokemonCollectionSetsViewModel {
     }
 
     var selectableSets: [SelectableSet] {
-        var s: [SelectableSet] = []
+        var selectableSets: [SelectableSet] = []
 
-        pokemonCollectionSets.forEach {s.append( SelectableSet(id: pokemonCollectionSets[$0.key]!.id,
+        pokemonCollectionSets.forEach {selectableSets.append( SelectableSet(id: pokemonCollectionSets[$0.key]!.id,
                                                                series: pokemonCollectionSets[$0.key]!.series,
                                                                url: pokemonCollectionSets[$0.key]!.imageLogo,
                                                                selected: userPokemonCollectionSets[$0.key] != nil))
         }
-        return s
+        return selectableSets
     }
 }
 
