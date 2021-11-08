@@ -7,29 +7,26 @@
 
 import Foundation
 
-class PokemonCollectionSetsRepository: RepositoryProtocol {
-
-
+class TCGPokemonRepository<DataType:Codable>: RepositoryProtocol {
     // MARK: - Properties
     private var error: URLError?
 
-    private var pokemonTcgAllSetsApiClient: PokemonTcgAllSetsApiClientProtocol
-    private (set) var pokemonCollectionSets: [PokemonCollectionSet] = []
-    private var firebase: FirebaseApiClientProtocol!
-    
+    private var tcgApiClient: PokemonTcgApiClient<DataType>
+    private (set) var data: DataType!
+
     // MARK: - Initialization
-    init(pokemonTcgAllSetsApiClient: PokemonTcgAllSetsApiClientProtocol = PokemonTcgAllSetsApiClient()) {
-        self.pokemonTcgAllSetsApiClient = pokemonTcgAllSetsApiClient
+    init(apiClient: PokemonTcgApiClient<DataType>) {
+        tcgApiClient = apiClient
     }
 
     // MARK: - Repository Protocol Implementation
     func fetch(then handler: @escaping AnyResultBlock) {
-        pokemonTcgAllSetsApiClient.fetch  { [weak self] result in
+        tcgApiClient.fetch  { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
-                case .success(let collectSetsData):
-                    self?.pokemonCollectionSets = collectSetsData.data.map(PokemonCollectionSet.init)
-                    handler(.success(self?.pokemonCollectionSets ?? []))
+                case .success(let data):
+                    self?.data = data
+                    handler(.success(self?.data ?? []))
                 case .failure(let error):
                     self?.error = error
                     handler(.failure(error))

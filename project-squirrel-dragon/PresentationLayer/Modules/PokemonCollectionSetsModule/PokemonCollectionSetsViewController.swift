@@ -12,9 +12,9 @@ class PokemonCollectionSetsViewController: UIViewController {
     @IBOutlet private weak var pokemonCollectionSetsCollectionView: UICollectionView!
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet private weak var promptLabel: UILabel!
+//    var a = TCGPokemonRepository(apiClient: PokemonTcgApiClient<PokemonSetsData.self>)
     private lazy var viewModel = PokemonCollectionSetsViewModel(pokemonCollectionViewModelDelegate: self,
-                                                                pokemonSetsRepository: PokemonCollectionSetsRepository(),
-                                                                userSetsRepository: UserPokemonSetsRepository())
+                                                                pokemonSetsRepository: TCGPokemonRepository<PokemonSetsData>(apiClient: PokemonTcgApiClient<PokemonSetsData>(endPoint: Endpoint(path: "sets"))), userSetsRepository: UserPokemonSetsRepository<UserSetData>())
 
     private let cellReuseIdentifier = "PokemonCollectionSetCell"
     private let cellNibName = "PokemonCollectionSetCell"

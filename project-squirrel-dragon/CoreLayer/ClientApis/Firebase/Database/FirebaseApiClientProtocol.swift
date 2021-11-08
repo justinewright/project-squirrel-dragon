@@ -8,7 +8,7 @@
 import Foundation
 
 protocol FirebaseApiClientProtocol {
-    func post(data: [String: Any], toPath path: String, then handler: @escaping AnyResultBlock)
-    func get(fromPath path: String, then handler: @escaping AnyResultBlock)
-    func delete(fromPath path: String, then handler: @escaping AnyResultBlock)
+    func post(data: [String: Any], then handler: @escaping AnyResultBlock)
+    func get(then handler: @escaping AnyResultBlock)
+    func delete(itemWithId itemID: String, then handler: @escaping AnyResultBlock)
 }

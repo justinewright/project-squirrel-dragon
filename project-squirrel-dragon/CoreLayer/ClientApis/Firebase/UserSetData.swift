@@ -8,6 +8,11 @@
 import Foundation
 import Firebase
 
+struct FirebaseUserSetData: Codable {
+    let id: String
+    let userSets: [UserSetData]
+}
+
 struct UserSetData: Codable {
     let id: String
     let collectedCards: Int
@@ -17,18 +22,6 @@ struct UserSetData: Codable {
         self.id = id
         self.collectedCards = collectedCards
         self.cardData = cardData
-    }
-
-    init?(snapshot: DataSnapshot) {
-        guard let snapshotValue = snapshot.value as? [String: AnyObject],
-              let id = snapshotValue["id"] as? String,
-              let cardsCollected = snapshotValue["collectedCards"] as? Int else {
-                  return nil
-              }
-
-        self.id = id
-        self.collectedCards = cardsCollected
-        self.cardData = []
     }
 
     init(userSet: UserSet){

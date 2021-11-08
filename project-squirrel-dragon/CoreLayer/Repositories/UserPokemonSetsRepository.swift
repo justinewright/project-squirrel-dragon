@@ -7,13 +7,13 @@
 
 import Foundation
 import Firebase
-class UserPokemonSetsRepository: RepositoryProtocol {
 
+class UserPokemonSetsRepository<UserDataType: Codable, ApiDataType: Codable >: RepositoryProtocol {
     // MARK: - Properties
     private var error: URLError?
 
     private var firebaseApiClient: FirebaseApiClientProtocol
-    private (set) var firebaseSetsData: [UserSetData] = []
+    private (set) var firebaseSetsData: [UserDataType] = []
     private var firebase: FirebaseApiClientProtocol!
     private var searchPath: String = ""
     
@@ -71,10 +71,11 @@ class UserPokemonSetsRepository: RepositoryProtocol {
     }
 
     private func updateUserSets(items: Any, then handler: @escaping AnyResultBlock) {
-        guard let datas = items as? DataSnapshot else {
+        guard let datas = items as? ApiDataType else {
             handler(.failure(URLError(.cannotDecodeContentData)))
             return
         }
+        self.firebaseSetsData = ApiDataType.init(from: <#T##Decoder#>)
         self.firebaseSetsData.removeAll()
         datas.children.forEach {
             guard let data =  $0 as? DataSnapshot else {

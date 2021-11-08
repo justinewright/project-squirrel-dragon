@@ -33,13 +33,16 @@ class PokemonCollectionSetsViewModel {
     }
 
     // MARK: - Initialization
-    init(pokemonCollectionViewModelDelegate: PokemonCollectionViewModelDelegate, pokemonSetsRepository: RepositoryProtocol, userSetsRepository: RepositoryProtocol) {
+    init(pokemonCollectionViewModelDelegate: PokemonCollectionViewModelDelegate,
+         pokemonSetsRepository: RepositoryProtocol,
+         userSetsRepository: RepositoryProtocol) {
         delegate = pokemonCollectionViewModelDelegate
         self.pokemonSetsRepository = pokemonSetsRepository
         self.userSetsRepository = userSetsRepository
     }
 
     func fetchViewData() {
+        guard let pokemonSetsRepository = pokemonSetsRepository as? TCGPokemonRepository<[PokemonSetsData]> else {return}
         pokemonSetsRepository.fetch { [weak self] result in
             switch result {
             case .success(let pokemonCollectionSets):
