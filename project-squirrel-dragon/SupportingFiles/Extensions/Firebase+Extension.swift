@@ -7,34 +7,29 @@
 
 import Firebase
 import Foundation
+import SwiftUI
 
 extension DataSnapshot {
-    var data: Data? {
-    guard let value = value,
-    !(value is NSNull) else {return nil}
-
-    return try? JSONSerialization.data(withJSONObject: value)
-    }
-
-    var json: String? {data?.string}
+    func snapshotToFirebaseDataModel<T: Codable> (
+        expecting: T.Type,
+        then handler: @escaping(Result<FirebaseData<T>, URLError>) -> Void) {
+            guard let object = children.allObjects as? [DataSnapshot] else {
+                handler(.failure(URLError(.cannotDecodeContentData)))
+                return
+            }
+            do {
+                let dict: [NSDictionary] = object.compactMap { $0.value as? NSDictionary }
+                let jsonData: Data = try JSONSerialization.data(withJSONObject: dict, options: [])
+                let results = try JSONDecoder().decode([T].self, from: jsonData)
+                handler(.success(FirebaseData(id: "", data: results)))
+            } catch {
+                handler(.failure(URLError(.cannotDecodeContentData)))
+            }
+        }
 }
+
+
 
 extension Data {
     var string: String? {String(data: self, encoding: .utf8)}
-}
-
-extension DataSnapshot {
-
-func snapshotToArrayOfDataModel<ConversionType:Codable> (
-    snapshot: DataSnapshot,
-    expecting: ConversionType.Type) -> ConversionType? {
-        guard let data = snapshot.data else { return nil }
-        do {
-            let decodedData = try JSONDecoder().decode(ConversionType.self, from: data)
-            return decodedData
-        } catch {
-            return nil
-        }
-    }
-
 }

@@ -323,8 +323,8 @@
 				21667085270F381300B6A874 /* UIImageView+Extension.swift */,
 				21246CFD2722E93A00CC6DAC /* Strings+Extension.swift */,
 				2180A4192726757100E0C0F4 /* UIVIewController+Extension.swift */,
-				21AFD33B27394F6E00699AF5 /* URLSession+Extension.swift */,
 				21AFD3422739B3F000699AF5 /* Firebase+Extension.swift */,
+				21AFD33B27394F6E00699AF5 /* URLSession+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";

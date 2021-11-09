@@ -10,8 +10,8 @@ import FirebaseDatabase
 import FirebaseDatabaseSwift
 import Firebase
 
-class FirebaseApiClient<T:Codable>: FirebaseApiClientProtocol {
-    typealias Response = T
+class FirebaseApiClient<UserDataType: Codable>: FirebaseApiClientProtocol {
+    typealias Response = UserDataType
     private var databaseRef: DatabaseReference = Database.database().reference()
 
     private let endPoint: Endpoint!
@@ -21,7 +21,7 @@ class FirebaseApiClient<T:Codable>: FirebaseApiClientProtocol {
         self.endPoint = endPoint
     }
 
-    func post(data: [String: Any], then handler: @escaping AnyResultBlock) {
+    func post(data: [String: Any], then handler: @escaping ApiClientResultBlock<FirebaseData<Response>>) {
 
         guard let autoId = Auth.auth().currentUser,
         let setId = data.keys.first else {
@@ -39,7 +39,7 @@ class FirebaseApiClient<T:Codable>: FirebaseApiClientProtocol {
 
     }
 
-    func get(then handler: @escaping AnyResultBlock) {
+    func get(then handler: @escaping ApiClientResultBlock<FirebaseData<Response>>) {
         guard let autoId = Auth.auth().currentUser else {
             handler(.failure(URLError(.userAuthenticationRequired)))
             return
@@ -49,11 +49,13 @@ class FirebaseApiClient<T:Codable>: FirebaseApiClientProtocol {
                 handler(.failure(URLError(.badURL)))
                 return
             }
-            handler(.success(snapshot))
+            snapshot.snapshotToFirebaseDataModel(expecting: Response.self) { response in
+                handler(response)
+            }
         })
     }
 
-    func delete(itemWithId itemID: String, then handler: @escaping AnyResultBlock) {
+    func delete(itemWithId itemID: String, then handler: @escaping ApiClientResultBlock<FirebaseData<Response>>) {
         guard let autoId = Auth.auth().currentUser else {
              return
          }
@@ -62,16 +64,14 @@ class FirebaseApiClient<T:Codable>: FirebaseApiClientProtocol {
                 handler(.failure(URLError(.cannotCreateFile)))
                 return
             }
-            self.get() { result in
-                handler(result)
-            }
+            self.get() { handler($0) }
         }
     }
 }
 
 private extension FirebaseApiClient {
 
-    func update(data: [String: Any], withSnapshot snapshot: DataSnapshot, then handler: @escaping AnyResultBlock) {
+    func update(data: [String: Any], withSnapshot snapshot: DataSnapshot, then handler: @escaping ApiClientResultBlock<FirebaseData<Response>>) {
 
         guard let setId = data.keys.first,
         let value = data.values.first else {
@@ -83,11 +83,11 @@ private extension FirebaseApiClient {
                 handler(.failure(URLError(.cannotCreateFile)))
                 return
             }
-            handler(.success(ref))
+            self.get() { handler($0) }
         }
     }
 
-    func create(data: [String: Any], then handler: @escaping AnyResultBlock) {
+    func create(data: [String: Any], then handler: @escaping ApiClientResultBlock<FirebaseData<Response>>) {
 
         guard let autoId = Auth.auth().currentUser,
         let setId = data.keys.first,
@@ -102,9 +102,7 @@ private extension FirebaseApiClient {
                 handler(.failure(URLError(.cannotCreateFile)))
                 return
             }
-            self.get() { result in
-                handler(result)
-            }
+            self.get() { handler($0) }
         }
     }
 

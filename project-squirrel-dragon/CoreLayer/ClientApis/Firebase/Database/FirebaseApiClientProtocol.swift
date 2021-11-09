@@ -7,8 +7,10 @@
 
 import Foundation
 
+
 protocol FirebaseApiClientProtocol {
-    func post(data: [String: Any], then handler: @escaping AnyResultBlock)
-    func get(then handler: @escaping AnyResultBlock)
-    func delete(itemWithId itemID: String, then handler: @escaping AnyResultBlock)
+    associatedtype Response: Codable
+    func post(data: [String: Any], then handler: @escaping ApiClientResultBlock<FirebaseData<Response>>)
+    func get(then handler: @escaping ApiClientResultBlock<FirebaseData<Response>>)
+    func delete(itemWithId itemID: String, then handler: @escaping ApiClientResultBlock<FirebaseData<Response>>)
 }

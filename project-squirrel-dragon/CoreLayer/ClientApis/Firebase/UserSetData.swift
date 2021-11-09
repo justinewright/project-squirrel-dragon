@@ -8,15 +8,22 @@
 import Foundation
 import Firebase
 
-struct FirebaseUserSetData: Codable {
+
+struct FirebaseData<T:Codable>: Codable {
     let id: String
-    let userSets: [UserSetData]
+    let data: [T]
+
+    enum CodingKeys: String, CodingKey {
+            case data = "data"
+            case id = "id"
+//            case cardData = "card_data"
+        }
 }
 
 struct UserSetData: Codable {
     let id: String
     let collectedCards: Int
-    let cardData: [FirebaseCollectedCardData]
+    var cardData: [FirebaseCollectedCardData] = []
 
     init(id: String, collectedCards: Int, cardData: [FirebaseCollectedCardData]) {
         self.id = id
@@ -27,7 +34,7 @@ struct UserSetData: Codable {
     init(userSet: UserSet){
         self.id = userSet.id
         self.collectedCards = userSet.cardsCollected
-        self.cardData = []
+//        self.cardData = []
     }
 
     func toAnyObject() -> Any {
@@ -37,6 +44,12 @@ struct UserSetData: Codable {
             "cardData": [cardData]
         ]
     }
+
+    enum CodingKeys: String, CodingKey {
+            case id = "id"
+            case collectedCards = "collectedCards"
+//            case cardData = "card_data"
+        }
 }
 
 struct FirebaseCollectedCardData: Codable {
@@ -47,6 +60,11 @@ struct FirebaseCollectedCardData: Codable {
             return [
                 "rarity": rarity,
                 "collectedAmount": collectedAmount
+
             ]
     }
+    enum CodingKeys: String, CodingKey {
+            case rarity = "rarity"
+            case collectedAmount = "collected_amount"
+        }
 }

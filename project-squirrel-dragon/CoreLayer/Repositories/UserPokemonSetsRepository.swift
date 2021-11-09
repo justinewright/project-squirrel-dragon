@@ -8,31 +8,25 @@
 import Foundation
 import Firebase
 
-class UserPokemonSetsRepository<UserDataType: Codable, ApiDataType: Codable >: RepositoryProtocol {
+class UserPokemonSetsRepository<UserDataType: Codable>: RepositoryProtocol {
     // MARK: - Properties
     private var error: URLError?
 
-    private var firebaseApiClient: FirebaseApiClientProtocol
-    private (set) var firebaseSetsData: [UserDataType] = []
-    private var firebase: FirebaseApiClientProtocol!
-    private var searchPath: String = ""
+    private var firebaseApiClient: FirebaseApiClient<UserDataType>
+    private (set) var data:  FirebaseData<UserDataType>!
     
     // MARK: - Initialization
-    init(firebaseApiClient: FirebaseApiClientProtocol = FirebaseApiClient()) {
+    init(firebaseApiClient: FirebaseApiClient<UserDataType>) {
         self.firebaseApiClient = firebaseApiClient
-    }
-
-    func setSearchPath(as newPath: String) {
-        searchPath = newPath
     }
 
     // MARK: - Repository Protocol Implementation
     func fetch(then handler: @escaping AnyResultBlock) {
         DispatchQueue.main.async {
-            self.firebaseApiClient.get(fromPath: self.searchPath) { result in
+            self.firebaseApiClient.get() { result in
                 switch result {
-                case .success(let items):
-                    self.updateUserSets(items: items) { handler($0) }
+                case .success(let data):
+                    self.updateUserSets(data: data) { handler($0) }
                 case .failure(let error):
                     handler(.failure(error))
                 }
@@ -42,10 +36,10 @@ class UserPokemonSetsRepository<UserDataType: Codable, ApiDataType: Codable >: R
 
     func post(_ item: Any, withPostId postId: String, then handler: @escaping AnyResultBlock) {
         DispatchQueue.main.async {
-            self.firebaseApiClient.post(data: [postId:item], toPath: self.searchPath) { result in
+            self.firebaseApiClient.post(data: [postId:item]) { result in
                 switch result {
-                case .success(let items):
-                    self.updateUserSets(items: items) { handler($0) }
+                case .success(let data):
+                    self.updateUserSets(data: data) { handler($0) }
                 case .failure(let error):
                     handler(.failure(error))
                 }
@@ -59,10 +53,10 @@ class UserPokemonSetsRepository<UserDataType: Codable, ApiDataType: Codable >: R
                 handler(.failure(URLError(.resourceUnavailable)))
                 return
             }
-            self.firebaseApiClient.delete(fromPath: "\(self.searchPath)/\(item)") { result in
+            self.firebaseApiClient.delete(itemWithId: item) { result in
                 switch result {
-                case .success(let items):
-                    self.updateUserSets(items: items) { handler($0) }
+                case .success(let data):
+                    self.updateUserSets(data: data) { handler($0) }
                 case .failure(let error):
                     handler(.failure(error))
                 }
@@ -70,23 +64,9 @@ class UserPokemonSetsRepository<UserDataType: Codable, ApiDataType: Codable >: R
         }
     }
 
-    private func updateUserSets(items: Any, then handler: @escaping AnyResultBlock) {
-        guard let datas = items as? ApiDataType else {
-            handler(.failure(URLError(.cannotDecodeContentData)))
-            return
-        }
-        self.firebaseSetsData = ApiDataType.init(from: <#T##Decoder#>)
-        self.firebaseSetsData.removeAll()
-        datas.children.forEach {
-            guard let data =  $0 as? DataSnapshot else {
-                handler(.failure(URLError(.cannotDecodeContentData)))
-                return
-            }
-            if let newUserSet = UserSetData(snapshot: data) {
-                self.firebaseSetsData.append(newUserSet)
-            }
-        }
-        handler(.success(self.firebaseSetsData))
+    private func updateUserSets(data: FirebaseData<UserDataType>, then handler: @escaping AnyResultBlock) {
+        self.data = data
+        handler(.success(self.data as Any))
     }
 
 }

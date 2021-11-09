@@ -15,7 +15,7 @@ class PokemonTcgApiClient<T:Codable>: PokemonTcgApiClientProtocol {
         self.endPoint = endPoint
     }
 
-    func fetch(then handler: @escaping PokemonTcgApiClientResultBlock<Response>) {
+    func fetch(then handler: @escaping ApiClientResultBlock<Response>) {
         URLSession.shared.request(url:  endPoint.makeUrl(),
                                   expecting: Response.self) { result in
             handler(result)

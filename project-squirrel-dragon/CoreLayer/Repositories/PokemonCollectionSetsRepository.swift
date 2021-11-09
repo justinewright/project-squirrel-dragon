@@ -26,7 +26,7 @@ class TCGPokemonRepository<DataType:Codable>: RepositoryProtocol {
                 switch result {
                 case .success(let data):
                     self?.data = data
-                    handler(.success(self?.data ?? []))
+                    handler(.success(self?.data as Any))
                 case .failure(let error):
                     self?.error = error
                     handler(.failure(error))
