@@ -8,7 +8,7 @@
 import Foundation
 import Firebase
 
-class UserPokemonSetsRepository<UserDataType: Codable>: RepositoryProtocol {
+class UserPokemonDataRepository<UserDataType: Codable>: RepositoryProtocol {
     // MARK: - Properties
     private var error: URLError?
 
