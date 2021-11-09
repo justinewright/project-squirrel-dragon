@@ -7,10 +7,9 @@
 
 import Foundation
 
-typealias ApiClientResultBlock<T:Codable> = (Result<T, URLError>) -> Void
+typealias ApiClientResultBlock = (Result<Any, URLError>) -> Void
 
-protocol PokemonTcgApiClientProtocol {
-    associatedtype Response: Codable
+protocol PokemonTcgApiClientProtocol{
 
-    func fetch(then handler: @escaping ApiClientResultBlock<Response>)
+    func fetch(then handler: @escaping ApiClientResultBlock)
 }

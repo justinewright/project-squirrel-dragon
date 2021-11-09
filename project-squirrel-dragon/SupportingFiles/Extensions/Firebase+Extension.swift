@@ -7,12 +7,12 @@
 
 import Firebase
 import Foundation
-import SwiftUI
 
+//FirebaseData<T>
 extension DataSnapshot {
     func snapshotToFirebaseDataModel<T: Codable> (
         expecting: T.Type,
-        then handler: @escaping(Result<FirebaseData<T>, URLError>) -> Void) {
+        then handler: @escaping(Result<Any, URLError>) -> Void) {
             guard let object = children.allObjects as? [DataSnapshot] else {
                 handler(.failure(URLError(.cannotDecodeContentData)))
                 return

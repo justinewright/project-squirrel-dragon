@@ -20,21 +20,22 @@ class PokemonCollectionSetsRepositoryTests: XCTestCase {
 
     var mockPokemonCollectionSetsData: PokemonSetsData!
 
-    class MockPokemonTcgAllSetsApiClient: PokemonTcgAllSetsApiClientProtocol {
+    class MockPokemonTcgAllSetsApiClient<T: Codable>: PokemonTcgApiClientProtocol {
+        typealias Response = T
+        var apiCallResult: Result<T, URLError> = .failure(URLError(.badServerResponse))
 
-        var apiCallResult: Result<PokemonSetsData, URLError> = .failure(URLError(.badServerResponse))
-
-        func fetch(then handler: @escaping PokemonTcgAllSetsApiClientResultBlock) {
+        func fetch(then handler: @escaping ApiClientResultBlock<Response>) {
             handler(apiCallResult)
         }
 
     }
 
-    var repositoryUnderTest: PokemonCollectionSetsRepository!
+    var repositoryUnderTest: TCGPokemonRepository<UserSet: Codable>!
     var mockPokemonTcgAllSetsApiClient: MockPokemonTcgAllSetsApiClient!
 
     override func setUp() {
         mockPokemonTcgAllSetsApiClient = MockPokemonTcgAllSetsApiClient()
+        TCGPokemonRepository(apiClient: <#T##PokemonTcgApiClient<DataType>#>)
         repositoryUnderTest = PokemonCollectionSetsRepository(pokemonTcgAllSetsApiClient: mockPokemonTcgAllSetsApiClient)
         mockPokemonCollectionSetsData = PokemonSetsData(data: mockData)
     }

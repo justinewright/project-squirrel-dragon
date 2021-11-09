@@ -43,11 +43,6 @@ class PokemonCollectionSetsViewModel {
     }
 
     func fetchViewData() {
-        guard let pokemonSetsRepository = pokemonSetsRepository as? TCGPokemonRepository<TCG> else {
-            delegate?.didFailWithError(message: "Failed to cast data toTCGPokemonRepository<SetsData> ")
-            return
-
-        }
         pokemonSetsRepository.fetch { [weak self] result in
             switch result {
             case .success(let data):

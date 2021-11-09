@@ -10,18 +10,24 @@ import FirebaseDatabase
 import FirebaseDatabaseSwift
 import Firebase
 
-class FirebaseApiClient<UserDataType: Codable>: FirebaseApiClientProtocol {
-    typealias Response = UserDataType
-    private var databaseRef: DatabaseReference = Database.database().reference()
+public enum UserReturnDataTypes {
+    case UserSets
+    case UserCards
+}
 
+class FirebaseApiClient: FirebaseApiClientProtocol {
+
+    private var databaseRef: DatabaseReference = Database.database().reference()
+    private var dataType: UserReturnDataTypes!
     private let endPoint: Endpoint!
 
-    init(endPoint: Endpoint) {
+    init(endPoint: Endpoint, forDataType dataType: UserReturnDataTypes) {
         databaseRef = Database.database().reference()
         self.endPoint = endPoint
+        self.dataType = dataType
     }
 
-    func post(data: [String: Any], then handler: @escaping ApiClientResultBlock<FirebaseData<Response>>) {
+    func post(data: [String: Any], then handler: @escaping ApiClientResultBlock) {
 
         guard let autoId = Auth.auth().currentUser,
         let setId = data.keys.first else {
@@ -38,8 +44,21 @@ class FirebaseApiClient<UserDataType: Codable>: FirebaseApiClientProtocol {
         })
 
     }
+    private func convertToDataModel(snapshot: DataSnapshot, then handler: @escaping ApiClientResultBlock) {
+        switch dataType {
+        case .UserSets:
+            snapshot.snapshotToFirebaseDataModel(expecting: UserSetData.self) { response in
+                handler(response)
+            }
+        case .UserCards:
+            break
 
-    func get(then handler: @escaping ApiClientResultBlock<FirebaseData<Response>>) {
+        case .none:
+            break
+        }
+    }
+
+    func get(then handler: @escaping ApiClientResultBlock) {
         guard let autoId = Auth.auth().currentUser else {
             handler(.failure(URLError(.userAuthenticationRequired)))
             return
@@ -49,13 +68,11 @@ class FirebaseApiClient<UserDataType: Codable>: FirebaseApiClientProtocol {
                 handler(.failure(URLError(.badURL)))
                 return
             }
-            snapshot.snapshotToFirebaseDataModel(expecting: Response.self) { response in
-                handler(response)
-            }
+            self.convertToDataModel(snapshot: snapshot) { handler($0) }
         })
     }
 
-    func delete(itemWithId itemID: String, then handler: @escaping ApiClientResultBlock<FirebaseData<Response>>) {
+    func delete(itemWithId itemID: String, then handler: @escaping ApiClientResultBlock) {
         guard let autoId = Auth.auth().currentUser else {
              return
          }
@@ -71,7 +88,7 @@ class FirebaseApiClient<UserDataType: Codable>: FirebaseApiClientProtocol {
 
 private extension FirebaseApiClient {
 
-    func update(data: [String: Any], withSnapshot snapshot: DataSnapshot, then handler: @escaping ApiClientResultBlock<FirebaseData<Response>>) {
+    func update(data: [String: Any], withSnapshot snapshot: DataSnapshot, then handler: @escaping ApiClientResultBlock) {
 
         guard let setId = data.keys.first,
         let value = data.values.first else {
@@ -87,7 +104,7 @@ private extension FirebaseApiClient {
         }
     }
 
-    func create(data: [String: Any], then handler: @escaping ApiClientResultBlock<FirebaseData<Response>>) {
+    func create(data: [String: Any], then handler: @escaping ApiClientResultBlock) {
 
         guard let autoId = Auth.auth().currentUser,
         let setId = data.keys.first,

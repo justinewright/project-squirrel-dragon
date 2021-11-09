@@ -7,15 +7,15 @@
 
 import Foundation
 
-class TCGPokemonRepository<DataType:Codable>: RepositoryProtocol {
+class TCGPokemonRepository: RepositoryProtocol {
     // MARK: - Properties
     private var error: URLError?
 
-    private var tcgApiClient: PokemonTcgApiClient<DataType>
-    private (set) var data: DataType!
+    private var tcgApiClient: PokemonTcgApiClientProtocol
+    private (set) var data: Any!
 
     // MARK: - Initialization
-    init(apiClient: PokemonTcgApiClient<DataType>) {
+    init(apiClient: PokemonTcgApiClientProtocol) {
         tcgApiClient = apiClient
     }
 

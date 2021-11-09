@@ -8,15 +8,15 @@
 import Foundation
 import Firebase
 
-class UserPokemonDataRepository<UserDataType: Codable>: RepositoryProtocol {
+class UserPokemonDataRepository: RepositoryProtocol {
     // MARK: - Properties
     private var error: URLError?
 
-    private var firebaseApiClient: FirebaseApiClient<UserDataType>
-    private (set) var data:  FirebaseData<UserDataType>!
+    private var firebaseApiClient: FirebaseApiClientProtocol
+    private (set) var data:  Any!
     
     // MARK: - Initialization
-    init(firebaseApiClient: FirebaseApiClient<UserDataType>) {
+    init(firebaseApiClient: FirebaseApiClientProtocol) {
         self.firebaseApiClient = firebaseApiClient
     }
 
@@ -64,7 +64,7 @@ class UserPokemonDataRepository<UserDataType: Codable>: RepositoryProtocol {
         }
     }
 
-    private func updateUserSets(data: FirebaseData<UserDataType>, then handler: @escaping AnyResultBlock) {
+    private func updateUserSets(data: Any, then handler: @escaping AnyResultBlock) {
         self.data = data
         handler(.success(self.data as Any))
     }

@@ -12,7 +12,7 @@ extension URLSession {
     func request<T:Codable>(
         url: URL?,
         expecting: T.Type,
-        then handler: @escaping (Result<T, URLError>) -> Void
+        then handler: @escaping (Result<Any, URLError>) -> Void
     ){
         guard let url = url else {
             handler(.failure(URLError(.badURL)))
