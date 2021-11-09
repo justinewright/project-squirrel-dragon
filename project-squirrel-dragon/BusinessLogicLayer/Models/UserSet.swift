@@ -8,6 +8,11 @@
 import Foundation
 
 struct UserSet {
-    var id: String
-    let cardsCollected: Int
+    var id: String = ""
+    var cardsCollected: Int = -1
+
+    init(userSetData: UserSetData) {
+        id = userSetData.id
+        cardsCollected = userSetData.collectedCards
+    }
 }

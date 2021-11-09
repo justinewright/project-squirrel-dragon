@@ -30,6 +30,7 @@ class PokemonCollectionSetCell: UICollectionViewCell {
     private func configurePokemonCollectionSetImageView() {
         guard let url = URL(string: urlString) else { return }
         pokemonCollectionSetImageView.load(url: url)
+
     }
 
     private func applyStyle() {

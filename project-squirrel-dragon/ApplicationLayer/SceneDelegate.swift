@@ -8,6 +8,7 @@
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+    private var appState: AppState = AppState(authenticationService: AnonymousAuthenticator())
 
     var window: UIWindow?
 
@@ -16,14 +17,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        let subModules: Submodules = (
-                sets: PokemonCollectionSetsModuleBuilder.build(usingNavigationFactory: NavigationBuilder.build),
-                money: NavigationBuilder.build(rootView: UIViewController())
-            )
 
-        let tab = TabBarBuilder.build(usingSubmodules: subModules)
+        let landingPage = appState.isSignedIn ? HomePageBuilder.build() : LoginModuleBuilder.build(usingNavigationFactory: NavigationBuilder.build)
+        
         window = UIWindow(windowScene: windowScene)
-        window!.rootViewController = tab
+        window!.rootViewController = landingPage
         window!.makeKeyAndVisible()
     }
 
@@ -55,6 +53,4 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
 
-
 }
-

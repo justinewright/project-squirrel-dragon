@@ -26,3 +26,7 @@ struct Images: Codable {
     let symbol: String
     let logo: String
 }
+
+struct Rarities: Codable {
+    let data: [String]
+}

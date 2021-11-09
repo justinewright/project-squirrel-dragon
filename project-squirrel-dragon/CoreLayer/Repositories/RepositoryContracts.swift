@@ -15,6 +15,8 @@ enum RepositoryState {
 
 protocol RepositoryProtocol {
     func fetch(then handler: @escaping AnyResultBlock)
+    func post(_ item: Any, withPostId postId: String, then handler: @escaping AnyResultBlock)
+    func delete(_ item: Any, then handler: @escaping AnyResultBlock)
 }
 
 typealias PokemonCollectionSetResultBlock = (Result<[PokemonCollectionSet], URLError>) -> Void

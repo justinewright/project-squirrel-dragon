@@ -17,6 +17,9 @@ class SetDetailsViewController: UIViewController {
     @IBOutlet private weak var valueLabel: UILabel!
 
     private let errorTitle = "User Details Unavailable!"
+    // add to user set
+    // tap all sets u want to add : o
+    // done button
     // TODO: - add currency selector / converter and view cards button
 
     private lazy var viewModel = SetDetailsViewModel(delegate: self)

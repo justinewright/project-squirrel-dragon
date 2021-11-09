@@ -28,15 +28,20 @@
 // MARK: - Private Variables
 
 NSString* searchFilter = @"";
-float maxTableHeight = 300.0;
+float maxTableHeight = 200;
 BOOL keyboardUp = NO;
 float keyboardHeight = 300;
+BOOL hideAddButton = NO;
 
+double keyboardDownConstraint;
 // MARK: - Initialize Method
-- (void)configure: (CustomSearchBarViewModel*)viewModel {
+- (void)configure: (CustomSearchBarViewModel*)viewModel withAddButton: (BOOL)hasAddButton {
+    keyboardDownConstraint = self.containerViewBottomAnchor.constant;
 
     self.viewModel = viewModel;
     self.dataSource = [[FilterableDataSource alloc] initWithViewModel:self.viewModel];
+    hideAddButton = !hasAddButton;
+//    [_addButton setHidden: hideAddButton];
     [self.tableView reloadData];
 }
 
@@ -69,6 +74,7 @@ float keyboardHeight = 300;
     [self setupSearchBar];
     [self.backgroundView setUserInteractionEnabled:NO];
     [self.backgroundView setHidden:YES];
+    [_addButton setHidden: hideAddButton];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -81,7 +87,6 @@ float keyboardHeight = 300;
 - (void)viewWillLayoutSubviews {
     [super updateViewConstraints];
     self.tableViewHeight.constant = MIN(self.tableView.contentSize.height, maxTableHeight);
-
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -102,22 +107,24 @@ float keyboardHeight = 300;
     CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
     keyboardHeight = keyboardSize.height;
     double keyboardDuration = [[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-    self.containerViewBottomAnchor.constant = keyboardSize.height - 85;
+    self.containerViewBottomAnchor.constant = keyboardSize.height - (hideAddButton ? 34 : 85);
     [UIView animateWithDuration:keyboardDuration animations:^{
         [self.view layoutIfNeeded];
     }];
 }
 
--(void)keyboardWillHide:(NSNotification *)notification
+
+- (void)keyboardWillHide:(NSNotification *)notification
 {
     keyboardUp = NO;
     [self.backgroundView setUserInteractionEnabled:NO];
     [self.backgroundView setHidden:YES];
-    [self.addButton setHidden:NO];
+    [self.addButton setHidden:NO || hideAddButton];
+
     [self.tableView setHidden:YES];
 
     double keyboardDuration = [[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-    self.containerViewBottomAnchor.constant = self.view.safeAreaInsets.bottom;
+    self.containerViewBottomAnchor.constant = keyboardDownConstraint;
     [UIView animateWithDuration:keyboardDuration animations:^{
         [self.view layoutIfNeeded];
     }];
@@ -125,17 +132,15 @@ float keyboardHeight = 300;
 
 //MARK: Buttons
 - (IBAction)addButtonPressed:(id)sender {
-    NSLog(@"add set");
+    [self.viewModel addSets];
 }
 
--(void)hideSearchBarKeyboard {
+- (void)hideSearchBarKeyboard {
     [self.view endEditing:YES];
-    [_searchBar resignFirstResponder];
     dispatch_async(dispatch_get_main_queue(), ^{
         self->_searchBar.text = searchFilter;
         self.searchLabel.text = searchFilter;
         });
-    [self.view resignFirstResponder];
 }
 
 //MARK: TableViewDelegate Methods
@@ -155,6 +160,9 @@ float keyboardHeight = 300;
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     searchFilter = searchText;
+    if (searchText.length == 0) {
+        [self hideSearchBarKeyboard];
+    }
     [self.viewModel filter:searchText];
     [self.tableView reloadData];
     self.tableViewHeight.constant = MIN(self.tableView.contentSize.height, maxTableHeight);
@@ -163,7 +171,7 @@ float keyboardHeight = 300;
 //MARK: Gestures
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    if(keyboardUp){
+    if (keyboardUp) {
         [self hideSearchBarKeyboard];
     }
 }
@@ -172,6 +180,7 @@ float keyboardHeight = 300;
     if (scrollVelocity->y > 0 && self.searchBar.isHidden){
         [self fadeOut:_searchLabel];
         [self fadeIn:_searchBar];
+        if (hideAddButton) return;
         [self fadeIn:_addButton];
     } else if (scrollVelocity->y < 0 && self.searchLabel.isHidden){
         [self fadeOut:_searchBar];
@@ -181,7 +190,7 @@ float keyboardHeight = 300;
 }
 
 //MARK: Animations
--(void)fadeIn: (UIView*) view {
+- (void)fadeIn: (UIView*) view {
     view.alpha = 0;
     view.hidden = NO;
     [UIView animateWithDuration:0.3 animations:^{
@@ -189,7 +198,7 @@ float keyboardHeight = 300;
     }];
 }
 
--(void)fadeOut: (UIView*) view {
+- (void)fadeOut: (UIView*) view {
     [view setHidden:YES];
 }
 

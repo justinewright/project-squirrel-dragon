@@ -11,7 +11,7 @@ class CustomSearchBarModuleBuilder {
     static func build() -> UIViewController {
         // TODO: - add navigation builder
 
-        let view = CustomSearchBarViewController();
+        let view = CustomSearchBarViewController()
         // return factory of the view
         return view
     }

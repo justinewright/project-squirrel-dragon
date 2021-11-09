@@ -28,7 +28,7 @@
     return self;
 }
 
--(void) updateFilteredList: (NSMutableArray *)list {
+- (void)updateFilteredList: (NSMutableArray *)list {
     self.filteredList = list;
     _isFiltered = list.count > 0;
 }
@@ -52,4 +52,7 @@
     }
 }
 
+- (void)addSets {
+    [self.delegate showSelectMenu:self];
+}
 @end

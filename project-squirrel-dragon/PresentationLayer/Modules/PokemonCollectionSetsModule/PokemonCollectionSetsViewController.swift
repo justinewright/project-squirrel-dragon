@@ -9,9 +9,13 @@ import UIKit
 
 class PokemonCollectionSetsViewController: UIViewController {
     // MARK: - Properties
-    @IBOutlet weak var pokemonCollectionSetsCollectionView: UICollectionView!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    private lazy var viewModel = PokemonCollectionSetsViewModel(pokemonCollectionViewModelDelegate: self, repository: PokemonCollectionSetsRepository())
+    @IBOutlet private weak var pokemonCollectionSetsCollectionView: UICollectionView!
+    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet private weak var promptLabel: UILabel!
+    private lazy var viewModel = PokemonCollectionSetsViewModel(pokemonCollectionViewModelDelegate: self,
+                                                                pokemonSetsRepository: PokemonCollectionSetsRepository(),
+                                                                userSetsRepository: UserPokemonSetsRepository())
+
     private let cellReuseIdentifier = "PokemonCollectionSetCell"
     private let cellNibName = "PokemonCollectionSetCell"
     private var searchBarViewController = UIViewController()
@@ -22,6 +26,7 @@ class PokemonCollectionSetsViewController: UIViewController {
         configureCollectionView()
         viewModel.fetchViewData()
         activityIndicator.startAnimating()
+        promptLabel.isHidden = true
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -49,13 +54,17 @@ class PokemonCollectionSetsViewController: UIViewController {
     }
 
     private func configureSearchView() {
+        searchBarViewController.willMove(toParent: nil)
+        searchBarViewController.view.removeFromSuperview()
+        searchBarViewController.removeFromParent()
+
         searchBarViewController = CustomSearchBarModuleBuilder.build()
         guard let configuredSearchBar = searchBarViewController as? CustomSearchBarViewController else {
             return
         }
-        if let searchBarViewModel = CustomSearchBarViewModel(list: viewModel.searchList,
+        if let searchBarViewModel = CustomSearchBarViewModel(list: viewModel.userSearchList,
                                                              andDelegate: self) {
-            configuredSearchBar.configure(searchBarViewModel)
+            configuredSearchBar.configure(searchBarViewModel, withAddButton: true)
             addChild(searchBarViewController)
             view.addSubview(searchBarViewController.view)
             searchBarViewController.didMove(toParent: self)
@@ -64,6 +73,7 @@ class PokemonCollectionSetsViewController: UIViewController {
     }
 }
 
+// MARK: - Collection Delegate Methods
 extension PokemonCollectionSetsViewController: UICollectionViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard let configuredSearchBar = searchBarViewController as? CustomSearchBarViewController else{
@@ -75,18 +85,20 @@ extension PokemonCollectionSetsViewController: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
-        let destination = SetDetailsModuleBuilder.build(usingNavigationFactory: NavigationBuilder.build, andPokemonSet: viewModel.sets[Array(viewModel.sets.keys)[indexPath.row]]!)
-
+        let destination = SetDetailsModuleBuilder.build(usingNavigationFactory: NavigationBuilder.build, andPokemonSet: viewModel.sets[viewModel.keys[indexPath.row]]!)
         self.navigationController?.pushViewController(destination, animated: true)
     }
 }
+
 // MARK: - ViewModel Delegate Methods
 extension PokemonCollectionSetsViewController: PokemonCollectionViewModelDelegate {
 
     func didLoadPokemonCollectionSetsViewModel(_ pokemonCollectionSetsViewModel: PokemonCollectionSetsViewModel) {
+        self.pokemonCollectionSetsCollectionView.isHidden = false
         self.pokemonCollectionSetsCollectionView.reloadData()
         self.configureSearchView()
         activityIndicator.stopAnimating()
+        promptLabel.isHidden = !viewModel.userPokemonCollectionSets.isEmpty
     }
 
     func didFailWithError(message: String) {
@@ -102,13 +114,14 @@ extension PokemonCollectionSetsViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath) as? PokemonCollectionSetCell,
               let cellData = viewModel.sets[viewModel.keys[indexPath.row]] else {
             return UICollectionViewCell()
         }
-        cell.configure(with: cellData )
-
+        let animation = AnimationFactory.makeFadeAnimation(duration: 0.5, delayFactor: 0.05)
+        let animator = Animator(animation: animation)
+        animator.animate(cell: cell, at: indexPath, in: collectionView)
+        cell.configure(with: cellData)
         return cell
     }
 
@@ -117,6 +130,43 @@ extension PokemonCollectionSetsViewController: UICollectionViewDataSource {
 // MARK: - SearchBar Delegate Methods
 
 extension PokemonCollectionSetsViewController:  CustomSearchbarViewModelDelegate {
+    func showSelectMenu(_ sender: CustomSearchBarViewModel!) {
+        self.showSelectAlert(titled: "'Squirrel Dragon' would like to update your sets ", with: "", handler: handleSelectMenu)
+    }
+
+    fileprivate func onRefreshView() {
+        self.pokemonCollectionSetsCollectionView.isHidden = true
+        self.activityIndicator.startAnimating()
+        self.promptLabel.isHidden = !self.viewModel.userPokemonCollectionSets.isEmpty
+    }
+
+    fileprivate func processSetDifferences(_ addedSets: [String]?, _ removedSets: [String]?) {
+        if (addedSets == nil && removedSets == nil) || (addedSets?.isEmpty ?? true && removedSets?.isEmpty ?? true) {
+            return
+        }
+
+        self.onRefreshView()
+        if let addedSets = addedSets {
+            self.viewModel.addSet(setIDs: addedSets)
+        }
+        if let removedSets = removedSets {
+            self.viewModel.removeSet(setIDs: removedSets)
+        }
+    }
+
+    private func handleSelectMenu(action: UIAlertAction! = nil) {
+        let navVC = SelectMenuModuleBuilder.build(usingNavigationFactory: NavigationBuilder.build, andViewModel: viewModel)
+        guard let destination = navVC.children.first as? SelectMenuViewController else {
+            return
+        }
+
+        self.present(navVC, animated: true, completion: nil)
+        destination.callback = { (addedSets, removedSets) -> Void in
+            navVC.dismiss(animated: true)
+            self.processSetDifferences(addedSets, removedSets)
+        }
+    }
+
     func updateDisplay(_ sender: CustomSearchBarViewModel!, withSearchFilter searchFilter: String!) {
         viewModel.filteredList = sender.filteredList as? [String] ?? [String]()
         self.pokemonCollectionSetsCollectionView.reloadData()
