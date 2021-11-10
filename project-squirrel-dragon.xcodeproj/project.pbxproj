@@ -31,7 +31,7 @@
 		212699F9273BBB52002FA8C2 /* UserCardsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212699F8273BBB52002FA8C2 /* UserCardsData.swift */; };
 		212699FA273BBB57002FA8C2 /* UserCardsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212699F8273BBB52002FA8C2 /* UserCardsData.swift */; };
 		212699FF273BCC1B002FA8C2 /* UserCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212699FE273BCC1B002FA8C2 /* UserCard.swift */; };
-		21269A02273BED16002FA8C2 /* CardsCollection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21269A01273BED16002FA8C2 /* CardsCollection.storyboard */; };
+		21269A02273BED16002FA8C2 /* Cards.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21269A01273BED16002FA8C2 /* Cards.storyboard */; };
 		21667076270F0C8F00B6A874 /* PokemonCollectionSetsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21667075270F0C8F00B6A874 /* PokemonCollectionSetsViewModel.swift */; };
 		21667078270F0D2E00B6A874 /* PokemonCollectionSetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21667077270F0D2E00B6A874 /* PokemonCollectionSetsViewController.swift */; };
 		2166707A270F0D5B00B6A874 /* PokemonCollectionSets.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21667079270F0D5B00B6A874 /* PokemonCollectionSets.storyboard */; };
@@ -101,6 +101,9 @@
 		21B375B2272AE03800CC6758 /* SelectMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B375B1272AE03800CC6758 /* SelectMenuViewController.swift */; };
 		21FC0B5B273C05080097B467 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FC0B59273C05080097B467 /* CardCollectionViewCell.swift */; };
 		21FC0B5C273C05080097B467 /* CardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21FC0B5A273C05080097B467 /* CardCollectionViewCell.xib */; };
+		21FC0B5E273C24760097B467 /* CardDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FC0B5D273C24760097B467 /* CardDetails.swift */; };
+		21FC0B60273C265D0097B467 /* CardsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FC0B5F273C265D0097B467 /* CardsCollectionViewController.swift */; };
+		21FC0B66273C29BB0097B467 /* CardsModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FC0B65273C29BB0097B467 /* CardsModuleBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,7 +131,7 @@
 		212699F6273BB032002FA8C2 /* PokemonCardsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PokemonCardsData.swift; path = "project-squirrel-dragon/CoreLayer/ClientApis/PokemonTcg/Sets/PokemonCardsData.swift"; sourceTree = SOURCE_ROOT; };
 		212699F8273BBB52002FA8C2 /* UserCardsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCardsData.swift; sourceTree = "<group>"; };
 		212699FE273BCC1B002FA8C2 /* UserCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCard.swift; sourceTree = "<group>"; };
-		21269A01273BED16002FA8C2 /* CardsCollection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CardsCollection.storyboard; sourceTree = "<group>"; };
+		21269A01273BED16002FA8C2 /* Cards.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Cards.storyboard; sourceTree = "<group>"; };
 		21667075270F0C8F00B6A874 /* PokemonCollectionSetsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCollectionSetsViewModel.swift; sourceTree = "<group>"; };
 		21667077270F0D2E00B6A874 /* PokemonCollectionSetsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCollectionSetsViewController.swift; sourceTree = "<group>"; };
 		21667079270F0D5B00B6A874 /* PokemonCollectionSets.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PokemonCollectionSets.storyboard; sourceTree = "<group>"; };
@@ -194,6 +197,9 @@
 		21B375B1272AE03800CC6758 /* SelectMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMenuViewController.swift; sourceTree = "<group>"; };
 		21FC0B59273C05080097B467 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		21FC0B5A273C05080097B467 /* CardCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardCollectionViewCell.xib; sourceTree = "<group>"; };
+		21FC0B5D273C24760097B467 /* CardDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetails.swift; sourceTree = "<group>"; };
+		21FC0B5F273C265D0097B467 /* CardsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsCollectionViewController.swift; sourceTree = "<group>"; };
+		21FC0B65273C29BB0097B467 /* CardsModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsModuleBuilder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -316,9 +322,11 @@
 		21269A00273BDEF8002FA8C2 /* CardsModule */ = {
 			isa = PBXGroup;
 			children = (
-				21269A01273BED16002FA8C2 /* CardsCollection.storyboard */,
+				21269A01273BED16002FA8C2 /* Cards.storyboard */,
 				21FC0B59273C05080097B467 /* CardCollectionViewCell.swift */,
 				21FC0B5A273C05080097B467 /* CardCollectionViewCell.xib */,
+				21FC0B5F273C265D0097B467 /* CardsCollectionViewController.swift */,
+				21FC0B65273C29BB0097B467 /* CardsModuleBuilder.swift */,
 			);
 			path = CardsModule;
 			sourceTree = "<group>";
@@ -396,6 +404,7 @@
 				2185CEFE27202C3C00499D31 /* SetDetails.swift */,
 				218D7167272AF7870056CB22 /* SelectableSet.swift */,
 				212699FE273BCC1B002FA8C2 /* UserCard.swift */,
+				21FC0B5D273C24760097B467 /* CardDetails.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -648,7 +657,7 @@
 				21044756270ACD1900815441 /* Main.storyboard in Resources */,
 				21671E6C2715CACA00A45571 /* SearchTableViewCell.xib in Resources */,
 				21894FA3272820460092AAB5 /* Login.storyboard in Resources */,
-				21269A02273BED16002FA8C2 /* CardsCollection.storyboard in Resources */,
+				21269A02273BED16002FA8C2 /* Cards.storyboard in Resources */,
 				21FC0B5C273C05080097B467 /* CardCollectionViewCell.xib in Resources */,
 				21667083270F33DB00B6A874 /* PokemonCollectionSetCell.xib in Resources */,
 			);
@@ -694,6 +703,7 @@
 				217F20E627216354003F4A5E /* NavigationBuilder.swift in Sources */,
 				21894FA52728256E0092AAB5 /* LoginViewModel.swift in Sources */,
 				2171BC6A2710086000EBBA3E /* StyleKit.swift in Sources */,
+				21FC0B60273C265D0097B467 /* CardsCollectionViewController.swift in Sources */,
 				2185CEF92720225900499D31 /* UserSetData.swift in Sources */,
 				212699F7273BB032002FA8C2 /* PokemonCardsData.swift in Sources */,
 				21671E792715DDDC00A45571 /* CustomSearchBarViewController.m in Sources */,
@@ -712,6 +722,7 @@
 				216ADADA270D6FFA00D61E92 /* PokemonSetsData.swift in Sources */,
 				2166D82D272C185000E3ABD1 /* SelectMenuViewModel.swift in Sources */,
 				21894FA0272820260092AAB5 /* LoginViewController.swift in Sources */,
+				21FC0B66273C29BB0097B467 /* CardsModuleBuilder.swift in Sources */,
 				21894FA92728275F0092AAB5 /* AnonymousAuthenticator.swift in Sources */,
 				2185CEF0271FFB7300499D31 /* SetDetailsViewController.swift in Sources */,
 				21667078270F0D2E00B6A874 /* PokemonCollectionSetsViewController.swift in Sources */,
@@ -737,6 +748,7 @@
 				21AFD33C27394F6E00699AF5 /* URLSession+Extension.swift in Sources */,
 				212699FF273BCC1B002FA8C2 /* UserCard.swift in Sources */,
 				218D7168272AF7870056CB22 /* SelectableSet.swift in Sources */,
+				21FC0B5E273C24760097B467 /* CardDetails.swift in Sources */,
 				21667076270F0C8F00B6A874 /* PokemonCollectionSetsViewModel.swift in Sources */,
 				2185CEFD27202A8600499D31 /* UserSet.swift in Sources */,
 				217F20EE27217498003F4A5E /* TabBarBuilder.swift in Sources */,
