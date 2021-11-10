@@ -30,7 +30,7 @@ struct UserSetData: Codable {
         self.cardData = cardData
     }
 
-    init(userSet: UserSet){
+    init(userSet: UserSet) {
         self.id = userSet.id
         self.collectedCards = userSet.cardsCollected
         self.cardData = []
@@ -63,6 +63,6 @@ struct FirebaseCollectedCardData: Codable {
     }
     enum CodingKeys: String, CodingKey {
             case rarity = "rarity"
-            case collectedAmount = "collected_amount"
+            case collectedAmount = "collectedAmount"
         }
 }

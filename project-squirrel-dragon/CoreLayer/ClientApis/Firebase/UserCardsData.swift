@@ -18,7 +18,7 @@ struct UserCardData: Codable {
         self.rarity = rarity
     }
 
-    init(userCard: UserCard){
+    init(userCard: UserCard) {
         self.id = userCard.id
         self.collectedNumber = userCard.collectedNumber
         self.rarity = userCard.rarity
