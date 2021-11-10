@@ -7,9 +7,7 @@
 
 import Foundation
 
-typealias ApiClientResultBlock = (Result<Any, URLError>) -> Void
-
 protocol PokemonTcgApiClientProtocol{
 
-    func fetch(then handler: @escaping ApiClientResultBlock)
+    func fetch(then handler: @escaping AnyResultBlock)
 }

@@ -27,7 +27,7 @@ class FirebaseApiClient: FirebaseApiClientProtocol {
         self.dataType = dataType
     }
 
-    func post(data: [String: Any], then handler: @escaping ApiClientResultBlock) {
+    func post(data: [String: Any], then handler: @escaping AnyResultBlock) {
 
         guard let autoId = Auth.auth().currentUser,
         let setId = data.keys.first else {
@@ -45,7 +45,7 @@ class FirebaseApiClient: FirebaseApiClientProtocol {
 
     }
 
-    func get(then handler: @escaping ApiClientResultBlock) {
+    func get(then handler: @escaping AnyResultBlock) {
         guard let autoId = Auth.auth().currentUser else {
             handler(.failure(URLError(.userAuthenticationRequired)))
             return
@@ -59,7 +59,7 @@ class FirebaseApiClient: FirebaseApiClientProtocol {
         })
     }
 
-    func delete(itemWithId itemID: String, then handler: @escaping ApiClientResultBlock) {
+    func delete(itemWithId itemID: String, then handler: @escaping AnyResultBlock) {
         guard let autoId = Auth.auth().currentUser else {
              return
          }
@@ -75,7 +75,7 @@ class FirebaseApiClient: FirebaseApiClientProtocol {
 
 private extension FirebaseApiClient {
 
-    func update(data: [String: Any], withSnapshot snapshot: DataSnapshot, then handler: @escaping ApiClientResultBlock) {
+    func update(data: [String: Any], withSnapshot snapshot: DataSnapshot, then handler: @escaping AnyResultBlock) {
 
         guard let setId = data.keys.first,
         let value = data.values.first else {
@@ -91,7 +91,7 @@ private extension FirebaseApiClient {
         }
     }
 
-    func create(data: [String: Any], then handler: @escaping ApiClientResultBlock) {
+    func create(data: [String: Any], then handler: @escaping AnyResultBlock) {
 
         guard let autoId = Auth.auth().currentUser,
         let setId = data.keys.first,
@@ -110,7 +110,7 @@ private extension FirebaseApiClient {
         }
     }
 
-    private func convertToDataModel(snapshot: DataSnapshot, then handler: @escaping ApiClientResultBlock) {
+    private func convertToDataModel(snapshot: DataSnapshot, then handler: @escaping AnyResultBlock) {
         switch dataType {
         case .UserSets:
             snapshot.snapshotToFirebaseDataModel(expecting: UserSetData.self) { response in

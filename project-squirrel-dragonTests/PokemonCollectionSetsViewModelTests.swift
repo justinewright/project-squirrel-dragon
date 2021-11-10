@@ -78,14 +78,13 @@ class PokemonCollectionSetsViewModelTest: XCTestCase {
 
         XCTAssertEqual(expectedResult, actualResult)
     }
-//FirebaseData(id: "", data: results)
+
     func testOnSuccessfulRepositoryFetchesResultUpdatesPopulatesPokemonCollectionSet() {
 
         mocktcgSetRepo.repoResult = .success(mockPokemonSetData)
         mockUserSetRepo.repoResult = .success(mockFirebaseSet)
         viewModelUnderTesting.fetchViewData()
         let expectedResult = 1
-        print(viewModelUnderTesting.sets)
         let actualResult = viewModelUnderTesting.sets.count
         XCTAssertEqual(expectedResult, actualResult)
 
