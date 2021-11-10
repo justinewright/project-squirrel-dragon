@@ -15,6 +15,7 @@ class CardsModuleBuilder {
         view.title = set.name + "'s Cards"
         view.navigationItem.largeTitleDisplayMode = .never
         return view
+        
     }
 
 }
