@@ -24,7 +24,8 @@ class PokemonTcgApiClient: PokemonTcgApiClientProtocol {
     func fetch(then handler: @escaping ApiClientResultBlock) {
         switch dataType {
         case .TcgCards:
-           break
+            URLSession.shared.request(url:  endPoint.makeUrl(),
+                                      expecting: PokemonCardsData.self) { handler($0) }
         case .TcgSets:
             URLSession.shared.request(url:  endPoint.makeUrl(),
                                       expecting: PokemonSetsData.self) { handler($0) }

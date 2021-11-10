@@ -14,8 +14,8 @@ protocol PokemonCollectionViewModelDelegate: AnyObject {
 }
 
 class PokemonCollectionSetsViewModel {
-    typealias TCG = PokemonSetsData
-    typealias User = UserSetData
+    typealias PokemonTCGSets = PokemonSetsData
+    typealias FirebaseUserSet = UserSetData
     // MARK: - Properties
     private weak var delegate: PokemonCollectionViewModelDelegate?
     private var pokemonSetsRepository: RepositoryProtocol
@@ -117,7 +117,7 @@ extension PokemonCollectionSetsViewModel {
     private func processUserSetsResults(withRepositoryResult result: Result<Any, URLError> ) {
         switch result {
         case .success(let userSetsData):
-            guard let userSetsData = userSetsData as? FirebaseData<User> else {
+            guard let userSetsData = userSetsData as? FirebaseData<FirebaseUserSet> else {
                 self.delegate?.didFailWithError(message: "Failed to cast data to UserSetData")
                 return
             }

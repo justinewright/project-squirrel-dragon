@@ -44,19 +44,6 @@ class FirebaseApiClient: FirebaseApiClientProtocol {
         })
 
     }
-    private func convertToDataModel(snapshot: DataSnapshot, then handler: @escaping ApiClientResultBlock) {
-        switch dataType {
-        case .UserSets:
-            snapshot.snapshotToFirebaseDataModel(expecting: UserSetData.self) { response in
-                handler(response)
-            }
-        case .UserCards:
-            break
-
-        case .none:
-            break
-        }
-    }
 
     func get(then handler: @escaping ApiClientResultBlock) {
         guard let autoId = Auth.auth().currentUser else {
@@ -122,5 +109,21 @@ private extension FirebaseApiClient {
             self.get() { handler($0) }
         }
     }
+
+    private func convertToDataModel(snapshot: DataSnapshot, then handler: @escaping ApiClientResultBlock) {
+        switch dataType {
+        case .UserSets:
+            snapshot.snapshotToFirebaseDataModel(expecting: UserSetData.self) { response in
+                handler(response)
+            }
+        case .UserCards:
+            snapshot.snapshotToFirebaseDataModel(expecting: UserCardData.self) { response in
+                handler(response)
+            }
+        case .none:
+            break
+        }
+    }
+
 
 }

@@ -27,6 +27,10 @@
 		21246D2E2723409700CC6DAC /* SetDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2185CEFE27202C3C00499D31 /* SetDetails.swift */; };
 		21246D2F272340A000CC6DAC /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F20F12721D0D7003F4A5E /* DummyData.swift */; };
 		21246D302723414A00CC6DAC /* SetDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2185CEF2271FFB9900499D31 /* SetDetailsViewModel.swift */; };
+		212699F7273BB032002FA8C2 /* PokemonCardsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212699F6273BB032002FA8C2 /* PokemonCardsData.swift */; };
+		212699F9273BBB52002FA8C2 /* UserCardsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212699F8273BBB52002FA8C2 /* UserCardsData.swift */; };
+		212699FA273BBB57002FA8C2 /* UserCardsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212699F8273BBB52002FA8C2 /* UserCardsData.swift */; };
+		212699FF273BCC1B002FA8C2 /* UserCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212699FE273BCC1B002FA8C2 /* UserCard.swift */; };
 		21667076270F0C8F00B6A874 /* PokemonCollectionSetsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21667075270F0C8F00B6A874 /* PokemonCollectionSetsViewModel.swift */; };
 		21667078270F0D2E00B6A874 /* PokemonCollectionSetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21667077270F0D2E00B6A874 /* PokemonCollectionSetsViewController.swift */; };
 		2166707A270F0D5B00B6A874 /* PokemonCollectionSets.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21667079270F0D5B00B6A874 /* PokemonCollectionSets.storyboard */; };
@@ -118,6 +122,9 @@
 		21246D072723106C00CC6DAC /* project-squirrel-dragonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "project-squirrel-dragonTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		21246D1C27232B1B00CC6DAC /* PokemonCollectionSetsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCollectionSetsViewModelTests.swift; sourceTree = "<group>"; };
 		21246D2B27232BAF00CC6DAC /* SetDetailsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDetailsViewModelTests.swift; sourceTree = "<group>"; };
+		212699F6273BB032002FA8C2 /* PokemonCardsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PokemonCardsData.swift; path = "project-squirrel-dragon/CoreLayer/ClientApis/PokemonTcg/Sets/PokemonCardsData.swift"; sourceTree = SOURCE_ROOT; };
+		212699F8273BBB52002FA8C2 /* UserCardsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCardsData.swift; sourceTree = "<group>"; };
+		212699FE273BCC1B002FA8C2 /* UserCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCard.swift; sourceTree = "<group>"; };
 		21667075270F0C8F00B6A874 /* PokemonCollectionSetsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCollectionSetsViewModel.swift; sourceTree = "<group>"; };
 		21667077270F0D2E00B6A874 /* PokemonCollectionSetsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCollectionSetsViewController.swift; sourceTree = "<group>"; };
 		21667079270F0D5B00B6A874 /* PokemonCollectionSets.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PokemonCollectionSets.storyboard; sourceTree = "<group>"; };
@@ -372,6 +379,7 @@
 				2185CEFC27202A8600499D31 /* UserSet.swift */,
 				2185CEFE27202C3C00499D31 /* SetDetails.swift */,
 				218D7167272AF7870056CB22 /* SelectableSet.swift */,
+				212699FE273BCC1B002FA8C2 /* UserCard.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -465,6 +473,7 @@
 				21A1960527296BE100912A52 /* Database */,
 				21A1960427296BD000912A52 /* Authentication */,
 				2185CEF82720225900499D31 /* UserSetData.swift */,
+				212699F8273BBB52002FA8C2 /* UserCardsData.swift */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -500,6 +509,7 @@
 		21AFD34127397C3600699AF5 /* Cards */ = {
 			isa = PBXGroup;
 			children = (
+				212699F6273BB032002FA8C2 /* PokemonCardsData.swift */,
 			);
 			path = Cards;
 			sourceTree = "<group>";
@@ -666,10 +676,12 @@
 				21894FA52728256E0092AAB5 /* LoginViewModel.swift in Sources */,
 				2171BC6A2710086000EBBA3E /* StyleKit.swift in Sources */,
 				2185CEF92720225900499D31 /* UserSetData.swift in Sources */,
+				212699F7273BB032002FA8C2 /* PokemonCardsData.swift in Sources */,
 				21671E792715DDDC00A45571 /* CustomSearchBarViewController.m in Sources */,
 				216ADAF3270DAD9900D61E92 /* PokemonCollectionSet.swift in Sources */,
 				216ADAF0270DAD5D00D61E92 /* BaseModel.swift in Sources */,
 				21AFD33827394DC100699AF5 /* Endpoint.swift in Sources */,
+				212699F9273BBB52002FA8C2 /* UserCardsData.swift in Sources */,
 				217E8E322732CFD500A935C2 /* Animator.swift in Sources */,
 				218D716B272AFBCB0056CB22 /* SelectableSetCell.swift in Sources */,
 				2104474F270ACD1900815441 /* AppDelegate.swift in Sources */,
@@ -704,6 +716,7 @@
 				216ADAE9270DA9F200D61E92 /* TCGPokemonRepository.swift in Sources */,
 				2166707C270F0E1000B6A874 /* PokemonCollectionSetsModuleBuilder.swift in Sources */,
 				21AFD33C27394F6E00699AF5 /* URLSession+Extension.swift in Sources */,
+				212699FF273BCC1B002FA8C2 /* UserCard.swift in Sources */,
 				218D7168272AF7870056CB22 /* SelectableSet.swift in Sources */,
 				21667076270F0C8F00B6A874 /* PokemonCollectionSetsViewModel.swift in Sources */,
 				2185CEFD27202A8600499D31 /* UserSet.swift in Sources */,
@@ -732,6 +745,7 @@
 				21246D17272311E400CC6DAC /* PokemonSetsData.swift in Sources */,
 				21246D162723119100CC6DAC /* PokemonCollectionSet.swift in Sources */,
 				21246D152723118700CC6DAC /* BaseModel.swift in Sources */,
+				212699FA273BBB57002FA8C2 /* UserCardsData.swift in Sources */,
 				21246D142723117A00CC6DAC /* UserSetData.swift in Sources */,
 				2166D832272C1A3500E3ABD1 /* SelectMenuViewModelTests.swift in Sources */,
 				21246D132723116300CC6DAC /* RepositoryContracts.swift in Sources */,

@@ -17,8 +17,8 @@ class PokemonCollectionSetsViewController: UIViewController {
         pokemonCollectionViewModelDelegate: self,
         pokemonSetsRepository: TCGPokemonRepository(apiClient: PokemonTcgApiClient(endPoint: Endpoint(path: "sets"),
                                                                                    forDataType: TCGReturnDataTypes.TcgSets)),
-            userSetsRepository: UserPokemonDataRepository(firebaseApiClient: FirebaseApiClient(endPoint: Endpoint(path: "sets"),
-                                                                                               forDataType: UserReturnDataTypes.UserSets)))
+        userSetsRepository: UserPokemonDataRepository(firebaseApiClient: FirebaseApiClient(endPoint: Endpoint(path: "sets"),
+                                                                                           forDataType: UserReturnDataTypes.UserSets)))
 
     private let cellReuseIdentifier = "PokemonCollectionSetCell"
     private let cellNibName = "PokemonCollectionSetCell"
