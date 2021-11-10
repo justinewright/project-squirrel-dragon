@@ -38,8 +38,8 @@ struct UserSetData: Codable {
 
     func toAnyObject() -> Any {
         return [
-            "id" : id,
-            "collectedCards" : collectedCards,
+            "id": id,
+            "collectedCards": collectedCards,
             "cardData": [cardData]
         ]
     }

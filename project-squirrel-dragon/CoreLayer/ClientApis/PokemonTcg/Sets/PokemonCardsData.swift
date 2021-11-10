@@ -83,3 +83,10 @@ struct Prices: Codable {
     let reverseHoloAvg7: Double
     let reverseHoloAvg30: Double
 }
+
+let RarityImageNames = [
+    "Common" : "circle.fill",
+    "Uncommon" : "diamond.fill",
+    "Rare" : "star.fill",
+    "Promo": "seal.fill"
+    ]
