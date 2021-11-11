@@ -8,10 +8,21 @@
 import Foundation
 import Firebase
 
+
+struct FirebaseData<T:Codable>: Codable {
+    let id: String
+    let data: [T]
+
+    enum CodingKeys: String, CodingKey {
+            case data = "data"
+            case id = "id"
+        }
+}
+
 struct UserSetData: Codable {
     let id: String
     let collectedCards: Int
-    let cardData: [FirebaseCollectedCardData]
+    var cardData: [FirebaseCollectedCardData] = []
 
     init(id: String, collectedCards: Int, cardData: [FirebaseCollectedCardData]) {
         self.id = id
@@ -19,19 +30,7 @@ struct UserSetData: Codable {
         self.cardData = cardData
     }
 
-    init?(snapshot: DataSnapshot) {
-        guard let snapshotValue = snapshot.value as? [String: AnyObject],
-              let id = snapshotValue["id"] as? String,
-              let cardsCollected = snapshotValue["collectedCards"] as? Int else {
-                  return nil
-              }
-
-        self.id = id
-        self.collectedCards = cardsCollected
-        self.cardData = []
-    }
-
-    init(userSet: UserSet){
+    init(userSet: UserSet) {
         self.id = userSet.id
         self.collectedCards = userSet.cardsCollected
         self.cardData = []
@@ -39,11 +38,15 @@ struct UserSetData: Codable {
 
     func toAnyObject() -> Any {
         return [
-            "id" : id,
-            "collectedCards" : collectedCards,
-            "cardData": [cardData]
+            "id": id,
+            "collectedCards": collectedCards
         ]
     }
+
+    enum CodingKeys: String, CodingKey {
+            case id = "id"
+            case collectedCards = "collectedCards"
+        }
 }
 
 struct FirebaseCollectedCardData: Codable {
@@ -56,4 +59,8 @@ struct FirebaseCollectedCardData: Codable {
                 "collectedAmount": collectedAmount
             ]
     }
+    enum CodingKeys: String, CodingKey {
+            case rarity = "rarity"
+            case collectedAmount = "collectedAmount"
+        }
 }

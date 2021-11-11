@@ -12,9 +12,13 @@ class PokemonCollectionSetsViewController: UIViewController {
     @IBOutlet private weak var pokemonCollectionSetsCollectionView: UICollectionView!
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet private weak var promptLabel: UILabel!
-    private lazy var viewModel = PokemonCollectionSetsViewModel(pokemonCollectionViewModelDelegate: self,
-                                                                pokemonSetsRepository: PokemonCollectionSetsRepository(),
-                                                                userSetsRepository: UserPokemonSetsRepository())
+
+    private lazy var viewModel = PokemonCollectionSetsViewModel(
+        pokemonCollectionViewModelDelegate: self,
+        pokemonSetsRepository: TCGPokemonRepository(apiClient: PokemonTcgApiClient(endPoint: Endpoint(path: "sets"),
+                                                                                   forDataType: TCGReturnDataTypes.TcgSets)),
+        userSetsRepository: UserPokemonDataRepository(firebaseApiClient: FirebaseApiClient(endPoint: Endpoint(path: "sets"),
+                                                                                           forDataType: UserReturnDataTypes.UserSets)))
 
     private let cellReuseIdentifier = "PokemonCollectionSetCell"
     private let cellNibName = "PokemonCollectionSetCell"

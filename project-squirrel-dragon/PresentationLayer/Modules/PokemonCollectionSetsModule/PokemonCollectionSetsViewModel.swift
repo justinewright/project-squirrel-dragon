@@ -14,7 +14,8 @@ protocol PokemonCollectionViewModelDelegate: AnyObject {
 }
 
 class PokemonCollectionSetsViewModel {
-
+    typealias PokemonTCGSets = PokemonSetsData
+    typealias FirebaseUserSet = UserSetData
     // MARK: - Properties
     private weak var delegate: PokemonCollectionViewModelDelegate?
     private var pokemonSetsRepository: RepositoryProtocol
@@ -33,7 +34,9 @@ class PokemonCollectionSetsViewModel {
     }
 
     // MARK: - Initialization
-    init(pokemonCollectionViewModelDelegate: PokemonCollectionViewModelDelegate, pokemonSetsRepository: RepositoryProtocol, userSetsRepository: RepositoryProtocol) {
+    init(pokemonCollectionViewModelDelegate: PokemonCollectionViewModelDelegate,
+         pokemonSetsRepository: RepositoryProtocol,
+         userSetsRepository: RepositoryProtocol) {
         delegate = pokemonCollectionViewModelDelegate
         self.pokemonSetsRepository = pokemonSetsRepository
         self.userSetsRepository = userSetsRepository
@@ -42,18 +45,18 @@ class PokemonCollectionSetsViewModel {
     func fetchViewData() {
         pokemonSetsRepository.fetch { [weak self] result in
             switch result {
-            case .success(let pokemonCollectionSets):
-                guard let pokemonCollectionSets = pokemonCollectionSets as? [PokemonCollectionSet] else {
+            case .success(let data):
+                guard let pokemonSetsData = data as? PokemonSetsData else {
                     self?.delegate?.didFailWithError(message: "Failed to cast data to PokemonCollectionSet")
                     return
                 }
-                self?.pokemonCollectionSets = Dictionary(uniqueKeysWithValues: pokemonCollectionSets.map { ($0.id, $0) })
+                let models = pokemonSetsData.data.map { PokemonCollectionSet(pokemonSetsData: $0) }
+                self?.pokemonCollectionSets = Dictionary(uniqueKeysWithValues: models.map { ($0.id, $0) })
             case .failure(let error):
                 self?.delegate?.didFailWithError(message: error.localizedDescription)
                 return
             }
         }
-        setSearchPath("sets")
         userSetsRepository.fetch { [weak self] result in
             self?.processUserSetsResults(withRepositoryResult: result)
         }
@@ -96,7 +99,6 @@ extension PokemonCollectionSetsViewModel {
     }
     func addSet(setIDs: [String]) {
         setIDs.forEach {
-            setSearchPath($0)
             userSetsRepository.post(
                 UserSetData(id: $0, collectedCards: 0, cardData: []).toAnyObject(), withPostId: $0) { [weak self] result in
                     self?.processUserSetsResults(withRepositoryResult: result)
@@ -106,31 +108,22 @@ extension PokemonCollectionSetsViewModel {
 
     func removeSet(setIDs: [String]) {
         setIDs.forEach {
-            setSearchPath($0)
             userSetsRepository.delete($0) { [weak self] result in
                 self?.processUserSetsResults(withRepositoryResult: result)
             }
         }
     }
 
-    private func setSearchPath(_ searchId: String) {
-        if let userSetsRepository = userSetsRepository as? UserPokemonSetsRepository {
-            userSetsRepository.setSearchPath(as: "sets")
-        }
-    }
-
     private func processUserSetsResults(withRepositoryResult result: Result<Any, URLError> ) {
         switch result {
         case .success(let userSetsData):
-            guard let userSetsData =  userSetsData as? [UserSetData] else {
+            guard let userSetsData = userSetsData as? FirebaseData<FirebaseUserSet> else {
                 self.delegate?.didFailWithError(message: "Failed to cast data to UserSetData")
                 return
             }
             self.userPokemonCollectionSets.removeAll()
-            userSetsData.forEach { userSetData in
-                let newUserSet = UserSet(userSetData: userSetData)
-                self.userPokemonCollectionSets[newUserSet.id] = newUserSet
-            }
+            let models = userSetsData.data.map { UserSet(userSetData: $0) }
+            userPokemonCollectionSets = Dictionary(uniqueKeysWithValues: models.map { ($0.id, $0) })
             self.setKeys = Array((self.sets.keys))
             self.delegate?.didLoadPokemonCollectionSetsViewModel(self)
         case .failure(let error):
