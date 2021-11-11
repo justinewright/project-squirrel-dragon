@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Firebase
 
 protocol PokemonCollectionViewModelDelegate: AnyObject {
     func didLoadPokemonCollectionSetsViewModel(_ pokemonCollectionSetsViewModel: PokemonCollectionSetsViewModel)
