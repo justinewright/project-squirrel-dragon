@@ -7,7 +7,7 @@
 
 import Foundation
 
-class TCGPokemonRepository: RepositoryProtocol {
+class TCGPokemonRepository: RepositoryProtocol, TCGSetsRepositoryProtocol, TCGCardsRepositoryProtocol {
 
     // MARK: - Properties
     private var error: URLError?

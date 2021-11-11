@@ -35,7 +35,6 @@ class UserPokemonDataRepository: RepositoryProtocol {
         }
     }
 
-
     func fetch(_ item: Any, then handler: @escaping AnyResultBlock) {
         DispatchQueue.main.async {
             self.firebaseApiClient.get() { result in

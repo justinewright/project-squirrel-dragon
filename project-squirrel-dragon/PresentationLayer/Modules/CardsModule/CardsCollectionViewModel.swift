@@ -17,7 +17,7 @@ class CardsCollectionViewModel {
     typealias FirebaseUserCards = UserCardData
     // MARK: - Properties
     private weak var delegate: CardsCollectionViewModelDelegate?
-    private var pokemonCardsRepository: RepositoryProtocol
+    private var pokemonCardsRepository: TCGCardsRepositoryProtocol
     private var userCardsRepository: RepositoryProtocol
 
     // MARK: - Other Properties
@@ -33,7 +33,7 @@ class CardsCollectionViewModel {
 
     // MARK: - Initialization
     init(delegate: CardsCollectionViewModelDelegate,
-         pokemonCardsRepository: RepositoryProtocol,
+         pokemonCardsRepository: TCGCardsRepositoryProtocol,
          userCardsRepository: RepositoryProtocol) {
         self.delegate = delegate
         self.pokemonCardsRepository = pokemonCardsRepository
