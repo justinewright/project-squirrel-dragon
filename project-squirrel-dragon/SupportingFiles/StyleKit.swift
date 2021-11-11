@@ -15,4 +15,7 @@ struct StyleKit {
         static let selected: CGFloat = 1
         static let unselected: CGFloat = 0.5
     }
+    struct Cards {
+        static let cornerRadius:CGFloat = 10
+    }
 }

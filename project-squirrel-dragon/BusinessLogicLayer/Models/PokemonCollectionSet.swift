@@ -7,11 +7,7 @@
 
 import Foundation
 
-struct PokemonCollectionSet: BaseModel {
-    var model: Any { get
-        { return self }
-    }
-
+struct PokemonCollectionSet {
     let id: String
     let name: String
     let series: String
