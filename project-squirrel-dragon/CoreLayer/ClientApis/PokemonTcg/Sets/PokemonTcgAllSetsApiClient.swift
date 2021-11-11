@@ -13,8 +13,9 @@ public enum TCGReturnDataTypes {
 }
 
 class PokemonTcgApiClient: PokemonTcgApiClientProtocol {
+    
 
-    private let endPoint: Endpoint!
+    private var endPoint: Endpoint!
     private let dataType: TCGReturnDataTypes!
     init(endPoint: Endpoint, forDataType dataType: TCGReturnDataTypes) {
         self.endPoint = endPoint
@@ -33,4 +34,11 @@ class PokemonTcgApiClient: PokemonTcgApiClientProtocol {
             break
         }
     }
+
+    func fetch(itemWithID itemID: String, then handler: @escaping AnyResultBlock) {
+        endPoint.queryItems = [URLQueryItem(name: itemID, value: nil)]
+        URLSession.shared.request(url:  endPoint.makeUrl(),
+                                  expecting: PokemonCardsData.self) { handler($0) }
+    }
+
 }

@@ -9,6 +9,7 @@ import Foundation
 import Firebase
 
 class UserPokemonDataRepository: RepositoryProtocol {
+
     // MARK: - Properties
     private var error: URLError?
 
@@ -22,6 +23,21 @@ class UserPokemonDataRepository: RepositoryProtocol {
 
     // MARK: - Repository Protocol Implementation
     func fetch(then handler: @escaping AnyResultBlock) {
+        DispatchQueue.main.async {
+            self.firebaseApiClient.get() { result in
+                switch result {
+                case .success(let data):
+                    self.updateUserSets(data: data) { handler($0) }
+                case .failure(let error):
+                    handler(.failure(error))
+                }
+            }
+        }
+    }
+    func fetch(itemWithID itemID: String, then handler: @escaping AnyResultBlock) {}
+
+
+    func fetch(_ item: Any, then handler: @escaping AnyResultBlock) {
         DispatchQueue.main.async {
             self.firebaseApiClient.get() { result in
                 switch result {
