@@ -32,12 +32,17 @@ class CardCollectionViewCell: UICollectionViewCell {
 
     func configure(with collectableCard: CollectableCard) {
         self.collectableCard = collectableCard
-        let numberOfCards = collectableCard.userCard == nil ? 0 : collectableCard.userCard?.collectedNumber
-        configureCollectedNumberLabel(withNumberText: "\(numberOfCards!)")
-        configureOwnedImageView(setOwned: numberOfCards! > 0)
         configureCardImageView(withURLString: collectableCard.pokemonCard.images.small)
         configurePriceLabels(withPrices: collectableCard.pokemonCard.cardmarket.prices)
         configureRarityImageView()
+        
+        guard let userCard = collectableCard.userCard else {
+            configureCollectedNumberLabel(withNumberText: "\(0)")
+            configureOwnedImageView(setOwned: false)
+            return
+        }
+        configureCollectedNumberLabel(withNumberText: "\(userCard.collectedNumber)")
+        configureOwnedImageView(setOwned: true)
     }
 
     private func configurePriceLabels(withPrices prices: Prices) {

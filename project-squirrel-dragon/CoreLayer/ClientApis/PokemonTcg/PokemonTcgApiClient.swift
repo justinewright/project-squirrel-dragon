@@ -14,7 +14,6 @@ public enum TCGReturnDataTypes {
 
 class PokemonTcgApiClient: PokemonTcgApiClientProtocol {
     
-
     private var endPoint: Endpoint!
     private let dataType: TCGReturnDataTypes!
     init(endPoint: Endpoint, forDataType dataType: TCGReturnDataTypes) {

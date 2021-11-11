@@ -34,7 +34,6 @@ class UserPokemonDataRepository: RepositoryProtocol {
             }
         }
     }
-    func fetch(itemWithID itemID: String, then handler: @escaping AnyResultBlock) {}
 
 
     func fetch(_ item: Any, then handler: @escaping AnyResultBlock) {

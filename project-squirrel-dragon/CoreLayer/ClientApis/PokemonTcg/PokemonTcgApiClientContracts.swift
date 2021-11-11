@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol PokemonTcgApiClientProtocol{
+protocol PokemonTcgApiClientProtocol {
     func fetch(then handler: @escaping AnyResultBlock)
     func fetch(itemWithID itemID: String, then handler: @escaping AnyResultBlock)
 }

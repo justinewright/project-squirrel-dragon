@@ -7,12 +7,18 @@
 
 import Foundation
 
-
 protocol RepositoryProtocol {
-    func fetch(itemWithID itemID: String, then handler: @escaping AnyResultBlock)
+    func fetch(itemWithID itemID: String, then handler: AnyResultBlock?)
     func fetch(then handler: @escaping AnyResultBlock)
     func post(_ item: Any, withPostId postId: String, then handler: @escaping AnyResultBlock)
     func delete(_ item: Any, then handler: @escaping AnyResultBlock)
 }
 
 typealias AnyResultBlock = (Result<Any, URLError>) -> Void
+
+extension RepositoryProtocol {
+    func fetch(itemWithID itemID: String, then handler: AnyResultBlock?) {}
+    func fetch(then handler: @escaping AnyResultBlock) {}
+    func post(_ item: Any, withPostId postId: String, then handler: @escaping AnyResultBlock) {}
+    func delete(_ item: Any, then handler: @escaping AnyResultBlock) {}
+}

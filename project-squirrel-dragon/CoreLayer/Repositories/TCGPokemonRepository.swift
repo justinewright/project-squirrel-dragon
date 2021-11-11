@@ -50,7 +50,4 @@ class TCGPokemonRepository: RepositoryProtocol {
             }
         }
     }
-    
-    func post(_ item: Any, withPostId postId: String, then handler: @escaping AnyResultBlock) {}
-    func delete(_ item: Any, then handler: @escaping AnyResultBlock) {}
 }
