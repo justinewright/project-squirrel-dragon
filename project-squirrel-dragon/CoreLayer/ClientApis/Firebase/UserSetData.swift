@@ -38,16 +38,14 @@ struct UserSetData: Codable {
 
     func toAnyObject() -> Any {
         return [
-            "id" : id,
-            "collectedCards" : collectedCards,
-            "cardData": [cardData]
+            "id": id,
+            "collectedCards": collectedCards
         ]
     }
 
     enum CodingKeys: String, CodingKey {
             case id = "id"
             case collectedCards = "collectedCards"
-            case cardData = "card_data"
         }
 }
 
