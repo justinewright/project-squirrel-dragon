@@ -8,19 +8,19 @@
 import UIKit
 
 class CardCollectionViewCell: UICollectionViewCell {
-
+    // MARK: - Properties
     @IBOutlet private weak var cardImageView: UIImageView!
-    @IBOutlet weak var ownedImageView: UIImageView!
-    @IBOutlet weak var rarityImageView: UIImageView!
-    @IBOutlet weak var collectedNumberLabel: UILabel!
+    @IBOutlet private weak var ownedImageView: UIImageView!
+    @IBOutlet private weak var rarityImageView: UIImageView!
+    @IBOutlet private weak var collectedNumberLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        applyStyle()
     }
-
+    // MARK: - Configuration Methods
     func applyStyle() {
-        backgroundView?.alpha = 0.5
+        backgroundView?.alpha = StyleKit.Alpha.unselected
     }
 
     func configure(with collectableCard: CollectableCard) {
@@ -46,8 +46,9 @@ class CardCollectionViewCell: UICollectionViewCell {
 
     override var isSelected: Bool {
         willSet(newValue) {
-            selectedBackgroundView?.alpha = 1
+            selectedBackgroundView?.alpha = StyleKit.Alpha.selected
             configureOwnedImageView(setOwned: newValue)
         }
     }
+    
 }

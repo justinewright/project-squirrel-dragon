@@ -9,6 +9,7 @@ import Foundation
 
 class CardsCollectionViewController: UIViewController {
 
+    // MARK: - Properties
     @IBOutlet private weak var commonLabel: UILabel!
     @IBOutlet private weak var uncommonLabel: UILabel!
     @IBOutlet private weak var rareLabel: UILabel!
@@ -20,6 +21,7 @@ class CardsCollectionViewController: UIViewController {
     @IBOutlet private weak var ownedButton: UIButton!
     @IBOutlet private weak var allButton: UIButton!
 
+    // MARK: - Gestures Methods
     @IBAction func AllButtonPressed(_ sender: UIButton) {
         deselectAllButtons()
         selectButton(button: sender)
@@ -43,10 +45,6 @@ class CardsCollectionViewController: UIViewController {
 
     private func selectButton(button: UIButton) {
         button.isSelected = true
-    }
-
-    override func viewDidLoad() {
-
     }
 }
 
