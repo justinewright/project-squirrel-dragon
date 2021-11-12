@@ -7,7 +7,8 @@
 
 import Foundation
 
-class TCGPokemonRepository: RepositoryProtocol {
+class TCGPokemonRepository: RepositoryProtocol, TCGSetsRepositoryProtocol, TCGCardsRepositoryProtocol {
+
     // MARK: - Properties
     private var error: URLError?
 
@@ -35,6 +36,18 @@ class TCGPokemonRepository: RepositoryProtocol {
         }
     }
 
-    func post(_ item: Any, withPostId postId: String, then handler: @escaping AnyResultBlock) {}
-    func delete(_ item: Any, then handler: @escaping AnyResultBlock) {}
+    func fetch(itemWithID itemID: String, then handler: @escaping AnyResultBlock) {
+        tcgApiClient.fetch(itemWithID: itemID)  { [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let data):
+                    self?.data = data
+                    handler(.success(self?.data as Any))
+                case .failure(let error):
+                    self?.error = error
+                    handler(.failure(error))
+                }
+            }
+        }
+    }
 }
