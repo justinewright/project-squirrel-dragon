@@ -9,6 +9,6 @@ import Foundation
 
 struct CollectableCard {
     let id: String
-    let userCard: UserCard
-    let cardImages: CardImages
+    let pokemonCard: CardData
+    let userCard: UserCardData?
 }

@@ -8,7 +8,7 @@
 import Firebase
 import Foundation
 
-//FirebaseData<T>
+
 extension DataSnapshot {
     func snapshotToFirebaseDataModel<T: Codable> (
         expecting: T.Type,
