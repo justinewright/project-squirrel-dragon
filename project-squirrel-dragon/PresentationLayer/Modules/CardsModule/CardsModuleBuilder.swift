@@ -9,11 +9,14 @@ import Foundation
 
 class CardsModuleBuilder {
 
-    static func build(usingNavigationFactory factory: NavigationFactory, andPokemonSet set:PokemonCollectionSet) -> UIViewController {
+    static func build(usingNavigationFactory factory: NavigationFactory, andPokemonSet set: PokemonCollectionSet) -> UIViewController {
         let storyboard = UIStoryboard.init(name: "Cards", bundle: nil)
         let view = storyboard.instantiateViewController(withIdentifier: "Cards")
         view.title = set.name + "'s Cards"
         view.navigationItem.largeTitleDisplayMode = .never
+        if let view = view as? CardsCollectionViewController {
+            view.configure(forSetID: "set.id:\(set.id)")
+        }
         return view
         
     }

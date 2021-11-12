@@ -9,17 +9,46 @@ import Foundation
 
 class CardsCollectionViewController: UIViewController {
 
+    private let errorTitle = "Pokemon Cards Unavailable!"
+
     // MARK: - Properties
     @IBOutlet private weak var commonLabel: UILabel!
     @IBOutlet private weak var uncommonLabel: UILabel!
     @IBOutlet private weak var rareLabel: UILabel!
     @IBOutlet private weak var promoLabel: UILabel!
+    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
 
     @IBOutlet private weak var collectionView: UICollectionView!
 
     @IBOutlet private weak var unownedButton: UIButton!
     @IBOutlet private weak var ownedButton: UIButton!
     @IBOutlet private weak var allButton: UIButton!
+    private let cellReuseIdentifier = CardCollectionViewCell.reuseIdentity
+    private let cellNibName = CardCollectionViewCell.reuseIdentity
+
+    private lazy var viewModel = CardsCollectionViewModel(
+        delegate: self,
+        pokemonCardsRepository: TCGPokemonRepository(apiClient: PokemonTcgApiClient(endPoint: Endpoint(path: "cards"), forDataType: TCGReturnDataTypes.TcgCards)),
+
+        userCardsRepository: UserPokemonDataRepository(firebaseApiClient: FirebaseApiClient(endPoint: Endpoint(path: "cards"), forDataType: UserReturnDataTypes.UserCards)))
+
+    override func viewDidLoad() {
+        configureCollectionView()
+        viewModel.fetchViewData()
+    }
+    
+    func configure(forSetID setID: String) {
+        viewModel.configure(forSetID: setID)
+    }
+
+    private func configureCollectionView() {
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.register(CardCollectionViewCell.self,
+                                forCellWithReuseIdentifier: cellReuseIdentifier)
+        collectionView.register(UINib(nibName: cellNibName, bundle: nil), forCellWithReuseIdentifier: cellReuseIdentifier)
+        collectionView.backgroundColor = .clear
+    }
 
     // MARK: - Gestures Methods
     @IBAction func AllButtonPressed(_ sender: UIButton) {
@@ -48,12 +77,31 @@ class CardsCollectionViewController: UIViewController {
     }
 }
 
-extension CardsCollectionViewController: UICollectionViewDataSource {
+extension CardsCollectionViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        0
+        viewModel.pokemonCards.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        UICollectionViewCell()
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath) as? CardCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        let animation = AnimationFactory.makeFadeAnimation(duration: 0.5, delayFactor: 0.05)
+        let animator = Animator(animation: animation)
+        animator.animate(cell: cell, at: indexPath, in: collectionView)
+        cell.configure(with: viewModel.collectableCards[indexPath.row] )
+        return cell
+    }
+}
+
+extension CardsCollectionViewController: CardsCollectionViewModelDelegate {
+    func didLoadCardsCollectionViewModel(_ cardsCollectionViewModel: CardsCollectionViewModel) {
+        self.collectionView.reloadData()
+        activityIndicator.stopAnimating()
+    }
+
+    func didFailWithError(message: String) {
+        self.showErrorAlert(titled: errorTitle, with: message)
+        activityIndicator.stopAnimating()
     }
 }
