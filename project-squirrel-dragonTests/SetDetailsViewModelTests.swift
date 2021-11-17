@@ -26,7 +26,7 @@ class SetDetailsViewModelTests: XCTestCase {
 
     var viewModelUnderTesting: SetDetailsViewModel!
     var mockDelegate: SetsDetailViewModelDelegate!
-    let mockPokemonSet = PokemonCollectionSet(pokemonSetsData: mockData.first!)
+    let mockPokemonSet = PokemonCollectionSet(pokemonSetsData: mockSetData.first!)
     let mockUserSet = DummyData.userSet
     var mockSetDetails: SetDetails!
 
