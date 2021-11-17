@@ -19,13 +19,14 @@ class CardDetailViewController: UIViewController {
     @IBOutlet private weak var typeLabel: UILabel!
     @IBOutlet private weak var numberLabel: UILabel!
     @IBOutlet private weak var pricesLabel: UILabel!
-    @IBOutlet weak var collectedNumberTextField: UITextField!
-    @IBOutlet weak var addButton: UIButton!
-    @IBOutlet weak var minusButton: UIButton!
+    @IBOutlet private weak var collectedNumberTextField: UITextField!
+    @IBOutlet private weak var addButton: UIButton!
+    @IBOutlet private weak var minusButton: UIButton!
 
-    @IBOutlet weak var cardFront: UIView!
-    @IBOutlet weak var cardBack: UIView!
-    @IBOutlet weak var card: UIView!
+    @IBOutlet private weak var pricesNumberLabel: UILabel!
+    @IBOutlet private weak var cardFront: UIView!
+    @IBOutlet private weak var cardBack: UIView!
+    @IBOutlet private weak var card: UIView!
 
 
     fileprivate func flipAnimation(inContainer viewContainer: UIView, fromView view1: UIView, toView view2: UIView, animationOption: UIView.AnimationOptions) {
@@ -121,7 +122,9 @@ class CardDetailViewController: UIViewController {
 
     private func configurePricesLabel() {
         configureLabel(pricesLabel,
-                       withText: viewModel.prices)
+                       withText: viewModel.prices.0)
+        configureLabel(pricesNumberLabel,
+                       withText: viewModel.prices.1)
     }
 
     private func configureTextField() {

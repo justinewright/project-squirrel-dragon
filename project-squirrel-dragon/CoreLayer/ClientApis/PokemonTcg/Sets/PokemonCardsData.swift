@@ -45,7 +45,7 @@ struct CardData: Codable {
         "lowPriceExPlus": cardmarket.prices.lowPriceExPlus,
         "avg1": cardmarket.prices.avg1,
         "avg7": cardmarket.prices.avg7,
-        "avg30:": cardmarket.prices.avg30,
+        "avg30": cardmarket.prices.avg30,
         "reverseHoloAvg1": cardmarket.prices.reverseHoloAvg1,
         "reverseHoloAvg7": cardmarket.prices.reverseHoloAvg7,
         "reverseHoloAvg30": cardmarket.prices.reverseHoloAvg30]
