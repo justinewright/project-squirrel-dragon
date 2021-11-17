@@ -33,6 +33,23 @@ struct CardData: Codable {
     let nationalPokedexNumbers: [Int]
     let images: CardImages
     let cardmarket: CardMarket
+
+    var pricesDictionary: [String: Double?] {
+        ["averageSellPrice": cardmarket.prices.averageSellPrice,
+        "lowPrice": cardmarket.prices.lowPrice,
+        "trendPrice": cardmarket.prices.trendPrice,
+        "germanProLow": cardmarket.prices.germanProLow,
+        "reverseHoloSell": cardmarket.prices.reverseHoloSell,
+        "reverseHoloLow": cardmarket.prices.reverseHoloLow,
+        "reverseHoloTrend": cardmarket.prices.reverseHoloTrend,
+        "lowPriceExPlus": cardmarket.prices.lowPriceExPlus,
+        "avg1": cardmarket.prices.avg1,
+        "avg7": cardmarket.prices.avg7,
+        "avg30:": cardmarket.prices.avg30,
+        "reverseHoloAvg1": cardmarket.prices.reverseHoloAvg1,
+        "reverseHoloAvg7": cardmarket.prices.reverseHoloAvg7,
+        "reverseHoloAvg30": cardmarket.prices.reverseHoloAvg30]
+    }
 }
 
 struct Abilities: Codable {

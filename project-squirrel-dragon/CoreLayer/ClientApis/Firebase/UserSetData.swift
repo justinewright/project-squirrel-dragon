@@ -8,14 +8,13 @@
 import Foundation
 import Firebase
 
-
 struct FirebaseData<T:Codable>: Codable {
     let id: String
     let data: [T]
 
     enum CodingKeys: String, CodingKey {
-            case data = "data"
-            case id = "id"
+            case data
+            case id
         }
 }
 

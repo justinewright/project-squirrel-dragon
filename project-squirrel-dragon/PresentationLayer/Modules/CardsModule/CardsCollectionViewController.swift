@@ -77,7 +77,7 @@ class CardsCollectionViewController: UIViewController {
     }
 }
 
-extension CardsCollectionViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension CardsCollectionViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         viewModel.pokemonCards.count
     }
@@ -91,6 +91,40 @@ extension CardsCollectionViewController: UICollectionViewDataSource, UICollectio
         animator.animate(cell: cell, at: indexPath, in: collectionView)
         cell.configure(with: viewModel.collectableCards[indexPath.row] )
         return cell
+    }
+}
+
+extension CardsCollectionViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
+        guard let cell = collectionView.cellForItem(at: indexPath) as? CardCollectionViewCell else {
+            return
+        }
+
+        handleSelectCard(forCard: cell.collectableCard)
+    }
+
+    private func handleSelectCard(forCard card: CollectableCard) {
+        let navVC = CardDetailModuleBuilder.build(usingNavigationFactory: NavigationBuilder.build, and: card)
+        
+        guard let destination = navVC.children.first as? CardDetailViewController else {
+            return
+        }
+
+        destination.modalPresentationStyle = .fullScreen
+        navVC.modalPresentationStyle = .fullScreen
+
+        self.present(navVC, animated: true, completion: nil)
+        destination.callback = { (cardId, collectedCards) -> Void in
+            navVC.dismiss(animated: true)
+            guard let _cardId = cardId,
+                  let _collectedCards = collectedCards  else {
+                      return
+                  }
+            self.viewModel.postCard(cardId: _cardId,
+                                    withCollectedNumber: _collectedCards)
+
+        }
     }
 }
 

@@ -8,7 +8,6 @@
 import Firebase
 import Foundation
 
-
 extension DataSnapshot {
     func snapshotToFirebaseDataModel<T: Codable> (
         expecting: T.Type,
@@ -27,8 +26,6 @@ extension DataSnapshot {
             }
         }
 }
-
-
 
 extension Data {
     var string: String? {String(data: self, encoding: .utf8)}
