@@ -110,6 +110,8 @@
 		21FC0B60273C265D0097B467 /* CardsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FC0B5F273C265D0097B467 /* CardsCollectionViewController.swift */; };
 		21FC0B66273C29BB0097B467 /* CardsModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FC0B65273C29BB0097B467 /* CardsModuleBuilder.swift */; };
 		6CC292E5C2FACD54AA6F7DBE /* Pods_project_squirrel_dragon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A0C2F5ED5B213C7735C46AC /* Pods_project_squirrel_dragon.framework */; };
+		700ED50057F5E04E9F172832 /* Pods_project_squirrel_dragonTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12C32AB05BCA191E629123BF /* Pods_project_squirrel_dragonTests.framework */; };
+		A582D739EB7CCFFA0107C5BE /* Pods_project_squirrel_dragon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21886A5D274539B800BE4AD5 /* Pods_project_squirrel_dragon.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +125,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		12C32AB05BCA191E629123BF /* Pods_project_squirrel_dragonTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_project_squirrel_dragonTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A0C2F5ED5B213C7735C46AC /* Pods_project_squirrel_dragon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_project_squirrel_dragon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2104474B270ACD1900815441 /* project-squirrel-dragon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "project-squirrel-dragon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2104474E270ACD1900815441 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -178,6 +181,9 @@
 		2185CEF82720225900499D31 /* UserSetData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetData.swift; sourceTree = "<group>"; };
 		2185CEFC27202A8600499D31 /* UserSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSet.swift; sourceTree = "<group>"; };
 		2185CEFE27202C3C00499D31 /* SetDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDetails.swift; sourceTree = "<group>"; };
+		21886A592745392300BE4AD5 /* SelectMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SelectMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		21886A5B274539AB00BE4AD5 /* Pods_project_squirrel_dragon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_project_squirrel_dragon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		21886A5D274539B800BE4AD5 /* Pods_project_squirrel_dragon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_project_squirrel_dragon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		21894F9827281BD30092AAB5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		21894F9E272820260092AAB5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		21894FA2272820460092AAB5 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -209,6 +215,8 @@
 		21FC0B5D273C24760097B467 /* CollectableCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectableCard.swift; sourceTree = "<group>"; };
 		21FC0B5F273C265D0097B467 /* CardsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsCollectionViewController.swift; sourceTree = "<group>"; };
 		21FC0B65273C29BB0097B467 /* CardsModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsModuleBuilder.swift; sourceTree = "<group>"; };
+		2AFAC172DE9D26DF7E5C3B60 /* Pods-project-squirrel-dragonTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project-squirrel-dragonTests.release.xcconfig"; path = "Target Support Files/Pods-project-squirrel-dragonTests/Pods-project-squirrel-dragonTests.release.xcconfig"; sourceTree = "<group>"; };
+		39A99481B68BFE0CDF3399BF /* Pods-project-squirrel-dragonTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project-squirrel-dragonTests.debug.xcconfig"; path = "Target Support Files/Pods-project-squirrel-dragonTests/Pods-project-squirrel-dragonTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4B403AE8563EB04E91F15987 /* Pods-project-squirrel-dragon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project-squirrel-dragon.debug.xcconfig"; path = "Target Support Files/Pods-project-squirrel-dragon/Pods-project-squirrel-dragon.debug.xcconfig"; sourceTree = "<group>"; };
 		A6E1D115745C02862DAFDBB9 /* Pods-project-squirrel-dragon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project-squirrel-dragon.release.xcconfig"; path = "Target Support Files/Pods-project-squirrel-dragon/Pods-project-squirrel-dragon.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -224,6 +232,7 @@
 				21886A5027452D4100BE4AD5 /* FirebaseAnalyticsSwift-Beta in Frameworks */,
 				21886A5427452DAC00BE4AD5 /* FirebaseAuth in Frameworks */,
 				6CC292E5C2FACD54AA6F7DBE /* Pods_project_squirrel_dragon.framework in Frameworks */,
+				A582D739EB7CCFFA0107C5BE /* Pods_project_squirrel_dragon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,6 +240,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				700ED50057F5E04E9F172832 /* Pods_project_squirrel_dragonTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -495,7 +505,11 @@
 		21894F9A27281C9D0092AAB5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				21886A5D274539B800BE4AD5 /* Pods_project_squirrel_dragon.framework */,
+				21886A5B274539AB00BE4AD5 /* Pods_project_squirrel_dragon.framework */,
+				21886A592745392300BE4AD5 /* SelectMenu.framework */,
 				1A0C2F5ED5B213C7735C46AC /* Pods_project_squirrel_dragon.framework */,
+				12C32AB05BCA191E629123BF /* Pods_project_squirrel_dragonTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -584,6 +598,8 @@
 			children = (
 				4B403AE8563EB04E91F15987 /* Pods-project-squirrel-dragon.debug.xcconfig */,
 				A6E1D115745C02862DAFDBB9 /* Pods-project-squirrel-dragon.release.xcconfig */,
+				39A99481B68BFE0CDF3399BF /* Pods-project-squirrel-dragonTests.debug.xcconfig */,
+				2AFAC172DE9D26DF7E5C3B60 /* Pods-project-squirrel-dragonTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -622,9 +638,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 21246D0D2723106C00CC6DAC /* Build configuration list for PBXNativeTarget "project-squirrel-dragonTests" */;
 			buildPhases = (
+				358EACA40001B43FDF8D9AC1 /* [CP] Check Pods Manifest.lock */,
 				21246D032723106C00CC6DAC /* Sources */,
 				21246D042723106C00CC6DAC /* Frameworks */,
 				21246D052723106C00CC6DAC /* Resources */,
+				4FAFBB6B44248AD18356C725 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -666,7 +684,7 @@
 			);
 			mainGroup = 21044742270ACD1900815441;
 			packageReferences = (
-				21894F932728191C0092AAB5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				21894F932728191C0092AAB5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */,
 			);
 			productRefGroup = 2104474C270ACD1900815441 /* Products */;
 			projectDirPath = "";
@@ -727,6 +745,45 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		358EACA40001B43FDF8D9AC1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-project-squirrel-dragonTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4FAFBB6B44248AD18356C725 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-project-squirrel-dragonTests/Pods-project-squirrel-dragonTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-project-squirrel-dragonTests/Pods-project-squirrel-dragonTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-project-squirrel-dragonTests/Pods-project-squirrel-dragonTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 		526EE778D317078FCAF9A01E /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1081,6 +1138,7 @@
 		};
 		21246D0E2723106C00CC6DAC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 39A99481B68BFE0CDF3399BF /* Pods-project-squirrel-dragonTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -1105,6 +1163,7 @@
 		};
 		21246D0F2723106C00CC6DAC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2AFAC172DE9D26DF7E5C3B60 /* Pods-project-squirrel-dragonTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -1160,7 +1219,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		21894F932728191C0092AAB5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+		21894F932728191C0092AAB5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
@@ -1173,27 +1232,27 @@
 /* Begin XCSwiftPackageProductDependency section */
 		21886A4F27452D4100BE4AD5 /* FirebaseAnalyticsSwift-Beta */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 21894F932728191C0092AAB5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 21894F932728191C0092AAB5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */;
 			productName = "FirebaseAnalyticsSwift-Beta";
 		};
 		21886A5127452D4800BE4AD5 /* FirebaseDatabaseSwift-Beta */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 21894F932728191C0092AAB5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 21894F932728191C0092AAB5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */;
 			productName = "FirebaseDatabaseSwift-Beta";
 		};
 		21886A5327452DAC00BE4AD5 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 21894F932728191C0092AAB5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 21894F932728191C0092AAB5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */;
 			productName = FirebaseAuth;
 		};
 		21886A5527452F4A00BE4AD5 /* FirebaseDatabase */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 21894F932728191C0092AAB5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 21894F932728191C0092AAB5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */;
 			productName = FirebaseDatabase;
 		};
 		21886A5727452F5100BE4AD5 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 21894F932728191C0092AAB5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 21894F932728191C0092AAB5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */;
 			productName = FirebaseAnalytics;
 		};
 /* End XCSwiftPackageProductDependency section */
