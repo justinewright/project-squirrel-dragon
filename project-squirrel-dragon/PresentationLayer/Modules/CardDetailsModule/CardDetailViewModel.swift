@@ -53,6 +53,10 @@ class CardDetailViewModel {
         URL(string: collectableCard.pokemonCard.images.large)
     }
 
+    var number: String? {
+        "number: " + collectableCard.pokemonCard.number
+    }
+
     var pokemonName: String? {
         "name: " + collectableCard.pokemonCard.name
     }

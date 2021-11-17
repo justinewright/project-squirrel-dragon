@@ -64,6 +64,7 @@ class CardDetailViewController: UIViewController {
         collectedNumberTextField.keyboardType = .numberPad
         collectedNumberTextField.delegate = self
         configureCardImageView()
+        configureNumberLabel()
         configureNationalPokedexNumberLabel()
         configureNameLabel()
         configureRarityLabel()
@@ -103,6 +104,11 @@ class CardDetailViewController: UIViewController {
             return
         }
         cardImageView.load(url: url)
+    }
+
+    private func configureNumberLabel() {
+        configureLabel(numberLabel,
+                       withText: viewModel.number)
     }
 
     private func configureNameLabel() {
