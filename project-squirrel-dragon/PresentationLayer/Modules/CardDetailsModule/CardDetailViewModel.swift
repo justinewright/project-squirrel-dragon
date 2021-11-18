@@ -69,23 +69,17 @@ class CardDetailViewModel {
     }
 
     var prices: (String?, String?) {
-        do {
-            let jsonData = try JSONEncoder().encode(collectableCard.pokemonCard.cardmarket.prices)
-            var jsonString = String(data: jsonData, encoding: .utf8)!
-            var dicitonary = collectableCard.pokemonCard.pricesDictionary
-            var priceString = "Prices\n\n"
-            var priceNumberString = "(€)\n\n"
-            for (k,v) in dicitonary {
-                guard let v = v else {
-                    continue
-                }
-                let formatedPrice = String(format: "%.2f", v)
-                priceNumberString += "\(formatedPrice)\n"
-                priceString += "\(k)\n"
+        let dicitonary = collectableCard.pokemonCard.pricesDictionary
+        var priceString = "Prices\n\n"
+        var priceNumberString = "(€)\n\n"
+        for (priceFor, priceValue) in dicitonary {
+            guard let priceValue = priceValue else {
+                continue
             }
-            return (priceString, priceNumberString)
-        } catch { print(error) }
-        return (nil, nil)
+            let formatedPrice = String(format: "%.2f", priceValue)
+            priceNumberString += "\(formatedPrice)\n"
+            priceString += "\(priceFor)\n"
+        }
+        return (priceString, priceNumberString)
     }
 }
-
