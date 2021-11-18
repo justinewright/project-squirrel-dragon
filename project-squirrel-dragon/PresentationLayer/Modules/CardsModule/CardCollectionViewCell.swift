@@ -8,6 +8,7 @@
 import UIKit
 
 class CardCollectionViewCell: UICollectionViewCell {
+
     // MARK: - Properties
     static let reuseIdentity = "CardCollectionViewCell"
     @IBOutlet private weak var cardImageView: UIImageView!
@@ -17,7 +18,7 @@ class CardCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var avgLabel: UILabel!
     @IBOutlet private weak var trendingLabel: UILabel!
 
-    private var collectableCard: CollectableCard!
+    private (set) var collectableCard: CollectableCard!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -41,6 +42,7 @@ class CardCollectionViewCell: UICollectionViewCell {
             configureOwnedImageView(setOwned: false)
             return
         }
+        
         configureCollectedNumberLabel(withNumberText: "\(userCard.collectedNumber)")
         configureOwnedImageView(setOwned: true)
     }
@@ -57,7 +59,6 @@ class CardCollectionViewCell: UICollectionViewCell {
 
     private func configureCollectedNumberLabel(withNumberText numberText: String) {
         collectedNumberLabel.text = numberText
-
     }
 
     private func configureCardImageView(withURLString urlString: String) {
@@ -77,11 +78,5 @@ class CardCollectionViewCell: UICollectionViewCell {
         ownedImageView.image = image
     }
 
-    override var isSelected: Bool {
-        willSet(newValue) {
-            selectedBackgroundView?.alpha = newValue ? StyleKit.Alpha.selected : StyleKit.Alpha.unselected
-            configureOwnedImageView(setOwned: newValue)
-        }
-    }
     
 }

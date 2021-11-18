@@ -15,6 +15,7 @@ protocol CardsCollectionViewModelDelegate: AnyObject {
 class CardsCollectionViewModel {
     typealias PokemonTCGCards = CardData
     typealias FirebaseUserCards = UserCardData
+
     // MARK: - Properties
     private weak var delegate: CardsCollectionViewModelDelegate?
     private var pokemonCardsRepository: TCGCardsRepositoryProtocol
@@ -25,6 +26,7 @@ class CardsCollectionViewModel {
     private(set) var userPokemonCards: [String: FirebaseUserCards] = [:]
     private var setKeys: [String] = []
     private var setID: String!
+
     var collectableCards: [CollectableCard] {
         pokemonCards.map { CollectableCard.init(id: $0.key,
                                                 pokemonCard: $0.value,
@@ -41,6 +43,7 @@ class CardsCollectionViewModel {
     }
 
     func fetchViewData() {
+        guard let setID = setID else { return }
         pokemonCardsRepository.fetch(itemWithID: setID) { [weak self] result in
             switch result {
             case .success(let data):
@@ -62,25 +65,42 @@ class CardsCollectionViewModel {
     func configure(forSetID setID: String) {
         self.setID = setID
     }
-
 }
+
+// MARK: - User Cards Repository Methods
 extension CardsCollectionViewModel {
 
-    private func processUserSetsResults(withRepositoryResult result: Result<Any, URLError> ) {
+    func postCard(cardId: String, withCollectedNumber collectedNumber: Int) {
+        if collectedNumber == 0 {
+            removeCard(cardId: cardId)
+            return
+        }
+        let userCard = UserCardData(id: cardId, collectedNumber: collectedNumber).toAnyObject()
+
+        userCardsRepository.post(userCard, withPostId: cardId) { [weak self] result in
+            self?.processUserCardsResults(withRepositoryResult: result)
+        }
+    }
+
+    func removeCard(cardId: String) {
+        userCardsRepository.delete(cardId) { [weak self] result in
+            self?.processUserCardsResults(withRepositoryResult: result)
+        }
+    }
+
+    private func processUserCardsResults(withRepositoryResult result: Result<Any, URLError> ) {
         switch result {
-        case .success(let userCardsData):
-            guard let userCardsData = userCardsData as? FirebaseData<FirebaseUserCards> else {
-                self.delegate?.didFailWithError(message: "Failed to cast data to userCardsData")
+        case .success(let userData):
+            guard let userCardsData = userData as? FirebaseData<FirebaseUserCards> else {
+                self.delegate?.didFailWithError(message: "Failed to cast data to UserSetData")
                 return
             }
             self.userPokemonCards.removeAll()
-            let models = userCardsData.data
 
-            userPokemonCards = Dictionary(uniqueKeysWithValues: models.map { ($0.id, $0) })
+            userPokemonCards = Dictionary(uniqueKeysWithValues: userCardsData.data.map { ($0.id, $0) })
             self.delegate?.didLoadCardsCollectionViewModel(self)
         case .failure(let error):
             self.delegate?.didFailWithError(message: error.localizedDescription)
         }
     }
-
 }

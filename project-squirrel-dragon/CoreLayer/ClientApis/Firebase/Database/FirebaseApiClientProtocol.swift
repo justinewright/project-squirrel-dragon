@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 protocol FirebaseApiClientProtocol {
     func post(data: [String: Any], then handler: @escaping AnyResultBlock)
     func get(then handler: @escaping AnyResultBlock)

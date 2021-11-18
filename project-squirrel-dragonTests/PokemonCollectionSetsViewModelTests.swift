@@ -7,7 +7,7 @@
 
 import XCTest
 
-let mockData = [SetsData(id: "base1",
+let mockSetData = [SetsData(id: "base1",
                          name: "Base",
                          series: "Base",
                          printedTotal: 102,
@@ -17,12 +17,32 @@ let mockData = [SetsData(id: "base1",
                          images: Images(symbol: "https://images.pokemontcg.io/base1/symbol.png", logo: "https://images.pokemontcg.io/base1/logo.png"))]
 
 class PokemonCollectionSetsViewModelTest: XCTestCase {
-    let mockUserSet = UserSetData(id: mockData.first!.id, collectedCards: 0, cardData: [])
-    let mockPokemonSet = PokemonCollectionSet(pokemonSetsData: mockData.first!)
-    let mockPokemonSetData = PokemonSetsData(data: mockData)
+    let mockUserSet = UserSetData(id: mockSetData.first!.id, collectedCards: 0, cardData: [])
+    let mockPokemonSet = PokemonCollectionSet(pokemonSetsData: mockSetData.first!)
+    let mockPokemonSetData = PokemonSetsData(data: mockSetData)
     var mockFirebaseSet: FirebaseData<UserSetData>!
 
-    class MockRepository: RepositoryProtocol {
+    class MockUserSetRepository: RepositoryProtocol {
+        var fetchCalled = false
+        var repoResult: Result<Any, URLError> = .failure(URLError(.badServerResponse))
+
+        func post(_ item: Any, withPostId postId: String, then handler: @escaping AnyResultBlock) {
+
+        }
+
+        func delete(_ item: Any, then handler: @escaping AnyResultBlock) {
+
+        }
+
+        func fetch(then handler: @escaping AnyResultBlock) {
+            fetchCalled = true
+
+            handler(repoResult)
+        }
+
+    }
+
+    class MockTCGSetsRepository: TCGSetsRepositoryProtocol {
         var fetchCalled = false
         var repoResult: Result<Any, URLError> = .failure(URLError(.badServerResponse))
 
@@ -58,20 +78,20 @@ class PokemonCollectionSetsViewModelTest: XCTestCase {
 
     var viewModelUnderTesting: PokemonCollectionSetsViewModel!
     var mockDelegate: MockDelegate!
-    var mocktcgSetRepo: MockRepository!
-    var mockUserSetRepo: MockRepository!
+    var mocktcgSetRepo: MockTCGSetsRepository!
+    var mockUserSetRepo: MockUserSetRepository!
 
     override func setUp() {
         mockFirebaseSet = FirebaseData(id: "", data: [mockUserSet])
-        mocktcgSetRepo = MockRepository()
-        mockUserSetRepo = MockRepository()
+        mocktcgSetRepo = MockTCGSetsRepository()
+        mockUserSetRepo = MockUserSetRepository()
         mockDelegate = MockDelegate()
         viewModelUnderTesting = PokemonCollectionSetsViewModel(pokemonCollectionViewModelDelegate: mockDelegate,
                                                                pokemonSetsRepository: mocktcgSetRepo,
                                                                userSetsRepository: mockUserSetRepo)
     }
 
-    func testUpdateViewCallsRepositoryFetch() {
+    func testFetchViewDataCallsRepositoryFetch() {
         viewModelUnderTesting.fetchViewData()
         let expectedResult = true
         let actualResult = mocktcgSetRepo.fetchCalled
