@@ -43,9 +43,7 @@ class CardDetailViewModel {
     }
 
     var nationalPokedexNumberLabel: String? {
-        guard let number = collectableCard.pokemonCard.nationalPokedexNumbers.first else {
-            return nil
-        }
+        guard let number = collectableCard.pokemonCard.nationalPokedexNumbers.first else { return nil }
         return String(format: "%03d", number)
     }
 

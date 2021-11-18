@@ -60,11 +60,6 @@ class CardsCollectionViewModel {
                 return
             }
         }
-
-//        userCardsRepository.fetch(itemWithID: setID) { [weak self ] result in
-//            self?.processUserCardsResults(withRepositoryResult: result)
-//        }
-
     }
 
     func configure(forSetID setID: String) {

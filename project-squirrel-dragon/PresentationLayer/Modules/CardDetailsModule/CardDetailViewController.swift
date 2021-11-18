@@ -12,7 +12,7 @@ class CardDetailViewController: UIViewController {
     // MARK: - Properties
     @IBOutlet private weak var doneButton: UIButton!
     @IBOutlet private weak var cancelButton: UIButton!
-    @IBOutlet weak var nationalPokedexNumberLabel: UILabel!
+    @IBOutlet private weak var nationalPokedexNumberLabel: UILabel!
     @IBOutlet private weak var cardImageView: UIImageView!
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var rarityLabel: UILabel!
@@ -22,42 +22,14 @@ class CardDetailViewController: UIViewController {
     @IBOutlet private weak var collectedNumberTextField: UITextField!
     @IBOutlet private weak var addButton: UIButton!
     @IBOutlet private weak var minusButton: UIButton!
-
     @IBOutlet private weak var pricesNumberLabel: UILabel!
     @IBOutlet private weak var cardFront: UIView!
     @IBOutlet private weak var cardBack: UIView!
     @IBOutlet private weak var card: UIView!
 
-
-    fileprivate func flipAnimation(inContainer viewContainer: UIView, fromView view1: UIView, toView view2: UIView, animationOption: UIView.AnimationOptions) {
-        //change hidden state half way through animation using delay
-        UIView.transition(with: viewContainer, duration: 0.5, options: [animationOption], animations:{
-            let delay = 0.25
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delay, execute: { () -> Void in
-                view1.isHidden = true
-                view2.isHidden = false
-            })
-        }, completion: nil)
-    }
-
-    @IBAction func flipCardButtonPressed(_ sender: UIButton) {
-
-        if cardBack.isHidden == true {
-            flipAnimation(inContainer: self.card,
-                          fromView: cardFront,
-                          toView: cardBack,
-                          animationOption: .transitionFlipFromRight)
-
-            } else if cardFront.isHidden == true {
-                flipAnimation(inContainer: self.card,
-                              fromView: cardBack,
-                              toView: cardFront,
-                              animationOption: .transitionFlipFromLeft)
-            }
-        }
-
     private lazy var viewModel = CardDetailViewModel()
 
+    // MARK: - Life Cycle Methods
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         card.layer.cornerRadius = StyleKit.Cards.cornerRadius
@@ -137,6 +109,21 @@ class CardDetailViewController: UIViewController {
         collectedNumberTextField.text = "\(viewModel.totalCardsCollected)"
     }
     // MARK: - Gestures
+    @IBAction func flipCardButtonPressed(_ sender: UIButton) {
+    if cardBack.isHidden {
+        flipAnimation(inContainer: self.card,
+                      fromView: cardFront,
+                      toView: cardBack,
+                      animationOption: .transitionFlipFromRight)
+
+        } else if cardFront.isHidden {
+            flipAnimation(inContainer: self.card,
+                          fromView: cardBack,
+                          toView: cardFront,
+                          animationOption: .transitionFlipFromLeft)
+        }
+    }
+
     @IBAction func addButtonPressed(_ sender: UIButton) {
         viewModel.addOneCard()
         configureTextField()
@@ -154,31 +141,37 @@ class CardDetailViewController: UIViewController {
     @IBAction func cancelButtonPressed(_ sender: UIButton) {
         callback?(nil, nil)
     }
+
+    // MARK: - Animations
+    fileprivate func flipAnimation(inContainer viewContainer: UIView, fromView view1: UIView, toView view2: UIView, animationOption: UIView.AnimationOptions) {
+        //change hidden state half way through animation using delay
+        UIView.transition(with: viewContainer, duration: 0.5, options: [animationOption], animations:{
+            let delay = 0.25
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delay, execute: { () -> Void in
+                view1.isHidden = true
+                view2.isHidden = false
+            })
+        }, completion: nil)
+    }
 }
 
 extension CardDetailViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        var textField = UITextField()
+        showAlertWithUITextField(titled: "Cards Collected",
+                                 withMessage: "How many have you got?",
+                                 andPlaceHolder: "\(viewModel.totalCardsCollected)",
+                                 handler: handleUpdateCardsCollected)
 
-        let alert = UIAlertController(title: "How many have you collected?", message: "", preferredStyle: .alert)
+    }
 
-        let actionOkay = UIAlertAction(title: "Done", style: .default) { (action) in
-            self.viewModel.totalCardsCollected = Int(textField.text!) ?? 0
+    func handleUpdateCardsCollected(textField: UITextField) -> (_ alertAction: UIAlertAction) -> Void {
+        return { _ in
+            self.viewModel.totalCardsCollected =  Int(textField.text ?? "0") ?? 0
             self.configureTextField()
         }
-
-        let actionCancel = UIAlertAction(title: "Cancel", style: .default) {_ in}
-
-        alert.addTextField { (alertTextField) in
-            alertTextField.placeholder = "\(self.viewModel.totalCardsCollected)"
-            textField = alertTextField
-            alertTextField.keyboardType = .numberPad
-        }
-
-        alert.addAction(actionCancel)
-        alert.addAction(actionOkay)
-        present(alert, animated: true, completion: nil)
     }
+
+    private func doNothing(action: UIAlertAction! = nil) {}
 }
 
 
