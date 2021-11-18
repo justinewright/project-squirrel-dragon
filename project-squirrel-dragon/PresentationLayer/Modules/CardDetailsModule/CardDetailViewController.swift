@@ -170,8 +170,6 @@ extension CardDetailViewController: UITextFieldDelegate {
             self.configureTextField()
         }
     }
-
-    private func doNothing(action: UIAlertAction! = nil) {}
 }
 
 
