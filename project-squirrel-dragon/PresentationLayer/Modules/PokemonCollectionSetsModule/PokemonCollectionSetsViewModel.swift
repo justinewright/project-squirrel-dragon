@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SelectMenu
 
 protocol PokemonCollectionViewModelDelegate: AnyObject {
     func didLoadPokemonCollectionSetsViewModel(_ pokemonCollectionSetsViewModel: PokemonCollectionSetsViewModel)
