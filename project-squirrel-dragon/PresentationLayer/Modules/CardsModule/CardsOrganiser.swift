@@ -13,7 +13,7 @@ class CardsOrganiser {
         case common = "Common"
         case uncommon = "Uncommon"
         case rare = "Rare"
-        case promo = "Common Uncommon Rare"
+        case promo = "Promo"
     }
 
     var collectableCards: [CollectableCard] = []

@@ -25,7 +25,7 @@ class CardsCollectionViewModel {
     private(set) var pokemonCards: [String: PokemonTCGCards] = [:]
     private(set) var userPokemonCards: [String: FirebaseUserCards] = [:]
     private var setID: String!
-
+    private (set) cardsOrganiser: CardsOrganiser!
     var collectableCards: [CollectableCard] {
         pokemonCards.map { CollectableCard.init(id: $0.key,
                                                 pokemonCard: $0.value,
@@ -52,9 +52,9 @@ class CardsCollectionViewModel {
                 }
 
                 let cards = pokemonCardsData.data
-                var aaa = Dictionary(uniqueKeysWithValues: cards.map { ($0.id, $0) })
-                aaa = [String: PokemonTCGCards](uniqueKeysWithValues: aaa.sorted{ $0.key < $1.key })
-                self?.pokemonCards = aaa
+                let unsortedDictionary = Dictionary(uniqueKeysWithValues: cards.map { ($0.id, $0) })
+                let sortedDictionary = [String: PokemonTCGCards](uniqueKeysWithValues: unsortedDictionary.sorted{ $0.value.nationalPokedexNumbers.first! < $1.value.nationalPokedexNumbers.first! })
+                self?.pokemonCards = sortedDictionary
 
                 self?.userCardsRepository.fetch(itemWithID: setID) { [weak self] result in
                     self?.processUserCardsResults(withRepositoryResult: result)
@@ -92,7 +92,7 @@ extension CardsCollectionViewModel {
             self?.processUserCardsResults(withRepositoryResult: result)
         }
     }
-//todo sort by codex number
+
     private func processUserCardsResults(withRepositoryResult result: Result<Any, URLError> ) {
         switch result {
         case .success(let userData):
@@ -103,6 +103,7 @@ extension CardsCollectionViewModel {
             self.userPokemonCards.removeAll()
 
             userPokemonCards = Dictionary(uniqueKeysWithValues: userCardsData.data.map { ($0.id, $0) })
+            cardsOrganiser = CardsOrganiser(collectableCards: collectableCards)
             self.delegate?.didLoadCardsCollectionViewModel(self)
         case .failure(let error):
             self.delegate?.didFailWithError(message: error.localizedDescription)
