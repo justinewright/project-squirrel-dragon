@@ -38,13 +38,15 @@ struct UserSetData: Codable {
     func toAnyObject() -> Any {
         return [
             "id": id,
-            "collectedCards": collectedCards
+            "collectedCards": collectedCards,
+            "cardData": cardData
         ]
     }
 
     enum CodingKeys: String, CodingKey {
             case id = "id"
             case collectedCards = "collectedCards"
+            case cardData = "cardData"
         }
 }
 
@@ -58,6 +60,7 @@ struct FirebaseCollectedCardData: Codable {
                 "collectedAmount": collectedAmount
             ]
     }
+    
     enum CodingKeys: String, CodingKey {
             case rarity = "rarity"
             case collectedAmount = "collectedAmount"

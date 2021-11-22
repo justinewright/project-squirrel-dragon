@@ -24,7 +24,6 @@ class CardsCollectionViewModel {
     // MARK: - Other Properties
     private(set) var pokemonCards: [String: PokemonTCGCards] = [:]
     private(set) var userPokemonCards: [String: FirebaseUserCards] = [:]
-    private var setKeys: [String] = []
     private var setID: String!
 
     var collectableCards: [CollectableCard] {
@@ -53,7 +52,10 @@ class CardsCollectionViewModel {
                 }
 
                 let cards = pokemonCardsData.data
-                self?.pokemonCards = Dictionary(uniqueKeysWithValues: cards.map { ($0.id, $0) })
+                var aaa = Dictionary(uniqueKeysWithValues: cards.map { ($0.id, $0) })
+                aaa = [String: PokemonTCGCards](uniqueKeysWithValues: aaa.sorted{ $0.key < $1.key })
+                self?.pokemonCards = aaa
+
                 self?.userCardsRepository.fetch(itemWithID: setID) { [weak self] result in
                     self?.processUserCardsResults(withRepositoryResult: result)
                 }
@@ -90,7 +92,7 @@ extension CardsCollectionViewModel {
             self?.processUserCardsResults(withRepositoryResult: result)
         }
     }
-
+//todo sort by codex number
     private func processUserCardsResults(withRepositoryResult result: Result<Any, URLError> ) {
         switch result {
         case .success(let userData):
@@ -107,3 +109,5 @@ extension CardsCollectionViewModel {
         }
     }
 }
+
+
