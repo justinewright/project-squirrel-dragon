@@ -54,11 +54,14 @@ class CardsCollectionViewModel {
 
                 let cards = pokemonCardsData.data
                 self?.pokemonCards = Dictionary(uniqueKeysWithValues: cards.map { ($0.id, $0) })
-                self?.delegate?.didLoadCardsCollectionViewModel(self!)
+                self?.userCardsRepository.fetch(itemWithID: setID) { [weak self] result in
+                    self?.processUserCardsResults(withRepositoryResult: result)
+                }
             case .failure(let error):
                 self?.delegate?.didFailWithError(message: error.localizedDescription)
                 return
             }
+
         }
     }
 

@@ -138,11 +138,20 @@ class CardsCollectionViewModelTests: XCTestCase {
         XCTAssertEqual(expectedResult, actualResult)
     }
 
-    func testFetchViewDataCallsUserSetsRepositoryFetchWhenSetIdNotSet() {
+    func testFetchViewDataCallsUserSetsRepositoryFetchWhenSetIdSet() {
+        mockTCGCardsRepository.repoResult = .success(PokemonCardsData(data: mockCardData))
         viewModelUnderTesting.configure(forSetID: "")
         viewModelUnderTesting.fetchViewData()
         let expectedResult = true
         let actualResult = mockUserCardsRepository.fetchCalled
+
+        XCTAssertEqual(expectedResult, actualResult)
+    }
+
+    func testPostCardCollectedNumberOfZeroCallsRemoveCard() {
+        viewModelUnderTesting.postCard(cardId: "", withCollectedNumber: 0)
+        let expectedResult = true
+        let actualResult = mockUserCardsRepository.deleteCalled
 
         XCTAssertEqual(expectedResult, actualResult)
     }
@@ -165,7 +174,8 @@ class CardsCollectionViewModelTests: XCTestCase {
     // MARK: - Delegate tests
     func testWhenDataSuccessfullyFetchedThenDelegateViewDidLoadCalled() {
         mockTCGCardsRepository.repoResult = .success(PokemonCardsData(data: mockCardData))
-        mockUserCardsRepository.repoResult = .success( FirebaseData(id: "", data: mockUserCardData))
+        mockUserCardsRepository.repoResult = .success(FirebaseData(id: "",
+                                                                   data: mockUserCardData))
         viewModelUnderTesting.configure(forSetID: "")
         viewModelUnderTesting.fetchViewData()
         let expectedResult = true
@@ -199,6 +209,39 @@ class CardsCollectionViewModelTests: XCTestCase {
         viewModelUnderTesting.fetchViewData()
         let expectedResult = false
         let actualResult = mockDelegate.didFailWithErrorCalled
+
+        XCTAssertEqual(expectedResult, actualResult)
+    }
+
+    func testWhenWrongDataTypeFetchedFromUserCardsRepoThenDelegateDidFailWithErrorCalled() {
+        mockTCGCardsRepository.repoResult = .success(PokemonCardsData(data: mockCardData))
+        mockUserCardsRepository.repoResult = .success("")
+        viewModelUnderTesting.configure(forSetID: "")
+        viewModelUnderTesting.fetchViewData()
+        let expectedResult = true
+        let actualResult = mockDelegate.didFailWithErrorCalled
+
+        XCTAssertEqual(expectedResult, actualResult)
+    }
+
+    func testWhenWrongDataTypeFetchedFromPokemonCardsRepoThenDelegateDidFailWithErrorCalled() {
+        mockTCGCardsRepository.repoResult = .success("")
+        mockUserCardsRepository.repoResult = .success("")
+        viewModelUnderTesting.configure(forSetID: "")
+        viewModelUnderTesting.fetchViewData()
+        let expectedResult = true
+        let actualResult = mockDelegate.didFailWithErrorCalled
+
+        XCTAssertEqual(expectedResult, actualResult)
+    }
+
+    func testWhenDataSuccessfullyLoadedThenCollectableCardsIsPopulated() {
+        mockTCGCardsRepository.repoResult = .success(PokemonCardsData(data: mockCardData))
+        mockUserCardsRepository.repoResult = .success( FirebaseData(id: "", data: mockUserCardData))
+        viewModelUnderTesting.configure(forSetID: "")
+        viewModelUnderTesting.fetchViewData()
+        let expectedResult = false
+        let actualResult = viewModelUnderTesting.collectableCards.isEmpty
 
         XCTAssertEqual(expectedResult, actualResult)
     }

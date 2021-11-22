@@ -52,13 +52,13 @@ class PokemonCollectionSetsViewModel {
                 }
                 let models = pokemonSetsData.data.map { PokemonCollectionSet(pokemonSetsData: $0) }
                 self?.pokemonCollectionSets = Dictionary(uniqueKeysWithValues: models.map { ($0.id, $0) })
+                self?.userSetsRepository.fetch { [weak self] result in
+                    self?.processUserSetsResults(withRepositoryResult: result)
+                }
             case .failure(let error):
                 self?.delegate?.didFailWithError(message: error.localizedDescription)
                 return
             }
-        }
-        userSetsRepository.fetch { [weak self] result in
-            self?.processUserSetsResults(withRepositoryResult: result)
         }
     }
 
