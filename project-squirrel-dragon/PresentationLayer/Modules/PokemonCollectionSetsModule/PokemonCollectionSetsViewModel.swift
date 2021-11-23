@@ -100,7 +100,7 @@ extension PokemonCollectionSetsViewModel {
     func addSet(setIDs: [String]) {
         setIDs.forEach {
             userSetsRepository.post(
-                UserSetData(id: $0, collectedCards: 0, cardData: []).toAnyObject(), withPostId: $0) { [weak self] result in
+                UserSetData(id: $0, collectedCards: 0).toAnyObject(), withPostId: $0) { [weak self] result in
                     self?.processUserSetsResults(withRepositoryResult: result)
                 }
         }
