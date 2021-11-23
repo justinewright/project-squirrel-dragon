@@ -24,7 +24,6 @@
 		21246D2C27232BAF00CC6DAC /* SetDetailsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21246D2B27232BAF00CC6DAC /* SetDetailsViewModelTests.swift */; };
 		21246D2D2723409700CC6DAC /* UserSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2185CEFC27202A8600499D31 /* UserSet.swift */; };
 		21246D2E2723409700CC6DAC /* SetDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2185CEFE27202C3C00499D31 /* SetDetails.swift */; };
-		21246D2F272340A000CC6DAC /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F20F12721D0D7003F4A5E /* DummyData.swift */; };
 		21246D302723414A00CC6DAC /* SetDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2185CEF2271FFB9900499D31 /* SetDetailsViewModel.swift */; };
 		212699F7273BB032002FA8C2 /* PokemonCardsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212699F6273BB032002FA8C2 /* PokemonCardsData.swift */; };
 		212699F9273BBB52002FA8C2 /* UserCardsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212699F8273BBB52002FA8C2 /* UserCardsData.swift */; };
@@ -59,7 +58,6 @@
 		217F20E727216E20003F4A5E /* CustomSearchBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21671E782715DDDC00A45571 /* CustomSearchBarViewController.xib */; };
 		217F20EE27217498003F4A5E /* TabBarBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F20ED27217498003F4A5E /* TabBarBuilder.swift */; };
 		217F20F027218FF6003F4A5E /* SetDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 217F20EF27218FF6003F4A5E /* SetDetails.storyboard */; };
-		217F20F22721D0D7003F4A5E /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F20F12721D0D7003F4A5E /* DummyData.swift */; };
 		2180A41A2726757100E0C0F4 /* UIVIewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2180A4192726757100E0C0F4 /* UIVIewController+Extension.swift */; };
 		218282D9274BB8E0003A329E /* CardDetailsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218282D8274BB8E0003A329E /* CardDetailsViewModelTests.swift */; };
 		218282DA274BC835003A329E /* CardDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21942CD92742721600F8C00D /* CardDetailViewModel.swift */; };
@@ -167,7 +165,6 @@
 		217F20E527216354003F4A5E /* NavigationBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBuilder.swift; sourceTree = "<group>"; };
 		217F20ED27217498003F4A5E /* TabBarBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarBuilder.swift; sourceTree = "<group>"; };
 		217F20EF27218FF6003F4A5E /* SetDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SetDetails.storyboard; sourceTree = "<group>"; };
-		217F20F12721D0D7003F4A5E /* DummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyData.swift; sourceTree = "<group>"; };
 		2180A4192726757100E0C0F4 /* UIVIewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIewController+Extension.swift"; sourceTree = "<group>"; };
 		218282D8274BB8E0003A329E /* CardDetailsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailsViewModelTests.swift; sourceTree = "<group>"; };
 		218282DB274C03C9003A329E /* CardsOrganiser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsOrganiser.swift; sourceTree = "<group>"; };
@@ -322,7 +319,6 @@
 				21044757270ACD1A00815441 /* Assets.xcassets */,
 				2171BC692710086000EBBA3E /* StyleKit.swift */,
 				218433732714176500EC2F5A /* project-squirrel-dragon-Bridging-Header.h */,
-				217F20F12721D0D7003F4A5E /* DummyData.swift */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -855,7 +851,6 @@
 				21843377271417D000EC2F5A /* CustomSearchBarViewModel.m in Sources */,
 				2185CEF52720037300499D31 /* SetDetailsModuleBuilder.swift in Sources */,
 				2185CEF3271FFB9900499D31 /* SetDetailsViewModel.swift in Sources */,
-				217F20F22721D0D7003F4A5E /* DummyData.swift in Sources */,
 				21671E6E2715D66200A45571 /* CustomSearchBarModuleBuilder.swift in Sources */,
 				2180A41A2726757100E0C0F4 /* UIVIewController+Extension.swift in Sources */,
 				21894FAB27283A5B0092AAB5 /* LoginModuleBuilder.swift in Sources */,
@@ -898,7 +893,6 @@
 				21748B4D2733C81B00D5EFA7 /* FirebaseApiClientProtocol.swift in Sources */,
 				21246D302723414A00CC6DAC /* SetDetailsViewModel.swift in Sources */,
 				218282D9274BB8E0003A329E /* CardDetailsViewModelTests.swift in Sources */,
-				21246D2F272340A000CC6DAC /* DummyData.swift in Sources */,
 				21246D2D2723409700CC6DAC /* UserSet.swift in Sources */,
 				21246D2E2723409700CC6DAC /* SetDetails.swift in Sources */,
 				21246D1B2723147900CC6DAC /* Strings+Extension.swift in Sources */,
