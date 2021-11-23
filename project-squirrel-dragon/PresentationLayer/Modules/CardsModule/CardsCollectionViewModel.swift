@@ -140,3 +140,14 @@ private extension CardsCollectionViewModel {
     }
 }
 
+// MARK: - Formatted Text
+
+extension CardsCollectionViewModel {
+    func progressString(forRarity rarity: CardsOrganiser.CardRarity) -> String {
+        guard let collectedCount = cardsOrganiser.dividedCollectedCardsByRarityCount[rarity],
+              let totalCount = cardsOrganiser.dividedTotalCardsByRarityCount[rarity] else {
+            return "-/-"
+        }
+        return "\(collectedCount)/\(totalCount)"
+    }
+}

@@ -25,6 +25,7 @@ class CardsOrganiser {
     fileprivate func countTotalCards(_ collectableCards: [CollectableCard]) {
         dividedTotalCardsByRarityCount[.promo] = totalCards
         for rarity in CardRarity.allCases {
+            if rarity == CardRarity.promo { continue }
             dividedTotalCardsByRarityCount[rarity] = numberOfCards(ofRarity: rarity)
             dividedTotalCardsByRarityCount[.promo]! -=   dividedTotalCardsByRarityCount[rarity]!
         }
@@ -33,36 +34,42 @@ class CardsOrganiser {
     fileprivate func countTotalCollectedCards(_ collectableCards: [CollectableCard]) {
         dividedCollectedCardsByRarityCount[.promo] = totalCollectedCards
         for rarity in CardRarity.allCases {
-            dividedTotalCardsByRarityCount[rarity] = numberOfCards(ofRarity: rarity)
-            dividedTotalCardsByRarityCount[.promo]! -=   dividedTotalCardsByRarityCount[rarity]!
+            if rarity == CardRarity.promo { continue }
+            dividedCollectedCardsByRarityCount[rarity] = numberOfCollectedCards(ofRarity: rarity)
+            dividedCollectedCardsByRarityCount[.promo]! -=   dividedCollectedCardsByRarityCount[rarity]!
         }
     }
 
     init(collectableCards: [CollectableCard]) {
         self.collectableCards = collectableCards
-        totalCards = collectableCards.first?.pokemonCard.set.total ?? 0
+        totalCards = collectableCards.count
         totalCollectedCards = numberOfCollectedCards
         countTotalCards(self.collectableCards)
         countTotalCollectedCards(self.collectableCards)
     }
 
     var numberOfCollectedCards: Int {
-        return collectableCards
+        let collectedCards = collectableCards
             .filter { cardInUserCollection($0) }
-            .count
+        let listOfPokedexNumbers = collectedCards.map { $0.pokemonCard.nationalPokedexNumbers.first! }
+        return Set(listOfPokedexNumbers).count
     }
 
     func numberOfCards(ofRarity rarity: CardRarity) -> Int {
         if rarity == .promo { return dividedTotalCardsByRarityCount[rarity] ?? 0 }
-        return collectableCards.filter { $0.pokemonCard.rarity?.contains(rarity.rawValue) ?? false }.count
+        return collectableCards
+            .filter { $0.pokemonCard.rarity?
+                .contains(rarity.rawValue) ?? false }
+            .count
     }
 
     func numberOfCollectedCards(ofRarity rarity: CardRarity) -> Int {
         if rarity == .promo { return dividedTotalCardsByRarityCount[rarity] ?? 0 }
-        return collectableCards.filter { card in
-            card.pokemonCard.rarity == rarity.rawValue &&
-            card.userCard != nil
-        }.count
+        return collectableCards
+            .filter { card in
+                card.pokemonCard.rarity == rarity.rawValue &&
+                card.userCard != nil }
+            .count
     }
 
     private func cardInUserCollection(_ card: CollectableCard) -> Bool {

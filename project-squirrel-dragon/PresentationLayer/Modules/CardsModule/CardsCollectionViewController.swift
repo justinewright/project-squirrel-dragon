@@ -136,11 +136,19 @@ extension CardsCollectionViewController: UICollectionViewDelegate {
 extension CardsCollectionViewController: CardsCollectionViewModelDelegate {
     func didLoadCardsCollectionViewModel(_ cardsCollectionViewModel: CardsCollectionViewModel) {
         self.collectionView.reloadData()
+        updateRarityProgress()
         activityIndicator.stopAnimating()
     }
 
     func didFailWithError(message: String) {
         self.showErrorAlert(titled: errorTitle, with: message)
         activityIndicator.stopAnimating()
+    }
+
+    private func updateRarityProgress() {
+        rareLabel.text = viewModel.progressString(forRarity: .rare)
+        commonLabel.text = viewModel.progressString(forRarity: .common)
+        uncommonLabel.text = viewModel.progressString(forRarity: .uncommon)
+        promoLabel.text = viewModel.progressString(forRarity: .promo)
     }
 }
