@@ -49,10 +49,9 @@ class CardsOrganiser {
     }
 
     var numberOfCollectedCards: Int {
-        let collectedCards = collectableCards
-            .filter { cardInUserCollection($0) }
-        let listOfPokedexNumbers = collectedCards.map { $0.pokemonCard.nationalPokedexNumbers.first! }
-        return Set(listOfPokedexNumbers).count
+        return collectableCards
+                    .filter { cardInUserCollection($0) }
+                    .count
     }
 
     func numberOfCards(ofRarity rarity: CardRarity) -> Int {

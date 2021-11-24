@@ -32,7 +32,7 @@ class CardsCollectionViewModel {
         var collectableCards = pokemonCards.map { CollectableCard.init(id: $0.key,
                                                 pokemonCard: $0.value,
                                                 userCard: userPokemonCards[$0.key]) }
-        collectableCards = collectableCards.sorted{ $0.pokemonCard.nationalPokedexNumbers.first! < $1.pokemonCard.nationalPokedexNumbers.first!}
+        collectableCards = collectableCards.sorted{ $0.pokemonCard.nationalPokedexNumbers?.first! ?? 9999 < $1.pokemonCard.nationalPokedexNumbers?.first! ?? 9999}
         return collectableCards
     }
 

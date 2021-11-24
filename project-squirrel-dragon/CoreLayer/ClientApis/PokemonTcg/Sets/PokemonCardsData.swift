@@ -30,7 +30,7 @@ struct CardData: Codable {
     let artist: String
     let rarity: String?
     let flavorText: String?
-    let nationalPokedexNumbers: [Int]
+    let nationalPokedexNumbers: [Int]?
     let images: CardImages
     let cardmarket: CardMarket
 
