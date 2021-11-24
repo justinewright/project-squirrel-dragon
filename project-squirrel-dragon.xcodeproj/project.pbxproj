@@ -58,6 +58,14 @@
 		217F20E727216E20003F4A5E /* CustomSearchBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21671E782715DDDC00A45571 /* CustomSearchBarViewController.xib */; };
 		217F20EE27217498003F4A5E /* TabBarBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F20ED27217498003F4A5E /* TabBarBuilder.swift */; };
 		217F20F027218FF6003F4A5E /* SetDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 217F20EF27218FF6003F4A5E /* SetDetails.storyboard */; };
+		217F3A5D274E6A350071C379 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 217F3A5B274E6A350071C379 /* Interface.storyboard */; };
+		217F3A5F274E6A380071C379 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 217F3A5E274E6A380071C379 /* Assets.xcassets */; };
+		217F3A65274E6A380071C379 /* project-squirrel-dragon Watch WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 217F3A64274E6A380071C379 /* project-squirrel-dragon Watch WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		217F3A6A274E6A380071C379 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F3A69274E6A380071C379 /* InterfaceController.swift */; };
+		217F3A6C274E6A380071C379 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F3A6B274E6A380071C379 /* ExtensionDelegate.swift */; };
+		217F3A6E274E6A380071C379 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F3A6D274E6A380071C379 /* ComplicationController.swift */; };
+		217F3A70274E6A390071C379 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 217F3A6F274E6A390071C379 /* Assets.xcassets */; };
+		217F3A74274E6A390071C379 /* project-squirrel-dragon Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 217F3A59274E6A350071C379 /* project-squirrel-dragon Watch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		2180A41A2726757100E0C0F4 /* UIVIewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2180A4192726757100E0C0F4 /* UIVIewController+Extension.swift */; };
 		218282D9274BB8E0003A329E /* CardDetailsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218282D8274BB8E0003A329E /* CardDetailsViewModelTests.swift */; };
 		218282DA274BC835003A329E /* CardDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21942CD92742721600F8C00D /* CardDetailViewModel.swift */; };
@@ -112,6 +120,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		217F3A66274E6A380071C379 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 21044743270ACD1900815441 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 217F3A63274E6A380071C379;
+			remoteInfo = "project-squirrel-dragon Watch WatchKit Extension";
+		};
+		217F3A72274E6A390071C379 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 21044743270ACD1900815441 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 217F3A58274E6A350071C379;
+			remoteInfo = "project-squirrel-dragon Watch";
+		};
 		2180A41B2726CCA700E0C0F4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 21044743270ACD1900815441 /* Project object */;
@@ -120,6 +142,31 @@
 			remoteInfo = "project-squirrel-dragon";
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		217F3A4F274E699D0071C379 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				217F3A74274E6A390071C379 /* project-squirrel-dragon Watch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		217F3A78274E6A390071C379 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				217F3A65274E6A380071C379 /* project-squirrel-dragon Watch WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0DCC459E541565BCEC57974D /* Pods-project-squirrel-dragon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project-squirrel-dragon.debug.xcconfig"; path = "Target Support Files/Pods-project-squirrel-dragon/Pods-project-squirrel-dragon.debug.xcconfig"; sourceTree = "<group>"; };
@@ -165,6 +212,15 @@
 		217F20E527216354003F4A5E /* NavigationBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBuilder.swift; sourceTree = "<group>"; };
 		217F20ED27217498003F4A5E /* TabBarBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarBuilder.swift; sourceTree = "<group>"; };
 		217F20EF27218FF6003F4A5E /* SetDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SetDetails.storyboard; sourceTree = "<group>"; };
+		217F3A59274E6A350071C379 /* project-squirrel-dragon Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "project-squirrel-dragon Watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		217F3A5C274E6A350071C379 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		217F3A5E274E6A380071C379 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		217F3A64274E6A380071C379 /* project-squirrel-dragon Watch WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "project-squirrel-dragon Watch WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		217F3A69274E6A380071C379 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		217F3A6B274E6A380071C379 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		217F3A6D274E6A380071C379 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		217F3A6F274E6A390071C379 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		217F3A71274E6A390071C379 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2180A4192726757100E0C0F4 /* UIVIewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIewController+Extension.swift"; sourceTree = "<group>"; };
 		218282D8274BB8E0003A329E /* CardDetailsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailsViewModelTests.swift; sourceTree = "<group>"; };
 		218282DB274C03C9003A329E /* CardsOrganiser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsOrganiser.swift; sourceTree = "<group>"; };
@@ -235,6 +291,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		217F3A61274E6A380071C379 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -243,6 +306,8 @@
 			children = (
 				2104474D270ACD1900815441 /* project-squirrel-dragon */,
 				21246D082723106C00CC6DAC /* project-squirrel-dragonTests */,
+				217F3A5A274E6A350071C379 /* project-squirrel-dragon Watch */,
+				217F3A68274E6A380071C379 /* project-squirrel-dragon Watch WatchKit Extension */,
 				2104474C270ACD1900815441 /* Products */,
 				21894F9A27281C9D0092AAB5 /* Frameworks */,
 				D14EAC81D45421D5E972B231 /* Pods */,
@@ -254,6 +319,8 @@
 			children = (
 				2104474B270ACD1900815441 /* project-squirrel-dragon.app */,
 				21246D072723106C00CC6DAC /* project-squirrel-dragonTests.xctest */,
+				217F3A59274E6A350071C379 /* project-squirrel-dragon Watch.app */,
+				217F3A64274E6A380071C379 /* project-squirrel-dragon Watch WatchKit Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -447,6 +514,27 @@
 			path = Navigation;
 			sourceTree = "<group>";
 		};
+		217F3A5A274E6A350071C379 /* project-squirrel-dragon Watch */ = {
+			isa = PBXGroup;
+			children = (
+				217F3A5B274E6A350071C379 /* Interface.storyboard */,
+				217F3A5E274E6A380071C379 /* Assets.xcassets */,
+			);
+			path = "project-squirrel-dragon Watch";
+			sourceTree = "<group>";
+		};
+		217F3A68274E6A380071C379 /* project-squirrel-dragon Watch WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				217F3A69274E6A380071C379 /* InterfaceController.swift */,
+				217F3A6B274E6A380071C379 /* ExtensionDelegate.swift */,
+				217F3A6D274E6A380071C379 /* ComplicationController.swift */,
+				217F3A6F274E6A390071C379 /* Assets.xcassets */,
+				217F3A71274E6A390071C379 /* Info.plist */,
+			);
+			path = "project-squirrel-dragon Watch WatchKit Extension";
+			sourceTree = "<group>";
+		};
 		2183225B271D86D200AD8CB5 /* src */ = {
 			isa = PBXGroup;
 			children = (
@@ -605,10 +693,12 @@
 				21044749270ACD1900815441 /* Resources */,
 				21044762270B09FD00815441 /* ShellScript */,
 				EC7B46BAE933A08CDD0E80CE /* [CP] Embed Pods Frameworks */,
+				217F3A4F274E699D0071C379 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				217F3A73274E6A390071C379 /* PBXTargetDependency */,
 			);
 			name = "project-squirrel-dragon";
 			packageProductDependencies = (
@@ -640,6 +730,40 @@
 			productReference = 21246D072723106C00CC6DAC /* project-squirrel-dragonTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		217F3A58274E6A350071C379 /* project-squirrel-dragon Watch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 217F3A79274E6A390071C379 /* Build configuration list for PBXNativeTarget "project-squirrel-dragon Watch" */;
+			buildPhases = (
+				217F3A57274E6A350071C379 /* Resources */,
+				217F3A78274E6A390071C379 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				217F3A67274E6A380071C379 /* PBXTargetDependency */,
+			);
+			name = "project-squirrel-dragon Watch";
+			productName = "project-squirrel-dragon Watch";
+			productReference = 217F3A59274E6A350071C379 /* project-squirrel-dragon Watch.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		217F3A63274E6A380071C379 /* project-squirrel-dragon Watch WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 217F3A75274E6A390071C379 /* Build configuration list for PBXNativeTarget "project-squirrel-dragon Watch WatchKit Extension" */;
+			buildPhases = (
+				217F3A60274E6A380071C379 /* Sources */,
+				217F3A61274E6A380071C379 /* Frameworks */,
+				217F3A62274E6A380071C379 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "project-squirrel-dragon Watch WatchKit Extension";
+			productName = "project-squirrel-dragon Watch WatchKit Extension";
+			productReference = 217F3A64274E6A380071C379 /* project-squirrel-dragon Watch WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -657,6 +781,12 @@
 					21246D062723106C00CC6DAC = {
 						CreatedOnToolsVersion = 13.0;
 						TestTargetID = 2104474A270ACD1900815441;
+					};
+					217F3A58274E6A350071C379 = {
+						CreatedOnToolsVersion = 13.0;
+					};
+					217F3A63274E6A380071C379 = {
+						CreatedOnToolsVersion = 13.0;
 					};
 				};
 			};
@@ -678,6 +808,8 @@
 			targets = (
 				2104474A270ACD1900815441 /* project-squirrel-dragon */,
 				21246D062723106C00CC6DAC /* project-squirrel-dragonTests */,
+				217F3A58274E6A350071C379 /* project-squirrel-dragon Watch */,
+				217F3A63274E6A380071C379 /* project-squirrel-dragon Watch WatchKit Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -709,6 +841,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		217F3A57274E6A350071C379 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				217F3A5F274E6A380071C379 /* Assets.xcassets in Resources */,
+				217F3A5D274E6A350071C379 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		217F3A62274E6A380071C379 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				217F3A70274E6A390071C379 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -909,9 +1058,29 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		217F3A60274E6A380071C379 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				217F3A6C274E6A380071C379 /* ExtensionDelegate.swift in Sources */,
+				217F3A6A274E6A380071C379 /* InterfaceController.swift in Sources */,
+				217F3A6E274E6A380071C379 /* ComplicationController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		217F3A67274E6A380071C379 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 217F3A63274E6A380071C379 /* project-squirrel-dragon Watch WatchKit Extension */;
+			targetProxy = 217F3A66274E6A380071C379 /* PBXContainerItemProxy */;
+		};
+		217F3A73274E6A390071C379 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 217F3A58274E6A350071C379 /* project-squirrel-dragon Watch */;
+			targetProxy = 217F3A72274E6A390071C379 /* PBXContainerItemProxy */;
+		};
 		2180A41C2726CCA700E0C0F4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2104474A270ACD1900815441 /* project-squirrel-dragon */;
@@ -934,6 +1103,14 @@
 				2104475A270ACD1A00815441 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		217F3A5B274E6A350071C379 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				217F3A5C274E6A350071C379 /* Base */,
+			);
+			name = Interface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1172,6 +1349,118 @@
 			};
 			name = Release;
 		};
+		217F3A76274E6A390071C379 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = X4RVCKBN8K;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "project-squirrel-dragon Watch WatchKit Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "project-squirrel-dragon Watch WatchKit Extension";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_WKExtensionDelegateClassName = "$(PRODUCT_MODULE_NAME).ExtensionDelegate";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.justFoxing.project-squirrel-dragon.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
+			};
+			name = Debug;
+		};
+		217F3A77274E6A390071C379 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = X4RVCKBN8K;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "project-squirrel-dragon Watch WatchKit Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "project-squirrel-dragon Watch WatchKit Extension";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_WKExtensionDelegateClassName = "$(PRODUCT_MODULE_NAME).ExtensionDelegate";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.justFoxing.project-squirrel-dragon.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
+			};
+			name = Release;
+		};
+		217F3A7A274E6A390071C379 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = X4RVCKBN8K;
+				GENERATE_INFOPLIST_FILE = YES;
+				IBSC_MODULE = project_squirrel_dragon_Watch_WatchKit_Extension;
+				INFOPLIST_KEY_CFBundleDisplayName = "project-squirrel-dragon Watch";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.justFoxing.project-squirrel-dragon";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.justFoxing.project-squirrel-dragon.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
+			};
+			name = Debug;
+		};
+		217F3A7B274E6A390071C379 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = X4RVCKBN8K;
+				GENERATE_INFOPLIST_FILE = YES;
+				IBSC_MODULE = project_squirrel_dragon_Watch_WatchKit_Extension;
+				INFOPLIST_KEY_CFBundleDisplayName = "project-squirrel-dragon Watch";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.justFoxing.project-squirrel-dragon";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.justFoxing.project-squirrel-dragon.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1198,6 +1487,24 @@
 			buildConfigurations = (
 				21246D0E2723106C00CC6DAC /* Debug */,
 				21246D0F2723106C00CC6DAC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		217F3A75274E6A390071C379 /* Build configuration list for PBXNativeTarget "project-squirrel-dragon Watch WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				217F3A76274E6A390071C379 /* Debug */,
+				217F3A77274E6A390071C379 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		217F3A79274E6A390071C379 /* Build configuration list for PBXNativeTarget "project-squirrel-dragon Watch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				217F3A7A274E6A390071C379 /* Debug */,
+				217F3A7B274E6A390071C379 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

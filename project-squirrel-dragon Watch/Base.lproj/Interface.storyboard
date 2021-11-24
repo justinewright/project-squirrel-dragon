@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="19162" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch38"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="19044"/>
+    </dependencies>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller contentMode="scaleAspectFit" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="project_squirrel_dragon_Watch" customModuleProvider="target">
+                    <items>
+                        <group width="1" alignment="left" layout="overlap" id="1HB-lt-GMM" userLabel="Root Group">
+                            <items>
+                                <group width="1" height="1" alignment="left" layout="vertical" id="FPh-Yq-gnQ" userLabel="Buttons Group">
+                                    <items>
+                                        <group width="1" height="0.5" alignment="left" id="6w7-Ja-LKQ">
+                                            <items>
+                                                <button width="0.29999999999999999" height="0.5" alignment="left" backgroundImage="square.dashed" catalog="system" id="Jzd-aA-yYu"/>
+                                                <button width="0.29999999999999999" height="0.5" alignment="right" backgroundImage="square.dashed" catalog="system" id="AvQ-Ez-Usb"/>
+                                            </items>
+                                        </group>
+                                        <group width="1" height="0.5" alignment="left" id="St7-kN-IYE">
+                                            <items>
+                                                <button width="0.29999999999999999" height="0.5" alignment="left" verticalAlignment="bottom" backgroundImage="square.dashed" catalog="system" id="xgi-3E-q7u"/>
+                                                <button width="0.29999999999999999" height="0.5" alignment="right" verticalAlignment="bottom" backgroundImage="square.dashed.inset.filled" catalog="system" id="dab-id-HCd">
+                                                    <color key="titleColor" red="0.65092947700000003" green="0.5274928713" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </button>
+                                            </items>
+                                        </group>
+                                    </items>
+                                </group>
+                                <group width="0.90000000000000002" height="0.90000000000000002" alignment="center" layout="vertical" id="1Vv-ZV-mN4">
+                                    <items>
+                                        <group width="1" height="0.29999999999999999" alignment="left" id="DJj-rP-PPb">
+                                            <items>
+                                                <imageView width="0.20000000000000001" height="0.5" alignment="center" verticalAlignment="center" image="paperplane" catalog="system" contentMode="scaleAspectFit" id="57a-L0-d8B">
+                                                    <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </imageView>
+                                                <label alignment="center" verticalAlignment="center" text="Title" id="Zpq-BN-sB1">
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </label>
+                                            </items>
+                                        </group>
+                                        <label alignment="center" verticalAlignment="center" text="200" id="VVo-OB-Ui4">
+                                            <fontDescription key="font" style="UICTFontTextStyleTitle1"/>
+                                        </label>
+                                        <label alignment="center" verticalAlignment="bottom" text="Label" id="Hac-ix-pwc">
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <fontDescription key="font" style="UICTFontTextStyleCaption1"/>
+                                        </label>
+                                    </items>
+                                </group>
+                            </items>
+                        </group>
+                    </items>
+                    <edgeInsets key="margins" left="0.0" right="1" top="0.0" bottom="0.0"/>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="49" y="44"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="paperplane" catalog="system" width="128" height="121"/>
+        <image name="square.dashed" catalog="system" width="128" height="114"/>
+        <image name="square.dashed.inset.filled" catalog="system" width="128" height="114"/>
+    </resources>
+</document>
