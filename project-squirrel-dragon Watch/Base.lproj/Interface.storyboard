@@ -17,14 +17,14 @@
                                     <items>
                                         <group width="1" height="0.5" alignment="left" id="6w7-Ja-LKQ">
                                             <items>
-                                                <button width="0.29999999999999999" height="0.5" alignment="left" backgroundImage="square.dashed" catalog="system" id="Jzd-aA-yYu"/>
-                                                <button width="0.29999999999999999" height="0.5" alignment="right" backgroundImage="square.dashed" catalog="system" id="AvQ-Ez-Usb"/>
+                                                <button width="40" height="40" alignment="left" backgroundImage="square.dashed" catalog="system" id="Jzd-aA-yYu"/>
+                                                <button width="40" height="40" alignment="right" backgroundImage="square.dashed" catalog="system" id="AvQ-Ez-Usb"/>
                                             </items>
                                         </group>
                                         <group width="1" height="0.5" alignment="left" id="St7-kN-IYE">
                                             <items>
-                                                <button width="0.29999999999999999" height="0.5" alignment="left" verticalAlignment="bottom" backgroundImage="square.dashed" catalog="system" id="xgi-3E-q7u"/>
-                                                <button width="0.29999999999999999" height="0.5" alignment="right" verticalAlignment="bottom" backgroundImage="square.dashed.inset.filled" catalog="system" id="dab-id-HCd">
+                                                <button width="40" height="40" alignment="left" verticalAlignment="bottom" backgroundImage="square.dashed" catalog="system" id="xgi-3E-q7u"/>
+                                                <button width="40" height="40" alignment="right" verticalAlignment="bottom" backgroundImage="square.dashed.inset.filled" catalog="system" id="dab-id-HCd">
                                                     <color key="titleColor" red="0.65092947700000003" green="0.5274928713" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="backgroundColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </button>
@@ -34,9 +34,9 @@
                                 </group>
                                 <group width="0.90000000000000002" height="0.90000000000000002" alignment="center" layout="vertical" id="1Vv-ZV-mN4">
                                     <items>
-                                        <group width="1" height="0.29999999999999999" alignment="left" id="DJj-rP-PPb">
+                                        <group width="1" height="0.20000000000000001" alignment="left" verticalAlignment="center" id="DJj-rP-PPb">
                                             <items>
-                                                <imageView width="0.20000000000000001" height="0.5" alignment="center" verticalAlignment="center" image="paperplane" catalog="system" contentMode="scaleAspectFit" id="57a-L0-d8B">
+                                                <imageView width="0.20000000000000001" height="0.69999999999999996" alignment="center" verticalAlignment="center" image="paperplane" catalog="system" contentMode="scaleAspectFit" id="57a-L0-d8B">
                                                     <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </imageView>
                                                 <label alignment="center" verticalAlignment="center" text="Title" id="Zpq-BN-sB1">
