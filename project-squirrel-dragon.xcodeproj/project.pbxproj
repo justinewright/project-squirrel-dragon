@@ -24,7 +24,6 @@
 		21246D2C27232BAF00CC6DAC /* SetDetailsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21246D2B27232BAF00CC6DAC /* SetDetailsViewModelTests.swift */; };
 		21246D2D2723409700CC6DAC /* UserSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2185CEFC27202A8600499D31 /* UserSet.swift */; };
 		21246D2E2723409700CC6DAC /* SetDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2185CEFE27202C3C00499D31 /* SetDetails.swift */; };
-		21246D2F272340A000CC6DAC /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F20F12721D0D7003F4A5E /* DummyData.swift */; };
 		21246D302723414A00CC6DAC /* SetDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2185CEF2271FFB9900499D31 /* SetDetailsViewModel.swift */; };
 		212699F7273BB032002FA8C2 /* PokemonCardsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212699F6273BB032002FA8C2 /* PokemonCardsData.swift */; };
 		212699F9273BBB52002FA8C2 /* UserCardsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212699F8273BBB52002FA8C2 /* UserCardsData.swift */; };
@@ -38,10 +37,6 @@
 		21667082270F33DB00B6A874 /* PokemonCollectionSetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21667080270F33DB00B6A874 /* PokemonCollectionSetCell.swift */; };
 		21667083270F33DB00B6A874 /* PokemonCollectionSetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21667081270F33DB00B6A874 /* PokemonCollectionSetCell.xib */; };
 		21667086270F381300B6A874 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21667085270F381300B6A874 /* UIImageView+Extension.swift */; };
-		2166D82B272C16A500E3ABD1 /* SelectableSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218D7167272AF7870056CB22 /* SelectableSet.swift */; };
-		2166D82D272C185000E3ABD1 /* SelectMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2166D82C272C185000E3ABD1 /* SelectMenuViewModel.swift */; };
-		2166D82E272C186800E3ABD1 /* SelectMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2166D82C272C185000E3ABD1 /* SelectMenuViewModel.swift */; };
-		2166D832272C1A3500E3ABD1 /* SelectMenuViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2166D831272C1A3500E3ABD1 /* SelectMenuViewModelTests.swift */; };
 		21671E6B2715CACA00A45571 /* SearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 21671E692715CACA00A45571 /* SearchTableViewCell.m */; };
 		21671E6C2715CACA00A45571 /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21671E6A2715CACA00A45571 /* SearchTableViewCell.xib */; };
 		21671E6E2715D66200A45571 /* CustomSearchBarModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21671E6D2715D66200A45571 /* CustomSearchBarModuleBuilder.swift */; };
@@ -54,7 +49,6 @@
 		216ADAF6270DBA0700D61E92 /* RepositoryContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216ADAF5270DBA0700D61E92 /* RepositoryContracts.swift */; };
 		216C827F273AF79C00E9E554 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21AFD33727394DC100699AF5 /* Endpoint.swift */; };
 		2171BC6A2710086000EBBA3E /* StyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2171BC692710086000EBBA3E /* StyleKit.swift */; };
-		21734E8E272569C80060B0F1 /* SearchBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21734E8D272569C80060B0F1 /* SearchBarTests.swift */; };
 		21748B4D2733C81B00D5EFA7 /* FirebaseApiClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A19602272968FB00912A52 /* FirebaseApiClientProtocol.swift */; };
 		21748B4E2733C82400D5EFA7 /* UserPokemonDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217901CC2731980600A8BCB5 /* UserPokemonDataRepository.swift */; };
 		217901CB27315AF100A8BCB5 /* SelectMenuModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217901CA27315AF100A8BCB5 /* SelectMenuModuleBuilder.swift */; };
@@ -64,8 +58,10 @@
 		217F20E727216E20003F4A5E /* CustomSearchBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21671E782715DDDC00A45571 /* CustomSearchBarViewController.xib */; };
 		217F20EE27217498003F4A5E /* TabBarBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F20ED27217498003F4A5E /* TabBarBuilder.swift */; };
 		217F20F027218FF6003F4A5E /* SetDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 217F20EF27218FF6003F4A5E /* SetDetails.storyboard */; };
-		217F20F22721D0D7003F4A5E /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F20F12721D0D7003F4A5E /* DummyData.swift */; };
 		2180A41A2726757100E0C0F4 /* UIVIewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2180A4192726757100E0C0F4 /* UIVIewController+Extension.swift */; };
+		218282D9274BB8E0003A329E /* CardDetailsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218282D8274BB8E0003A329E /* CardDetailsViewModelTests.swift */; };
+		218282DA274BC835003A329E /* CardDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21942CD92742721600F8C00D /* CardDetailViewModel.swift */; };
+		218282DC274C03C9003A329E /* CardsOrganiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218282DB274C03C9003A329E /* CardsOrganiser.swift */; };
 		21843377271417D000EC2F5A /* CustomSearchBarViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 21843376271417D000EC2F5A /* CustomSearchBarViewModel.m */; };
 		2185CEF0271FFB7300499D31 /* SetDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2185CEEE271FFB7300499D31 /* SetDetailsViewController.swift */; };
 		2185CEF3271FFB9900499D31 /* SetDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2185CEF2271FFB9900499D31 /* SetDetailsViewModel.swift */; };
@@ -86,7 +82,6 @@
 		21894FAF272840E20092AAB5 /* HomePageBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21894FAE272840E20092AAB5 /* HomePageBuilder.swift */; };
 		21894FB227284F4F0092AAB5 /* AuthenticatorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21894FB127284F4F0092AAB5 /* AuthenticatorService.swift */; };
 		218CF2212718A8140012F8E1 /* FilterableDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 218CF2202718A8140012F8E1 /* FilterableDataSource.m */; };
-		218D7168272AF7870056CB22 /* SelectableSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218D7167272AF7870056CB22 /* SelectableSet.swift */; };
 		218D716B272AFBCB0056CB22 /* SelectableSetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218D7169272AFBCB0056CB22 /* SelectableSetCell.swift */; };
 		218D716C272AFBCB0056CB22 /* SelectableSetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 218D716A272AFBCB0056CB22 /* SelectableSetCell.xib */; };
 		21942CD62742630100F8C00D /* CardDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21942CD52742630100F8C00D /* CardDetail.storyboard */; };
@@ -112,6 +107,8 @@
 		21FC0B5E273C24760097B467 /* CollectableCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FC0B5D273C24760097B467 /* CollectableCard.swift */; };
 		21FC0B60273C265D0097B467 /* CardsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FC0B5F273C265D0097B467 /* CardsCollectionViewController.swift */; };
 		21FC0B66273C29BB0097B467 /* CardsModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FC0B65273C29BB0097B467 /* CardsModuleBuilder.swift */; };
+		5CDBF1C479990DD783B3D4C6 /* Pods_project_squirrel_dragon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF6F59FC3C1AE0D2168DD48A /* Pods_project_squirrel_dragon.framework */; };
+		E5D9E25F6BE7AFFEF5B7DC31 /* Pods_project_squirrel_dragonTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E517442AA57A2D709D85C794 /* Pods_project_squirrel_dragonTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,6 +122,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0DCC459E541565BCEC57974D /* Pods-project-squirrel-dragon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project-squirrel-dragon.debug.xcconfig"; path = "Target Support Files/Pods-project-squirrel-dragon/Pods-project-squirrel-dragon.debug.xcconfig"; sourceTree = "<group>"; };
 		2104474B270ACD1900815441 /* project-squirrel-dragon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "project-squirrel-dragon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2104474E270ACD1900815441 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		21044750270ACD1900815441 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -147,8 +145,6 @@
 		21667080270F33DB00B6A874 /* PokemonCollectionSetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCollectionSetCell.swift; sourceTree = "<group>"; };
 		21667081270F33DB00B6A874 /* PokemonCollectionSetCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PokemonCollectionSetCell.xib; sourceTree = "<group>"; };
 		21667085270F381300B6A874 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
-		2166D82C272C185000E3ABD1 /* SelectMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMenuViewModel.swift; sourceTree = "<group>"; };
-		2166D831272C1A3500E3ABD1 /* SelectMenuViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMenuViewModelTests.swift; sourceTree = "<group>"; };
 		21671E682715CACA00A45571 /* SearchTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchTableViewCell.h; sourceTree = "<group>"; };
 		21671E692715CACA00A45571 /* SearchTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchTableViewCell.m; sourceTree = "<group>"; };
 		21671E6A2715CACA00A45571 /* SearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
@@ -163,15 +159,15 @@
 		216ADAF2270DAD9900D61E92 /* PokemonCollectionSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCollectionSet.swift; sourceTree = "<group>"; };
 		216ADAF5270DBA0700D61E92 /* RepositoryContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryContracts.swift; sourceTree = "<group>"; };
 		2171BC692710086000EBBA3E /* StyleKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleKit.swift; sourceTree = "<group>"; };
-		21734E8D272569C80060B0F1 /* SearchBarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarTests.swift; sourceTree = "<group>"; };
 		217901CA27315AF100A8BCB5 /* SelectMenuModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMenuModuleBuilder.swift; sourceTree = "<group>"; };
 		217901CC2731980600A8BCB5 /* UserPokemonDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPokemonDataRepository.swift; sourceTree = "<group>"; };
 		217E8E312732CFD500A935C2 /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
 		217F20E527216354003F4A5E /* NavigationBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBuilder.swift; sourceTree = "<group>"; };
 		217F20ED27217498003F4A5E /* TabBarBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarBuilder.swift; sourceTree = "<group>"; };
 		217F20EF27218FF6003F4A5E /* SetDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SetDetails.storyboard; sourceTree = "<group>"; };
-		217F20F12721D0D7003F4A5E /* DummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyData.swift; sourceTree = "<group>"; };
 		2180A4192726757100E0C0F4 /* UIVIewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIewController+Extension.swift"; sourceTree = "<group>"; };
+		218282D8274BB8E0003A329E /* CardDetailsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailsViewModelTests.swift; sourceTree = "<group>"; };
+		218282DB274C03C9003A329E /* CardsOrganiser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsOrganiser.swift; sourceTree = "<group>"; };
 		218433732714176500EC2F5A /* project-squirrel-dragon-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "project-squirrel-dragon-Bridging-Header.h"; path = "project-squirrel-dragon/SupportingFiles/project-squirrel-dragon-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		21843376271417D000EC2F5A /* CustomSearchBarViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomSearchBarViewModel.m; sourceTree = "<group>"; };
 		21843378271417FD00EC2F5A /* CustomSearchBarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomSearchBarViewController.h; sourceTree = "<group>"; };
@@ -192,7 +188,6 @@
 		21894FB127284F4F0092AAB5 /* AuthenticatorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatorService.swift; sourceTree = "<group>"; };
 		218CF21F2718A8140012F8E1 /* FilterableDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterableDataSource.h; sourceTree = "<group>"; };
 		218CF2202718A8140012F8E1 /* FilterableDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilterableDataSource.m; sourceTree = "<group>"; };
-		218D7167272AF7870056CB22 /* SelectableSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableSet.swift; sourceTree = "<group>"; };
 		218D7169272AFBCB0056CB22 /* SelectableSetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableSetCell.swift; sourceTree = "<group>"; };
 		218D716A272AFBCB0056CB22 /* SelectableSetCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectableSetCell.xib; sourceTree = "<group>"; };
 		21942CD52742630100F8C00D /* CardDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CardDetail.storyboard; sourceTree = "<group>"; };
@@ -213,6 +208,11 @@
 		21FC0B5D273C24760097B467 /* CollectableCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectableCard.swift; sourceTree = "<group>"; };
 		21FC0B5F273C265D0097B467 /* CardsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsCollectionViewController.swift; sourceTree = "<group>"; };
 		21FC0B65273C29BB0097B467 /* CardsModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsModuleBuilder.swift; sourceTree = "<group>"; };
+		AF6F59FC3C1AE0D2168DD48A /* Pods_project_squirrel_dragon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_project_squirrel_dragon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4AA85590F65EC6F3E195559 /* Pods-project-squirrel-dragonTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project-squirrel-dragonTests.release.xcconfig"; path = "Target Support Files/Pods-project-squirrel-dragonTests/Pods-project-squirrel-dragonTests.release.xcconfig"; sourceTree = "<group>"; };
+		E0AF2BCC16F6AC105747FBDC /* Pods-project-squirrel-dragon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project-squirrel-dragon.release.xcconfig"; path = "Target Support Files/Pods-project-squirrel-dragon/Pods-project-squirrel-dragon.release.xcconfig"; sourceTree = "<group>"; };
+		E517442AA57A2D709D85C794 /* Pods_project_squirrel_dragonTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_project_squirrel_dragonTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F6C28B5C42BCD52220BB3745 /* Pods-project-squirrel-dragonTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project-squirrel-dragonTests.debug.xcconfig"; path = "Target Support Files/Pods-project-squirrel-dragonTests/Pods-project-squirrel-dragonTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +223,7 @@
 				21894F9C27281C9D0092AAB5 /* FirebaseAnalyticsSwift-Beta in Frameworks */,
 				21894F972728191C0092AAB5 /* FirebaseDatabaseSwift-Beta in Frameworks */,
 				21894F952728191C0092AAB5 /* FirebaseAuth in Frameworks */,
+				5CDBF1C479990DD783B3D4C6 /* Pods_project_squirrel_dragon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,6 +231,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5D9E25F6BE7AFFEF5B7DC31 /* Pods_project_squirrel_dragonTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,6 +245,7 @@
 				21246D082723106C00CC6DAC /* project-squirrel-dragonTests */,
 				2104474C270ACD1900815441 /* Products */,
 				21894F9A27281C9D0092AAB5 /* Frameworks */,
+				D14EAC81D45421D5E972B231 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -316,7 +319,6 @@
 				21044757270ACD1A00815441 /* Assets.xcassets */,
 				2171BC692710086000EBBA3E /* StyleKit.swift */,
 				218433732714176500EC2F5A /* project-squirrel-dragon-Bridging-Header.h */,
-				217F20F12721D0D7003F4A5E /* DummyData.swift */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -324,9 +326,8 @@
 		21246D082723106C00CC6DAC /* project-squirrel-dragonTests */ = {
 			isa = PBXGroup;
 			children = (
+				218282D8274BB8E0003A329E /* CardDetailsViewModelTests.swift */,
 				21C8C657273E8CDD00363D79 /* CardsCollectionViewModelTests.swift */,
-				2166D831272C1A3500E3ABD1 /* SelectMenuViewModelTests.swift */,
-				21734E8D272569C80060B0F1 /* SearchBarTests.swift */,
 				21246D2B27232BAF00CC6DAC /* SetDetailsViewModelTests.swift */,
 				21246D1C27232B1B00CC6DAC /* PokemonCollectionSetsViewModelTests.swift */,
 			);
@@ -342,6 +343,7 @@
 				21FC0B5F273C265D0097B467 /* CardsCollectionViewController.swift */,
 				21FC0B65273C29BB0097B467 /* CardsModuleBuilder.swift */,
 				2169DCAB273CFE6F002226C5 /* CardsCollectionViewModel.swift */,
+				218282DB274C03C9003A329E /* CardsOrganiser.swift */,
 			);
 			path = CardsModule;
 			sourceTree = "<group>";
@@ -415,7 +417,6 @@
 				216ADAF2270DAD9900D61E92 /* PokemonCollectionSet.swift */,
 				2185CEFC27202A8600499D31 /* UserSet.swift */,
 				2185CEFE27202C3C00499D31 /* SetDetails.swift */,
-				218D7167272AF7870056CB22 /* SelectableSet.swift */,
 				212699FE273BCC1B002FA8C2 /* UserCard.swift */,
 				21FC0B5D273C24760097B467 /* CollectableCard.swift */,
 			);
@@ -495,6 +496,8 @@
 		21894F9A27281C9D0092AAB5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AF6F59FC3C1AE0D2168DD48A /* Pods_project_squirrel_dragon.framework */,
+				E517442AA57A2D709D85C794 /* Pods_project_squirrel_dragonTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -573,10 +576,20 @@
 				21B375B1272AE03800CC6758 /* SelectMenuViewController.swift */,
 				218D7169272AFBCB0056CB22 /* SelectableSetCell.swift */,
 				218D716A272AFBCB0056CB22 /* SelectableSetCell.xib */,
-				2166D82C272C185000E3ABD1 /* SelectMenuViewModel.swift */,
 				217901CA27315AF100A8BCB5 /* SelectMenuModuleBuilder.swift */,
 			);
 			path = SelectMenuModule;
+			sourceTree = "<group>";
+		};
+		D14EAC81D45421D5E972B231 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0DCC459E541565BCEC57974D /* Pods-project-squirrel-dragon.debug.xcconfig */,
+				E0AF2BCC16F6AC105747FBDC /* Pods-project-squirrel-dragon.release.xcconfig */,
+				F6C28B5C42BCD52220BB3745 /* Pods-project-squirrel-dragonTests.debug.xcconfig */,
+				D4AA85590F65EC6F3E195559 /* Pods-project-squirrel-dragonTests.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -586,10 +599,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2104475F270ACD1A00815441 /* Build configuration list for PBXNativeTarget "project-squirrel-dragon" */;
 			buildPhases = (
+				A6325A5EFB274FC4555FB6A2 /* [CP] Check Pods Manifest.lock */,
 				21044747270ACD1900815441 /* Sources */,
 				21044748270ACD1900815441 /* Frameworks */,
 				21044749270ACD1900815441 /* Resources */,
 				21044762270B09FD00815441 /* ShellScript */,
+				EC7B46BAE933A08CDD0E80CE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -609,9 +624,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 21246D0D2723106C00CC6DAC /* Build configuration list for PBXNativeTarget "project-squirrel-dragonTests" */;
 			buildPhases = (
+				C8DFA6B71F615FBE5AFC8B1B /* [CP] Check Pods Manifest.lock */,
 				21246D032723106C00CC6DAC /* Sources */,
 				21246D042723106C00CC6DAC /* Frameworks */,
 				21246D052723106C00CC6DAC /* Resources */,
+				B4E44D72A01DE8CE59A4FFC3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -619,8 +636,6 @@
 				2180A41C2726CCA700E0C0F4 /* PBXTargetDependency */,
 			);
 			name = "project-squirrel-dragonTests";
-			packageProductDependencies = (
-			);
 			productName = "project-squirrel-dragonTests";
 			productReference = 21246D072723106C00CC6DAC /* project-squirrel-dragonTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -717,6 +732,84 @@
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
+		A6325A5EFB274FC4555FB6A2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-project-squirrel-dragon-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B4E44D72A01DE8CE59A4FFC3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-project-squirrel-dragonTests/Pods-project-squirrel-dragonTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-project-squirrel-dragonTests/Pods-project-squirrel-dragonTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-project-squirrel-dragonTests/Pods-project-squirrel-dragonTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C8DFA6B71F615FBE5AFC8B1B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-project-squirrel-dragonTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EC7B46BAE933A08CDD0E80CE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-project-squirrel-dragon/Pods-project-squirrel-dragon-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-project-squirrel-dragon/Pods-project-squirrel-dragon-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-project-squirrel-dragon/Pods-project-squirrel-dragon-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -748,7 +841,6 @@
 				21B375B2272AE03800CC6758 /* SelectMenuViewController.swift in Sources */,
 				216ADAF6270DBA0700D61E92 /* RepositoryContracts.swift in Sources */,
 				216ADADA270D6FFA00D61E92 /* PokemonSetsData.swift in Sources */,
-				2166D82D272C185000E3ABD1 /* SelectMenuViewModel.swift in Sources */,
 				21894FA0272820260092AAB5 /* LoginViewController.swift in Sources */,
 				21FC0B66273C29BB0097B467 /* CardsModuleBuilder.swift in Sources */,
 				21894FA92728275F0092AAB5 /* AnonymousAuthenticator.swift in Sources */,
@@ -759,7 +851,6 @@
 				21843377271417D000EC2F5A /* CustomSearchBarViewModel.m in Sources */,
 				2185CEF52720037300499D31 /* SetDetailsModuleBuilder.swift in Sources */,
 				2185CEF3271FFB9900499D31 /* SetDetailsViewModel.swift in Sources */,
-				217F20F22721D0D7003F4A5E /* DummyData.swift in Sources */,
 				21671E6E2715D66200A45571 /* CustomSearchBarModuleBuilder.swift in Sources */,
 				2180A41A2726757100E0C0F4 /* UIVIewController+Extension.swift in Sources */,
 				21894FAB27283A5B0092AAB5 /* LoginModuleBuilder.swift in Sources */,
@@ -775,9 +866,9 @@
 				216ADAE9270DA9F200D61E92 /* TCGPokemonRepository.swift in Sources */,
 				21942CDA2742721600F8C00D /* CardDetailViewModel.swift in Sources */,
 				2166707C270F0E1000B6A874 /* PokemonCollectionSetsModuleBuilder.swift in Sources */,
+				218282DC274C03C9003A329E /* CardsOrganiser.swift in Sources */,
 				21AFD33C27394F6E00699AF5 /* URLSession+Extension.swift in Sources */,
 				212699FF273BCC1B002FA8C2 /* UserCard.swift in Sources */,
-				218D7168272AF7870056CB22 /* SelectableSet.swift in Sources */,
 				21FC0B5E273C24760097B467 /* CollectableCard.swift in Sources */,
 				21667076270F0C8F00B6A874 /* PokemonCollectionSetsViewModel.swift in Sources */,
 				2185CEFD27202A8600499D31 /* UserSet.swift in Sources */,
@@ -791,6 +882,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				218282DA274BC835003A329E /* CardDetailViewModel.swift in Sources */,
 				21C8C65B273EA9F500363D79 /* UserCard.swift in Sources */,
 				21C8C65C273EA9F500363D79 /* CollectableCard.swift in Sources */,
 				21C8C65A273E95A300363D79 /* PokemonCardsData.swift in Sources */,
@@ -799,12 +891,9 @@
 				21AFD33F273964D700699AF5 /* PokemonTcgApiClientContracts.swift in Sources */,
 				21748B4E2733C82400D5EFA7 /* UserPokemonDataRepository.swift in Sources */,
 				21748B4D2733C81B00D5EFA7 /* FirebaseApiClientProtocol.swift in Sources */,
-				2166D82E272C186800E3ABD1 /* SelectMenuViewModel.swift in Sources */,
-				2166D82B272C16A500E3ABD1 /* SelectableSet.swift in Sources */,
 				21246D302723414A00CC6DAC /* SetDetailsViewModel.swift in Sources */,
-				21246D2F272340A000CC6DAC /* DummyData.swift in Sources */,
+				218282D9274BB8E0003A329E /* CardDetailsViewModelTests.swift in Sources */,
 				21246D2D2723409700CC6DAC /* UserSet.swift in Sources */,
-				21734E8E272569C80060B0F1 /* SearchBarTests.swift in Sources */,
 				21246D2E2723409700CC6DAC /* SetDetails.swift in Sources */,
 				21246D1B2723147900CC6DAC /* Strings+Extension.swift in Sources */,
 				21246D1A2723145300CC6DAC /* PokemonCollectionSetsViewModel.swift in Sources */,
@@ -812,7 +901,6 @@
 				21246D162723119100CC6DAC /* PokemonCollectionSet.swift in Sources */,
 				212699FA273BBB57002FA8C2 /* UserCardsData.swift in Sources */,
 				21246D142723117A00CC6DAC /* UserSetData.swift in Sources */,
-				2166D832272C1A3500E3ABD1 /* SelectMenuViewModelTests.swift in Sources */,
 				21246D132723116300CC6DAC /* RepositoryContracts.swift in Sources */,
 				21246D122723115700CC6DAC /* TCGPokemonRepository.swift in Sources */,
 				21246D1D27232B1B00CC6DAC /* PokemonCollectionSetsViewModelTests.swift in Sources */,
@@ -971,6 +1059,7 @@
 		};
 		21044760270ACD1A00815441 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0DCC459E541565BCEC57974D /* Pods-project-squirrel-dragon.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1003,6 +1092,7 @@
 		};
 		21044761270ACD1A00815441 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E0AF2BCC16F6AC105747FBDC /* Pods-project-squirrel-dragon.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1034,6 +1124,7 @@
 		};
 		21246D0E2723106C00CC6DAC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F6C28B5C42BCD52220BB3745 /* Pods-project-squirrel-dragonTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -1058,6 +1149,7 @@
 		};
 		21246D0F2723106C00CC6DAC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D4AA85590F65EC6F3E195559 /* Pods-project-squirrel-dragonTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;

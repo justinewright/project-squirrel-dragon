@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SelectMenu
 
 class SelectMenuViewController: UIViewController {
 
@@ -120,7 +121,6 @@ extension SelectMenuViewController: UICollectionViewDelegate {
         viewModel.toggleItem(withId: setID)
     }
 }
-
 
 extension SelectMenuViewController: CustomSearchbarViewModelDelegate {
     func updateDisplay(_ sender: CustomSearchBarViewModel!, withSearchFilter searchFilter: String!) {
