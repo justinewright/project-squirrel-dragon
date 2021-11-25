@@ -17,7 +17,7 @@ let mockSetData = [SetsData(id: "base1",
                          images: Images(symbol: "https://images.pokemontcg.io/base1/symbol.png", logo: "https://images.pokemontcg.io/base1/logo.png"))]
 
 class PokemonCollectionSetsViewModelTest: XCTestCase {
-    let mockUserSet = UserSetData(id: mockSetData.first!.id, collectedCards: 0, cardData: [])
+    let mockUserSet = UserSetData(id: mockSetData.first!.id, collectedCards: 0)
     let mockPokemonSet = PokemonCollectionSet(pokemonSetsData: mockSetData.first!)
     let mockPokemonSetData = PokemonSetsData(data: mockSetData)
     var mockFirebaseSet: FirebaseData<UserSetData>!

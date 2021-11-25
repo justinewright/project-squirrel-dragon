@@ -62,6 +62,7 @@
 		218282D9274BB8E0003A329E /* CardDetailsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218282D8274BB8E0003A329E /* CardDetailsViewModelTests.swift */; };
 		218282DA274BC835003A329E /* CardDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21942CD92742721600F8C00D /* CardDetailViewModel.swift */; };
 		218282DC274C03C9003A329E /* CardsOrganiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218282DB274C03C9003A329E /* CardsOrganiser.swift */; };
+		21838CDC274F6FE500C702E5 /* CardsOrganiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218282DB274C03C9003A329E /* CardsOrganiser.swift */; };
 		21843377271417D000EC2F5A /* CustomSearchBarViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 21843376271417D000EC2F5A /* CustomSearchBarViewModel.m */; };
 		2185CEF0271FFB7300499D31 /* SetDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2185CEEE271FFB7300499D31 /* SetDetailsViewController.swift */; };
 		2185CEF3271FFB9900499D31 /* SetDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2185CEF2271FFB9900499D31 /* SetDetailsViewModel.swift */; };
@@ -882,6 +883,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21838CDC274F6FE500C702E5 /* CardsOrganiser.swift in Sources */,
 				218282DA274BC835003A329E /* CardDetailViewModel.swift in Sources */,
 				21C8C65B273EA9F500363D79 /* UserCard.swift in Sources */,
 				21C8C65C273EA9F500363D79 /* CollectableCard.swift in Sources */,

@@ -24,22 +24,34 @@ class SetDetailsViewModelTests: XCTestCase {
 
     }
 
+    class MockUserSetRepository: RepositoryProtocol {
+
+        var fetchCalled = false
+
+        var repoResult: Result<Any, URLError> = .failure(URLError(.badServerResponse))
+
+        func fetch(itemWithID itemID: String, then handler: @escaping AnyResultBlock) {
+            fetchCalled = true
+            handler(repoResult)
+        }
+    }
+    
     var viewModelUnderTesting: SetDetailsViewModel!
     var mockDelegate: SetsDetailViewModelDelegate!
     let mockPokemonSet = PokemonCollectionSet(pokemonSetsData: mockSetData.first!)
-    let mockUserSet = DummyData.userSet
+    let mockUserSet = UserSetData(id: "", collectedCards: 0)
     var mockSetDetails: SetDetails!
+    var mockUserSetRepository = MockUserSetRepository()
 
     override func setUp() {
         mockDelegate = MockDelegate()
-        viewModelUnderTesting = SetDetailsViewModel(delegate: mockDelegate)
+        viewModelUnderTesting = SetDetailsViewModel(delegate: mockDelegate, userSetRepository: mockUserSetRepository)
         mockSetDetails = SetDetails(id: mockPokemonSet.id, userSet: mockUserSet, pokemonCollectionSet: mockPokemonSet)
         viewModelUnderTesting.updateSetDetailsData(withPokemonSet: mockPokemonSet)
     }
 
     func testCollectedFractionStringIsFormattedCorrectly() {
-
-        let expectedResult = "\(mockSetDetails.userSet.cardsCollected)/\(mockSetDetails.pokemonCollectionSet.total)"
+        let expectedResult = "\(mockSetDetails.userSet!.collectedCards)/\(mockSetDetails.pokemonCollectionSet.total)"
         let actualResult = viewModelUnderTesting.collectedFraction
 
         XCTAssertEqual(expectedResult, actualResult)
