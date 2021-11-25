@@ -27,13 +27,19 @@ class SetDetailsViewController: UIViewController {
         self.navigationController?.pushViewController(destination, animated: true)
     }
 
-    private lazy var viewModel = SetDetailsViewModel(delegate: self)
+    private lazy var viewModel = SetDetailsViewModel(
+        delegate: self,
+        userSetRepository: UserPokemonDataRepository(firebaseApiClient: FirebaseApiClient(endPoint: Endpoint(path: "sets"), forDataType: UserReturnDataTypes.UserSets)))
 
     // MARK: - Life Cycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarController?.tabBar.isHidden = true
         configure()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        viewModel.fetchUserDetails()
     }
 
     // MARK: - Initialization

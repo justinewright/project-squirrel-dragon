@@ -52,13 +52,13 @@ class PokemonCollectionSetsViewModel {
                 }
                 let models = pokemonSetsData.data.map { PokemonCollectionSet(pokemonSetsData: $0) }
                 self?.pokemonCollectionSets = Dictionary(uniqueKeysWithValues: models.map { ($0.id, $0) })
+                self?.userSetsRepository.fetch { [weak self] result in
+                    self?.processUserSetsResults(withRepositoryResult: result)
+                }
             case .failure(let error):
                 self?.delegate?.didFailWithError(message: error.localizedDescription)
                 return
             }
-        }
-        userSetsRepository.fetch { [weak self] result in
-            self?.processUserSetsResults(withRepositoryResult: result)
         }
     }
 
@@ -100,7 +100,7 @@ extension PokemonCollectionSetsViewModel {
     func addSet(setIDs: [String]) {
         setIDs.forEach {
             userSetsRepository.post(
-                UserSetData(id: $0, collectedCards: 0, cardData: []).toAnyObject(), withPostId: $0) { [weak self] result in
+                UserSetData(id: $0, collectedCards: 0).toAnyObject(), withPostId: $0) { [weak self] result in
                     self?.processUserSetsResults(withRepositoryResult: result)
                 }
         }

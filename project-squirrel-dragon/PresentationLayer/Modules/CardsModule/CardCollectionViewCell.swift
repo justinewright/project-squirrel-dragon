@@ -27,7 +27,6 @@ class CardCollectionViewCell: UICollectionViewCell {
 
     // MARK: - Configuration Methods
     func applyStyle() {
-        alpha = StyleKit.Alpha.unselected
         layer.cornerRadius = StyleKit.Cards.cornerRadius
     }
 
@@ -40,11 +39,13 @@ class CardCollectionViewCell: UICollectionViewCell {
         guard let userCard = collectableCard.userCard else {
             configureCollectedNumberLabel(withNumberText: "\(0)")
             configureOwnedImageView(setOwned: false)
+            contentView.alpha = StyleKit.Alpha.unselected
             return
         }
         
         configureCollectedNumberLabel(withNumberText: "\(userCard.collectedNumber)")
         configureOwnedImageView(setOwned: true)
+        contentView.alpha = StyleKit.Alpha.selected
     }
 
     private func configurePriceLabels(withPrices prices: Prices) {
@@ -78,5 +79,4 @@ class CardCollectionViewCell: UICollectionViewCell {
         ownedImageView.image = image
     }
 
-    
 }

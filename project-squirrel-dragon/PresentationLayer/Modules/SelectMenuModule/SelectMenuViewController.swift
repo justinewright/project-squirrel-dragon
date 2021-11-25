@@ -122,7 +122,6 @@ extension SelectMenuViewController: UICollectionViewDelegate {
     }
 }
 
-
 extension SelectMenuViewController: CustomSearchbarViewModelDelegate {
     func updateDisplay(_ sender: CustomSearchBarViewModel!, withSearchFilter searchFilter: String!) {
         viewModel.filteredList = sender.filteredList as? [String] ?? [String]()
