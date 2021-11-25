@@ -13,30 +13,44 @@ protocol SetsDetailViewModelDelegate: AnyObject {
 }
 
 class SetDetailsViewModel {
-
+    typealias FirebaseUserCard = UserSetData
     // MARK: - Properties
     private weak var delegate: SetsDetailViewModelDelegate?
     private (set) var setDetails: SetDetails!
+    private var userSetRepository: RepositoryProtocol
 
     // MARK: - Initialization
-    init(delegate: SetsDetailViewModelDelegate?) {
+    init(delegate: SetsDetailViewModelDelegate?, userSetRepository: RepositoryProtocol) {
         self.delegate = delegate
+        self.userSetRepository = userSetRepository
     }
 
     func updateSetDetailsData(withPokemonSet set: PokemonCollectionSet) {
-        // using dummy data as a placeholder until firebase database is working
-        var temporaryUserSet = DummyData.userSet
-        temporaryUserSet.id = set.id
-        self.setDetails = SetDetails(id: set.id, userSet: temporaryUserSet, pokemonCollectionSet: set)
+        self.setDetails = SetDetails(id: set.id, userSet: nil, pokemonCollectionSet: set)
     }
-    // TODO: - repo to firebase to get userdetails
+
+    func fetchUserDetails() {
+
+        userSetRepository.fetch { [weak self] result in
+            switch result {
+            case .success(let set):
+                guard let userSets = set as? FirebaseData<UserSetData> else { return }
+                let matchingUserSet = userSets.data.filter { $0.id == self?.setDetails.id }
+                self?.setDetails.userSet = matchingUserSet.first
+                self?.delegate?.didLoadSetDetailsViewModel(self!)
+            case .failure(let error):
+                self?.delegate?.didFailWithError(message: error.localizedDescription)
+
+            }
+        }
+    }
 
     var collectedFraction: String {
-        "\(setDetails.userSet.cardsCollected)/\(setDetails.pokemonCollectionSet.total)"
+        "\(setDetails.userSet?.collectedCards ?? 0)/\(setDetails.pokemonCollectionSet.total)"
     }
 
     var collectedPercentage: String {
-        "\((setDetails.userSet.cardsCollected)/(setDetails.pokemonCollectionSet.total)*100)%"
+        "\(Int((Double(setDetails.userSet?.collectedCards ?? 0))/(Double(setDetails.pokemonCollectionSet.total))*100))%"
     }
 
     var formatedReleaseDate: String {

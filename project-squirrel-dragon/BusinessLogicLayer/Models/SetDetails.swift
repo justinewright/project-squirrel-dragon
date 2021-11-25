@@ -9,6 +9,6 @@ import Foundation
 
 struct SetDetails {
     let id: String
-    let userSet: UserSet
+    var userSet: UserSetData?
     let pokemonCollectionSet: PokemonCollectionSet
 }

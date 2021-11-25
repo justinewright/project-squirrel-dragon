@@ -30,13 +30,15 @@ class CardsCollectionViewController: UIViewController {
         delegate: self,
         pokemonCardsRepository: TCGPokemonRepository(apiClient: PokemonTcgApiClient(endPoint: Endpoint(path: "cards"), forDataType: TCGReturnDataTypes.TcgCards)),
 
-        userCardsRepository: UserPokemonDataRepository(firebaseApiClient: FirebaseApiClient(endPoint: Endpoint(path: "cards"), forDataType: UserReturnDataTypes.UserCards)))
+        userCardsRepository: UserPokemonDataRepository(firebaseApiClient: FirebaseApiClient(endPoint: Endpoint(path: "cards"), forDataType: UserReturnDataTypes.UserCards)),
+        userSetRepository: UserPokemonDataRepository(firebaseApiClient: FirebaseApiClient(endPoint: Endpoint(path: "sets"), forDataType: UserReturnDataTypes.UserSets)))
 
+    // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         configureCollectionView()
         viewModel.fetchViewData()
     }
-    
+    // MARK: - Configuration Methods
     func configure(forSetID setID: String) {
         viewModel.configure(forSetID: setID)
     }
@@ -77,6 +79,7 @@ class CardsCollectionViewController: UIViewController {
     }
 }
 
+// MARK: - UICollection Datasource Methods
 extension CardsCollectionViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         viewModel.pokemonCards.count
@@ -86,14 +89,16 @@ extension CardsCollectionViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath) as? CardCollectionViewCell else {
             return UICollectionViewCell()
         }
-        let animation = AnimationFactory.makeFadeAnimation(duration: 0.5, delayFactor: 0.05)
+        let animation = AnimationFactory.makeFadeAnimation(duration: 0.5,
+                                                           delayFactor: 0.05)
         let animator = Animator(animation: animation)
-        animator.animate(cell: cell, at: indexPath, in: collectionView)
         cell.configure(with: viewModel.collectableCards[indexPath.row] )
+        animator.animate(cell: cell, at: indexPath, in: collectionView)
         return cell
     }
 }
 
+// MARK: - UICollection Delegate Methods
 extension CardsCollectionViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
@@ -131,11 +136,19 @@ extension CardsCollectionViewController: UICollectionViewDelegate {
 extension CardsCollectionViewController: CardsCollectionViewModelDelegate {
     func didLoadCardsCollectionViewModel(_ cardsCollectionViewModel: CardsCollectionViewModel) {
         self.collectionView.reloadData()
+        updateRarityProgress()
         activityIndicator.stopAnimating()
     }
 
     func didFailWithError(message: String) {
         self.showErrorAlert(titled: errorTitle, with: message)
         activityIndicator.stopAnimating()
+    }
+
+    private func updateRarityProgress() {
+        rareLabel.text = viewModel.progressString(forRarity: .rare)
+        commonLabel.text = viewModel.progressString(forRarity: .common)
+        uncommonLabel.text = viewModel.progressString(forRarity: .uncommon)
+        promoLabel.text = viewModel.progressString(forRarity: .promo)
     }
 }
