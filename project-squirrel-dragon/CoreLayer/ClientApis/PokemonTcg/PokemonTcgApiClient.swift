@@ -36,7 +36,6 @@ class PokemonTcgApiClient: PokemonTcgApiClientProtocol {
 
     func fetch(itemWithID itemID: String, then handler: @escaping AnyResultBlock) {
         endPoint.queryItems = [URLQueryItem(name: "q", value: itemID)]
-        print(endPoint.makeUrl())
         URLSession.shared.request(url:  endPoint.makeUrl(),
                                   expecting: PokemonCardsData.self) { handler($0) }
     }

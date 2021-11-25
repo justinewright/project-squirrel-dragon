@@ -31,15 +31,15 @@ class SetDetailsViewModel {
 
     func fetchUserDetails() {
 
-        userSetRepository.fetch { result in
+        userSetRepository.fetch { [weak self] result in
             switch result {
             case .success(let set):
                 guard let userSets = set as? FirebaseData<UserSetData> else { return }
-                let matchingUserSet = userSets.data.filter { $0.id == self.setDetails.id }
-                self.setDetails.userSet = matchingUserSet.first
-                self.delegate?.didLoadSetDetailsViewModel(self)
+                let matchingUserSet = userSets.data.filter { $0.id == self?.setDetails.id }
+                self?.setDetails.userSet = matchingUserSet.first
+                self?.delegate?.didLoadSetDetailsViewModel(self!)
             case .failure(let error):
-                self.delegate?.didFailWithError(message: error.localizedDescription)
+                self?.delegate?.didFailWithError(message: error.localizedDescription)
 
             }
         }
