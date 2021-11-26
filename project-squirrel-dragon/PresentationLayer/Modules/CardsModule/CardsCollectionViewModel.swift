@@ -60,7 +60,7 @@ class CardsCollectionViewModel {
                 let cards = pokemonCardsData.data
                 self?.pokemonCards = Dictionary(uniqueKeysWithValues: cards.map { ($0.id, $0) })
 
-                self?.userCardsRepository.fetch() { [weak self] result in
+                self?.userCardsRepository.fetch { [weak self] result in
                     self?.processUserCardsResults(withRepositoryResult: result)
                 }
             case .failure(let error):

@@ -51,7 +51,7 @@ class CardCollectionViewCell: UICollectionViewCell {
     private func configurePriceLabels(withPrices prices: Prices) {
         configurePriceLabel(avgLabel, withNumberText: "\( prices.avg1 ?? 0)")
         configurePriceLabel(trendingLabel, withNumberText: "\(prices.trendPrice ?? 0)")
-        trendingLabel.textColor = (prices.trendPrice ?? 0) > (prices.avg1 ?? 0) ? .green : .red
+        trendingLabel.textColor = (prices.trendPrice ?? 0) >= (prices.avg1 ?? 0) ? .green : .red
     }
 
     private func configurePriceLabel(_ label: UILabel, withNumberText numberText: String) {
