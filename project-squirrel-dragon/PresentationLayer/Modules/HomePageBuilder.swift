@@ -11,7 +11,7 @@ class HomePageBuilder {
     static func build() -> UITabBarController {
         let subModules: Submodules = (
                 sets: PokemonCollectionSetsModuleBuilder.build(usingNavigationFactory: NavigationBuilder.build),
-                money: NavigationBuilder.build(rootView: UIViewController())
+                money: WatchStatsModuleBuilder.build(usingNavigationFactory: NavigationBuilder.build)
             )
 
         let landingPage = TabBarBuilder.build(usingSubmodules: subModules)

@@ -30,6 +30,13 @@
 		212699FA273BBB57002FA8C2 /* UserCardsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212699F8273BBB52002FA8C2 /* UserCardsData.swift */; };
 		212699FF273BCC1B002FA8C2 /* UserCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212699FE273BCC1B002FA8C2 /* UserCard.swift */; };
 		21269A02273BED16002FA8C2 /* Cards.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21269A01273BED16002FA8C2 /* Cards.storyboard */; };
+		214555152757D9AB0036EE02 /* WatchStatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214555142757D9AB0036EE02 /* WatchStatsViewModel.swift */; };
+		21455519275800780036EE02 /* CollectedCardsStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21455518275800780036EE02 /* CollectedCardsStats.swift */; };
+		2145551C275814250036EE02 /* CollectedCardsStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21455518275800780036EE02 /* CollectedCardsStats.swift */; };
+		2145551E27581C320036EE02 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2145551D27581C320036EE02 /* ComplicationController.swift */; };
+		2145552027581D6F0036EE02 /* WatchStats.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2145551F27581D6F0036EE02 /* WatchStats.storyboard */; };
+		2145552227581D960036EE02 /* WatchStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2145552127581D960036EE02 /* WatchStatsViewController.swift */; };
+		2145552427581DA70036EE02 /* WatchStatsModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2145552327581DA70036EE02 /* WatchStatsModuleBuilder.swift */; };
 		21667076270F0C8F00B6A874 /* PokemonCollectionSetsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21667075270F0C8F00B6A874 /* PokemonCollectionSetsViewModel.swift */; };
 		21667078270F0D2E00B6A874 /* PokemonCollectionSetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21667077270F0D2E00B6A874 /* PokemonCollectionSetsViewController.swift */; };
 		2166707A270F0D5B00B6A874 /* PokemonCollectionSets.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21667079270F0D5B00B6A874 /* PokemonCollectionSets.storyboard */; };
@@ -63,7 +70,6 @@
 		217F3A65274E6A380071C379 /* project-squirrel-dragon Watch WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 217F3A64274E6A380071C379 /* project-squirrel-dragon Watch WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		217F3A6A274E6A380071C379 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F3A69274E6A380071C379 /* InterfaceController.swift */; };
 		217F3A6C274E6A380071C379 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F3A6B274E6A380071C379 /* ExtensionDelegate.swift */; };
-		217F3A6E274E6A380071C379 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F3A6D274E6A380071C379 /* ComplicationController.swift */; };
 		217F3A70274E6A390071C379 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 217F3A6F274E6A390071C379 /* Assets.xcassets */; };
 		217F3A74274E6A390071C379 /* project-squirrel-dragon Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 217F3A59274E6A350071C379 /* project-squirrel-dragon Watch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		2180A41A2726757100E0C0F4 /* UIVIewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2180A4192726757100E0C0F4 /* UIVIewController+Extension.swift */; };
@@ -187,6 +193,12 @@
 		212699F8273BBB52002FA8C2 /* UserCardsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCardsData.swift; sourceTree = "<group>"; };
 		212699FE273BCC1B002FA8C2 /* UserCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCard.swift; sourceTree = "<group>"; };
 		21269A01273BED16002FA8C2 /* Cards.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Cards.storyboard; sourceTree = "<group>"; };
+		214555142757D9AB0036EE02 /* WatchStatsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchStatsViewModel.swift; sourceTree = "<group>"; };
+		21455518275800780036EE02 /* CollectedCardsStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectedCardsStats.swift; sourceTree = "<group>"; };
+		2145551D27581C320036EE02 /* ComplicationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		2145551F27581D6F0036EE02 /* WatchStats.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WatchStats.storyboard; sourceTree = "<group>"; };
+		2145552127581D960036EE02 /* WatchStatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchStatsViewController.swift; sourceTree = "<group>"; };
+		2145552327581DA70036EE02 /* WatchStatsModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchStatsModuleBuilder.swift; sourceTree = "<group>"; };
 		21667075270F0C8F00B6A874 /* PokemonCollectionSetsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCollectionSetsViewModel.swift; sourceTree = "<group>"; };
 		21667077270F0D2E00B6A874 /* PokemonCollectionSetsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCollectionSetsViewController.swift; sourceTree = "<group>"; };
 		21667079270F0D5B00B6A874 /* PokemonCollectionSets.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PokemonCollectionSets.storyboard; sourceTree = "<group>"; };
@@ -220,7 +232,6 @@
 		217F3A64274E6A380071C379 /* project-squirrel-dragon Watch WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "project-squirrel-dragon Watch WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		217F3A69274E6A380071C379 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
 		217F3A6B274E6A380071C379 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
-		217F3A6D274E6A380071C379 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
 		217F3A6F274E6A390071C379 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		217F3A71274E6A390071C379 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2180A4192726757100E0C0F4 /* UIVIewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIewController+Extension.swift"; sourceTree = "<group>"; };
@@ -295,6 +306,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		217F3A61274E6A380071C379 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9F87008B50FE3AE0E959EEE0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -419,6 +437,17 @@
 			path = CardsModule;
 			sourceTree = "<group>";
 		};
+		214555132757D9380036EE02 /* WatchStatsModule */ = {
+			isa = PBXGroup;
+			children = (
+				214555142757D9AB0036EE02 /* WatchStatsViewModel.swift */,
+				2145551F27581D6F0036EE02 /* WatchStats.storyboard */,
+				2145552127581D960036EE02 /* WatchStatsViewController.swift */,
+				2145552327581DA70036EE02 /* WatchStatsModuleBuilder.swift */,
+			);
+			path = WatchStatsModule;
+			sourceTree = "<group>";
+		};
 		21667074270F051400B6A874 /* PokemonCollectionSetsModule */ = {
 			isa = PBXGroup;
 			children = (
@@ -490,6 +519,7 @@
 				2185CEFE27202C3C00499D31 /* SetDetails.swift */,
 				212699FE273BCC1B002FA8C2 /* UserCard.swift */,
 				21FC0B5D273C24760097B467 /* CollectableCard.swift */,
+				21455518275800780036EE02 /* CollectedCardsStats.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -497,6 +527,7 @@
 		217F20E327216333003F4A5E /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				214555132757D9380036EE02 /* WatchStatsModule */,
 				21942CDB2742722300F8C00D /* CardDetailsModule */,
 				21269A00273BDEF8002FA8C2 /* CardsModule */,
 				21B375AE272ACAF400CC6758 /* SelectMenuModule */,
@@ -530,9 +561,9 @@
 		217F3A68274E6A380071C379 /* project-squirrel-dragon Watch WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				2145551D27581C320036EE02 /* ComplicationController.swift */,
 				217F3A69274E6A380071C379 /* InterfaceController.swift */,
 				217F3A6B274E6A380071C379 /* ExtensionDelegate.swift */,
-				217F3A6D274E6A380071C379 /* ComplicationController.swift */,
 				217F3A6F274E6A390071C379 /* Assets.xcassets */,
 				217F3A71274E6A390071C379 /* Info.plist */,
 			);
@@ -740,6 +771,7 @@
 			buildPhases = (
 				217F3A57274E6A350071C379 /* Resources */,
 				217F3A78274E6A390071C379 /* Embed App Extensions */,
+				9F87008B50FE3AE0E959EEE0 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -825,6 +857,7 @@
 			files = (
 				217F20E727216E20003F4A5E /* CustomSearchBarViewController.xib in Resources */,
 				2104475B270ACD1A00815441 /* LaunchScreen.storyboard in Resources */,
+				2145552027581D6F0036EE02 /* WatchStats.storyboard in Resources */,
 				218D716C272AFBCB0056CB22 /* SelectableSetCell.xib in Resources */,
 				21044758270ACD1A00815441 /* Assets.xcassets in Resources */,
 				217F20F027218FF6003F4A5E /* SetDetails.storyboard in Resources */,
@@ -978,12 +1011,14 @@
 				2171BC6A2710086000EBBA3E /* StyleKit.swift in Sources */,
 				21FC0B60273C265D0097B467 /* CardsCollectionViewController.swift in Sources */,
 				2185CEF92720225900499D31 /* UserSetData.swift in Sources */,
+				2145552227581D960036EE02 /* WatchStatsViewController.swift in Sources */,
 				2169DCAC273CFE6F002226C5 /* CardsCollectionViewModel.swift in Sources */,
 				212699F7273BB032002FA8C2 /* PokemonCardsData.swift in Sources */,
 				21671E792715DDDC00A45571 /* CustomSearchBarViewController.m in Sources */,
 				216ADAF3270DAD9900D61E92 /* PokemonCollectionSet.swift in Sources */,
 				21AFD33827394DC100699AF5 /* Endpoint.swift in Sources */,
 				212699F9273BBB52002FA8C2 /* UserCardsData.swift in Sources */,
+				2145552427581DA70036EE02 /* WatchStatsModuleBuilder.swift in Sources */,
 				217E8E322732CFD500A935C2 /* Animator.swift in Sources */,
 				218D716B272AFBCB0056CB22 /* SelectableSetCell.swift in Sources */,
 				2104474F270ACD1900815441 /* AppDelegate.swift in Sources */,
@@ -1005,6 +1040,7 @@
 				2185CEF52720037300499D31 /* SetDetailsModuleBuilder.swift in Sources */,
 				2185CEF3271FFB9900499D31 /* SetDetailsViewModel.swift in Sources */,
 				21671E6E2715D66200A45571 /* CustomSearchBarModuleBuilder.swift in Sources */,
+				21455519275800780036EE02 /* CollectedCardsStats.swift in Sources */,
 				2180A41A2726757100E0C0F4 /* UIVIewController+Extension.swift in Sources */,
 				21894FAB27283A5B0092AAB5 /* LoginModuleBuilder.swift in Sources */,
 				21AFD33E2739647E00699AF5 /* PokemonTcgApiClientContracts.swift in Sources */,
@@ -1020,6 +1056,7 @@
 				21942CDA2742721600F8C00D /* CardDetailViewModel.swift in Sources */,
 				2166707C270F0E1000B6A874 /* PokemonCollectionSetsModuleBuilder.swift in Sources */,
 				218282DC274C03C9003A329E /* CardsOrganiser.swift in Sources */,
+				214555152757D9AB0036EE02 /* WatchStatsViewModel.swift in Sources */,
 				21AFD33C27394F6E00699AF5 /* URLSession+Extension.swift in Sources */,
 				212699FF273BCC1B002FA8C2 /* UserCard.swift in Sources */,
 				21FC0B5E273C24760097B467 /* CollectableCard.swift in Sources */,
@@ -1068,9 +1105,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2145551C275814250036EE02 /* CollectedCardsStats.swift in Sources */,
+				2145551E27581C320036EE02 /* ComplicationController.swift in Sources */,
 				217F3A6C274E6A380071C379 /* ExtensionDelegate.swift in Sources */,
 				217F3A6A274E6A380071C379 /* InterfaceController.swift in Sources */,
-				217F3A6E274E6A380071C379 /* ComplicationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
