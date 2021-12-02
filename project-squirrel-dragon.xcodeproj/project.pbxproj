@@ -12,6 +12,7 @@
 		21044756270ACD1900815441 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21044754270ACD1900815441 /* Main.storyboard */; };
 		21044758270ACD1A00815441 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21044757270ACD1A00815441 /* Assets.xcassets */; };
 		2104475B270ACD1A00815441 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21044759270ACD1A00815441 /* LaunchScreen.storyboard */; };
+		21174EC627589BA5002F44F4 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21174EC527589BA5002F44F4 /* UIImage+Extensions.swift */; };
 		21246CFE2722E93A00CC6DAC /* Strings+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21246CFD2722E93A00CC6DAC /* Strings+Extension.swift */; };
 		21246D122723115700CC6DAC /* TCGPokemonRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216ADAE8270DA9F200D61E92 /* TCGPokemonRepository.swift */; };
 		21246D132723116300CC6DAC /* RepositoryContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216ADAF5270DBA0700D61E92 /* RepositoryContracts.swift */; };
@@ -185,6 +186,7 @@
 		21044757270ACD1A00815441 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2104475A270ACD1A00815441 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2104475C270ACD1A00815441 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "project-squirrel-dragon/SupportingFiles/Info.plist"; sourceTree = SOURCE_ROOT; };
+		21174EC527589BA5002F44F4 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		21246CFD2722E93A00CC6DAC /* Strings+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Strings+Extension.swift"; sourceTree = "<group>"; };
 		21246D072723106C00CC6DAC /* project-squirrel-dragonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "project-squirrel-dragonTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		21246D1C27232B1B00CC6DAC /* PokemonCollectionSetsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCollectionSetsViewModelTests.swift; sourceTree = "<group>"; };
@@ -329,7 +331,6 @@
 				21246D082723106C00CC6DAC /* project-squirrel-dragonTests */,
 				217F3A5A274E6A350071C379 /* project-squirrel-dragon Watch */,
 				217F3A68274E6A380071C379 /* project-squirrel-dragon Watch WatchKit Extension */,
-				2104474C270ACD1900815441 /* Products */,
 				21894F9A27281C9D0092AAB5 /* Frameworks */,
 				D14EAC81D45421D5E972B231 /* Pods */,
 			);
@@ -344,6 +345,7 @@
 				217F3A64274E6A380071C379 /* project-squirrel-dragon Watch WatchKit Extension.appex */,
 			);
 			name = Products;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		2104474D270ACD1900815441 /* project-squirrel-dragon */ = {
@@ -564,6 +566,8 @@
 				2145551D27581C320036EE02 /* ComplicationController.swift */,
 				217F3A69274E6A380071C379 /* InterfaceController.swift */,
 				217F3A6B274E6A380071C379 /* ExtensionDelegate.swift */,
+				21174EC527589BA5002F44F4 /* UIImage+Extensions.swift */,
+				2104474C270ACD1900815441 /* Products */,
 				217F3A6F274E6A390071C379 /* Assets.xcassets */,
 				217F3A71274E6A390071C379 /* Info.plist */,
 			);
@@ -1107,6 +1111,7 @@
 			files = (
 				2145551C275814250036EE02 /* CollectedCardsStats.swift in Sources */,
 				2145551E27581C320036EE02 /* ComplicationController.swift in Sources */,
+				21174EC627589BA5002F44F4 /* UIImage+Extensions.swift in Sources */,
 				217F3A6C274E6A380071C379 /* ExtensionDelegate.swift in Sources */,
 				217F3A6A274E6A380071C379 /* InterfaceController.swift in Sources */,
 			);

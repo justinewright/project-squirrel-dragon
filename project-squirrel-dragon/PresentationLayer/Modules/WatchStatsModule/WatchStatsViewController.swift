@@ -10,7 +10,7 @@ import WatchConnectivity
 
 class WatchStatsViewController: UIViewController {
 
-    @IBOutlet weak var watchLabel: UILabel!
+    @IBOutlet private weak var watchLabel: UILabel!
 
     enum WatchMode: String {
         case cardCollectionStats = "cardCollectionStats"
@@ -29,6 +29,7 @@ class WatchStatsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupWatchSession()
+        viewModel.fetchViewData()
     }
 
     func setupWatchSession() {
@@ -62,6 +63,7 @@ extension WatchStatsViewController: WCSessionDelegate {
     }
 
     func loadValueStats() {
+        // TODO:- after currency module is implemented
     }
 
     func sessionDidBecomeInactive(_ session: WCSession) {
@@ -82,7 +84,6 @@ extension WatchStatsViewController: WCSessionDelegate {
             if valueFromWatch == "cardCollectionStats" {
                 watchMode = .cardCollectionStats
                 viewModel.fetchViewData()
-
             }
         }
     }

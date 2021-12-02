@@ -27,7 +27,7 @@
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
                                         </label>
-                                        <label width="79" alignment="right" verticalAlignment="center" text="40%" textAlignment="right" id="VVo-OB-Ui4">
+                                        <label width="79" alignment="right" verticalAlignment="center" text="-" textAlignment="right" id="VVo-OB-Ui4">
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <fontDescription key="font" style="UICTFontTextStyleTitle2"/>
                                         </label>
@@ -39,7 +39,7 @@
                             <items>
                                 <group width="1" alignment="center" verticalAlignment="center" spacing="0.0" id="Ku1-ek-RDY">
                                     <items>
-                                        <group width="32" height="32" alignment="center" verticalAlignment="center" layout="overlap" id="0X3-pO-RB4">
+                                        <group width="32" height="32" alignment="center" verticalAlignment="center" layout="overlap" id="0X3-pO-RB4" userLabel="CommonGroup">
                                             <items>
                                                 <imageView alignment="left" image="background" id="frC-xA-ciE">
                                                     <color key="tintColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="0.50406712409999999" colorSpace="custom" customColorSpace="sRGB"/>
@@ -50,7 +50,7 @@
                                                 <label width="20" height="20" alignment="center" verticalAlignment="center" text="80%" minimumScaleFactor="0.5" id="MGS-nI-zcV"/>
                                             </items>
                                         </group>
-                                        <group width="32" height="32" alignment="center" verticalAlignment="center" layout="overlap" id="SoU-hd-A0Q">
+                                        <group width="32" height="32" alignment="center" verticalAlignment="center" layout="overlap" id="SoU-hd-A0Q" userLabel="Uncommon">
                                             <items>
                                                 <imageView alignment="left" image="background" id="n0L-Fl-UcY">
                                                     <color key="tintColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="0.50406712409999999" colorSpace="custom" customColorSpace="sRGB"/>
@@ -61,7 +61,7 @@
                                                 <label width="20" height="20" alignment="center" verticalAlignment="center" text="80%" minimumScaleFactor="0.5" id="r8X-hI-nxu"/>
                                             </items>
                                         </group>
-                                        <group width="32" height="32" alignment="center" verticalAlignment="center" layout="overlap" id="Fsq-eA-3E6">
+                                        <group width="32" height="32" alignment="center" verticalAlignment="center" layout="overlap" id="Fsq-eA-3E6" userLabel="Rare">
                                             <items>
                                                 <imageView alignment="left" image="background" id="yXv-iI-uya">
                                                     <color key="tintColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="0.50406712409999999" colorSpace="custom" customColorSpace="sRGB"/>
@@ -72,7 +72,7 @@
                                                 <label width="20" height="20" alignment="center" verticalAlignment="center" text="80%" minimumScaleFactor="0.5" id="bhD-pR-Gdq"/>
                                             </items>
                                         </group>
-                                        <group width="32" height="32" alignment="center" verticalAlignment="center" layout="overlap" id="NzT-Ey-dzP">
+                                        <group width="32" height="32" alignment="center" verticalAlignment="center" layout="overlap" id="NzT-Ey-dzP" userLabel="Promo">
                                             <items>
                                                 <imageView alignment="left" image="background" id="Obx-G6-GCq">
                                                     <color key="tintColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="0.50406712409999999" colorSpace="custom" customColorSpace="sRGB"/>
@@ -120,7 +120,19 @@
                     </items>
                     <edgeInsets key="margins" left="0.0" right="1" top="0.0" bottom="0.0"/>
                     <connections>
-                        <outlet property="totalProgress" destination="VVo-OB-Ui4" id="sKg-WT-CyF"/>
+                        <outlet property="commonBackgroundProgress" destination="frC-xA-ciE" id="55G-59-lem"/>
+                        <outlet property="commonPercentageLabel" destination="MGS-nI-zcV" id="j4S-jI-7Hf"/>
+                        <outlet property="commonProgress" destination="lgN-pW-oZa" id="adN-l7-pHk"/>
+                        <outlet property="promoBackgroundProgress" destination="Obx-G6-GCq" id="Gip-vR-r1m"/>
+                        <outlet property="promoPercentageLabel" destination="fcs-wv-CgO" id="azh-be-YpM"/>
+                        <outlet property="promoProgress" destination="C0U-hi-Ovj" id="dwy-X3-75j"/>
+                        <outlet property="rareBackgroundProgress" destination="yXv-iI-uya" id="i35-7n-Rn1"/>
+                        <outlet property="rarePercentageLabel" destination="bhD-pR-Gdq" id="WGM-JB-vkf"/>
+                        <outlet property="rareProgressBar" destination="WVr-e3-KZh" id="P8P-aB-pCm"/>
+                        <outlet property="totalProgressLabel" destination="VVo-OB-Ui4" id="wk3-IF-moF"/>
+                        <outlet property="uncommonBackgroundProgress" destination="n0L-Fl-UcY" id="pt0-FZ-YsZ"/>
+                        <outlet property="uncommonPercentageLabel" destination="r8X-hI-nxu" id="TAR-Gw-f0j"/>
+                        <outlet property="uncommonProgress" destination="UtA-fA-0x6" id="guq-sT-Rfw"/>
                     </connections>
                 </controller>
             </objects>

@@ -8,151 +8,116 @@
 import WatchKit
 import Foundation
 import WatchConnectivity
+import UIKit
+import SwiftUI
 
 class InterfaceController: WKInterfaceController {
 
-    @IBOutlet weak var button: WKInterfaceButton!
+    // MARK: - Properties
+    private var fillColor = #colorLiteral(red: 0.6862745098, green: 0.3215686275, blue: 0.8705882353, alpha: 1)
+    @IBOutlet private weak var totalProgressLabel: WKInterfaceLabel!
 
-    let colors: [UIColor] = ["E50012","F39600"].map { (str) -> UIColor in
-        return UIColor.colorWithHexString(hex: str)
-    }
+    @IBOutlet private weak var commonPercentageLabel: WKInterfaceLabel!
+    @IBOutlet private weak var commonBackgroundProgress: WKInterfaceImage!
+    @IBOutlet private weak var commonProgress: WKInterfaceImage!
 
-    @IBOutlet weak var progress: WKInterfaceImage!
+    @IBOutlet private weak var uncommonPercentageLabel: WKInterfaceLabel!
+    @IBOutlet private weak var uncommonBackgroundProgress: WKInterfaceImage!
+    @IBOutlet private weak var uncommonProgress: WKInterfaceImage!
 
-    @IBOutlet weak var progress1: WKInterfaceImage!
+    @IBOutlet private weak var rarePercentageLabel: WKInterfaceLabel!
+    @IBOutlet private weak var rareBackgroundProgress: WKInterfaceImage!
+    @IBOutlet private weak var rareProgressBar: WKInterfaceImage!
 
-    var session = WCSession.default
+    @IBOutlet private weak var promoPercentageLabel: WKInterfaceLabel!
+    @IBOutlet private weak var promoProgress: WKInterfaceImage!
+    @IBOutlet private weak var promoBackgroundProgress: WKInterfaceImage!
+
+    private var progressBarImages: [UIImage] = []
+    private var animationDuration: Double = 1
+
+    private var session = WCSession.default
 
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         session.delegate = self
         session.activate()
-        //progress.setImageNamed("progress")
-        //progress.startAnimating()
+        progressBarImages = animateImage("progress", fillColor)
+        uncommonPercentageLabel.setAlpha(0)
+        rarePercentageLabel.setAlpha(0)
+        promoPercentageLabel.setAlpha(0)
+        commonPercentageLabel.setAlpha(0)
+    }
 
-        /**
-            Range - progress0 to progress80 images will be animated
-            Duration - Animation time
-            Repeatcount - how many time animation will performed. -1 mean infinite
-        */
-        //progress1.setImageNamed("progress")
-        //progress1.startAnimatingWithImages(in: NSMakeRange(0, 80), duration: 1, repeatCount: -1)
+    private func configureProgressDisplay(forPercentageLabel label: WKInterfaceLabel, andProgressBar progressBar: WKInterfaceImage, withPercentage percent: Int) {
+        startProgress(bar: progressBar, color: fillColor, range:NSRange(location: 0, length: percent))
+        label.setAlpha(0)
+        animate(withDuration: animationDuration / 2) {
+            label.setAlpha(1)
+            label.setText("\(percent)%")
+        }
+    }
+
+    private func fetchProgressCollectionStats() {
+        let dataToPhone: [String: Any] = ["watchMode": "cardCollectionStats" as Any]
+        session.sendMessage(dataToPhone, replyHandler: nil, errorHandler: nil)
     }
 
     @IBAction func collectedNumbersPressed() {
-        let dataToPhone: [String: Any] = ["watchMode": "cardCollectionStats" as Any]
-        session.sendMessage(dataToPhone, replyHandler: nil, errorHandler: nil)
-        print("sending message")
+        fetchProgressCollectionStats()
     }
     
     override func willActivate() {
         super.willActivate()
-        let dataToPhone: [String: Any] = ["watchMode": "cardCollectionStats" as Any]
-        session.sendMessage(dataToPhone, replyHandler: nil, errorHandler: nil)
-        print("sending message")
+        fetchProgressCollectionStats()
     }
 
     override func didDeactivate() {
         super.didDeactivate()
     }
-//
-//    @IBAction func animateProgress() {
-//        startProgress(bar: progress, color: colors[0], range: NSMakeRange(0, 40))
-//    }
-//
-//    @IBAction func animateProgress1() {
-//        startProgress(bar: progress1, color: colors[1], range: NSMakeRange(0, 80))
-//    }
-//
-//    @IBOutlet weak var totalProgress: WKInterfaceLabel!
-//    func startProgress(bar: WKInterfaceImage, color: UIColor, range: NSRange) {
-//        let animation = UIImage.animatedImage(with: self.animateImage("progress", color), duration: 1)
-//        bar.setImage(animation)
-//        bar.startAnimatingWithImages(in: range, duration: 1, repeatCount: 1)
-//    }
-//
-//    func animateImage(_ imageName: String, _ color: UIColor) -> [UIImage] {
-//        var images: [UIImage] = []
-//        (0...100).forEach { (index) in
-//            if let img = UIImage(named: "\(imageName)\(index)") {
-//                images.append(img.imageMasked(with: color))
-//            }
-//        }
-//        return images
-//    }
+
+    func startProgress(bar: WKInterfaceImage, color: UIColor, range: NSRange) {
+        let animation = UIImage.animatedImage(with: progressBarImages, duration: 1)
+        bar.setImage(animation)
+        bar.startAnimatingWithImages(in: range, duration: 1, repeatCount: 1)
+    }
+
+    func animateImage(_ imageName: String, _ color: UIColor) -> [UIImage] {
+        var images: [UIImage] = []
+        (0...100).forEach { (index) in
+            if let img = UIImage(named: "\(imageName)\(index)") {
+                images.append(img.imageMasked(with: color))
+            }
+        }
+        return images
+    }
 }
 
 extension InterfaceController: WCSessionDelegate {
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        //
+
     }
 
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         if let valueFromPhone = message["collectedStats"] as? [String: Any] {
             let collectedStats = CollectedCardsStats(dictionary: valueFromPhone)
-            DispatchQueue.main.async {
-                self.totalProgress.setText("\(collectedStats.totalPercentage)%")
-            }
-        }
+            self.totalProgressLabel.setText("\(collectedStats.totalPercentage)%")
+            configureProgressDisplay(forPercentageLabel: commonPercentageLabel,
+                                     andProgressBar: commonProgress,
+                                     withPercentage: collectedStats.commonCardsPercentage)
 
+            configureProgressDisplay(forPercentageLabel: uncommonPercentageLabel,
+                                     andProgressBar: uncommonProgress,
+                                     withPercentage: collectedStats.uncommonCardsPercentage)
+
+            configureProgressDisplay(forPercentageLabel: rarePercentageLabel,
+                                     andProgressBar: rareProgressBar,
+                                     withPercentage: collectedStats.rareCardsPercentage)
+
+            configureProgressDisplay(forPercentageLabel: promoPercentageLabel,
+                                     andProgressBar: promoProgress,
+                                     withPercentage: collectedStats.promoCardsPercentage)
+
+        }
     }
 }
-
-
-extension UIImage {
-    func imageMasked(with maskColor: UIColor) -> UIImage {
-        let imageRect = CGRect(x: 0.0, y: 0.0, width: self.size.width, height: self.size.height)
-        var newImage: UIImage? = nil
-        UIGraphicsBeginImageContextWithOptions(imageRect.size, false, self.scale)
-        do {
-            let context = UIGraphicsGetCurrentContext()!
-            context.scaleBy(x: 1.0, y: -1.0)
-            context.translateBy(x: 0.0, y: -(imageRect.size.height))
-            context.clip(to: imageRect, mask: self.cgImage!)
-            context.setFillColor(maskColor.cgColor)
-            context.fill(imageRect)
-            newImage = UIGraphicsGetImageFromCurrentImageContext()!
-        }
-        UIGraphicsEndImageContext()
-        return newImage!
-    }
-
-}
-
-extension UIColor {
-
-    @objc class func colorWithHexString (hex:String) -> UIColor {
-
-        var hexWithoutSymbol:String = hex.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines).uppercased()
-
-        if (hexWithoutSymbol.hasPrefix("#")) {
-            hexWithoutSymbol = (hexWithoutSymbol as NSString).substring(from: 1)
-        }
-
-        let scanner = Scanner(string: hexWithoutSymbol)
-        var hexInt:UInt32 = 0x0
-        scanner.scanHexInt32(&hexInt)
-
-        var r:UInt32!, g:UInt32!, b:UInt32!
-        switch (hexWithoutSymbol.count) {
-        case 3: // #RGB
-            r = ((hexInt >> 4) & 0xf0 | (hexInt >> 8) & 0x0f)
-            g = ((hexInt >> 0) & 0xf0 | (hexInt >> 4) & 0x0f)
-            b = ((hexInt << 4) & 0xf0 | hexInt & 0x0f)
-            break;
-        case 6: // #RRGGBB
-            r = (hexInt >> 16) & 0xff
-            g = (hexInt >> 8) & 0xff
-            b = hexInt & 0xff
-            break;
-        default:
-            r = 0
-            g = 0
-            b = 0
-            break;
-        }
-        return UIColor(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: CGFloat(1))
-    }
-
-}
-

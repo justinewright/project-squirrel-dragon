@@ -34,62 +34,14 @@ class WatchStatsViewModel {
          pokemonCardsRepository: TCGCardsRepositoryProtocol,
          userCardsRepository: RepositoryProtocol,
          userSetRepository: RepositoryProtocol) {
-        print("view model")
         self.delegate = delegate
         self.pokemonCardsRepository = pokemonCardsRepository
         self.userCardsRepository = userCardsRepository
         self.userSetRepository = userSetRepository
     }
 
-    fileprivate func fetchSetCards(forSetId setId: String) {
-        pokemonCardsRepository.fetch(itemWithID:  "set.id:\(setId)") { [weak self] result in
-            switch result {
-            case .success(let data):
-                guard let pokemonCardsData = data as? PokemonCardsData else {
-                    self?.delegate?.didFailWithError(message: "Failed to cast data to PokemonCardsData")
-                    return
-                }
-
-                let cards = pokemonCardsData.data
-                self?.pokemonSetCards[setId] = Dictionary(uniqueKeysWithValues: cards.map { ($0.id, $0) })
-
-                self?.userCardsRepository.fetch { [weak self] result in
-                    self?.processUserCardsResults(withRepositoryResult: result)
-                }
-            case .failure(let error):
-                self?.delegate?.didFailWithError(message: error.localizedDescription)
-                return
-            }
-
-        }
-    }
-
-    fileprivate func updatePokemonCards(_ userCardsData: FirebaseData<CardsCollectionViewModel.FirebaseUserCards>) {
-        self.userPokemonCards.removeAll()
-        userPokemonCards = Dictionary(uniqueKeysWithValues: userCardsData.data.map { ($0.id, $0) })
-    }
-
-    fileprivate func fetchUserCards() {
-        userCardsRepository.fetch() { [weak self] result in
-            switch result {
-            case .success(let data):
-                guard let userCardsData = data as? FirebaseData<FirebaseUserCards> else {
-                    self?.delegate?.didFailWithError(message: "Failed to cast data to UserCardData")
-                    return
-                }
-
-                self?.updatePokemonCards(userCardsData)
-                self?.userCardsRepository.fetch { [weak self] result in
-                    self?.processUserCardsResults(withRepositoryResult: result)
-                }
-            case .failure(let error):
-                self?.delegate?.didFailWithError(message: error.localizedDescription)
-                return
-            }
-        }
-    }
-
     func fetchViewData() {
+        //1. fetch user sets
         userSetRepository.fetch { [weak self] result in
             switch result {
             case .success(let userData):
@@ -107,7 +59,42 @@ class WatchStatsViewModel {
         }
     }
 
+    fileprivate func fetchSetCards(forSetId setId: String) {
+        //2. fetch cards for user sets
+        pokemonCardsRepository.fetch(itemWithID:  "set.id:\(setId)") { [weak self] result in
+            switch result {
+            case .success(let data):
+                guard let pokemonCardsData = data as? PokemonCardsData else {
+                    self?.delegate?.didFailWithError(message: "Failed to cast data to PokemonCardsData")
+                    return
+                }
+
+                let cards = pokemonCardsData.data
+                self?.pokemonSetCards[setId] = Dictionary(uniqueKeysWithValues: cards.map { ($0.id, $0) })
+
+                self?.fetchUserCards()
+            case .failure(let error):
+                self?.delegate?.didFailWithError(message: error.localizedDescription)
+                return
+            }
+
+        }
+    }
+
+    fileprivate func updatePokemonCards(_ userCardsData: FirebaseData<CardsCollectionViewModel.FirebaseUserCards>) {
+        self.userPokemonCards.removeAll()
+        userPokemonCards = Dictionary(uniqueKeysWithValues: userCardsData.data.map { ($0.id, $0) })
+    }
+
+    fileprivate func fetchUserCards() {
+        //3. fetch user cards for user sets
+        userCardsRepository.fetch() { [weak self] result in
+            self?.processUserCardsResults(withRepositoryResult: result)
+        }
+    }
+
     private func processUserCardsResults(withRepositoryResult result: Result<Any, URLError> ) {
+        //4. update information
         switch result {
         case .success(let userData):
             guard let userCardsData = userData as? FirebaseData<FirebaseUserCards> else {
@@ -143,10 +130,10 @@ class WatchStatsViewModel {
         var totalCards = 1
         var collectedCards = 0
         setCollectableCards.forEach { key, value in
-            totalCards += setCollectableCards[key]?.dividedTotalCardsByRarityCount[rarity] ?? 0
+            totalCards += value.dividedTotalCardsByRarityCount[rarity] ?? 0
             collectedCards += setCollectableCards[key]?.numberOfCollectedCards(ofRarity: rarity) ?? 0
         }
-        return collectedCards / totalCards * 100
+        return Int(Double(collectedCards) / Double(totalCards) * 100)
     }
 
     private func totalCollectedCardsPercentage() -> Int {
@@ -156,7 +143,7 @@ class WatchStatsViewModel {
             totalCards += setCollectableCards[key]?.totalCards ?? 0
             collectedCards += setCollectableCards[key]?.totalCollectedCards ?? 0
         }
-        return collectedCards / totalCards * 100
+        return Int(Double(collectedCards) / Double(totalCards) * 100)
     }
 
 }

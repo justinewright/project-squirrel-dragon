@@ -9,12 +9,12 @@ import UIKit
 
 typealias Submodules = (
     sets: UIViewController,
-    money: UIViewController
+    stats: UIViewController
 )
 
 typealias MainTabs = (
     sets: UIViewController,
-    money: UIViewController
+    stats: UIViewController
 )
 
 class TabBarBuilder {
@@ -22,21 +22,21 @@ class TabBarBuilder {
     static func build(usingSubmodules submodules: Submodules) -> UITabBarController {
         let tabBarController = styledTabBarController.self
         let tabItems = tabs(usingSubmodules: submodules)
-        tabBarController.viewControllers = [tabItems.sets, tabItems.money]
+        tabBarController.viewControllers = [tabItems.sets, tabItems.stats]
 
         return tabBarController
     }
 
     static func tabs(usingSubmodules submodules: Submodules) -> MainTabs {
         let setsTabBarItem =  createTabItem(title: "sets", tabImage: UIImage(systemName: "circle.grid.3x3.circle")!)
-        let moneyTabBarItem =  createTabItem(title: "money", tabImage: UIImage(systemName: "dollarsign.circle.fill")!)
+        let moneyTabBarItem =  createTabItem(title: "stats", tabImage: UIImage(systemName: "dollarsign.circle.fill")!)
 
         submodules.sets.tabBarItem = setsTabBarItem
-        submodules.money.tabBarItem = moneyTabBarItem
+        submodules.stats.tabBarItem = moneyTabBarItem
 
         return (
             sets: submodules.sets,
-            money: submodules.money
+            stats: submodules.stats
         )
     }
 
