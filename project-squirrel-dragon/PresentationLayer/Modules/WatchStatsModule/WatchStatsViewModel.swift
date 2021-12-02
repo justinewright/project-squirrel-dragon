@@ -129,23 +129,23 @@ class WatchStatsViewModel {
     }
 
     private func collectedCardsPercentage(forRarity rarity: CardsOrganiser.CardRarity) -> Int {
-        var totalCards = 1
+        var totalCards = 0
         var collectedCards = 0
         setCollectableCards.forEach { _, value in
             totalCards += value.dividedTotalCardsByRarityCount[rarity] ?? 0
             collectedCards += value.numberOfCollectedCards(ofRarity: rarity)
         }
-        return Int(Double(collectedCards) / Double(totalCards) * 100)
+        return totalCards == 0 ? 100: Int(Double(collectedCards) / Double(totalCards) * 100)
     }
 
     private func totalCollectedCardsPercentage() -> Int {
-        var totalCards = 1
+        var totalCards = 0
         var collectedCards = 0
         setCollectableCards.forEach { _, value in
             totalCards += value.totalCards ?? 0
             collectedCards += value.totalCollectedCards ?? 0
         }
-        return Int(Double(collectedCards) / Double(totalCards) * 100)
+        return totalCards == 0 ? 100 : Int(Double(collectedCards) / Double(totalCards) * 100)
     }
 
 }
