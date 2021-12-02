@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="19162" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch38"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="19044"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+    </dependencies>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller contentMode="scaleAspectFit" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="project_squirrel_dragon_Watch" customModuleProvider="target">
+                    <items>
+                        <group width="0.90000000000000002" alignment="center" id="1Vv-ZV-mN4" userLabel="Header">
+                            <items>
+                                <group width="50" height="50" alignment="left" radius="25" id="rdW-Ig-xQ0">
+                                    <items>
+                                        <imageView alignment="left" alpha="0.69999999999999996" image="logoo" contentMode="scaleAspectFill" id="Az7-8e-yjm">
+                                            <color key="tintColor" red="0.73026366610000004" green="0.59222285600000002" blue="1" alpha="0.53098160699999997" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </imageView>
+                                    </items>
+                                </group>
+                                <group alignment="right" layout="vertical" id="4eX-1J-alT">
+                                    <items>
+                                        <label alignment="right" verticalAlignment="center" text="Progress" id="Hac-ix-pwc">
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
+                                        </label>
+                                        <label width="79" alignment="right" verticalAlignment="center" text="-" textAlignment="right" id="VVo-OB-Ui4">
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <fontDescription key="font" style="UICTFontTextStyleTitle2"/>
+                                        </label>
+                                    </items>
+                                </group>
+                            </items>
+                        </group>
+                        <group width="1" height="58" alignment="center" verticalAlignment="center" layout="vertical" id="BTC-vR-6kU" userLabel="Details">
+                            <items>
+                                <group width="1" alignment="center" verticalAlignment="center" spacing="0.0" id="Ku1-ek-RDY">
+                                    <items>
+                                        <group width="32" height="32" alignment="center" verticalAlignment="center" layout="overlap" id="0X3-pO-RB4" userLabel="CommonGroup">
+                                            <items>
+                                                <imageView alignment="left" image="background" id="frC-xA-ciE">
+                                                    <color key="tintColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="0.50406712409999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </imageView>
+                                                <imageView alignment="left" image="progress0" id="lgN-pW-oZa">
+                                                    <color key="tintColor" name="AccentColor"/>
+                                                </imageView>
+                                                <label width="20" height="20" alignment="center" verticalAlignment="center" text="80%" minimumScaleFactor="0.29999999999999999" id="MGS-nI-zcV"/>
+                                            </items>
+                                        </group>
+                                        <group width="32" height="32" alignment="center" verticalAlignment="center" layout="overlap" id="SoU-hd-A0Q" userLabel="Uncommon">
+                                            <items>
+                                                <imageView alignment="left" image="background" id="n0L-Fl-UcY">
+                                                    <color key="tintColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="0.50406712409999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </imageView>
+                                                <imageView alignment="left" image="progress0" id="UtA-fA-0x6">
+                                                    <color key="tintColor" name="AccentColor"/>
+                                                </imageView>
+                                                <label width="20" height="20" alignment="center" verticalAlignment="center" text="80%" minimumScaleFactor="0.29999999999999999" id="r8X-hI-nxu"/>
+                                            </items>
+                                        </group>
+                                        <group width="32" height="32" alignment="center" verticalAlignment="center" layout="overlap" id="Fsq-eA-3E6" userLabel="Rare">
+                                            <items>
+                                                <imageView alignment="left" image="background" id="yXv-iI-uya">
+                                                    <color key="tintColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="0.50406712409999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </imageView>
+                                                <imageView alignment="left" image="progress0" id="WVr-e3-KZh">
+                                                    <color key="tintColor" name="AccentColor"/>
+                                                </imageView>
+                                                <label width="20" height="20" alignment="center" verticalAlignment="center" text="80%" minimumScaleFactor="0.29999999999999999" id="bhD-pR-Gdq"/>
+                                            </items>
+                                        </group>
+                                        <group width="32" height="32" alignment="center" verticalAlignment="center" layout="overlap" id="NzT-Ey-dzP" userLabel="Promo">
+                                            <items>
+                                                <imageView alignment="left" image="background" id="Obx-G6-GCq">
+                                                    <color key="tintColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="0.50406712409999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </imageView>
+                                                <imageView alignment="left" image="progress0" id="C0U-hi-Ovj">
+                                                    <color key="tintColor" name="AccentColor"/>
+                                                </imageView>
+                                                <label width="20" height="20" alignment="center" verticalAlignment="center" text="100%" minimumScaleFactor="0.29999999999999999" id="fcs-wv-CgO"/>
+                                            </items>
+                                        </group>
+                                    </items>
+                                </group>
+                                <group width="1" alignment="center" verticalAlignment="center" spacing="9" id="n9g-dC-dcZ">
+                                    <items>
+                                        <imageView alignment="center" image="circle.fill" catalog="system" id="GK4-S6-vel">
+                                            <color key="tintColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="0.50406712409999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </imageView>
+                                        <imageView alignment="center" image="diamond.fill" catalog="system" id="SDm-gU-4fi">
+                                            <color key="tintColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="0.50406712409999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </imageView>
+                                        <imageView alignment="center" image="star.fill" catalog="system" id="jsr-JJ-8FH">
+                                            <color key="tintColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="0.50406712409999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </imageView>
+                                        <imageView alignment="center" image="seal.fill" catalog="system" id="YX6-EG-lkg">
+                                            <color key="tintColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="0.50406712409999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </imageView>
+                                    </items>
+                                </group>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" verticalAlignment="bottom" spacing="20" id="FPh-Yq-gnQ" userLabel="Buttons Group">
+                            <items>
+                                <button width="30" height="30" alignment="center" backgroundImage="number.circle" catalog="system" id="Jzd-aA-yYu">
+                                    <color key="backgroundColor" name="AccentColor"/>
+                                    <connections>
+                                        <action selector="collectedNumbersPressed" destination="AgC-eL-Hgc" id="QTW-3J-nle"/>
+                                    </connections>
+                                </button>
+                                <button width="30" height="30" alignment="center" backgroundImage="coloncurrencysign.circle" catalog="system" id="AvQ-Ez-Usb">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </button>
+                            </items>
+                        </group>
+                    </items>
+                    <edgeInsets key="margins" left="0.0" right="1" top="0.0" bottom="0.0"/>
+                    <connections>
+                        <outlet property="commonBackgroundProgress" destination="frC-xA-ciE" id="55G-59-lem"/>
+                        <outlet property="commonPercentageLabel" destination="MGS-nI-zcV" id="j4S-jI-7Hf"/>
+                        <outlet property="commonProgress" destination="lgN-pW-oZa" id="adN-l7-pHk"/>
+                        <outlet property="promoBackgroundProgress" destination="Obx-G6-GCq" id="Gip-vR-r1m"/>
+                        <outlet property="promoPercentageLabel" destination="fcs-wv-CgO" id="azh-be-YpM"/>
+                        <outlet property="promoProgress" destination="C0U-hi-Ovj" id="dwy-X3-75j"/>
+                        <outlet property="rareBackgroundProgress" destination="yXv-iI-uya" id="i35-7n-Rn1"/>
+                        <outlet property="rarePercentageLabel" destination="bhD-pR-Gdq" id="WGM-JB-vkf"/>
+                        <outlet property="rareProgressBar" destination="WVr-e3-KZh" id="P8P-aB-pCm"/>
+                        <outlet property="totalProgressLabel" destination="VVo-OB-Ui4" id="wk3-IF-moF"/>
+                        <outlet property="uncommonBackgroundProgress" destination="n0L-Fl-UcY" id="pt0-FZ-YsZ"/>
+                        <outlet property="uncommonPercentageLabel" destination="r8X-hI-nxu" id="TAR-Gw-f0j"/>
+                        <outlet property="uncommonProgress" destination="UtA-fA-0x6" id="guq-sT-Rfw"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="49" y="-5"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="background" width="150" height="150"/>
+        <image name="circle.fill" catalog="system" width="128" height="121"/>
+        <image name="coloncurrencysign.circle" catalog="system" width="128" height="121"/>
+        <image name="diamond.fill" catalog="system" width="128" height="122"/>
+        <image name="logoo" width="500" height="500"/>
+        <image name="number.circle" catalog="system" width="128" height="121"/>
+        <image name="progress0" width="150" height="150"/>
+        <image name="seal.fill" catalog="system" width="128" height="128"/>
+        <image name="star.fill" catalog="system" width="128" height="115"/>
+        <namedColor name="AccentColor">
+            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

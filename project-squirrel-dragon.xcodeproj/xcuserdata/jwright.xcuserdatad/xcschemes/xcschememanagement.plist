@@ -4,6 +4,21 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Pokemon TCG Stats Watch (Complication).xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>9</integer>
+		</dict>
+		<key>Pokemon TCG Stats Watch (Notification).xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>8</integer>
+		</dict>
+		<key>Pokemon TCG Stats Watch.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
+		</dict>
 		<key>Promises (Playground) 1.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -25,6 +40,21 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
+		<key>project-squirrel-dragon Watch (Complication).xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
+		<key>project-squirrel-dragon Watch (Notification).xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>project-squirrel-dragon Watch.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
 		<key>project-squirrel-dragon.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
@@ -39,6 +69,11 @@
 			<true/>
 		</dict>
 		<key>21044766270B0AE400815441</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>217F3A58274E6A350071C379</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -101,7 +101,7 @@ extension CardsCollectionViewModel {
         switch result {
         case .success(let userData):
             guard let userCardsData = userData as? FirebaseData<FirebaseUserCards> else {
-                self.delegate?.didFailWithError(message: "Failed to cast data to UserSetData")
+                self.delegate?.didFailWithError(message: "Failed to cast data to UserCardData")
                 return
             }
             self.updatePokemonCards(userCardsData)
