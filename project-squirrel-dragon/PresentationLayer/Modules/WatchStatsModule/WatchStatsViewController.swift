@@ -10,14 +10,14 @@ import WatchConnectivity
 
 class WatchStatsViewController: UIViewController {
 
-    @IBOutlet private weak var watchLabel: UILabel!
-
+    // MARK: - Properties
     enum WatchMode: String {
         case cardCollectionStats = "cardCollectionStats"
         case valueStats = "valueStats"
     }
-
+    @IBOutlet private weak var watchLabel: UILabel!
     private var watchMode = WatchMode.cardCollectionStats
+
     private lazy var viewModel = WatchStatsViewModel(
         delegate: self,
         pokemonCardsRepository: TCGPokemonRepository(apiClient: PokemonTcgApiClient(endPoint: Endpoint(path: "cards"), forDataType: TCGReturnDataTypes.TcgCards)),
@@ -26,12 +26,15 @@ class WatchStatsViewController: UIViewController {
         userSetRepository: UserPokemonDataRepository(firebaseApiClient: FirebaseApiClient(endPoint: Endpoint(path: "sets"), forDataType: UserReturnDataTypes.UserSets)))
 
     private var session: WCSession?
+
+    // MARK: - Lifecycle Methods
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupWatchSession()
         viewModel.fetchViewData()
     }
 
+    // MARK: - Configuration
     func setupWatchSession() {
         if WCSession.isSupported() {
             session = WCSession.default
@@ -43,27 +46,8 @@ class WatchStatsViewController: UIViewController {
 
 // MARK: - Watch Delegate Methods
 extension WatchStatsViewController: WCSessionDelegate {
-    func loading() {
-        DispatchQueue.main.async {
-            self.watchLabel.text = "Loading..."
-        }
-    }
-    func doneLoading() {
-        DispatchQueue.main.async {
-            self.watchLabel.text = "Watch..."
-        }
-    }
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
 
-    func loadCollectedStats() {
-        if let validSession = session, validSession.isReachable {
-            let dataToWatch: [String: Any] = ["collectedStats": viewModel.collectedCardsStats]
-            validSession.sendMessage(dataToWatch, replyHandler: nil, errorHandler: nil)
-            doneLoading()
-        }
-    }
-
-    func loadValueStats() {
-        // TODO:- after currency module is implemented
     }
 
     func sessionDidBecomeInactive(_ session: WCSession) {
@@ -71,10 +55,6 @@ extension WatchStatsViewController: WCSessionDelegate {
     }
 
     func sessionDidDeactivate(_ session: WCSession) {
-
-    }
-
-    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
 
     }
 
@@ -87,6 +67,31 @@ extension WatchStatsViewController: WCSessionDelegate {
             }
         }
     }
+
+    private func loadCollectedStats() {
+        if let validSession = session, validSession.isReachable {
+            let dataToWatch: [String: Any] = ["collectedStats": viewModel.collectedCardsStats]
+            validSession.sendMessage(dataToWatch, replyHandler: nil, errorHandler: nil)
+            doneLoading()
+        }
+    }
+
+    func loadValueStats() {
+        // TODO:- after currency module is implemented
+    }
+
+    private func loading() {
+        self.watchLabel.text = "Loading..."
+    }
+
+    private func doneLoading() {
+        self.watchLabel.text = "Watch..."
+    }
+
+    private func error() {
+        self.watchLabel.text = "Error...Try refresh"
+    }
+
 }
 
 // MARK: - Watch Stats View Model Delegate Methods
@@ -101,7 +106,7 @@ extension WatchStatsViewController: WatchStatsViewModelDelegate{
     }
 
     func didFailWithError(message: String) {
-        print("failed to load watch information")
+        error()
     }
 
 }

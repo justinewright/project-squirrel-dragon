@@ -40,8 +40,9 @@ class WatchStatsViewModel {
         self.userSetRepository = userSetRepository
     }
 
+    // MARK: - Data Fetching Methods
     func fetchViewData() {
-        //1. fetch user sets
+        // 1. fetch user sets
         userSetRepository.fetch { [weak self] result in
             switch result {
             case .success(let userData):
@@ -60,7 +61,7 @@ class WatchStatsViewModel {
     }
 
     fileprivate func fetchSetCards(forSetId setId: String) {
-        //2. fetch cards for user sets
+        // 2. fetch cards for user sets
         pokemonCardsRepository.fetch(itemWithID:  "set.id:\(setId)") { [weak self] result in
             switch result {
             case .success(let data):
@@ -81,20 +82,21 @@ class WatchStatsViewModel {
         }
     }
 
-    fileprivate func updatePokemonCards(_ userCardsData: FirebaseData<CardsCollectionViewModel.FirebaseUserCards>) {
-        self.userPokemonCards.removeAll()
-        userPokemonCards = Dictionary(uniqueKeysWithValues: userCardsData.data.map { ($0.id, $0) })
-    }
-
     fileprivate func fetchUserCards() {
-        //3. fetch user cards for user sets
+        // 3. fetch user cards for user sets
         userCardsRepository.fetch() { [weak self] result in
             self?.processUserCardsResults(withRepositoryResult: result)
         }
     }
 
+    // MARK: - Processing Methods
+    fileprivate func updatePokemonCards(_ userCardsData: FirebaseData<CardsCollectionViewModel.FirebaseUserCards>) {
+        self.userPokemonCards.removeAll()
+        userPokemonCards = Dictionary(uniqueKeysWithValues: userCardsData.data.map { ($0.id, $0) })
+    }
+
     private func processUserCardsResults(withRepositoryResult result: Result<Any, URLError> ) {
-        //4. update information
+        // 4. update information
         switch result {
         case .success(let userData):
             guard let userCardsData = userData as? FirebaseData<FirebaseUserCards> else {
@@ -112,8 +114,8 @@ class WatchStatsViewModel {
     fileprivate func updateCardOrganiser() {
         pokemonSetCards.forEach { setId, pokemonCards in
             let collectableCards = pokemonCards.map { CollectableCard.init(id: $0.key,
-                                                    pokemonCard: $0.value,
-                                                    userCard: userPokemonCards[$0.key]) }
+                                                                           pokemonCard: $0.value,
+                                                                           userCard: userPokemonCards[$0.key]) }
             setCollectableCards[setId] = CardsOrganiser(collectableCards: collectableCards)
         }
     }
@@ -129,9 +131,9 @@ class WatchStatsViewModel {
     private func collectedCardsPercentage(forRarity rarity: CardsOrganiser.CardRarity) -> Int {
         var totalCards = 1
         var collectedCards = 0
-        setCollectableCards.forEach { key, value in
+        setCollectableCards.forEach { _, value in
             totalCards += value.dividedTotalCardsByRarityCount[rarity] ?? 0
-            collectedCards += setCollectableCards[key]?.numberOfCollectedCards(ofRarity: rarity) ?? 0
+            collectedCards += value.numberOfCollectedCards(ofRarity: rarity)
         }
         return Int(Double(collectedCards) / Double(totalCards) * 100)
     }
@@ -139,9 +141,9 @@ class WatchStatsViewModel {
     private func totalCollectedCardsPercentage() -> Int {
         var totalCards = 1
         var collectedCards = 0
-        setCollectableCards.forEach { key, value in
-            totalCards += setCollectableCards[key]?.totalCards ?? 0
-            collectedCards += setCollectableCards[key]?.totalCollectedCards ?? 0
+        setCollectableCards.forEach { _, value in
+            totalCards += value.totalCards ?? 0
+            collectedCards += value.totalCollectedCards ?? 0
         }
         return Int(Double(collectedCards) / Double(totalCards) * 100)
     }
