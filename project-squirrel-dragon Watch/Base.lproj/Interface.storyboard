@@ -47,7 +47,7 @@
                                                 <imageView alignment="left" image="progress0" id="lgN-pW-oZa">
                                                     <color key="tintColor" name="AccentColor"/>
                                                 </imageView>
-                                                <label width="20" height="20" alignment="center" verticalAlignment="center" text="80%" minimumScaleFactor="0.40000000000000002" id="MGS-nI-zcV"/>
+                                                <label width="20" height="20" alignment="center" verticalAlignment="center" text="80%" minimumScaleFactor="0.29999999999999999" id="MGS-nI-zcV"/>
                                             </items>
                                         </group>
                                         <group width="32" height="32" alignment="center" verticalAlignment="center" layout="overlap" id="SoU-hd-A0Q" userLabel="Uncommon">
@@ -58,7 +58,7 @@
                                                 <imageView alignment="left" image="progress0" id="UtA-fA-0x6">
                                                     <color key="tintColor" name="AccentColor"/>
                                                 </imageView>
-                                                <label width="20" height="20" alignment="center" verticalAlignment="center" text="80%" minimumScaleFactor="0.40000000000000002" id="r8X-hI-nxu"/>
+                                                <label width="20" height="20" alignment="center" verticalAlignment="center" text="80%" minimumScaleFactor="0.29999999999999999" id="r8X-hI-nxu"/>
                                             </items>
                                         </group>
                                         <group width="32" height="32" alignment="center" verticalAlignment="center" layout="overlap" id="Fsq-eA-3E6" userLabel="Rare">
@@ -69,7 +69,7 @@
                                                 <imageView alignment="left" image="progress0" id="WVr-e3-KZh">
                                                     <color key="tintColor" name="AccentColor"/>
                                                 </imageView>
-                                                <label width="20" height="20" alignment="center" verticalAlignment="center" text="80%" minimumScaleFactor="0.40000000000000002" id="bhD-pR-Gdq"/>
+                                                <label width="20" height="20" alignment="center" verticalAlignment="center" text="80%" minimumScaleFactor="0.29999999999999999" id="bhD-pR-Gdq"/>
                                             </items>
                                         </group>
                                         <group width="32" height="32" alignment="center" verticalAlignment="center" layout="overlap" id="NzT-Ey-dzP" userLabel="Promo">
@@ -80,7 +80,7 @@
                                                 <imageView alignment="left" image="progress0" id="C0U-hi-Ovj">
                                                     <color key="tintColor" name="AccentColor"/>
                                                 </imageView>
-                                                <label width="20" height="20" alignment="center" verticalAlignment="center" text="100%" minimumScaleFactor="0.40000000000000002" id="fcs-wv-CgO"/>
+                                                <label width="20" height="20" alignment="center" verticalAlignment="center" text="100%" minimumScaleFactor="0.29999999999999999" id="fcs-wv-CgO"/>
                                             </items>
                                         </group>
                                     </items>

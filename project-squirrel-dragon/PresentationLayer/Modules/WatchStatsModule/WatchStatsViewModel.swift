@@ -80,7 +80,7 @@ class WatchStatsViewModel {
         }
     }
 
-    fileprivate func fetchUserCards()
+    fileprivate func fetchUserCards() {
         userCardsRepository.fetch() { [weak self] result in
             self?.processUserCardsResults(withRepositoryResult: result)
         }
