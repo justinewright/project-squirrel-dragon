@@ -11,6 +11,12 @@ import WatchConnectivity
 class WatchStatsViewController: UIViewController {
 
     // MARK: - Properties
+    enum State: String {
+        case done = "Watch..."
+        case loading = "Loading..."
+        case error = "Error..."
+    }
+
     enum WatchMode: String {
         case cardCollectionStats = "cardCollectionStats"
         case valueStats = "valueStats"
@@ -31,6 +37,7 @@ class WatchStatsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupWatchSession()
+        updateStateLabel(forState: State.loading.rawValue)
         viewModel.fetchViewData()
     }
 
@@ -59,7 +66,7 @@ extension WatchStatsViewController: WCSessionDelegate {
     }
 
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
-        loading()
+        updateStateLabel(forState: State.loading.rawValue)
         if let valueFromWatch = message["watchMode"] as? String {
             if valueFromWatch == "cardCollectionStats" {
                 watchMode = .cardCollectionStats
@@ -72,7 +79,7 @@ extension WatchStatsViewController: WCSessionDelegate {
         if let validSession = session, validSession.isReachable {
             let dataToWatch: [String: Any] = ["collectedStats": viewModel.collectedCardsStats]
             validSession.sendMessage(dataToWatch, replyHandler: nil, errorHandler: nil)
-            doneLoading()
+            updateStateLabel(forState: State.done.rawValue)
         }
     }
 
@@ -80,16 +87,10 @@ extension WatchStatsViewController: WCSessionDelegate {
         // TODO:- after currency module is implemented
     }
 
-    private func loading() {
-        self.watchLabel.text = "Loading..."
-    }
-
-    private func doneLoading() {
-        self.watchLabel.text = "Watch..."
-    }
-
-    private func error() {
-        self.watchLabel.text = "Error...Try refresh"
+    private func updateStateLabel(forState text: String) {
+        DispatchQueue.main.async {
+            self.watchLabel.text = text
+        }
     }
 
 }
@@ -106,7 +107,7 @@ extension WatchStatsViewController: WatchStatsViewModelDelegate{
     }
 
     func didFailWithError(message: String) {
-        error()
+        updateStateLabel(forState: State.error.rawValue)
     }
 
 }
