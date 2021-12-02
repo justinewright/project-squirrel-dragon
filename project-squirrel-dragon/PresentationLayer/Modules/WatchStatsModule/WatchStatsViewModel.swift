@@ -42,7 +42,6 @@ class WatchStatsViewModel {
 
     // MARK: - Data Fetching Methods
     func fetchViewData() {
-        // 1. fetch user sets
         userSetRepository.fetch { [weak self] result in
             switch result {
             case .success(let userData):
@@ -61,7 +60,6 @@ class WatchStatsViewModel {
     }
 
     fileprivate func fetchSetCards(forSetId setId: String) {
-        // 2. fetch cards for user sets
         pokemonCardsRepository.fetch(itemWithID:  "set.id:\(setId)") { [weak self] result in
             switch result {
             case .success(let data):
@@ -82,8 +80,7 @@ class WatchStatsViewModel {
         }
     }
 
-    fileprivate func fetchUserCards() {
-        // 3. fetch user cards for user sets
+    fileprivate func fetchUserCards()
         userCardsRepository.fetch() { [weak self] result in
             self?.processUserCardsResults(withRepositoryResult: result)
         }
@@ -96,7 +93,6 @@ class WatchStatsViewModel {
     }
 
     private func processUserCardsResults(withRepositoryResult result: Result<Any, URLError> ) {
-        // 4. update information
         switch result {
         case .success(let userData):
             guard let userCardsData = userData as? FirebaseData<FirebaseUserCards> else {

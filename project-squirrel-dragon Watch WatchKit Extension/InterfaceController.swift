@@ -63,7 +63,7 @@ class InterfaceController: WKInterfaceController {
         session.sendMessage(dataToPhone, replyHandler: nil, errorHandler: nil)
     }
 
-    @IBAction func collectedNumbersPressed() {
+    @IBAction private func collectedNumbersPressed() {
         fetchProgressCollectionStats()
     }
     
@@ -76,13 +76,13 @@ class InterfaceController: WKInterfaceController {
         super.didDeactivate()
     }
 
-    func startProgress(bar: WKInterfaceImage, color: UIColor, range: NSRange) {
+    private func startProgress(bar: WKInterfaceImage, color: UIColor, range: NSRange) {
         let animation = UIImage.animatedImage(with: progressBarImages, duration: 1)
         bar.setImage(animation)
         bar.startAnimatingWithImages(in: range, duration: 1, repeatCount: 1)
     }
 
-    func animateImage(_ imageName: String, _ color: UIColor) -> [UIImage] {
+    private func animateImage(_ imageName: String, _ color: UIColor) -> [UIImage] {
         var images: [UIImage] = []
         (0...100).forEach { (index) in
             if let img = UIImage(named: "\(imageName)\(index)") {
