@@ -7,6 +7,7 @@
 
 ## Project Description
 Squirrel Dragon is an iOS application. It is developed for pokemon card collectors to help them keep track of their sets and value.
+
 ### Built With
 * Swift 
 * Obj-c
@@ -24,6 +25,8 @@ Squirrel Dragon is an iOS application. It is developed for pokemon card collecto
 - [x] Cards
 - [ ] Value Analysis
 - [x] Firebase Backend
+- [x] Companion Watch App Progress Stats
+- [ ] Companion Watch App Value Stats
 - [ ] Cache
 
 ## Output Screenshots
@@ -37,6 +40,10 @@ Squirrel Dragon is an iOS application. It is developed for pokemon card collecto
 |Set Cards|Set Details|User Sets|
 |<img width="1604" alt="card front" src="https://user-images.githubusercontent.com/79986407/142171939-4293eb9e-0b17-4948-b256-ccc058fbb46a.png" >  |  <img width="1604" alt="card back" src="https://user-images.githubusercontent.com/79986407/142172118-eff1eb4e-b369-4675-a9d7-e8859291c87d.png"> | <img width="1604" alt="collected cards changing" src="https://user-images.githubusercontent.com/79986407/142172240-615588e8-fedc-41b8-8d89-4fabf3b607f2.png">|
 |Card detail front|Card detail back|User changing number of collected cards|
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/79986407/144389670-0045b16b-da08-4a00-a39f-5e4e738f8180.png" width="150">
+</div>
 
 
 
