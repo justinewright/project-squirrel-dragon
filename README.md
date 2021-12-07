@@ -13,6 +13,8 @@ Squirrel Dragon is an iOS application. It is developed for pokemon card collecto
 * Obj-c
 * MVVM
 * Rest-api
+* WatchKit
+* Firebase
 
 <!-- ROADMAP -->
 ## Roadmap
