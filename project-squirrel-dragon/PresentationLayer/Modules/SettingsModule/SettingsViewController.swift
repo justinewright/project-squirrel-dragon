@@ -7,17 +7,12 @@
 
 import UIKit
 
-extension UIColor
-{
-    static let normalSectionColor: UIColor = .quaternaryLabel
-    static let logoutSectionColor: UIColor = .red
-}
-
 class SettingsViewController: UIViewController {
 
+    // MARK: - Properties
     @IBOutlet weak var tableView: UITableView!
-    
-    // configure options handlers
+
+    // MARK: - Life Cycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Settings"
@@ -30,16 +25,18 @@ class SettingsViewController: UIViewController {
     }
 }
 
+// MARK: - Table View Data Source Methods
 extension SettingsViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return SettingSection.allCases.count
     }
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+
+    func tableHeader(withTitle titleString: String?) -> UIView {
         let view = UIView()
         view.backgroundColor = .clear
 
         let title = UILabel()
-        title.text = SettingSection(rawValue: section)?.description
+        title.text = titleString ?? ""
         title.font = .boldSystemFont(ofSize: 16)
         title.textColor = .white
         view.addSubview(title)
@@ -49,10 +46,16 @@ extension SettingsViewController: UITableViewDataSource {
 
         return view
     }
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return tableHeader(withTitle:  SettingSection(rawValue: section)?.description)
+    }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SettingTableViewCell.reuseidentifier, for: indexPath)
-        guard let settingsCell = cell as? SettingTableViewCell else { return UITableViewCell() }
-        guard let section = SettingSection(rawValue: indexPath.section) else { return UITableViewCell() }
+        guard let settingsCell = cell as? SettingTableViewCell,
+        let section = SettingSection(rawValue: indexPath.section) else { return UITableViewCell() }
+
         switch section {
         case .Account:
             let account = AccountOptions(rawValue: indexPath.row)
@@ -79,6 +82,7 @@ extension SettingsViewController: UITableViewDataSource {
         case .Logout: return LogoutOptions.allCases.count
         }
     }
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 40
     }
@@ -114,7 +118,6 @@ extension SettingsViewController: UITableViewDataSource {
         case .Currency:
             handleCurrencySelect()
             //TODO: - navigate to account page
-            break
         case .Watch:
             //TODO: - feature toggle watch
             break
@@ -122,13 +125,9 @@ extension SettingsViewController: UITableViewDataSource {
             break
         }
     }
+
     private func handleCurrencySelect() {
-//        let navVC = CardDetailModuleBuilder.build(usingNavigationFactory: NavigationBuilder.build, and: card)
-        // put in builder
-        let storyboard = UIStoryboard.init(name: "Currency", bundle: nil)
-        let view = storyboard.instantiateViewController(withIdentifier: "Currency")
-        view.title = "Currency"
-        let navVC = NavigationBuilder.build(rootView: view)
+        let navVC = CurrencyModuleBuilder.build(usingNavigationFactory: NavigationBuilder.build)
         guard let destination = navVC.children.first as? CurrencyViewController else {
             return
         }
@@ -143,13 +142,14 @@ extension SettingsViewController: UITableViewDataSource {
 
         }
     }
+
     func logoutSectionClicked() {
         //TODO: - logout and navigate to starting page
     }
 
-
 }
 
+// MARK: - Table View Delegate Methods
 extension SettingsViewController: UITableViewDelegate {
 
 }

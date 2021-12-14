@@ -18,12 +18,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
   
-//        let landingPage = appState.isSignedIn ? HomePageBuilder.build() : LoginModuleBuilder.build(usingNavigationFactory: NavigationBuilder.build)
-        let storyboard = UIStoryboard.init(name: "Settings", bundle: nil)
-        let view = storyboard.instantiateViewController(withIdentifier: "Settings")
+        let landingPage = appState.isSignedIn ? HomePageBuilder.build() : LoginModuleBuilder.build(usingNavigationFactory: NavigationBuilder.build)
 
         window = UIWindow(windowScene: windowScene)
-        window!.rootViewController = view
+        window!.rootViewController = landingPage
         window!.makeKeyAndVisible()
     }
 

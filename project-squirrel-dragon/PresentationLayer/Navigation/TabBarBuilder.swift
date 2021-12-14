@@ -9,12 +9,14 @@ import UIKit
 
 typealias Submodules = (
     sets: UIViewController,
-    stats: UIViewController
+    stats: UIViewController,
+    settingsPage: UIViewController
 )
 
 typealias MainTabs = (
     sets: UIViewController,
-    stats: UIViewController
+    stats: UIViewController,
+    settingsPage: UIViewController
 )
 
 class TabBarBuilder {
@@ -22,7 +24,7 @@ class TabBarBuilder {
     static func build(usingSubmodules submodules: Submodules) -> UITabBarController {
         let tabBarController = styledTabBarController.self
         let tabItems = tabs(usingSubmodules: submodules)
-        tabBarController.viewControllers = [tabItems.sets, tabItems.stats]
+        tabBarController.viewControllers = [tabItems.sets, tabItems.stats, tabItems.settingsPage]
 
         return tabBarController
     }
@@ -30,13 +32,16 @@ class TabBarBuilder {
     static func tabs(usingSubmodules submodules: Submodules) -> MainTabs {
         let setsTabBarItem =  createTabItem(title: "sets", tabImage: UIImage(systemName: "circle.grid.3x3.circle")!)
         let moneyTabBarItem =  createTabItem(title: "stats", tabImage: UIImage(systemName: "dollarsign.circle.fill")!)
+        let settingsTabBarItem = createTabItem(title: "settings", tabImage: UIImage(systemName: "gear")!)
 
         submodules.sets.tabBarItem = setsTabBarItem
         submodules.stats.tabBarItem = moneyTabBarItem
+        submodules.settingsPage.tabBarItem = settingsTabBarItem
 
         return (
             sets: submodules.sets,
-            stats: submodules.stats
+            stats: submodules.stats,
+            settingsPage: submodules.settingsPage
         )
     }
 

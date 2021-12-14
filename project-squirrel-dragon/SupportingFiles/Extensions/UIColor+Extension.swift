@@ -32,4 +32,7 @@ extension UIColor {
 
     func lighter(by amount: CGFloat = 0.2) -> Self { mix(with: .white, amount: amount) }
     func darker(by amount: CGFloat = 0.2) -> Self { mix(with: .black, amount: amount) }
+
+    static let normalSectionColor: UIColor = .quaternaryLabel
+    static let logoutSectionColor: UIColor = .red
 }

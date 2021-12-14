@@ -11,8 +11,9 @@ class CurrencyViewController: UIViewController {
 
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
-    var filteredList: [String] = []
-    var callback: (()->Void)!
+    var callback: (() -> Void)!
+
+    private lazy var viewModel = CurrencyViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,45 +22,36 @@ class CurrencyViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         searchBar.delegate = self
-        filteredList = Array(currencyList)
     }
-
 
 }
 
 extension CurrencyViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText.isEmpty {
-            filteredList = Array(currencyList)
-        }
-        filteredList = currencyList.filter({ currency in
-            currency.contains(searchText.uppercased())
-        })
+        viewModel.filter(withSearchText: searchText)
         tableView.reloadData()
     }
 }
 
 extension CurrencyViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-        UserDefaults.standard.currency =  filteredList[indexPath.row]
+        UserDefaults.standard.currency =  viewModel.filteredList[indexPath.row]
         callback()
     }
 }
 
 extension CurrencyViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        filteredList.count
+        viewModel.filteredList.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell",
                                                  for: indexPath)
         var config = cell.defaultContentConfiguration()
-        config.text = filteredList[indexPath.row]
+        config.text = viewModel.filteredList[indexPath.row]
         cell.contentConfiguration = config
         return cell
     }
-
 
 }

@@ -61,6 +61,10 @@
 		21748B4E2733C82400D5EFA7 /* UserPokemonDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217901CC2731980600A8BCB5 /* UserPokemonDataRepository.swift */; };
 		217901CB27315AF100A8BCB5 /* SelectMenuModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217901CA27315AF100A8BCB5 /* SelectMenuModuleBuilder.swift */; };
 		217901CD2731980600A8BCB5 /* UserPokemonDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217901CC2731980600A8BCB5 /* UserPokemonDataRepository.swift */; };
+		217A7E7427688581003B4ED5 /* CurrencyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217A7E7327688581003B4ED5 /* CurrencyViewModel.swift */; };
+		217A7E76276885A4003B4ED5 /* CurrencyModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217A7E75276885A4003B4ED5 /* CurrencyModuleBuilder.swift */; };
+		217A7E7827688B2F003B4ED5 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217A7E7727688B2F003B4ED5 /* SettingsViewModel.swift */; };
+		217A7E7A27689CD3003B4ED5 /* SettingsModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217A7E7927689CD3003B4ED5 /* SettingsModuleBuilder.swift */; };
 		217E8E322732CFD500A935C2 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217E8E312732CFD500A935C2 /* Animator.swift */; };
 		217F20E627216354003F4A5E /* NavigationBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217F20E527216354003F4A5E /* NavigationBuilder.swift */; };
 		217F20E727216E20003F4A5E /* CustomSearchBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21671E782715DDDC00A45571 /* CustomSearchBarViewController.xib */; };
@@ -112,7 +116,6 @@
 		21997EC22761152A0091F9AB /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21997EC02761152A0091F9AB /* SettingTableViewCell.swift */; };
 		21997EC32761152A0091F9AB /* SettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21997EC12761152A0091F9AB /* SettingTableViewCell.xib */; };
 		219B19032767B5B500F35230 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219B19022767B5B500F35230 /* UserDefaults+Extension.swift */; };
-		219B19052767C0BA00F35230 /* CurrencyRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219B19042767C0BA00F35230 /* CurrencyRepository.swift */; };
 		219B19072767C0D600F35230 /* CurrencyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219B19062767C0D600F35230 /* CurrencyData.swift */; };
 		219B19092767C1DB00F35230 /* CurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219B19082767C1DB00F35230 /* CurrencyViewController.swift */; };
 		219B190B2767C1F900F35230 /* Currency.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 219B190A2767C1F900F35230 /* Currency.storyboard */; };
@@ -131,8 +134,6 @@
 		21C8C65A273E95A300363D79 /* PokemonCardsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212699F6273BB032002FA8C2 /* PokemonCardsData.swift */; };
 		21C8C65B273EA9F500363D79 /* UserCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212699FE273BCC1B002FA8C2 /* UserCard.swift */; };
 		21C8C65C273EA9F500363D79 /* CollectableCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FC0B5D273C24760097B467 /* CollectableCard.swift */; };
-		21DD83EC2763826C00B627F9 /* TogglableSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DD83EA2763826C00B627F9 /* TogglableSettingsTableViewCell.swift */; };
-		21DD83ED2763826C00B627F9 /* TogglableSettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21DD83EB2763826C00B627F9 /* TogglableSettingsTableViewCell.xib */; };
 		21DD83EF27638B5000B627F9 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DD83EE27638B5000B627F9 /* UIColor+Extension.swift */; };
 		21FC0B5B273C05080097B467 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FC0B59273C05080097B467 /* CardCollectionViewCell.swift */; };
 		21FC0B5C273C05080097B467 /* CardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21FC0B5A273C05080097B467 /* CardCollectionViewCell.xib */; };
@@ -239,6 +240,10 @@
 		2171BC692710086000EBBA3E /* StyleKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleKit.swift; sourceTree = "<group>"; };
 		217901CA27315AF100A8BCB5 /* SelectMenuModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMenuModuleBuilder.swift; sourceTree = "<group>"; };
 		217901CC2731980600A8BCB5 /* UserPokemonDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPokemonDataRepository.swift; sourceTree = "<group>"; };
+		217A7E7327688581003B4ED5 /* CurrencyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewModel.swift; sourceTree = "<group>"; };
+		217A7E75276885A4003B4ED5 /* CurrencyModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyModuleBuilder.swift; sourceTree = "<group>"; };
+		217A7E7727688B2F003B4ED5 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		217A7E7927689CD3003B4ED5 /* SettingsModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModuleBuilder.swift; sourceTree = "<group>"; };
 		217E8E312732CFD500A935C2 /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
 		217F20E527216354003F4A5E /* NavigationBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBuilder.swift; sourceTree = "<group>"; };
 		217F20ED27217498003F4A5E /* TabBarBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarBuilder.swift; sourceTree = "<group>"; };
@@ -288,7 +293,6 @@
 		21997EC02761152A0091F9AB /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		21997EC12761152A0091F9AB /* SettingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingTableViewCell.xib; sourceTree = "<group>"; };
 		219B19022767B5B500F35230 /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
-		219B19042767C0BA00F35230 /* CurrencyRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyRepository.swift; sourceTree = "<group>"; };
 		219B19062767C0D600F35230 /* CurrencyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyData.swift; sourceTree = "<group>"; };
 		219B19082767C1DB00F35230 /* CurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewController.swift; sourceTree = "<group>"; };
 		219B190A2767C1F900F35230 /* Currency.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Currency.storyboard; sourceTree = "<group>"; };
@@ -302,8 +306,6 @@
 		21B375B1272AE03800CC6758 /* SelectMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMenuViewController.swift; sourceTree = "<group>"; };
 		21BFA46627678C9000457403 /* SectionSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionSettings.swift; sourceTree = "<group>"; };
 		21C8C657273E8CDD00363D79 /* CardsCollectionViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsCollectionViewModelTests.swift; sourceTree = "<group>"; };
-		21DD83EA2763826C00B627F9 /* TogglableSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TogglableSettingsTableViewCell.swift; sourceTree = "<group>"; };
-		21DD83EB2763826C00B627F9 /* TogglableSettingsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TogglableSettingsTableViewCell.xib; sourceTree = "<group>"; };
 		21DD83EE27638B5000B627F9 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		21FC0B59273C05080097B467 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		21FC0B5A273C05080097B467 /* CardCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -543,7 +545,6 @@
 				216ADAE8270DA9F200D61E92 /* TCGPokemonRepository.swift */,
 				216ADAF5270DBA0700D61E92 /* RepositoryContracts.swift */,
 				217901CC2731980600A8BCB5 /* UserPokemonDataRepository.swift */,
-				219B19042767C0BA00F35230 /* CurrencyRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -551,6 +552,7 @@
 		216ADAEE270DAD4300D61E92 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				21BFA46627678C9000457403 /* SectionSettings.swift */,
 				216ADAF2270DAD9900D61E92 /* PokemonCollectionSet.swift */,
 				2185CEFC27202A8600499D31 /* UserSet.swift */,
 				2185CEFE27202C3C00499D31 /* SetDetails.swift */,
@@ -562,9 +564,21 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		217A7E722768854C003B4ED5 /* CurrencyModule */ = {
+			isa = PBXGroup;
+			children = (
+				217A7E7327688581003B4ED5 /* CurrencyViewModel.swift */,
+				219B19082767C1DB00F35230 /* CurrencyViewController.swift */,
+				217A7E75276885A4003B4ED5 /* CurrencyModuleBuilder.swift */,
+				219B190A2767C1F900F35230 /* Currency.storyboard */,
+			);
+			path = CurrencyModule;
+			sourceTree = "<group>";
+		};
 		217F20E327216333003F4A5E /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				217A7E722768854C003B4ED5 /* CurrencyModule */,
 				21997EAD27610B980091F9AB /* SettingsModule */,
 				214555132757D9380036EE02 /* WatchStatsModule */,
 				21942CDB2742722300F8C00D /* CardDetailsModule */,
@@ -706,11 +720,8 @@
 				21997EBA276110A20091F9AB /* Settings.storyboard */,
 				21997EC02761152A0091F9AB /* SettingTableViewCell.swift */,
 				21997EC12761152A0091F9AB /* SettingTableViewCell.xib */,
-				21DD83EA2763826C00B627F9 /* TogglableSettingsTableViewCell.swift */,
-				21DD83EB2763826C00B627F9 /* TogglableSettingsTableViewCell.xib */,
-				21BFA46627678C9000457403 /* SectionSettings.swift */,
-				219B19082767C1DB00F35230 /* CurrencyViewController.swift */,
-				219B190A2767C1F900F35230 /* Currency.storyboard */,
+				217A7E7727688B2F003B4ED5 /* SettingsViewModel.swift */,
+				217A7E7927689CD3003B4ED5 /* SettingsModuleBuilder.swift */,
 			);
 			path = SettingsModule;
 			sourceTree = "<group>";
@@ -920,7 +931,6 @@
 				21044758270ACD1A00815441 /* Assets.xcassets in Resources */,
 				217F20F027218FF6003F4A5E /* SetDetails.storyboard in Resources */,
 				2166707A270F0D5B00B6A874 /* PokemonCollectionSets.storyboard in Resources */,
-				21DD83ED2763826C00B627F9 /* TogglableSettingsTableViewCell.xib in Resources */,
 				21B375B0272AD28000CC6758 /* SelectMenu.storyboard in Resources */,
 				21894F9927281BD30092AAB5 /* GoogleService-Info.plist in Resources */,
 				21044756270ACD1900815441 /* Main.storyboard in Resources */,
@@ -1074,7 +1084,6 @@
 				21FC0B60273C265D0097B467 /* CardsCollectionViewController.swift in Sources */,
 				21997EB8276110700091F9AB /* SettingsViewController.swift in Sources */,
 				2185CEF92720225900499D31 /* UserSetData.swift in Sources */,
-				219B19052767C0BA00F35230 /* CurrencyRepository.swift in Sources */,
 				2145552227581D960036EE02 /* WatchStatsViewController.swift in Sources */,
 				2169DCAC273CFE6F002226C5 /* CardsCollectionViewModel.swift in Sources */,
 				212699F7273BB032002FA8C2 /* PokemonCardsData.swift in Sources */,
@@ -1085,7 +1094,6 @@
 				219B19072767C0D600F35230 /* CurrencyData.swift in Sources */,
 				2145552427581DA70036EE02 /* WatchStatsModuleBuilder.swift in Sources */,
 				217E8E322732CFD500A935C2 /* Animator.swift in Sources */,
-				21DD83EC2763826C00B627F9 /* TogglableSettingsTableViewCell.swift in Sources */,
 				218D716B272AFBCB0056CB22 /* SelectableSetCell.swift in Sources */,
 				2104474F270ACD1900815441 /* AppDelegate.swift in Sources */,
 				21942CD82742720500F8C00D /* CardDetailViewController.swift in Sources */,
@@ -1099,11 +1107,15 @@
 				21894FA0272820260092AAB5 /* LoginViewController.swift in Sources */,
 				21FC0B66273C29BB0097B467 /* CardsModuleBuilder.swift in Sources */,
 				21894FA92728275F0092AAB5 /* AnonymousAuthenticator.swift in Sources */,
+				217A7E7427688581003B4ED5 /* CurrencyViewModel.swift in Sources */,
+				217A7E7827688B2F003B4ED5 /* SettingsViewModel.swift in Sources */,
 				2185CEF0271FFB7300499D31 /* SetDetailsViewController.swift in Sources */,
 				21667078270F0D2E00B6A874 /* PokemonCollectionSetsViewController.swift in Sources */,
 				217901CD2731980600A8BCB5 /* UserPokemonDataRepository.swift in Sources */,
 				21671E6B2715CACA00A45571 /* SearchTableViewCell.m in Sources */,
 				21843377271417D000EC2F5A /* CustomSearchBarViewModel.m in Sources */,
+				217A7E7A27689CD3003B4ED5 /* SettingsModuleBuilder.swift in Sources */,
+				217A7E76276885A4003B4ED5 /* CurrencyModuleBuilder.swift in Sources */,
 				2185CEF52720037300499D31 /* SetDetailsModuleBuilder.swift in Sources */,
 				2185CEF3271FFB9900499D31 /* SetDetailsViewModel.swift in Sources */,
 				21671E6E2715D66200A45571 /* CustomSearchBarModuleBuilder.swift in Sources */,
