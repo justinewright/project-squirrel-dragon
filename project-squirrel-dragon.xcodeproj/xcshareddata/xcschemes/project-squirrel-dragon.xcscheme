@@ -39,6 +39,16 @@
                ReferencedContainer = "container:project-squirrel-dragon.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "217A7E7E2768A0F1003B4ED5"
+               BuildableName = "project-squirrel-dragonUITests.xctest"
+               BlueprintName = "project-squirrel-dragonUITests"
+               ReferencedContainer = "container:project-squirrel-dragon.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

@@ -25,6 +25,7 @@ class SettingTableViewCell: UITableViewCell {
         switchControl.onTintColor = .green
         switchControl.translatesAutoresizingMaskIntoConstraints = false
         switchControl.addTarget(self, action: #selector(handleSwitchAction), for: .valueChanged)
+        switchControl.accessibilityIdentifier = "toggle"
         return switchControl
     }()
 
