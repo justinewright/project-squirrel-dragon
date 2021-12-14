@@ -117,7 +117,6 @@ extension SettingsViewController: UITableViewDataSource {
         switch applicationOption {
         case .Currency:
             handleCurrencySelect()
-            //TODO: - navigate to account page
         case .Watch:
             //TODO: - feature toggle watch
             break
@@ -144,7 +143,7 @@ extension SettingsViewController: UITableViewDataSource {
     }
 
     func logoutSectionClicked() {
-        //TODO: - logout and navigate to starting page
+        //TODO: - logout and navigate to login page
     }
 
 }
